@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinalCms</title>
+</head>
+
+<body>
+    <cms-component>hello</cms-component>
+
+    <cms-list data="l_mie78xs9">
+        <list-node style="height: 250px;display: flex;flex-direction: column;position: relative;" top order="desc">
+            <div
+                style="height: 53px;display: flex;line-height: 53px;padding: 5px;background-color: #ebebeb;border-radius: 5px;margin: 5px;">
+                <node-cover style="width: 50px;height:50px;border: 1px solid #fff;"></node-cover>
+                <node-title style="margin-left: 10px;"></node-title>
+                &nbsp;&nbsp;&nbsp;点击量：<node-clicks></node-clicks>
+                &nbsp;&nbsp;&nbsp;时间：<node-date></node-date>
+                &nbsp;&nbsp;&nbsp;<node-top></node-top>
+            </div>
+        </list-node>
+    </cms-list>
+</body>
+
+</html>

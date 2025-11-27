@@ -1,0 +1,14 @@
+{
+  "name": "src",
+  "version": "1.0.0",
+  "scripts": {
+    "cms": "node IDE/server/main.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
