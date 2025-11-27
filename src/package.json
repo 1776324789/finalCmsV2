@@ -2,13 +2,16 @@
   "name": "src",
   "version": "1.0.0",
   "scripts": {
-    "cms": "node IDE/server/main.js"
+    "pro": "node IDE/server/main_pro.js",
+    "dev": "node IDE/server/main_dev.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "express": "^5.1.0"
+    "chokidar": "^5.0.0",
+    "express": "^5.1.0",
+    "socket.io": "^4.8.1"
   }
 }
