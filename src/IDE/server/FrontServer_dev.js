@@ -35,7 +35,7 @@ class FrontExpress {
     //将文件从template转译到dist
     cpFileToDist(webDir, file) {
         if (file.endsWith(".html")) {
-            this.extractHtmlComponents(webDir, file)
+            this.compileHtmlFile(webDir, file)
         } else {
             this.copyFileWithDir(file, file.replace("template", "dist"));
         }
@@ -84,12 +84,24 @@ class FrontExpress {
             readStream.pipe(writeStream);
         });
     }
+    //编译前端文件
+    compileHtmlFile(webDir, filePath) {
+        let fileContent = this.fs.readFileSync(filePath, "utf-8")
+        fileContent = this.extractHtmlComponents(webDir, fileContent)
+        fileContent = this.extractHtmlScript(webDir, fileContent)
+        this.fs.writeFileSync(filePath.replace("template", "dist"), fileContent, { flag: 'w' })
+    }
+
+    extractHtmlScript(webDir, fileContent) {
+        fileContent += `\n<script src="cmsScripts/FinalCms.js?web=${webDir}"></script>`
+        return fileContent
+    }
 
     /**
      * 提取并替换组件
      */
-    extractHtmlComponents(webDir, filePath) {
-        let fileContent = this.fs.readFileSync(filePath, "utf-8")
+    extractHtmlComponents(webDir, fileContent) {
+
         const regex = /<cms-component(?:\s+data="([^"]+)")?\s*>(.*?)<\/cms-component>/gs;
         const components = [];
         let match;
@@ -119,8 +131,62 @@ class FrontExpress {
                 this.io.emit('log-error', "未找到相关组件(cms-component)" + item.componentName);
             }
         });
-        this.fs.writeFileSync(filePath.replace("template", "dist"), fileContent, { flag: 'w' })
+        return fileContent
     }
+
+    //重复component编译方法（未实装）
+    /**
+     * 传入组件原始 HTML + JS，返回已封装的组件实例代码
+     * @param {string} htmlBlock <cms-component>...</cms-component>
+     * @param {string} scriptBlock <script>...</script>
+     * @param {number} instanceIndex 当前组件索引
+     */
+    compileCmsComponent(htmlBlock, scriptBlock, instanceIndex) {
+        const instanceId = `cms_${instanceIndex}`;
+
+        // 1. 抽取 html 与 script 内容
+        const htmlContent = htmlBlock
+            .replace(/<\/?cms-component>/g, '')
+            .trim();
+
+        const scriptContent = scriptBlock
+            .replace(/<\/?script>/g, '')
+            .trim();
+
+        // 2. 给 html 中所有 id="xxx" 添加后缀
+        const htmlWithScopedIds = htmlContent.replace(
+            /\bid\s*=\s*["']([^"']+)["']/g,
+            (m, id) => `id="${id}_${instanceId}"`
+        );
+
+        // 3. 替换脚本中 document.getElementById("xxx")
+        //    匹配所有 `"原始id"` 并替换为 `"原始id_cms_x"`
+        const scriptScoped = scriptContent.replace(
+            /getElementById\s*\(\s*["']([^"']+)["']\s*\)/g,
+            (m, id) => `getElementById("${id}_${instanceId}")`
+        );
+
+        // 4. script 封装为独立作用域
+        const wrappedScript = `
+<script>
+(function(){
+${scriptScoped}
+})();
+</script>`.trim();
+
+        // 5. 替换 cms-component 为普通 div，附带 instance 标记
+        const finalHtml = `
+<div data-cms-instance="${instanceId}">
+${htmlWithScopedIds}
+</div>
+${wrappedScript}
+`.trim();
+
+        return finalHtml;
+    }
+
+
+
     //输出文件夹中的所有文件
     readDirFiles(dirPath, excludeDirs = []) {
         let result = [];
@@ -168,7 +234,7 @@ class FrontExpress {
     //更新网站所有组件引用
     updateComponent(webDir) {
         this.readDirFiles(this.path.join("Front", webDir, "template"), ["component"]).filter(item => item.endsWith(".html")).forEach(file => {
-            this.extractHtmlComponents(webDir, file)
+            this.compileHtmlFile(webDir, file)
         })
     }
 
@@ -183,7 +249,9 @@ class FrontExpress {
 
         // 匹配除 "/" 以外所有路径
         this.app.get(/^\/.+/, (req, res) => {
-            let filePath = this.initUrl(req.url);
+            let filePath = this.initUrl(req.path);
+            console.log(filePath);
+
             let ext = this.path.extname(filePath).toLowerCase();
             res.type(ext);
 
