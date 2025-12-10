@@ -1,9 +1,15 @@
 import { createApp } from 'vue'
-import "@/assets/css/Base.css"
-import "@/assets/css/moonIcon.css"
 import App from './App.vue'
+import router from './router'
+import { createPinia } from 'pinia'
+import ElementPlus from 'element-plus'
+import "@/assets/css/moonIcon.css"
+import 'element-plus/dist/index.css'
 
+const app = createApp(App);
+const pinia = createPinia();
 
-const app = createApp(App)
+app.use(pinia);
+app.use(ElementPlus)
+app.use(router)
 app.mount('#app')
-

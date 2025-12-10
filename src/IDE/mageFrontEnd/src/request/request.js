@@ -3,7 +3,7 @@ let baseURL
 if (window.location.href.indexOf('localhost') !== -1) {
     baseURL = 'http://localhost:7439/'
 } else {
-    baseURL = "https://bbs.jxuspt.com/server/"
+    baseURL = "http://121.40.194.57:7439/"
 }
 
 const instance = axios.create({

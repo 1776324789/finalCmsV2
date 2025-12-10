@@ -2,8 +2,12 @@
   "name": "src",
   "version": "1.0.0",
   "scripts": {
-    "pro": "node IDE/server/main_pro.js",
-    "dev": "node IDE/server/main_dev.js"
+    "pro": "node IDE/server/pro/main.js",
+    "dev": "node IDE/server/dev/main.js",
+    "dev:vue": "npm --prefix ./IDE/mageFrontEnd run dev",
+    "dev:all": "concurrently \"npm run dev\" \"npm run dev:vue\"",
+    "pro:vue": "npm --prefix ./IDE/mageFrontEnd run build",
+    "pro:all": "concurrently \"npm run pro\" \"npm run pro:vue\""
   },
   "keywords": [],
   "author": "",
@@ -12,6 +16,7 @@
   "dependencies": {
     "chokidar": "^5.0.0",
     "express": "^5.1.0",
+    "pinia": "^3.0.4",
     "socket.io": "^4.8.1"
   }
 }

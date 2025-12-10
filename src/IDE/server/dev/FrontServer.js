@@ -1,5 +1,5 @@
 const { log } = require("console");
-const watch = require("../utils/chokidar");
+const watch = require("../../utils/chokidar");
 class FrontExpress {
     constructor() {
         this.fs = require("fs")
