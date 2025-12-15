@@ -17,13 +17,13 @@
       {{ data.nodeTemplate || "--" }}
     </div>
     <div class="menuBlock">
-      <div class="lineButton">
+      <div class="lineButton addButton">
         <span class="icon-add-fill "></span>
       </div>
-      <div class="lineButton">
+      <div class="lineButton contentButton">
         <span class="icon-function-fill "></span>
       </div>
-      <div class="lineButton">
+      <div class="lineButton editButton">
         <span class="icon-edit-2-line "></span>
       </div>
       <div class="lineButton delButton">
@@ -108,7 +108,7 @@ onMounted(() => {
   font-size: 16px;
 }
 
-.lineButton:hover{
+.lineButton:hover {
   color: #fff;
   background-color: #9c755e;
 }
@@ -121,6 +121,123 @@ onMounted(() => {
   color: #fff;
   background-color: #ff4d4f;
 }
+
+.addButton {
+  position: relative;
+}
+
+
+.addButton::before {
+  pointer-events: none;
+  transition: all 0.5s;
+  width: 0;
+  overflow: hidden;
+  content: "添加子列表";
+  position: absolute;
+  background-color: #fff;
+  height: 30px;
+  line-height: 30px;
+  font-size: 13px;
+  margin-top: 2px;
+  border-radius: 17px;
+  right: 39px;
+}
+
+.addButton:hover::before {
+  width: 100px;
+  color: #815840;
+}
+
+
+
+
+
+
+
+
+.contentButton {
+  position: relative;
+}
+
+
+.contentButton::before {
+  pointer-events: none;
+  transition: all 0.5s;
+  width: 0;
+  overflow: hidden;
+  content: "查看内容";
+  position: absolute;
+  background-color: #fff;
+  height: 30px;
+  line-height: 30px;
+  font-size: 13px;
+  margin-top: 2px;
+  border-radius: 17px;
+  right: 39px;
+}
+
+.contentButton:hover::before {
+  width: 100px;
+  color: #815840;
+}
+
+
+
+.editButton {
+  position: relative;
+}
+
+
+.editButton::before {
+  pointer-events: none;
+  transition: all 0.5s;
+  width: 0;
+  overflow: hidden;
+  content: "编辑栏目";
+  position: absolute;
+  background-color: #fff;
+  height: 30px;
+  line-height: 30px;
+  font-size: 13px;
+  margin-top: 2px;
+  border-radius: 17px;
+  right: 39px;
+}
+
+.editButton:hover::before {
+  width: 100px;
+  color: #815840;
+}
+
+
+.delButton {
+  position: relative;
+}
+
+
+.delButton::before {
+  pointer-events: none;
+  transition: all 0.5s;
+  width: 0;
+  overflow: hidden;
+  content: "删除栏目";
+  position: absolute;
+  background-color: #ff7b7b;
+  height: 30px;
+  line-height: 30px;
+  font-size: 13px;
+  margin-top: 2px;
+  border-radius: 17px;
+  right: 39px;
+}
+
+.delButton:hover::before {
+  width: 100px;
+  color: #fff;
+}
+
+
+
 
 .blockLine {
   position: relative;
@@ -148,7 +265,6 @@ onMounted(() => {
 }
 
 .openArrow {
-
   transform: rotate(90deg);
 }
 

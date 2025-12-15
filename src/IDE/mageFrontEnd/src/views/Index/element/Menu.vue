@@ -149,7 +149,7 @@ img {
     display: flex;
     left: 0;
     top: 0;
-    backdrop-filter: blur(50px);
+    backdrop-filter: blur(100px);
 }
 
 
