@@ -57,7 +57,7 @@ const store = useStore();
   flex: 0.5;
   display: flex;
   flex-direction: column;
-  background-color: #55aaff;
+  background-color: #fff;
 }
 
 .label {

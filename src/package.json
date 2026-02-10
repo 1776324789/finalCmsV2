@@ -16,6 +16,7 @@
   "dependencies": {
     "chokidar": "^5.0.0",
     "express": "^5.1.0",
+    "gsap": "^3.14.2",
     "pinia": "^3.0.4",
     "socket.io": "^4.8.1"
   }

@@ -21,8 +21,8 @@ class Boid {
         const angle = Math.random() * Math.PI * 2
         this.velocity = { x: Math.cos(angle), y: Math.sin(angle) }
         this.acceleration = { x: 0, y: 0 }
-        this.radius = Math.random() * 70 + 10 // 随机半径 4~10
-        this.color = `rgba(7, 46, 51, 0.15)` // 半透明天蓝色
+        this.radius = Math.random() * 170 + 50 // 随机半径 4~10
+        this.color = `red` // 半透明天蓝色
     }
 
     update() {
@@ -217,7 +217,7 @@ onMounted(() => {
 
 <style scoped>
 .canvas {
-    filter: blur(5px);
+    filter: blur(50px);
     position: fixed;
     z-index: 0;
     left: 0;

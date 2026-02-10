@@ -5,14 +5,14 @@
         <div class="index blockLine">子列表</div>
         <div class="index blockLine">内容</div>
         <div class="index blockLine" style="width: 125px;">序列号</div>
-        <div class="index blockLine" style="flex:1;text-align: left;text-indent: 25px;">模板路径</div>
-        <div class="index blockLine" style="flex:1;text-align: left;text-indent: 25px;">内容路径 </div>
+        <div class="index blockLine" style="flex:1;text-align: left;text-indent: 25px;">列表页面路径</div>
+        <div class="index blockLine" style="flex:1;text-align: left;text-indent: 25px;">内容页面路径 </div>
         <div class="index" style="width: 155px;">操作 </div>
     </div>
 </template>
 <style scoped>
 .line {
-    background-color: rgba(255, 209, 172, 0.541);
+    background-color: #fff;
     display: flex;
     height: 40px;
     line-height: 40px;
@@ -26,7 +26,7 @@
 .labelName {
     font-size: 13px;
     font-weight: 300;
-    color: #815840;
+    color: #000;
     width: 300px;
 }
 
@@ -37,7 +37,7 @@
 .index {
     font-size: 13px;
     font-weight: 300;
-    color: #815840;
+    color: #000;
     width: 70px;
     text-align: center;
 }
@@ -51,6 +51,6 @@
     margin-top: 5px;
     width: 2px;
     border-radius: 2px;
-    background-color: #ffffffab;
+    background-color: #c0c0c0ab;
 }
 </style>

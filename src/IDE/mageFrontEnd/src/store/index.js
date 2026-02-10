@@ -1,20 +1,61 @@
-// 想要使用必须先引入 defineStore；
-import { defineStore } from 'pinia';
-// 这里我们使用的是es6 的模块化规范进行导出的。
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
+export const useDataStore = defineStore('dataStore', () => {
+    const userData = ref(null)
 
-// defineStore 方法有两个参数，第一个参数是模块化名字（也就相当于身份证一样，不能重复）
-
-// 第二个参数是选项，对象里面有三个属性，相比于vuex 少了一个 mutations.
-export const useStore = defineStore('main', {
-    state() {  // 存放的就是模块的变量
-        return {
-            count: 10
+    const menuData = ref([
+        {
+            name: "数据统计",
+            icon: "icon-database-line",
+            target: 'dataAnalysis'
+        },
+        {
+            name: "栏目管理",
+            icon: "icon-archive-drawer-line",
+            target: 'webController'
+        },
+        {
+            name: "后台管理",
+            icon: "icon-folder-settings-fill",
+            open: false,
+            child: [
+                {
+                    name: "用户管理",
+                    icon: "icon-user-settings-line",
+                    target: 'userMage'
+                },
+                {
+                    name: "角色管理",
+                    icon: "icon-user-2-fill",
+                    target: 'roleMage'
+                },
+                {
+                    name: "功能管理",
+                    icon: "icon-function-fill",
+                    target: 'functionMage'
+                }]
+        },
+        {
+            name: "站点管理",
+            icon: "icon-archive-fill",
+            open: false,
+            child: [
+                {
+                    name: "数据传输",
+                    icon: "icon-upload-cloud-2-fill",
+                    target: 'dataTrans'
+                },
+                {
+                    name: "文件管理",
+                    icon: "icon-file-settings-fill",
+                    target: 'fileMage'
+                }]
         }
-    },
-    getters: { // 相当于vue里面的计算属性，可以缓存数据
+    ])
 
-    },
-    actions: { // 可以通过actions 方法，改变 state 里面的值。
+
+    return {
+        menuData
 
     }
 })
