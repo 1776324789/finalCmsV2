@@ -136,6 +136,6 @@ function getMaxZIndex() {
     transition: all 0.3s;
     cursor: pointer;
     font-size: 25px;
-    font-weight: 300;
+    font-weight: 350;
 }
 </style>

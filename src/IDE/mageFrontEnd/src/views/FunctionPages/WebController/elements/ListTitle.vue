@@ -25,7 +25,7 @@
 
 .labelName {
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 350;
     color: #000;
     width: 300px;
 }
@@ -36,7 +36,7 @@
 
 .index {
     font-size: 13px;
-    font-weight: 300;
+    font-weight: 350;
     color: #000;
     width: 70px;
     text-align: center;

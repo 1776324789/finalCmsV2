@@ -80,7 +80,7 @@ function login() {
   margin-top: 130px;
   text-align: center;
   color: #fff;
-  font-weight: 300;
+  font-weight: 350;
 }
 
 .loginButton {
@@ -94,7 +94,7 @@ function login() {
   border-radius: 25px;
   background-color: #000;
   font-size: 20px;
-  font-weight: 300;
+  font-weight: 350;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -191,7 +191,7 @@ function login() {
   font-size: 14px;
   line-height: 20px;
   display: flex;
-  font-weight: 300;
+  font-weight: 350;
   padding-left: 15px;
   padding-right: 25px;
   color: #ec1a1a;
@@ -211,7 +211,7 @@ function login() {
   margin-top: 25px;
   margin-left: 60px;
   font-size: 18px;
-  font-weight: 300;
+  font-weight: 350;
 }
 
 .title1 {
@@ -225,7 +225,7 @@ function login() {
 .input {
   transition: all 0.3s;
   font-size: 17px;
-  font-weight: 300;
+  font-weight: 350;
   color: #fff;
   flex: 1;
   text-indent: 60px;
@@ -355,7 +355,7 @@ function login() {
   text-indent: 32.5px;
   line-height: 55px;
   font-size: 20px;
-  font-weight: 300;
+  font-weight: 350;
   border: 1px solid #fff;
 }
 
@@ -378,7 +378,7 @@ function login() {
   line-height: 75px;
   color: #a55d1a;
   font-size: 20px;
-  font-weight: 300;
+  font-weight: 350;
   display: none;
 }
 

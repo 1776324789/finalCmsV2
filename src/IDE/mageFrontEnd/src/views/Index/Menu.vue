@@ -2,7 +2,7 @@
     <div class="mainBlock scroll" :style="`pointer-events:${show ? 'auto' : 'none'};`">
         <LeftMenu @change="handelMenuChange" @logout="logoutHandel" v-model="show"></LeftMenu>
         <div class="contentBlock scroll"
-            v-bind:class="{ rightIn: show, change1: (change % 2 == 1), change2: (change % 2 == 0) }">
+            v-bind:class="{ rightIn: show, change1: (change != 0 && change % 2 == 1), change2: (change != 0 && change % 2 == 0) }">
             <DataAnalysis v-if="target == 'dataAnalysis'"></DataAnalysis>
             <WebController v-if="target == 'webController'"></WebController>
         </div>
@@ -79,7 +79,7 @@ function handelMenuChange(menu) {
     line-height: 40px;
     width: 70px;
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 350;
     cursor: pointer;
 }
 

@@ -103,7 +103,7 @@ function handelMenuClick(menu) {
     line-height: 40px;
     width: 70px;
     font-size: 16px;
-    font-weight: 300;
+    font-weight: 350;
     cursor: pointer;
 }
 

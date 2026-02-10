@@ -96,7 +96,7 @@ const cardStyle = computed(() => ({
 .title {
     display: flex;
     font-size: 30px;
-    font-weight: 300;
+    font-weight: 350;
 }
 
 .webCard {

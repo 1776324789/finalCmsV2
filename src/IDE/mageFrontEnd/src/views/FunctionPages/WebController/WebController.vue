@@ -1,6 +1,6 @@
 <template>
     <div class="mainContent">
-        <div style="margin-bottom: 25px;font-weight: 300;font-size: 18px;display: flex;">
+        <div style="margin-bottom: 25px;font-weight: 350;font-size: 18px;display: flex;">
             站点内容\WebContent
             <div class="searchBlock">搜索名称<input @input="searchInputHandel" v-model="search" placeholder="请输入栏目名称"
                     type="text"></div>
@@ -73,7 +73,7 @@ onMounted(() => {
         }
     })
     data.value = parents
-    console.log(data.value);
+    console.log(JSON.stringify(data.value).length);
 
 })
 
@@ -96,7 +96,7 @@ onMounted(() => {
     outline: none;
     background-color: rgba(255, 255, 255, 0.25);
     backdrop-filter: blur(15px);
-    font-weight: 300;
+    font-weight: 350;
 }
 
 .mainContent {
@@ -113,7 +113,7 @@ onMounted(() => {
 
 .input {
     font-size: 18px;
-    font-weight: 300;
+    font-weight: 350;
     color: #000;
     flex: 1;
     text-indent: 60px;

@@ -23,7 +23,7 @@
 <style scoped>
 .webTitle {
     font-size: 20px;
-    font-weight: 300;
+    font-weight: 350;
     color: #9e8673;
 }
 
@@ -46,7 +46,7 @@
 
 .title {
     font-size: 30px;
-    font-weight: 300;
+    font-weight: 350;
     height: 50px;
     width: 300px;
     color: #573214;

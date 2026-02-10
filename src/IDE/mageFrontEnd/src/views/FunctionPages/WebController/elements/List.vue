@@ -6,7 +6,7 @@
             </div>
 
             <div class="blockLine" ref="lineName" :style="`width:${370 - lineName?.offsetLeft + 'px'};`"
-                style="font-weight: 300;">
+                style="font-weight: 350;">
                 {{ data.name }}
             </div>
 
@@ -324,7 +324,7 @@ function editHandel(e) {
     font-size: 13px;
     font-weight: bold;
     color: #000;
-    font-weight: 300;
+    font-weight: 350;
     width: 70px;
     text-align: center;
 }

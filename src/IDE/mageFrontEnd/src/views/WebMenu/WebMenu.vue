@@ -143,7 +143,7 @@ onUnmounted(() => {
 .number {
     font-size: 30px;
     color: #fff;
-    font-weight: 300;
+    font-weight: 350;
     line-height: 500px;
     text-indent: 30vw;
 }
@@ -155,7 +155,7 @@ onUnmounted(() => {
     position: fixed;
     font-size: 20px;
     color: #fff;
-    font-weight: 300;
+    font-weight: 350;
     display: flex;
     left: -330px;
     bottom: calc((100vh - 800px) / 2);
@@ -197,7 +197,7 @@ onUnmounted(() => {
     display: flex;
     position: fixed;
     color: #fff;
-    font-weight: 300;
+    font-weight: 350;
     font-size: 25px;
     border: 1px solid #fff;
     height: 55px;
