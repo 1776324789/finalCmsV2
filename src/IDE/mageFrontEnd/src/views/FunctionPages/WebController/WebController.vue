@@ -73,8 +73,6 @@ onMounted(() => {
         }
     })
     data.value = parents
-    console.log(JSON.stringify(data.value).length);
-
 })
 
 </script>
