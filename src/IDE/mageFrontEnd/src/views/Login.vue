@@ -9,20 +9,20 @@
         <div class="title">Login</div>
         <div class="line">
           <span class="icon-account-pin-circle-fill inputIcon"></span>
-          <input class="input" placeholder="请输入用户名" type="text" />
+          <input class="input" placeholder="请输入用户名" v-model="form.username" type="text" />
         </div>
         <div class="line">
           <span class="icon-lock-line inputIcon"></span>
-          <input class="input" placeholder="请输入密码" type="text" />
+          <input class="input" placeholder="请输入密码" v-model="form.password" type="text" />
         </div>
         <div class="line">
           <span class="icon-android-line inputIcon"></span>
-          <input class="input" placeholder="请输入验证码" type="text" />
-          <div class="svgBlock"></div>
+          <input class="input" v-model="form.verifyCode" placeholder="请输入验证码" type="text" />
+          <div class="svgBlock" @click="loadVerifyCode" v-html="svg"></div>
         </div>
-        <div class="tipBlock">
+        <div class="tipBlock" v-if="showTip">
           <div class="tip">
-            <span class="icon-error-warning-line" style="margin-right: 5px"></span>请输入密码
+            <span class="icon-error-warning-line" style="margin-right: 5px"></span>{{ tipStr }}
           </div>
           <div style="flex: 1"></div>
         </div>
@@ -52,10 +52,25 @@
   <!-- </div> -->
 </template>
 <script setup>
-import { ref, watch } from 'vue'
+import { onMounted, ref, watch } from 'vue'
+import { getverifyCode, login as loginApi } from '@/request/login'
 const showLogin = ref(true)
+const showTip = ref(true)
+const tipStr = ref("")
 const emit = defineEmits(['login'])
 const props = defineProps({ modelValue: Boolean })
+const form = ref({
+  username: "刘军",
+  password: "145678923Lj.",
+  verifyCode: "",
+  connectId: Date.now().toString(36)
+})
+
+const svg = ref('')
+onMounted(() => {
+  loadVerifyCode()
+})
+
 
 watch(
   () => props.modelValue,
@@ -68,10 +83,24 @@ watch(
   },
   { immediate: true } // 👈 初始化时也同步一次状态
 )
+async function loadVerifyCode() {
+  let res = await getverifyCode({ connectId: form.value.connectId })
+  if (res.svg != null) {
+    svg.value = res.svg
+  }
+}
+function tip(str) {
 
+}
+async function login() {
+  let res = await loginApi(form.value)
+  if (res.code == 200) {
+    window.sessionStorage.setItem('token', res.token)
+  } else {
 
-function login() {
-  emit('login')
+  }
+
+  // emit('login')
 }
 
 </script>
@@ -186,7 +215,7 @@ function login() {
   padding: 5px;
   height: 20px;
   border-radius: 15px;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(10px);
   font-size: 14px;
   line-height: 20px;
@@ -198,6 +227,8 @@ function login() {
 }
 
 .svgBlock {
+  position: relative;
+  cursor: pointer;
   width: 175px;
   height: 40px;
   background-color: #fff;
@@ -205,6 +236,30 @@ function login() {
   border-radius: 20px;
   margin-left: -180px;
   margin-right: 5px;
+}
+
+.svgBlock::after {
+  transition: all 0.3s;
+  content: "点击刷新二维码";
+  position: absolute;
+  border: 1px solid #fff;
+  width: 120px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 350;
+  border-radius: 15px;
+  height: 25px;
+  line-height: 25px;
+  text-align: center;
+  left: 0;
+  top: calc(100% + 30px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.svgBlock:hover::after {
+  top: calc(100% + 10px);
+  opacity: 1;
 }
 
 .label {
@@ -419,6 +474,7 @@ function login() {
   right: calc((100vh - 800px) / 2 * (100vw / 100vh));
   top: calc((100vh - 800px) / 2);
   border: 1px solid #fff;
+  background-color: rgba(0, 0, 0, 0.25);
   border-radius: 50px;
 }
 

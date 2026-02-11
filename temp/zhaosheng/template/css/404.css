@@ -1,0 +1,42 @@
+body,
+html {
+    padding: 0;
+    max-resolution: 0;
+    height: 100%;
+    overflow: hidden;
+
+    
+}
+
+.info {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.dot {
+    z-index: -10;
+    pointer-events: none;
+    border-radius: 50%;
+    transition: 0.5s opacity, 0.5s width, 0.5s height, 0.5s left, 0.5s top, 0.5s filter;
+    position: absolute;
+    translate: -50% -50%;
+}
+
+.info svg {
+    width: 500px;
+    height: 500px;
+}
+
+a {
+    color: #407BFF;
+    cursor: pointer;
+}
+
+a:hover {
+    opacity: 0.8;
+}
