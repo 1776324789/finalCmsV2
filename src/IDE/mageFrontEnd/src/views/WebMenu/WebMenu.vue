@@ -4,30 +4,38 @@
         <span style="line-height: 50px;margin-left: -10px;margin-right: -10px;">|</span>
         全部站点
     </div>
-
     <div class="cardList" ref="cardListRef" @wheel.prevent="handleWheel">
         <div style=" width: calc(50vw - 200px);height: 400px;flex-shrink: 0;" class="number">共4个站点</div>
-        <template v-for="item in 4" :key="item">
-            <WebCard @click="toIndex" />
+        <template v-for="web in dataStore.website" :key="item">
+            <WebCard @toindex="toIndex" :data="web" />
         </template>
         <div style=" width: calc(50vw - 200px);height: 400px;flex-shrink: 0;"></div>
     </div>
-    <div class="LogoutBlock" @click="logoutHandel" v-bind:class="{ leftIn: showWebMenu }"><span
+    <div class="LogoutBlock" @click="showLogoutTip = true" v-bind:class="{ leftIn: showWebMenu }"><span
             class="icon-arrow-left-line"></span> Logout
+        <div class="logoutTip" v-if="showLogoutTip" @click.stop>
+            <div class="tip"> 确认退出登录?</div>
+            <div class="logOutMenu">
+                <div @click="showLogoutTip = false">取消</div>
+                <div @click="logoutHandel">确认</div>
+            </div>
+        </div>
     </div>
     <Menu @logout="menuLogoutHandel" v-model="showIndex"></Menu>
 </template>
 <script setup>
 
 import { onMounted, onUnmounted, ref, watch } from 'vue'
+import { useDataStore } from '@/store'
 import WebCard from '@/components/element/WebCard.vue'
 import Menu from '@/views/Index/Menu.vue'
+const dataStore = useDataStore()
 const showIndex = ref(false)
 const showWebMenu = ref(false)
 const cardListRef = ref(null)
 const emit = defineEmits(['logout'])
 const props = defineProps({ modelValue: Boolean })
-
+const showLogoutTip = ref(false)
 watch(
     () => props.modelValue,
     (val) => {
@@ -47,10 +55,11 @@ function toIndex() {
     setTimeout(() => {
         showIndex.value = true
     }, 200);
-
 }
 
 function logoutHandel() {
+    showLogoutTip.value = false
+    window.sessionStorage.removeItem("token")
     emit('logout')
 }
 // 横向滚动速度
@@ -140,6 +149,56 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.logoutTip {
+    background-color: rgba(255, 255, 255, 0.15);
+    position: absolute;
+    backdrop-filter: blur(15px);
+    padding: 10px 25px;
+    border: 1px solid #fff;
+    bottom: calc(100%);
+    border-radius: 15px;
+    display: flex;
+    width: 150px;
+    flex-direction: column;
+    animation: 0.2s showTip linear forwards;
+}
+
+@keyframes showTip {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logoutTip .tip {
+    font-size: 14px;
+}
+
+.logoutTip .logOutMenu {
+    display: flex;
+    gap: 20px;
+}
+
+.logoutTip .logOutMenu div {
+    font-size: 14px;
+    flex: 1;
+    text-align: center;
+    border-radius: 10px;
+    height: 30px;
+    line-height: 30px;
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
+.logoutTip .logOutMenu div:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
 .number {
     font-size: 30px;
     color: #fff;

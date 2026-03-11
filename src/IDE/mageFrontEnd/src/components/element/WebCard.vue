@@ -1,6 +1,7 @@
 <template>
-    <div class="webCard" @mousemove="handleMouseMove" @mouseleave="handleMouseLeave" ref="cardRef" :style="cardStyle">
-        <div class="title">招生网</div>
+    <div class="webCard" @click="toIndexHandel" @mousemove="handleMouseMove" @mouseleave="handleMouseLeave"
+        ref="cardRef" :style="cardStyle">
+        <div class="title">{{ data.name }}</div>
         <div class="titleEn">website</div>
         <div class="link">zhaosheng.jxuspt.com</div>
         <div class="dot" :style="dotStyle"></div>
@@ -9,9 +10,10 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-
+import { useDataStore } from '@/store'
 const cardRef = ref(null)
-
+const dataStore = useDataStore()
+const emit = defineEmits(['toindex'])
 // dot 的位置
 const dotX = ref(200)
 const dotY = ref(300)
@@ -19,6 +21,17 @@ const dotY = ref(300)
 // 卡片旋转角度
 const rotateX = ref(0)
 const rotateY = ref(0)
+const props = defineProps({
+    data: {
+        type: Object,
+        default: {}
+    }
+})
+
+function toIndexHandel() {
+    dataStore.targetSite = props.data
+    emit('toindex')
+}
 document.addEventListener('wheel', (e) => {
     if (!cardRef.value) return
     const rect = cardRef.value.getBoundingClientRect()
@@ -29,6 +42,7 @@ document.addEventListener('wheel', (e) => {
     cardRef.value.style.scale = scale * 1.1
     cardRef.value.style.marginLeft = ((1 - scale) * -120) + 'px'
 })
+
 onMounted(() => {
     const rect = cardRef.value.getBoundingClientRect()
     cardRef.value.style.opacity = 1 - (Math.abs(document.body.clientWidth / 2 - (rect.x + cardRef.value.clientWidth / 2)) / (document.body.clientWidth / 2))
@@ -37,6 +51,7 @@ onMounted(() => {
     cardRef.value.style.scale = scale * 1.1
     cardRef.value.style.marginLeft = ((1 - scale) * -120) + 'px'
 })
+
 function handleMouseMove(e) {
     const rect = cardRef.value.getBoundingClientRect()
 

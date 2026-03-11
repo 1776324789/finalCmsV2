@@ -1,9 +1,290 @@
 {
+    "webTargetUrl": "http://localhost:20829",
     "user": [
         {
+            "id": "s78d6f8s",
             "username": "刘军",
             "password": "a5b5ce234c33ef70bb42d1d9a1ef8d3e594cc39ad9c6474ab72a8efb83bdfcc5"
         }
     ],
-    "website": []
+    "userRole": [
+        {
+            "userId": "s78d6f8s",
+            "roleId": "jb57kl56"
+        }
+    ],
+    "menu": [
+        {
+            "name": "数据统计",
+            "icon": "icon-database-line",
+            "target": "dataAnalysis",
+            "id": "aa6f6m86"
+        },
+        {
+            "name": "栏目管理",
+            "icon": "icon-archive-drawer-line",
+            "target": "webController",
+            "id": "iwx9z21d"
+        },
+        {
+            "name": "后台管理",
+            "icon": "icon-folder-settings-fill",
+            "id": "66pwl3j7"
+        },
+        {
+            "name": "用户管理",
+            "icon": "icon-user-settings-line",
+            "target": "userMage",
+            "id": "keaa0was",
+            "parentId": "66pwl3j7"
+        },
+        {
+            "name": "角色管理",
+            "icon": "icon-user-2-fill",
+            "target": "roleMage",
+            "id": "jiqzsicr",
+            "parentId": "66pwl3j7"
+        },
+        {
+            "name": "功能管理",
+            "icon": "icon-function-fill",
+            "target": "functionMage",
+            "id": "bcqz4jdi",
+            "parentId": "66pwl3j7"
+        },
+        {
+            "name": "站点管理",
+            "icon": "icon-archive-fill",
+            "id": "76t7klzk"
+        },
+        {
+            "name": "数据传输",
+            "icon": "icon-upload-cloud-2-fill",
+            "target": "dataTrans",
+            "id": "66qt3lge",
+            "parentId": "76t7klzk"
+        },
+        {
+            "name": "文件管理",
+            "icon": "icon-file-settings-fill",
+            "target": "fileMage",
+            "id": "b0995e84",
+            "parentId": "76t7klzk"
+        }
+    ],
+    "role": [
+        {
+            "id": "jb57kl56",
+            "name": "管理员",
+            "menu": [
+                {
+                    "websiteId": "57rdn8ow",
+                    "menuId": "aa6f6m86"
+                },
+                {
+                    "websiteId": "57rdn8ow",
+                    "menuId": "iwx9z21d"
+                },
+                {
+                    "websiteId": "57rdn8ow",
+                    "menuId": "66pwl3j7"
+                },
+                {
+                    "websiteId": "57rdn8ow",
+                    "menuId": "keaa0was"
+                },
+                {
+                    "websiteId": "57rdn8ow",
+                    "menuId": "jiqzsicr"
+                },
+                {
+                    "websiteId": "57rdn8ow",
+                    "menuId": "bcqz4jdi"
+                },
+                {
+                    "websiteId": "57rdn8ow",
+                    "menuId": "76t7klzk"
+                },
+                {
+                    "websiteId": "57rdn8ow",
+                    "menuId": "66qt3lge"
+                },
+                {
+                    "websiteId": "57rdn8ow",
+                    "menuId": "b0995e84"
+                },
+                {
+                    "websiteId": "gjj8rw06",
+                    "menuId": "aa6f6m86"
+                },
+                {
+                    "websiteId": "gjj8rw06",
+                    "menuId": "iwx9z21d"
+                },
+                {
+                    "websiteId": "gjj8rw06",
+                    "menuId": "66pwl3j7"
+                },
+                {
+                    "websiteId": "gjj8rw06",
+                    "menuId": "keaa0was"
+                },
+                {
+                    "websiteId": "gjj8rw06",
+                    "menuId": "jiqzsicr"
+                },
+                {
+                    "websiteId": "gjj8rw06",
+                    "menuId": "bcqz4jdi"
+                },
+                {
+                    "websiteId": "gjj8rw06",
+                    "menuId": "76t7klzk"
+                },
+                {
+                    "websiteId": "gjj8rw06",
+                    "menuId": "66qt3lge"
+                },
+                {
+                    "websiteId": "gjj8rw06",
+                    "menuId": "b0995e84"
+                },
+                {
+                    "websiteId": "b69hk3gb",
+                    "menuId": "aa6f6m86"
+                },
+                {
+                    "websiteId": "b69hk3gb",
+                    "menuId": "iwx9z21d"
+                },
+                {
+                    "websiteId": "b69hk3gb",
+                    "menuId": "66pwl3j7"
+                },
+                {
+                    "websiteId": "b69hk3gb",
+                    "menuId": "keaa0was"
+                },
+                {
+                    "websiteId": "b69hk3gb",
+                    "menuId": "jiqzsicr"
+                },
+                {
+                    "websiteId": "b69hk3gb",
+                    "menuId": "bcqz4jdi"
+                },
+                {
+                    "websiteId": "b69hk3gb",
+                    "menuId": "76t7klzk"
+                },
+                {
+                    "websiteId": "b69hk3gb",
+                    "menuId": "66qt3lge"
+                },
+                {
+                    "websiteId": "b69hk3gb",
+                    "menuId": "b0995e84"
+                },
+                {
+                    "websiteId": "gsobp5d5",
+                    "menuId": "aa6f6m86"
+                },
+                {
+                    "websiteId": "gsobp5d5",
+                    "menuId": "iwx9z21d"
+                },
+                {
+                    "websiteId": "gsobp5d5",
+                    "menuId": "66pwl3j7"
+                },
+                {
+                    "websiteId": "gsobp5d5",
+                    "menuId": "keaa0was"
+                },
+                {
+                    "websiteId": "gsobp5d5",
+                    "menuId": "jiqzsicr"
+                },
+                {
+                    "websiteId": "gsobp5d5",
+                    "menuId": "bcqz4jdi"
+                },
+                {
+                    "websiteId": "gsobp5d5",
+                    "menuId": "76t7klzk"
+                },
+                {
+                    "websiteId": "gsobp5d5",
+                    "menuId": "66qt3lge"
+                },
+                {
+                    "websiteId": "gsobp5d5",
+                    "menuId": "b0995e84"
+                },
+                {
+                    "websiteId": "88chs4i7",
+                    "menuId": "aa6f6m86"
+                },
+                {
+                    "websiteId": "88chs4i7",
+                    "menuId": "iwx9z21d"
+                },
+                {
+                    "websiteId": "88chs4i7",
+                    "menuId": "66pwl3j7"
+                },
+                {
+                    "websiteId": "88chs4i7",
+                    "menuId": "keaa0was"
+                },
+                {
+                    "websiteId": "88chs4i7",
+                    "menuId": "jiqzsicr"
+                },
+                {
+                    "websiteId": "88chs4i7",
+                    "menuId": "bcqz4jdi"
+                },
+                {
+                    "websiteId": "88chs4i7",
+                    "menuId": "76t7klzk"
+                },
+                {
+                    "websiteId": "88chs4i7",
+                    "menuId": "66qt3lge"
+                },
+                {
+                    "websiteId": "88chs4i7",
+                    "menuId": "b0995e84"
+                }
+            ]
+        }
+    ],
+    "website": [
+        {
+            "name": "招生网",
+            "target": "zhaosheng",
+            "id": "57rdn8ow"
+        },
+        {
+            "name": "校友网",
+            "target": "alumni",
+            "id": "gjj8rw06"
+        },
+        {
+            "name": "经管学院官网",
+            "target": "jgfy",
+            "id": "b69hk3gb"
+        },
+        {
+            "name": "教务处官网",
+            "target": "jwc",
+            "id": "gsobp5d5"
+        },
+        {
+            "name": "软件学院官网",
+            "target": "softWare",
+            "id": "88chs4i7"
+        }
+    ]
 }

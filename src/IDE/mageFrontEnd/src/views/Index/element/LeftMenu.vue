@@ -2,7 +2,7 @@
     <div class="mainMenuBlock" v-bind:class="{ leftIn: show }">
         <div class="title">Final<br>CMS</div>
         <div style="flex:1;">
-            <div class="menuBlock" v-for="item in dataStore.menuData">
+            <div class="menuBlock" v-for="item in dataStore.targetSite?.menu||[]">
                 <div class="menuButton" v-bind:class="{
                     'parentButton': item.child != null,
                     'parentSelected': (item.child != null && item.child.filter(child => child.target == target).length == 1),
@@ -57,7 +57,7 @@ function logoutHandel() {
 
 function handelMenuClick(menu) {
     if (menu.child != null) {
-        dataStore.menuData.forEach(item => {
+        dataStore.targetSite.menu.forEach(item => {
             if (item == menu) return
             if (item.child != null) item.open = false
         })

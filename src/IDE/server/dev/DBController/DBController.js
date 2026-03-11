@@ -9,23 +9,43 @@ import DB from './db.json' with { type: 'json' }
 import crypto from 'crypto'
 
 const DBController = () => {
-
-    /** ---------------- 用户索引 ---------------- */
-    const userData = {}
-    DB.user.forEach(user => {
-        userData[user.username] = user
-    })
-
-    function getUserByName(username) {
-        return userData[username]
-    }
-
     /** ---------------- token 池 ---------------- */
     const tokenPool = {}
 
     const TOKEN_EXPIRE_TIME = 2 * 60 * 60 * 1000   // 2 小时
     const TOKEN_IDLE_TIME = 15 * 60 * 1000       // 15 分钟
     const INSPECT_INTERVAL = 30 * 1000            // 30 秒
+    /** ---------------- 用户索引 ---------------- */
+
+    function getUserByName(username) {
+        return DB.user.find(user => user.username == username)
+    }
+
+
+    function getUserMenuData(userId) {
+        const roleIds = DB.userRole.filter(role => role.userId == userId).map(item => item.roleId)
+        const roles = DB.role.filter(role => roleIds.includes(role.id))
+        const website = []
+        roles.forEach(role => role.menu.forEach(menu => {
+            const web = JSON.parse(JSON.stringify(DB.website.find(web => web.id == menu.websiteId)))
+            if (web != null && website.find(item => item.id == web.id) == null) {
+                web["menu"] = []
+                website.push(web)
+            }
+
+        }))
+        roles.forEach(role => role.menu.forEach(roleMenu => {
+            const m = DB.menu.find(item => item.id == roleMenu.menuId)
+            if (m != null) {
+                const web = website.find(item => item.id == roleMenu.websiteId)
+                if (web) web.menu.push(m)
+            }
+        }))
+        return website
+    }
+
+
+
 
     /** ---------------- token 巡检 ---------------- */
     setInterval(() => {
@@ -66,7 +86,6 @@ const DBController = () => {
             registerTime: Date.now(),
             activateTime: Date.now()
         }
-
         return token
     }
 
@@ -89,6 +108,7 @@ const DBController = () => {
     }
 
     return {
+        getUserMenuData,
         getUserByName,
         registerToken,
         verifyToken

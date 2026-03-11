@@ -13,3 +13,18 @@ export function getverifyCode(data) {
         data
     )
 }
+
+
+export function verifyToken(data) {
+    return instance.post(
+        '/verifyToken',
+        data
+    )
+}
+
+export function getMenuData(data) {
+    return instance.post(
+        '/getMenuData',
+        data
+    )
+}

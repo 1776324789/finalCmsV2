@@ -9,7 +9,6 @@ const LoginServer = (app, DB) => {
     // 获取验证码
     app.post('/getverifyCode', (req, res) => {
         const { connectId } = req.body
-
         if (!connectId) {
             return res.status(400).json({ message: 'connectId required' })
         }
@@ -37,12 +36,28 @@ const LoginServer = (app, DB) => {
         })
     })
 
+    app.post('/verifyToken', (req, res) => {
+        const { token } = req.body
+        return res.json({
+            code: 200,
+            data: DB.verifyToken(token)
+        })
+    })
+
+    app.tokenPost("/getMenuData", (req, res, user) => {
+        console.log(user);
+        return res.json({ code: 200, data: DB.getUserMenuData(user.id) })
+    })
+
+
+
+
     app.post('/login', (req, res) => {
         const { connectId, username, password, verifyCode } = req.body
 
         if (!verifyCodeMap.has(connectId))
             return res.json({
-                code: 400,
+                code: 401,
                 message: "二维码已过期"
             })
         else if (verifyCodeMap.get(connectId).toString().toUpperCase() != verifyCode.toUpperCase())
@@ -53,12 +68,12 @@ const LoginServer = (app, DB) => {
         const user = DB.getUserByName(username)
         if (user == null)
             return res.json({
-                code: 400,
+                code: 401,
                 message: "用户不存在"
             })
         else if (user.password != stringToHash(password))
             return res.json({
-                code: 400,
+                code: 401,
                 message: "密码错误"
             })
         else {
@@ -67,8 +82,6 @@ const LoginServer = (app, DB) => {
                 token: DB.registerToken(user)
             })
         }
-
-
     })
 
     /**

@@ -9,23 +9,36 @@
 </template>
 <script setup>
 import ReactBackground from '@/components/element/ReactBackground.vue';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import Login from './views/Login.vue';
-
+import { useDataStore } from './store';
 import WebMenu from './views/WebMenu/WebMenu.vue';
 const background = ref(null)
-const showLogin = ref(true)
+const showLogin = ref(false)
 const showWebMenu = ref(false)
+const dataStore = useDataStore()
+onMounted(() => {
+  init()
+})
+
+async function init() {
+  await dataStore.init()
+  if (dataStore.userData == null) showLogin.value = true
+  else showWebMenu.value = true
+}
+
 function logoutHandel() {
   background.value.style.filter = "blur(0px)"
   showLogin.value = true
   showWebMenu.value = false
 }
+
 function loginHandel() {
   background.value.style.filter = "blur(30px)"
   showLogin.value = false
   showWebMenu.value = true
 }
+
 </script>
 <style>
 body {

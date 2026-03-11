@@ -20,17 +20,18 @@
           <input class="input" v-model="form.verifyCode" placeholder="请输入验证码" type="text" />
           <div class="svgBlock" @click="loadVerifyCode" v-html="svg"></div>
         </div>
+
         <div class="tipBlock" v-if="showTip">
           <div class="tip">
             <span class="icon-error-warning-line" style="margin-right: 5px"></span>{{ tipStr }}
           </div>
           <div style="flex: 1"></div>
         </div>
+        <div v-else style="height: 70px;"></div>
         <button class="loginButton" @click="login">
           <div class="font">
             登&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;录
           </div>
-
         </button>
         <div class="copyright">@Ahead</div>
         <!-- </GlassSurface> -->
@@ -52,13 +53,15 @@
   <!-- </div> -->
 </template>
 <script setup>
-import { onMounted, ref, watch } from 'vue'
+import { nextTick, onMounted, ref, watch } from 'vue'
 import { getverifyCode, login as loginApi } from '@/request/login'
+import { useDataStore } from '@/store'
 const showLogin = ref(true)
-const showTip = ref(true)
+const showTip = ref(false)
 const tipStr = ref("")
 const emit = defineEmits(['login'])
 const props = defineProps({ modelValue: Boolean })
+const dataStore = useDataStore()
 const form = ref({
   username: "刘军",
   password: "145678923Lj.",
@@ -70,7 +73,6 @@ const svg = ref('')
 onMounted(() => {
   loadVerifyCode()
 })
-
 
 watch(
   () => props.modelValue,
@@ -89,18 +91,29 @@ async function loadVerifyCode() {
     svg.value = res.svg
   }
 }
-function tip(str) {
 
+function tip(str) {
+  showTip.value = false
+  nextTick(() => {
+    tipStr.value = str
+    showTip.value = true
+    setTimeout(() => {
+      showTip.value = false
+    }, 2500);
+  })
 }
+
 async function login() {
   let res = await loginApi(form.value)
   if (res.code == 200) {
     window.sessionStorage.setItem('token', res.token)
+    emit("login")
+    await dataStore.init()
   } else {
-
+    if (res.code == 401)
+      loadVerifyCode()
+    tip(res.message)
   }
-
-  // emit('login')
 }
 
 </script>
@@ -209,7 +222,21 @@ async function login() {
   margin-left: 60px;
   margin-top: 30px;
   margin-bottom: 10px;
+  animation: 0.2s showTip linear forwards;
 }
+
+@keyframes showTip {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 .tip {
   padding: 5px;
