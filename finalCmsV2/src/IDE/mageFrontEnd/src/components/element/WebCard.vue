@@ -66,8 +66,8 @@ function handleMouseMove(e) {
     const centerY = rect.height / 2
 
     // 👉 映射旋转角度（数值可调，越大越夸张）
-    rotateY.value = (x - centerX) / centerX * 32
-    rotateX.value = -(y - centerY) / centerY * 32
+    rotateY.value = (x - centerX) / centerX * 16
+    rotateX.value = -(y - centerY) / centerY * 16
 }
 
 function handleMouseLeave() {

@@ -55,7 +55,9 @@ const FrontServer = (DB) => {
  * URL → 文件路径解析
  */
 function initUrl(url, webDirs) {
-    let urlPath = url.split('/').filter(Boolean)
+    // 去除查询参数部分
+    const pathOnly = url.split('?')[0]
+    let urlPath = pathOnly.split('/').filter(Boolean)
 
     // /site → /site/index.html
     if (webDirs.includes(urlPath[urlPath.length - 1])) {

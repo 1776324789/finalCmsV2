@@ -2,7 +2,7 @@
     <div class="mainMenuBlock" v-bind:class="{ leftIn: show }">
         <div class="title">Final<br>CMS</div>
         <div style="flex:1;">
-            <div class="menuBlock" v-for="item in dataStore.targetSite?.menu||[]">
+            <div class="menuBlock" v-for="item in dataStore.targetSite?.menu || []">
                 <div class="menuButton" v-bind:class="{
                     'parentButton': item.child != null,
                     'parentSelected': (item.child != null && item.child.filter(child => child.target == target).length == 1),
@@ -154,6 +154,17 @@ function handelMenuClick(menu) {
     display: flex;
     flex-direction: column;
     transform: translateX(-20vw);
+}
+
+.mainMenuBlock:hover {
+    width: 170px;
+}
+
+.mainMenuBlock:hover .menuButton .name {
+    opacity: 1;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: auto;
 }
 
 .leftIn {

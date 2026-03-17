@@ -37,6 +37,7 @@ const movieList = [{
 
 const wsFunctionMap = {
   login: (user, ws) => {
+
     if (user == null) return
     if (loginUserWsData.get(user) != null) {
       console.log("同个账户在其他设备登录:" + user);

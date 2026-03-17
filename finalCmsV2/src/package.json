@@ -9,7 +9,7 @@
     "pro:vue": "npm --prefix ./IDE/mageFrontEnd run build",
     "pro:all": "concurrently \"npm run pro\" \"npm run pro:vue\""
   },
-  "keywords": [],
+  "keywords": [], 
   "author": "",
   "type": "module",
   "license": "ISC",

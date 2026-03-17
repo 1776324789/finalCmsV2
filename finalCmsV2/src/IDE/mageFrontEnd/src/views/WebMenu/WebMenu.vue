@@ -5,7 +5,7 @@
         全部站点
     </div>
     <div class="cardList" ref="cardListRef" @wheel.prevent="handleWheel">
-        <div style=" width: calc(50vw - 200px);height: 400px;flex-shrink: 0;" class="number">共4个站点</div>
+        <div style=" width: calc(50vw - 200px);height: 400px;flex-shrink: 0;" class="number">共{{dataStore.website.length}}个站点</div>
         <template v-for="web in dataStore.website" :key="item">
             <WebCard @toindex="toIndex" :data="web" />
         </template>
@@ -52,6 +52,8 @@ function menuLogoutHandel() {
 }
 function toIndex() {
     close()
+    console.log(dataStore.targetSite);
+    
     setTimeout(() => {
         showIndex.value = true
     }, 200);

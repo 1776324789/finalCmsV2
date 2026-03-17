@@ -1,14 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <cms-component>
-    hello this is test component
-</cms-component>
+
+    <cms-list data="1" style="display: flex;">
+        <div>
+            <list-list>
+                <list-name></list-name>
+                <list-info></list-info>
+                <list-list>
+                    <list-name></list-name>
+                    <list-info></list-info>
+                </list-list>
+            </list-list>
+        </div>
+
+        <div>
+            <list-node>
+                <node-title></node-title>
+                <node-info></node-info>
+                <node-date format="YY-MM-DD HH:mm"></node-date>
+                <cms-pagination></cms-pagination>
+            </list-node>
+        </div>
+    </cms-list>
 </body>
+
 </html>
-<script src="cmsScripts/FinalCms.js?web=alumni"></script>
+<script src="/cmsScripts/FinalCms.js?web=alumni&alwaysLoad=true"></script>

@@ -9,7 +9,6 @@
     const listIndexMap = {}
 
     init()
-
     function init() {
         initBaseStyle()
         if (alwaysLoad) {
@@ -116,7 +115,7 @@
         }
 
         connectedCallback() {
-            if (listIndexMap[this.loadDataId()])
+            if (NodeIndexMap[this.loadDataId()])
                 this.data = listIndexMap[this.loadDataId()]
         }
 
@@ -130,7 +129,6 @@
             })
 
             findScopedElements(this, "LIST-LIST", ["CMS-LIST", "LIST-LIST"]).forEach(child => {
-                if (this.data.children == null) return
                 this.data.children.forEach(item => {
                     const cloneElement = child.cloneNode(true)
                     child.parentNode.insertBefore(cloneElement, child)
@@ -140,8 +138,6 @@
             })
 
             findScopedElements(this, "LIST-NODE", ["CMS-LIST", "LIST-LIST", "LIST-NODE"]).forEach(child => {
-                if (this.data.nodes == null) return
-                findScopedElements(this, "LIST-PAGINATION", ["CMS-LIST", "LIST-LIST", "LIST-NODE"])
                 this.data.nodes.forEach(item => {
                     const cloneElement = child.cloneNode(true)
                     child.parentNode.insertBefore(cloneElement, child)
@@ -149,15 +145,6 @@
                 })
                 child.parentNode.removeChild(child)
             })
-        }
-    }
-
-    class CmsPagination extends BaseCmsElement {
-        constructor() {
-            super()
-        }
-        connectedCallback() {
-            this.innerText = "cms-pagination"
         }
     }
 
@@ -315,8 +302,11 @@
         return results
     }
 
+
+
+
+
     function initComponents() {
-        customElements.define('cms-pagination', CmsPagination)
         customElements.define('node-title', NodeTitle)
         customElements.define('node-info', NodeInfo)
         customElements.define('node-date', NodeDate)
@@ -327,4 +317,5 @@
         customElements.define('list-node', ListNode)
         customElements.define('cms-list', CmsList)
     }
+
 })()

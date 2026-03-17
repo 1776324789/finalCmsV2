@@ -2,8 +2,9 @@
     <div class="mainContent">
         <div style="margin-bottom: 25px;font-weight: 350;font-size: 18px;display: flex;">
             站点内容\WebContent
-            <div class="searchBlock">搜索名称<input @input="searchInputHandel" v-model="search" placeholder="请输入栏目名称"
-                    type="text"></div>
+            <div class="searchBlock" style="display: none;">
+                搜索名称<input @input="searchInputHandel" v-model="search" placeholder="请输入栏目名称" type="text">
+            </div>
         </div>
         <ListTitle>栏目名称</ListTitle>
         <div class="contentBlock scroll">
@@ -41,9 +42,7 @@ function searchInputHandel() {
             render.value = true
             nextTick(() => {
                 listRefs.value.forEach(item => {
-                    nextTick(async () => {
-                        await item.openAll()
-                    })
+                    item.openAll()
                 })
             })
         })

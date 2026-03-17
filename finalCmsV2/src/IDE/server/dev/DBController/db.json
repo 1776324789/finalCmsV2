@@ -7,13 +7,52 @@
             "password": "a5b5ce234c33ef70bb42d1d9a1ef8d3e594cc39ad9c6474ab72a8efb83bdfcc5"
         }
     ],
-    "userRole": [
+    "systemUserRole": [],
+    "systemMenu": [
+        {
+            "id": "56df798s",
+            "name": "数据统计",
+            "icon": "icon-database-line",
+            "target": "dataAnalysis"
+        },
+        {
+            "id": "oclapf0y",
+            "name": "公共知识库",
+            "icon": "icon-database-line",
+            "target": "dataAnalysis"
+        },
+        {
+            "id": "ns9g82kj",
+            "name": "站点功能管理",
+            "icon": "icon-database-line",
+            "target": "dataAnalysis"
+        },
+        {
+            "id": "ns9g82kj",
+            "name": "功能管理",
+            "icon": "icon-database-line",
+            "target": "dataAnalysis"
+        },
+        {
+            "id": "ns9g82kj",
+            "name": "角色管理",
+            "icon": "icon-database-line",
+            "target": "dataAnalysis"
+        },
+        {
+            "id": "ns9g82kj",
+            "name": "用户管理",
+            "icon": "icon-database-line",
+            "target": "dataAnalysis"
+        }
+    ],
+    "websiteUserRole": [
         {
             "userId": "s78d6f8s",
             "roleId": "jb57kl56"
         }
     ],
-    "menu": [
+    "websiteMenu": [
         {
             "name": "数据统计",
             "icon": "icon-database-line",
@@ -46,14 +85,7 @@
             "parentId": "66pwl3j7"
         },
         {
-            "name": "功能管理",
-            "icon": "icon-function-fill",
-            "target": "functionMage",
-            "id": "bcqz4jdi",
-            "parentId": "66pwl3j7"
-        },
-        {
-            "name": "站点管理",
+            "name": "内容管理",
             "icon": "icon-archive-fill",
             "id": "76t7klzk"
         },
@@ -72,7 +104,7 @@
             "parentId": "76t7klzk"
         }
     ],
-    "role": [
+    "websiteRole": [
         {
             "id": "jb57kl56",
             "name": "管理员",
@@ -99,10 +131,6 @@
                 },
                 {
                     "websiteId": "57rdn8ow",
-                    "menuId": "bcqz4jdi"
-                },
-                {
-                    "websiteId": "57rdn8ow",
                     "menuId": "76t7klzk"
                 },
                 {
@@ -135,10 +163,6 @@
                 },
                 {
                     "websiteId": "gjj8rw06",
-                    "menuId": "bcqz4jdi"
-                },
-                {
-                    "websiteId": "gjj8rw06",
                     "menuId": "76t7klzk"
                 },
                 {
@@ -168,10 +192,6 @@
                 {
                     "websiteId": "b69hk3gb",
                     "menuId": "jiqzsicr"
-                },
-                {
-                    "websiteId": "b69hk3gb",
-                    "menuId": "bcqz4jdi"
                 },
                 {
                     "websiteId": "b69hk3gb",
@@ -207,10 +227,6 @@
                 },
                 {
                     "websiteId": "gsobp5d5",
-                    "menuId": "bcqz4jdi"
-                },
-                {
-                    "websiteId": "gsobp5d5",
                     "menuId": "76t7klzk"
                 },
                 {
@@ -240,10 +256,6 @@
                 {
                     "websiteId": "88chs4i7",
                     "menuId": "jiqzsicr"
-                },
-                {
-                    "websiteId": "88chs4i7",
-                    "menuId": "bcqz4jdi"
                 },
                 {
                     "websiteId": "88chs4i7",

@@ -136,6 +136,7 @@ textarea::placeholder {
 .label {
     text-align: right;
     width: 75px;
+    color: #666;
     font-size: 16px;
     font-weight: 350;
 }
@@ -147,17 +148,18 @@ textarea::placeholder {
 
 input {
     min-width: 250px;
-    border: 1px solid #ddd;
-    background-color: rgba(255, 255, 255, 0.75);
+    border: 1px solid #757575;
+    background-color: rgba(235, 235, 235, 0.75);
     height: 30px;
-    border-radius: 5px;
+    border-radius: 10px;
     outline: none;
     text-indent: 10px;
     color: #666;
 }
 
 input:disabled {
-    background-color: rgba(255, 255, 255, 0.25);
+    border: 1px solid #c2c2c2;
+    background-color: rgba(196, 196, 196, 0.75);
     cursor: not-allowed;
     color: #999;
 }

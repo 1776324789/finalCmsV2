@@ -1,18 +1,22 @@
 <template>
     <div class="mainBlock scroll" :style="`pointer-events:${show ? 'auto' : 'none'};`">
         <LeftMenu @change="handelMenuChange" @logout="logoutHandel" v-model="show"></LeftMenu>
-        <div class="contentBlock scroll"
-            v-bind:class="{ rightIn: show, change1: (change != 0 && change % 2 == 1), change2: (change != 0 && change % 2 == 0) }">
-            <DataAnalysis v-if="target == 'dataAnalysis'"></DataAnalysis>
-            <WebController v-if="target == 'webController'"></WebController>
+        <!--  , change1: (change != 0 && change % 2 == 1), change2: (change != 0 && change % 2 == 0) -->
+        <div class="contentBlock scroll" v-bind:class="{ rightIn: show }">
+            <!-- <DataAnalysis v-if="target == 'dataAnalysis'"></DataAnalysis>
+            <WebController v-if="target == 'webController'"></WebController> -->
+            <RouterView v-slot="{ Component }">
+                <KeepAlive>
+                    <component :is="Component" />
+                </KeepAlive>
+            </RouterView>
         </div>
     </div>
 </template>
 <script setup>
-import WebController from '../FunctionPages/WebController/WebController.vue';
 import { watch, ref } from 'vue'
+import router from '@/router'
 import { useDataStore } from '@/store';
-import DataAnalysis from '../FunctionPages/DataAnalysis/DataAnalysis.vue';
 import LeftMenu from './element/LeftMenu.vue';
 const change = ref(0)
 const props = defineProps({ modelValue: Boolean })
@@ -35,13 +39,15 @@ function logoutHandel() {
 
 
 function handelMenuChange(menu) {
-    change.value += 0.5
-    setTimeout(() => {
-        change.value += 0.5
-    });
-    setTimeout(() => {
-        target.value = menu
-    }, 175);
+    // change.value += 0.5
+    // setTimeout(() => {
+    //     change.value += 1
+    // });
+    // setTimeout(() => {
+    // console.log(menu);
+
+    router.push({ name: menu })
+    // }, 175);
 }
 </script>
 <style scoped>

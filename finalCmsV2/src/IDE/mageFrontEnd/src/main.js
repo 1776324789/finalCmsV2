@@ -7,9 +7,10 @@ import ElementPlus from 'element-plus'
 import "@/assets/css/moonIcon.css"
 import 'element-plus/dist/index.css'
 import '@/assets/css/index.css'
+import router from './router'
 const app = createApp(App);
 const pinia = createPinia();
-
+app.use(router)
 app.use(pinia);
 app.use(ElementPlus)
 app.use(Viewer)

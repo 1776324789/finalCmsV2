@@ -23,7 +23,7 @@ const DBController = () => {
 
 
     function getUserMenuData(userId) {
-        const roleIds = DB.userRole.filter(role => role.userId == userId).map(item => item.roleId)
+        const roleIds = DB.websiteUserRole.filter(role => role.userId == userId).map(item => item.roleId)
         const roles = DB.role.filter(role => roleIds.includes(role.id))
         const website = []
         roles.forEach(role => role.menu.forEach(menu => {
