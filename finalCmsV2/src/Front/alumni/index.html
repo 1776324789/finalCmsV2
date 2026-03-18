@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 
 <body>
-
     <cms-list data="1" style="display: flex;">
         <div>
             <list-list>
@@ -22,12 +22,40 @@
         </div>
 
         <div>
-            <list-node>
-                <node-title></node-title>
-                <node-info></node-info>
-                <node-date format="YY-MM-DD HH:mm"></node-date>
-                <cms-pagination></cms-pagination>
-            </list-node>
+            <div style="height: 200px;">
+                <list-node cms-bind="listNode1" limit="5">
+                    <node-title></node-title>
+                    <node-info></node-info>
+                    <node-date format="YY-MM-DD HH:mm"></node-date>
+                </list-node>
+            </div>
+            <!-- <button type="prev">上一页</button>
+                    <button type="page" focus="buttonSelect"></button>
+                    <button type="next">下一页</button>
+                    <input type="text">
+                    <button type="jump">跳转</button> -->
+            <cms-pagination cms-bind="listNode1" buttonNum="3"></cms-pagination>
+        </div>
+        <div>
+            <style>
+                .buttonSelect {
+                    background-color: blue;
+                }
+            </style>
+            <div style="height: 200px;">
+                <list-node cms-bind="listNode2" limit="5">
+                    <node-title></node-title>
+                    <node-info></node-info>
+                    <node-date format="YY-MM-DD HH:mm"></node-date>
+                </list-node>
+            </div>
+            <cms-pagination cms-bind="listNode2" buttonNum="3">
+                <button type="prev">上一页</button>
+                <button type="page" focus="buttonSelect"></button>
+                <button type="next">下一页</button>
+                <input type="text">
+                <button type="jump">跳转</button>
+            </cms-pagination>
         </div>
     </cms-list>
 </body>
