@@ -2054,8 +2054,11 @@ class NodeFile extends CmsElement {
         this.data
     }
 
-
     connectedCallback() {
+        if (this.getAttribute("preview") != null) {
+            return this.showPreview()
+        }
+
         if (this.getAttribute("name") == 'title') {
             this.innerText = this.data.title
         } else {
@@ -2071,7 +2074,23 @@ class NodeFile extends CmsElement {
             document.body.removeChild(a);
         }
     }
+
+    showPreview() {
+        this.style.display = "block"
+        const preiew = document.createElement("iframe")
+        preiew.style.width = "100%"
+        preiew.style.height = "100%"
+        preiew.style.border = "none"
+        preiew.style.overflow = "hidden"
+        preiew.src = `https://view.officeapps.live.com/op/view.aspx?src=${this.data.file.substring(0, 4) == "http" ? this.data.file : BaseCmsURL + this.data.file}`
+        this.appendChild(preiew)
+
+    }
 }
+
+
+
+
 
 
 class NodePrev extends CmsElement {
