@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/dependence/aheadUI.css">
+    <link rel="stylesheet" href="./css/page/list.css">
+    <link href="./css/dependence/view.css" rel="stylesheet">
+    <link href="./css/dependence/editor.css" rel="stylesheet">
+    <link href="./js/dependence/wangEditor/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/page/node.css">
+</head>
+
+<body style="background-color: #F8FAFC;">
+    <a-content id="mainContentBlock" label="hello">
+        <content-menu onclick="history.back()">/返回</content-menu>
+        <div style="display: flex;">
+            <div style="flex: 1;">
+                <a-form>
+                    <a-form-item name="name" label="内容名称">
+                        <a-input placeholder="输入内容名称"></a-input>
+                    </a-form-item>
+                </a-form>
+            </div>
+            <div>
+                <a-button success id="createButton" float="right">创建内容</a-button>
+                <a-button tip float="right" margin-right="10px">查询</a-button>
+            </div>
+        </div>
+        <div class="mainListBlock" id="table">
+
+        </div>
+        <a-pagination page="1" limit="10" total="10" id="page"></a-pagination>
+    </a-content>
+    <style>
+        #mainSubmitBlock {
+            display: none;
+        }
+    </style>
+    <a-content id="mainSubmitBlock" label="投稿内容">
+        <div class="mainListBlock" id="submitContent">
+
+        </div>
+    </a-content>
+    <!-- 预览窗口 -->
+    <a-dialog id="detailDialog" width="55%" height="80%"></a-dialog>
+
+    <!-- 编辑、新建窗口 -->
+    <a-dialog id="nodeEditDialog" title="编辑" height="95%" width="95%">
+        <a-content label="基础信息" foldable>
+            <a-form col="3" labelwidth="60px" id="nodeForm" minwidth="150px">
+                <a-form-item line col="2.5" name="title" require="请输入标题" label="标题">
+                    <a-input limit="50"></a-input>
+                </a-form-item>
+                <a-form-item id="click" line col="5" name="clicks" label="点击量">
+                    <a-input-num min="0"></a-input-num>
+                </a-form-item>
+                <a-form-item id="date" line col="2.5" name="date" label="日期">
+                    <a-input-date-time></a-input-date-time>
+                </a-form-item>
+                <a-form-item id="link" line col="2" name="link" label="外部链接">
+                    <a-input limit="200"></a-input>
+                </a-form-item>
+                <a-form-item id="top" line name="top" label="置顶">
+                    <a-input-radio name="top">
+                        <a-radio label="是" name="top"></a-radio>
+                        <a-radio label="否" name="untop" checked></a-radio>
+                    </a-input-radio>
+                </a-form-item>
+                <a-form-item id="publish" line name="publish" label="是否发布">
+                    <a-input-radio name="publish">
+                        <a-radio label="是" name="publish" checked></a-radio>
+                        <a-radio label="否" name="unpublish"></a-radio>
+                    </a-input-radio>
+                </a-form-item>
+                <a-form-item id="note" line col="2" name="note" label="摘要">
+                    <a-input-text limit="100"></a-input-text>
+                </a-form-item>
+            </a-form>
+            <div id="fileBlock" style="margin-left: 5px;display: flex;margin-bottom: 15px;">
+                <div class="label">上传附件<span style="color: red;">*</span></div>
+                <input type="text" id="uploadFilePath" style="display: none;">
+                <input type="file" id="file" accept="*" style="display: none;">
+                <a-button tip id="selectFileButton" margin-right="10px">选择文件</a-button>
+                <div id="fileName"
+                    style="line-height: 30px;max-width: 300px; color: #666666;    display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;">
+                </div>
+            </div>
+            <div id="cover" style="margin-left: 5px;display: flex;">
+                <div class="label">上传封面</div>
+                <input type="text" id="uploadImgPathEdit" style="display: none;">
+                <input type="file" id="imageInputEdit" accept="image/*" style="display: none;">
+                <a-button tip id="selectButtonEdit" margin-right="10px">选择文件</a-button>
+                <div class="uploadImgBlock">
+                    <img src="" alt="" id="coverImgEdit" class="coverImg">
+                </div>
+            </div>
+        </a-content>
+        <a-content id="content" label="文章内容">
+            <div id="editor-toolbar" class="editor-toolbar"></div>
+            <div id="editor-text-area" class="editor-text-area"></div>
+        </a-content>
+
+        <a-dialog-foot>
+            <a-button tip class="saveButton" float="right" id="subButton">保存</a-button>
+        </a-dialog-foot>
+    </a-dialog>
+</body>
+
+</html>
+<script src="./js/system/base.js"></script>
+<script src="./js/system/verifyChildPage.js"></script>
+<script src="./js/dependence/aheadUI.js"></script>
+<script src="./js/dependence/compressor.js"></script>
+<script src="./js/dependence/wangEditor/jquery.min.js"></script>
+<script src="./js/dependence/wangEditor/index.js"></script>
+<script src="./js/page/node.js"></script>

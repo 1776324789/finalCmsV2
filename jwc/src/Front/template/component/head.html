@@ -1,0 +1,210 @@
+<style>
+    html,
+    body {
+        overflow-x: hidden;
+        padding: 0;
+        margin: 0;
+    }
+
+    .list {
+        display: flex;
+    }
+
+
+
+    .contentName {
+        color: #fff;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        min-width: 70px;
+        padding-left: 20px;
+        padding-right: 20px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .contentName:hover {
+        color: #55aaff;
+    }
+
+    .floatWindow {
+        width: 100%;
+        z-index: 10;
+        left: -10px;
+        background-color: #fff;
+        position: absolute;
+        display: none;
+        box-shadow: 0 0 3px #b9b9b9;
+        flex-direction: column;
+        border-radius: 10px;
+    }
+
+    .row {
+        position: relative;
+    }
+
+    .row:hover .floatWindow {
+        animation: slideIn 0.25s ease forwards;
+        display: flex;
+    }
+
+    @keyframes slideIn {
+        0% {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .menuOption {
+        margin: 5px;
+        color: #666666;
+        height: 45px;
+        text-align: center;
+        line-height: 45px;
+        width: calc(100% - 10px);
+        cursor: pointer;
+        font-size: 14px;
+        border-radius: 10px;
+    }
+
+    .menuOption:hover {
+        color: #55aaff;
+        background-color: #f1f1f1;
+    }
+
+    .menuBlock {
+        width: 100vw;
+        display: flex;
+        background-color: #772f91;
+    }
+
+    .pageTopBlock {
+        width: 100vw;
+        height: 100px;
+        background-color: #fff !important;
+        display: flex;
+    }
+
+    .topBlockTitle {
+        margin-left: 30px;
+        color: #772f91;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .topTitleBigFont {
+        font-weight: bold;
+        font-size: 30px;
+        margin-top: 10px;
+        line-height: 60px;
+    }
+
+    .topTitleSmallFont {
+        margin-top: -10px;
+        font-size: 14px;
+    }
+
+    .topTitleLine {
+        background-color: #772f91;
+        height: 50px;
+        margin-top: 25px;
+        width: 1px;
+        margin-left: 15px;
+
+    }
+
+    .searchBlock {
+        margin-right: calc((100vw - 1200px)/2);
+    }
+
+    .inputBlock {
+        display: flex;
+        margin-top: 34px;
+        overflow: hidden;
+        width: 250px;
+        border-radius: 18px;
+        height: 36px;
+        border: 1px solid #bfbfbf;
+    }
+
+    .inputBlock input {
+        height: 30px;
+        flex: 1;
+        text-indent: 15px;
+        border: 0;
+        margin-top: 2px;
+        outline: none;
+    }
+
+    .searchButton {
+        margin-top: 3px;
+        border: 0;
+        margin-right: 3px;
+        cursor: pointer;
+        border-radius: 15px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .searchButton:hover {
+        color: #55aaff;
+        background-color: #eeeeee;
+    }
+</style>
+<link rel="stylesheet" href="./css/moonIcon.css">
+<cms-component data="l_mmz1wqxk">
+    <div class="pageTopBlock">
+        <cms-node data="n_lxmlhek0" style="display: flex;">
+            <img src="./img/logo.png" style="height: 100px;margin-left: 200px;">
+            <div class="topTitleLine"></div>
+            <div class="topBlockTitle">
+                <div class="topTitleBigFont">
+                    教务处
+                </div>
+                <div class="topTitleSmallFont">Teaching&nbsp;Addairs&nbsp;Office</div>
+            </div>
+        </cms-node>
+        <div style="flex: 1;"></div>
+        <div class="searchBlock">
+            <form action="searchResult.html" method="get" onsubmit="return validateForm()">
+                <div class="inputBlock">
+                    <input id="searchContent" name="search" type="text" minlength="5" placeholder="请输入搜索内容">
+                    <button type="submit" class="searchButton">
+                        <span class="icon-search-2-line "></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <cms-list class="menuBlock">
+        <div style="flex: 1;"></div>
+        <list-list page="1" class="list">
+            <div class="row">
+                <list-template>
+                    <list-name class="contentName"></list-name>
+                </list-template>
+                <list-list class="floatWindow">
+                    <list-template class="menuOption">
+                        <list-name></list-name>
+                    </list-template>
+                </list-list>
+            </div>
+        </list-list>
+        <div style="flex: 1;"></div>
+    </cms-list>
+</cms-component>
+<script>
+    function validateForm() {
+        if (document.getElementById('searchContent').value.length < 5) {
+            alert("请输入至少五个字符")
+            return false
+        }
+        return true
+    }
+</script>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Monaco Editor 基础示例</title>
+    <link rel="stylesheet" href="./css/page/base.css">
+    <link rel="stylesheet" href="./css/page/pageEdit.css">
+    <link rel="stylesheet" href="./css/dependence/aheadUI.css">
+</head>
+
+<body>
+
+    <dialog id="myDialog" class="dialog">
+        <div class="dialogTitle ">
+            <div style="flex:1;display: flex;">
+                <span class="icon-file-warning-line" style="color: #ffae52;margin-right: 10px;"></span>
+                页面内容修改验证
+            </div>
+            <div class="dialogCloseButton" onclick="pageEidotr.closeDialog()">
+                <span class="icon-close-line" style="font-size: 20px;"></span>
+            </div>
+        </div>
+        <div class="dialogTip">请输入手机令牌</div>
+
+        <div class="verifyInput">
+            <input type="number" id="verifyInput" maxlength="6" autocomplete="off">
+            <div class="dot1"></div>
+            <div class="dot2"></div>
+            <div class="dot3"></div>
+            <div class="dot4"></div>
+            <div class="dot5"></div>
+            <div class="dot6"></div>
+        </div>
+        <button class="saveButton" id="verifyButton">
+            验证
+        </button>
+    </dialog>
+
+    <div class="main">
+        <div class="leftFileBlock">
+            <div class="title">文件列表</div>
+            <div class="fileBlock scroll" id="foldBlock"></div>
+        </div>
+        <div class="editBlock">
+            <div id="notAllow" class="codeEditor emptyTip" style="display: none;">
+                <span>不支持预览的文件类型</span>
+            </div>
+            <div id="emptyTip" class="codeEditor emptyTip">
+                <span>请选择文件预览</span>
+            </div>
+            <div id="editor" class="codeEditor" style="display: none;"></div>
+            <div id="preview" class="codeEditor" style="display: none;"></div>
+            <div style="text-align: center;color: #888;font-size: 14px;">
+                ctrl + s 保存
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="./js/dependence/aheadUI.js"></script>
+<script src="./js/system/base.js"></script>
+<script src="./js/dependence/axios.min.js"></script>
+<script src="./js/system/verifyChildPage.js"></script>
+<script src="./js/dependence/monaco-editor/loader.min.js"></script>
+<script src="./js/page/pageEdit.js"></script>

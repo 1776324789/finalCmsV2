@@ -1,0 +1,46 @@
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
+
+.line {
+    display: flex;
+    height: 30px;
+    line-height: 30px;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    color: #666;
+    text-align: center;
+    font-size: 14px;
+}
+
+.head {
+    border-bottom: 1px solid #efefef;
+    font-weight: bold;
+}
+
+.no {
+    width: 50px;
+}
+
+.name {
+    flex: 1
+}
+
+.file {
+    width: 100px;
+}
+
+.file a-input-switch {
+    margin-left: 26px;
+}
+
+.button {
+    cursor: pointer;
+    color: #f45d5d;
+}
+
+.button:hover {
+    opacity: 0.8;
+}

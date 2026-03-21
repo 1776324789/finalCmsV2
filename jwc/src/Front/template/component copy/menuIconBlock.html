@@ -1,0 +1,81 @@
+<style>
+    .iconMainBlock {
+        margin-top: 20px;
+        display: flex;
+        width: 1200px;
+        margin-left: calc((100vw - 1200px)/2);
+        margin-bottom: 70px;
+    }
+
+    .iconMainBlock .icon {
+        border: 1px solid #eee;
+        border-radius: 20px;
+        width: 170px;
+        height: 170px;
+        margin: auto;
+    }
+
+    .iconMainBlock .iconBlock {
+        flex: 1;
+    }
+
+    .iconMainBlock .iconBlock:last-child {
+        border-right: 1px solid #ffffff;
+    }
+
+    .innerBlock:hover {
+        scale: 1.1;
+    }
+
+    .innerBlock .icon:hover {
+        box-shadow: 0 5px 5px rgba(0, 0, 0, 0.15);
+    }
+
+    .innerBlock {
+        transition: all 0.3s;
+        cursor: pointer;
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .iconName {
+        text-align: center;
+        color: #666666;
+        margin-top: 14px;
+    }
+</style>
+<cms-component>
+    <div
+        style="margin-top: 30px; width: 30vw;margin-left: 35vw;border-bottom: 1px solid #eee;font-weight: bold; text-align: center;font-size: 20px;color: #666666;height: 70px;line-height: 70px;">
+        <span>
+            教学资源
+        </span>
+    </div>
+    <div class="iconMainBlock">
+        <cms-list data="l_ly2lvp8c" class="iconBlock">
+            <list-template class="innerBlock">
+                <list-cover class="icon"></list-cover>
+                <list-name class="iconName"></list-name>
+            </list-template>
+        </cms-list>
+        <cms-list data="l_ly2lw2w4" class="iconBlock">
+            <list-template class="innerBlock">
+                <list-cover qulity="1" class="icon"></list-cover>
+                <list-name class="iconName"></list-name>
+            </list-template>
+        </cms-list>
+        <cms-list data="l_mc1ngy84" class="iconBlock">
+            <list-template class="innerBlock">
+                <list-cover class="icon"></list-cover>
+                <list-name class="iconName"></list-name>
+            </list-template>
+        </cms-list>
+        <cms-list data="l_mc1ngkoj" class="iconBlock">
+            <list-template class="innerBlock">
+                <list-cover class="icon"></list-cover>
+                <list-name class="iconName"></list-name>
+            </list-template>
+        </cms-list>
+    </div>
+</cms-component>

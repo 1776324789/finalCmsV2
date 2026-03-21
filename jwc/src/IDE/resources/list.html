@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinalCMS后台管理</title>
+    <link rel="stylesheet" href="./css/dependence/aheadUI.css">
+    <link rel="stylesheet" href="./css/page/list.css">
+</head>
+
+<body style="background-color: #F8FAFC;">
+    <div class="card">
+        <div class="cardTitle">栏目列表管理</div>
+        <div class="listBlockTop">
+            <div class="formBlock">
+                <a-form col="1">
+                    <a-form-item name="name" label="列表名称">
+                        <a-input limit="20" placeholder="请输入列表名称" id="listName"></a-input>
+                    </a-form-item>
+                </a-form>
+            </div>
+            <div id="moveBlock" style="display: none;">
+                <div style="display: flex">
+                    <a-button id="cancelRemoveButton" tip style="margin-left:-40px;">取消移动</a-button>
+                    <a-button id="moveToParent" tip style="margin-left:10px;">移动为最上级</a-button>
+                    <div style="line-height: 30px;margin-left: 10px;color: #af2b2b;">
+                        <i class="icon-error-warning-fill" style="cursor: pointer;font-size: 20px;"
+                            ftitle="移动栏目可能会导致网站结构发生变化，请谨慎操作！"></i>
+                    </div>
+                </div>
+            </div>
+            <div style="flex: 1"></div>
+
+            <div class="buttonBlock">
+                <a-button id="searchButton">查询</a-button>
+                <a-button id="addNewList" tip margin-left="10px">添加列表</a-button>
+            </div>
+        </div>
+        <div class="mainListBlock" id="table">
+        </div>
+        <div class="emptyTip" id="emptyList"> 未创建栏目，点击<span id="tipCreate" class="emptyTipCreate">添加列表</span>创建栏目
+        </div>
+        <a-pagination page="1" limit="10" total="10" id="page"></a-pagination>
+    </div>
+    <style>
+
+    </style>
+    <!-- <a-upload multiple="2" auto="false"> -->
+
+
+    </a-upload>
+    <a-dialog title="添加新的列表" id="createNewList" dragable="true">
+        <a-form col="2" id="createNewListForm">
+            <a-form-item label="列表名称" require="请输入列表名称" name="name">
+                <a-input limit="20" placeholder="请输入列表名称"></a-input>
+            </a-form-item>
+            <a-form-item label="英文名称" name="enName">
+                <a-input limit="20" placeholder="请输入列表英文名称"></a-input>
+            </a-form-item>
+            <a-form-item label="列表页url" name="template">
+                <a-input limit="20" placeholder="请输入列表页url"></a-input>
+            </a-form-item>
+            <a-form-item label="内容页url" name="nodeTemplate">
+                <a-input limit="20" placeholder="请输入列表页url"></a-input>
+            </a-form-item>
+            <a-form-item label="列表类型" name="type" require="请选择列表类型">
+                <a-select placeholder="请选择列表类型">
+                    <a-option value="1">文章</a-option>
+                    <a-option value="2">图片</a-option>
+                    <a-option value="3">文件</a-option>
+                    <a-option value="4">链接</a-option>
+                </a-select>
+            </a-form-item>
+            <a-form-item label="列表排序" name="index">
+                <a-input-num value=50 step="5" min="0" placeholder="请输入列表排序"></a-input-num>
+            </a-form-item>
+            <a-form-item label="允许投稿" name="submit">
+                <a-input-switch value="false"></a-input-switch>
+            </a-form-item>
+            <a-form-item label="列表备注" name="note" line>
+                <a-input-text limit="100" height="auto" placeholder="请输入列表备注"></a-input-text>
+            </a-form-item>
+        </a-form>
+        <div style="margin-left: 5px;display: flex;">
+            <div class="label">上传封面</div>
+            <input type="text" id="uploadImgPathCreate" style="display: none;">
+            <input type="file" id="imageInputCreate" accept="image/*" style="display: none;">
+            <div style="display: flex;flex-direction: column;margin-right: 10px;">
+                <button id="selectButtonCreate" class="selectFileButton">选择文件</button>
+            </div>
+
+            <div class="uploadImgBlock">
+                <img src="" alt="" id="coverImgCreate" class="coverImg">
+            </div>
+        </div>
+        <button style="float: right;" class="uploadButton" id="createButton">创建</button>
+        <button style="float: right;margin-right: 10px;" class="selectFileButton"
+            onclick="document.getElementById('createNewList').vis=false">取消
+        </button>
+    </a-dialog>
+
+    <!-- 编辑列表 -->
+
+    <a-dialog title="" id="editList" width="700px">
+        <a-form col="2" id="editListForm">
+            <a-form-item label="列表名称" require="请输入列表名称" name="name">
+                <a-input limit="20" placeholder="请输入列表名称"></a-input>
+            </a-form-item>
+            <a-form-item label="英文名称" name="enName">
+                <a-input limit="50" placeholder="请输入列表英文名称"></a-input>
+            </a-form-item>
+            <a-form-item label="列表页url" name="template">
+                <a-input limit="50" placeholder="请输入列表页url"></a-input>
+            </a-form-item>
+            <a-form-item label="内容页url" name="nodeTemplate">
+                <a-input limit="50" placeholder="请输入列表页url"></a-input>
+            </a-form-item>
+            <a-form-item label="列表类型" name="type" require="请选择列表类型">
+                <a-select placeholder="请选择列表类型">
+                    <a-option value="1">文章</a-option>
+                    <a-option value="2">图片</a-option>
+                    <a-option value="3">文件</a-option>
+                    <a-option value="4">链接</a-option>
+                </a-select>
+            </a-form-item>
+            <a-form-item label="列表排序" name="index">
+                <a-input-num step="5" min="0" placeholder="请输入列表排序"></a-input-num>
+            </a-form-item>
+            <a-form-item label="允许投稿" name="submit">
+                <a-input-switch></a-input-switch>
+            </a-form-item>
+            <a-form-item label="封面路径" name="cover" line>
+                <a-input disabled></a-input>
+            </a-form-item>
+            <a-form-item label="序列号" name="id">
+                <a-input disabled></a-input>
+            </a-form-item>
+            <a-form-item label="所属序列" name="parentId">
+                <a-input disabled></a-input>
+            </a-form-item>
+            <a-form-item label="列表备注" name="note" line>
+                <a-input-text limit="100" height="auto" placeholder="请输入列表备注"></a-input-text>
+            </a-form-item>
+        </a-form>
+
+        <div style="margin-left: 5px;display: flex;">
+            <div class="label">上传封面</div>
+            <input type="text" id="uploadImgPathEdit" style="display: none;">
+            <input type="file" id="imageInputEdit" accept="image/*" style="display: none;">
+            <div style="display: flex;flex-direction: column;margin-right: 10px;">
+                <button id="selectButtonEdit" class="selectFileButton">选择文件</button>
+            </div>
+            <div class="uploadImgBlock">
+                <img id="coverImgEdit" class="coverImg">
+            </div>
+        </div>
+        <button style="float: right;" class="uploadButton" id="editButton">保存</button>
+        <button style="float: right;margin-right: 10px;" class="selectFileButton"
+            onclick="document.getElementById('editList').vis=false">取消
+        </button>
+    </a-dialog>
+</body>
+
+</html>
+<script src="./js/dependence/axios.min.js"></script>
+<script src="./js/system/socket.io.js"></script>
+<script src="./js/system/uploadComponent.js"></script>
+<script src="./js/system/base.js"></script>
+<script src="./js/system/verifyChildPage.js"></script>
+<script src="./js/dependence/aheadUI.js"></script>
+<script src="./js/dependence/compressor.js"></script>
+<script src="./js/page/list.js"></script>

@@ -1,0 +1,143 @@
+<style>
+    .lineBlock {
+        min-height: 342px;
+        width: 1200px;
+        margin-left: calc((100% - 1200px)/2);
+        display: flex;
+    }
+
+    .leftBlock {
+        width: 780px;
+        margin-right: 20px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .rightBlock {
+        width: 400px;
+    }
+
+    .blockTitle {
+        display: flex;
+        height: 35px;
+        line-height: 35px;
+        border-bottom: 2px solid #efefef;
+        margin-bottom: 15px;
+    }
+
+    .blockTitle .titleName {
+        flex: 1;
+    }
+
+    .blockTitle .titleName .name {
+        color: #fff;
+        text-shadow: 1px 1px 2px #000;
+        width: 100px;
+        text-align: center;
+        border-bottom: 2px solid #772f91;
+    }
+
+    .more {
+        color: #666666;
+        font-size: 13px;
+        line-height: 40px;
+        cursor: pointer;
+    }
+
+    .more:hover {
+        color: #55aaff;
+    }
+
+    .leftBlockBottom {
+        display: flex;
+    }
+
+    .artitleTitleLine {
+        cursor: pointer;
+        height: 30px;
+        line-height: 30px;
+        display: flex;
+        padding-bottom: 3px;
+        border-bottom: 1px solid #efefef;
+    }
+
+    .artitleTitleLine:hover {
+        background-color: #f5f5f5;
+    }
+
+    .articleTitle {
+        flex: 1;
+        font-size: 15px;
+        color: #666;
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+
+    .articleDate {
+        line-height: 25px;
+        font-size: 13px;
+        color: #666666;
+    }
+
+    .sliderBlockIndexFirst {
+        margin-left: 5px;
+        width: 390px;
+        height: 280px;
+        display: flex;
+        overflow: hidden;
+    }
+</style>
+<cms-component>
+    <div class="lineBlock" style="margin-top: 50px;">
+        <cms-component data="l_lxov2rft">
+            <div class="leftBlock">
+                <div>
+                    <cms-list class="blockTitle">
+                        <div class="titleName">
+                            <list-name class="name"></list-name>
+                        </div>
+                        <list-template newpage class="more">more>></list-template>
+                    </cms-list>
+                </div>
+                <div class="leftBlockBottom">
+                    <cms-slider auto="3000"  order="desc" page="1" limit="5" width="390px" height="280px"></cms-slider>
+                    <cms-list style="margin-left: 15px;flex: 1;">
+                        <list-node page="1" limit="8" order="desc">
+                            <node-template class="artitleTitleLine">
+
+                                <node-title class="articleTitle"></node-title>
+                                <node-date class="articleDate" format="MM-DD"></node-date>
+                            </node-template>
+                        </list-node>
+                    </cms-list>
+                </div>
+            </div>
+        </cms-component>
+        <cms-component data="l_lxox8kue">
+            <div class="rightBlock">
+                <cms-list class="blockTitle">
+                    <div class="titleName">
+                        <list-name class="name"></list-name>
+                    </div>
+                    <list-template class="more">more>></list-template>
+                </cms-list>
+                <div class="leftBlockBottom">
+                    <cms-list style="width: 100%;">
+                        <list-node page="1" limit="8" order="desc">
+                            <node-template>
+                                <div class="artitleTitleLine">
+
+                                    <node-title class="articleTitle"></node-title>
+                                    <node-date class="articleDate" format="MM-DD"></node-date>
+                                </div>
+                            </node-template>
+                        </list-node>
+                    </cms-list>
+                </div>
+            </div>
+        </cms-component>
+    </div>
+</cms-component>

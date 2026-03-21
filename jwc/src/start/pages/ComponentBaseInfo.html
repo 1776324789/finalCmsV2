@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/aheadUI.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .card {
+            background-color: #fff;
+            flex: 1;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #efefef;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cardTitle {
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+<div class="card">
+    <div class="cardTitle">公共属性</div>
+    <info-warn>以下属性使用于cms-list、cms-node下的元素，当出现多级嵌套的时候，以cms-list、cms-node、list-list、list-node、list-parent为边界</info-warn>
+    <table cellspacing="0" cellpadding="2">
+        <thead>
+        <tr>
+            <th style="width:150px;">属性名称</th>
+            <th>说明</th>
+            <th style="width:150px;">null</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>focus:class</td>
+            <td>当地址栏中的dataId和当前元素的data对应时，将class添加到元素class</td>
+            <td>null</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>
+<script src="../js/aheadUI.js"></script>
+<script src="../js/base.js"></script>
+
+

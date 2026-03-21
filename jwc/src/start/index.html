@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinalCms</title>
+    <link rel="stylesheet" href="./css/aheadUI.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Fira+Code&display=swap"
+        rel="stylesheet">
+    <style>
+        .topBlock {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: linear-gradient(45deg, #2196F3, #4CAF50);
+            background-size: 200% 200%;
+            animation: gradientBG 15s ease infinite;
+            display: flex;
+            align-items: center;
+            padding: 0 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .startTitle {
+            color: white;
+            font-size: 24px;
+            font-weight: 500;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            font-family: 'Inter', sans-serif;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .startTitle::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 2px;
+        }
+
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* 为了确保内容不被顶部栏遮挡 */
+        body {
+            padding-top: 60px;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topBlock">
+        <div class="startTitle">FinalCms</div>
+    </div>
+    <a-menu height="calc(100vh - 60px)" remember id="mainWindow" foldable foot="@Author LiuJun" lazy foldable
+        style="background: white; box-shadow: 2px 0 8px rgba(0,0,0,0.05);">
+        <a-menu-page src="./pages/start.html" label="开始" icon="icon-door-lock-line">
+        </a-menu-page>
+        <a-menu-page src="./pages/guide.html" label="使用指南" icon="icon-book-open-line">
+        </a-menu-page>
+        <a-menu-page label="cms-list" icon="icon-folders-line" group="前端开发标签" groupicon="icon-code-s-slash-line"
+            src="./pages/cms-list.html">
+        </a-menu-page>
+        <a-menu-page label="cms-node" icon="icon-folder-2-line" group="前端开发标签" src="./pages/cms-node.html">
+        </a-menu-page>
+        <a-menu-page label="cms-component" icon="icon-folder-zip-line" group="前端开发标签"
+            src="./pages/cms-component.html"></a-menu-page>
+        <a-menu-page label="全文搜索" icon="icon-file-search-line" group="前端开发标签"
+            src="./pages/cms-search-result.html"></a-menu-page>
+        <a-menu-page label="组件共用属性" icon="icon-apps-line" src="./pages/ComponentBaseInfo.html"
+            group="前端开发标签"></a-menu-page>
+        <a-menu-page label="轮播图" icon="icon-layout-left-line" group="前端组件" groupicon="icon-dashboard-line"
+            src="./pages/slider.html"></a-menu-page>
+        <a-menu-page label="元素轮播" icon="icon-layout-left-fill" group="前端组件" src="./pages/404.html"></a-menu-page>
+        <a-menu-page label="图片" icon="icon-gallery-line" group="前端组件" src="./pages/404.html"></a-menu-page>
+        <a-menu-page icon="icon-mist-fill" label="文字轮播" group="前端组件" src="./pages/404.html"></a-menu-page>
+        <a-menu-page label="画廊" icon="icon-layout-2-line" group="前端组件" src="./pages/404.html"></a-menu-page>
+        <a-menu-page label="头部" icon="icon-layout-2-line" group="半成品组件Web" groupicon="icon-computer-line"
+            src="./pages/404.html"></a-menu-page>
+        <a-menu-page label="菜单" icon="icon-layout-2-line" group="半成品组件Web" src="./pages/404.html"></a-menu-page>
+        <a-menu-page label="新闻" icon="icon-layout-2-line" group="半成品组件Web" src="./pages/404.html"></a-menu-page>
+        <a-menu-page label="页脚" icon="icon-layout-2-line" group="半成品组件Web" src="./pages/404.html"></a-menu-page>
+        <a-menu-page label="头部" icon="icon-layout-2-line" group="半成品组件App" groupicon="icon-smartphone-line"
+            src="./pages/404.html"></a-menu-page>
+        <a-menu-page label="菜单" icon="icon-layout-2-line" group="半成品组件App" src="./pages/404.html"></a-menu-page>
+        <a-menu-page label="新闻" icon="icon-layout-2-line" group="半成品组件App" src="./pages/404.html"></a-menu-page>
+        <a-menu-page label="页脚" icon="icon-layout-2-line" group="半成品组件App" src="./pages/404.html"></a-menu-page>
+    </a-menu>
+</body>
+
+</html>
+<script src="./js/aheadUI.js"></script>

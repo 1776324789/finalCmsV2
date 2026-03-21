@@ -1,0 +1,29 @@
+<style>
+    .bread {
+        margin-top: 25px;
+        margin-bottom: 20px;
+        display: flex;
+        font-size: 15px;
+        padding-bottom: 5px;
+        color: #772f91;
+    }
+
+    .bread .content {
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .bread .content:hover {
+        opacity: 0.75;
+    }
+</style>
+<cms-component>
+    <cms-node class="bread">
+        <div class="content" onclick="window.location.href='./index.html'"> 首页</div>
+        >&nbsp;&nbsp;<node-parent>
+            <list-template>
+                <list-name class="content"></list-name>
+            </list-template>
+        </node-parent>
+    </cms-node>
+</cms-component>

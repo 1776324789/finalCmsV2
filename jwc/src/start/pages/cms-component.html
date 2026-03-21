@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/aheadUI.css">
+    <style>
+        .card {
+            background-color: #fff;
+            flex: 1;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #efefef;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cardTitle {
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .codeBlock div {
+            line-height: 20px;
+        }
+
+        .codeBlock {
+            margin-bottom: 15px;
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #efefef;
+            background-color: #f7f7f7;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="cardTitle">cms-component标签</div>
+        <info-line label="标签"><span class="componentName">cms-component</span></info-line>
+        <info-line label="功能">
+            开发模式中使用此组件进行代码块的引用，使用url属性引入在线代码块，子组件中的所有无data属性的组件，自动注入dataId。
+        </info-line>
+    </div>
+
+    <div class="card">
+        <div class="cardTitle">属性</div>
+        <table cellspacing="0" cellpadding="2">
+            <thead>
+            <tr>
+                <th style="width:150px;">属性名称</th>
+                <th>说明</th>
+                <th style="width:150px;">默认值</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>data</td>
+                <td>对应后台中list中的序列号，加载层级最高。</td>
+                <td>null</td>
+            </tr>
+            <tr>
+                <td>url</td>
+                <td>将在线的代码块引用到此组件中</td>
+                <td>null</td>
+            </tr>
+            <tr>
+                <td>innerText</td>
+                <td>引入代码块，只能在前端开发模式中使用</td>
+                <td>null</td>
+            </tr>
+            </tbody>
+        </table>
+        <info-warn>data加载顺序:<span class="componentName">cms-list</span>.data
+            &nbsp;&nbsp;>&nbsp;&nbsp;
+            <span class="componentName">
+                    cms-component
+                </span>
+            .data&nbsp;&nbsp;>&nbsp;&nbsp;url?data=dataId&nbsp;&nbsp;>&nbsp;&nbsp;
+            <span class="componentName">
+                    cms-list
+                </span>.dev
+        </info-warn>
+    </div>
+
+    <div class="card">
+        <div class="cardTitle">代码块引入</div>
+        <info-line>
+            使用<span class="componentName">cms-component</span>，在标签中写入组件名称，然后将组件的代码内容替换掉原有的<span class="componentName">cms-component</span>标签的内容
+        </info-line>
+        <div style="display: flex;">
+            <a-html style="flex: 1;" title="在标签中写入需要引入的代码块组件">
+                <div>...</div>
+                <a-component>head</a-component>
+                <div>...</div>
+            </a-html>
+            <a-html style="flex: 1;margin-right: 10px;margin-left: 10px;" title="组件代码">
+                <style></style>
+                <a-component>
+                    <div>this is head component</div>
+                </a-component>
+                <script></script>
+            </a-html>
+            <a-html style="flex: 1;" title="引入后的代码">
+                <div>...</div>
+                <style></style>
+                <a-component>
+                    <div>this is head component</div>
+                </a-component>
+                <script></script>
+                <div>...</div>
+            </a-html>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="cardTitle">注意事项</div>
+        <div style="font-size: 14px;line-height: 25px;color: #666;">
+            <p> 代码块的代码引入是单纯的内容引入，不是和vue一样将代码编译后的引入，所以对JavaScript比较不友好。</p>
+
+
+            建议在一个页面多次引用同一个包含单个JavaScript组件时，使用ES6语法，参考以下代码：
+            <div class="codeBlock">
+                <div><span style="color: #9a6e3a">new class </span>component{</div>
+                <div style="text-indent: 30px;color: #999999;"> //你的代码逻辑</div>
+                <div> }</div>
+            </div>
+            对于方法加载顺序对页面的影响，可以监听cms事件，这个事件将在所有的cms组件加载完毕后触发，用例：
+            <div class="codeBlock">
+                <div><span style="color: #b53d8b;">document</span>.<span
+                        style="color: #4c96e0;">addEventListener</span>(<span style="color: #4f9959">'cms'</span>&nbsp;,&nbsp;()=>{
+                </div>
+                <div style="text-indent: 60px;color: #999999;"> //你的代码逻辑</div>
+                <div style="text-indent: 30px"> })</div>
+            </div>
+
+        </div>
+
+    </div>
+</body>
+
+</html>
+<script src="../js/aheadUI.js"></script>
+<script src="../js/base.js"></script>
+<script>
+    new class component {
+        //你的代码逻辑
+    }
+    document.addEventListener('cms', () => {
+        //你的代码逻辑
+    })
+</script>

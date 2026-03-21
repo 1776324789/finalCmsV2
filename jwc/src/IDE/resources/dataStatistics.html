@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/dependence/aheadUI.css">
+    <link rel="stylesheet" href="./css/page/dataStatistics.css">
+    <script src="./js/dependence/chart.js"></script>
+</head>
+
+<body style="background-color: #F8FAFC;">
+    <div style="display: flex;flex-direction: column;">
+        <style>
+        </style>
+        <div style="display: flex;">
+            <div class="card">
+                <div class="cardTitle">日访问量</div>
+                <div class="date-range-picker">
+                    <span class="label">时间范围</span>
+                    <input type="date" id="startDate">
+                    <span class="separator">至</span>
+                    <input type="date" id="endDate">
+                    <div class="statistics-info" style="margin-top: 13px;">
+                        <div class="statistics-item">
+                            <span>访问量：</span>
+                            <span class="statistics-value" id="totalClicks">0</span>
+                        </div>
+                        <div class="statistics-item">
+                            <span>访问设备：</span>
+                            <span class="statistics-value" id="totalVisitors">0</span>
+                        </div>
+                    </div>
+                </div>
+                <canvas id="vistiDate"></canvas>
+            </div>
+            <div class="card">
+                <div class="cardTitle">栏目访问总量</div>
+                <div class="statistics-info">
+                    <div class="statistics-item">
+                        <span>栏目点击总量：</span>
+                        <span class="statistics-value" id="totalListClicks">0</span>
+                    </div>
+                    <div class="statistics-item">
+                        <span>栏目文章总数：</span>
+                        <span class="statistics-value" id="totalListArticles">0</span>
+                    </div>
+                </div>
+                <canvas style="margin-top: 15px;" id="listClicks"></canvas>
+            </div>
+        </div>
+        <div style="display: flex;">
+            <div class="card" id="articleClicksListContentBlock">
+                <div class="cardTitle">文章点击量</div>
+                <div style="display: flex;line-height: 30px;height: 30px;margin-bottom: 10px;">
+                    <div style="font-size: 14px;color: #666;">栏目名称：</div>
+                    <a-input id="listSearch" style="flex: 0.5;" placeholder="请输入栏目名称"></a-input>
+                    <div style="margin-left: 15px;font-size: 14px;color: #666;">文章名称；</div>
+                    <a-input id="articleSearch" style="flex: 0.5;" placeholder="请输入文章名称"></a-input>
+                </div>
+
+                <div class="listArticleBlock">
+                    <div>
+                        <div class="labelLine">
+                            <div class="indexLabel">序号</div>
+                            <div class="clicksLabel">栏目</div>
+                            <div class="titleLabel">标题</div>
+                            <div class="clicksLabel">点击量</div>
+                            <div class="dateLabel">发布时间</div>
+                        </div>
+                    </div>
+                    <div style="flex: 1;overflow-y: auto;" class="scroll" id="articleClicksList"></div>
+                </div>
+            </div>
+            <a-content label="访问IP" style="flex: 0.5;display: none;">
+                <div style="display: flex;line-height: 30px;height: 30px;margin-bottom: 10px;">
+                    <div style="font-size: 14px;color: #666;">选择日期：</div>
+                    <select
+                        style="flex: 1; width: 200px;height: 28px;border-radius: 3px;border: 1px solid #d1d1d1;text-indent: 10px;"
+                        id="visitorDataSelect" placeholder="请选择日期">
+                    </select>
+                </div>
+                </select>
+                <div class="listArticleBlock">
+                    <div>
+                        <div class="labelLine">
+                            <div class="indexLabel">序号</div>
+                            <div class="ipLabel">Ip</div>
+                            <div class="titleLabel" style="display: none;">所属地</div>
+                        </div>
+                    </div>
+                    <div style="flex: 1;overflow-y: auto;" class="scroll" id="visitorIpList">
+                    </div>
+                </div>
+            </a-content>
+        </div>
+    </div>
+</body>
+
+</html>
+<script src="./js/system/base.js"></script>
+<script src="./js/dependence/aheadUI.js"></script>
+<script src="./js/dependence/chartjs-plugin-datalabels"></script>
+<script src="./js/page/dataStatistics.js"></script>

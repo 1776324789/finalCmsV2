@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext'
+        rel='stylesheet' type='text/css' />
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #2C3E50;
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px;
+            background: #f8fafc;
+        }
+
+        .guide-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1E293B;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title i {
+            margin-right: 12px;
+            font-size: 24px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .config-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 20px 0;
+        }
+
+        .config-table th,
+        .config-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e2e8f0;
+            text-align: left;
+        }
+
+        .config-table th {
+            font-weight: 600;
+            color: #1E293B;
+            background: #f8fafc;
+        }
+
+        .config-table tr:hover td {
+            background: #f8fafc;
+        }
+
+        .code-block {
+            background: #1E293B;
+            color: #E2E8F0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+
+        .step-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .step-list li {
+            margin-bottom: 20px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .step-list li::before {
+            content: counter(step);
+            counter-increment: step;
+            position: absolute;
+            left: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-gradient);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+        }
+
+        .note {
+            background: #EFF6FF;
+            border-left: 4px solid #3B82F6;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="guide-container">
+        <div class="section">
+            <h2 class="section-title">
+                <i class="icon-settings-line"></i>
+                基础配置
+            </h2>
+            <p>在使用 FinalCMS 之前，需要了解以下基本配置：</p>
+            <table class="config-table">
+                <thead>
+                    <tr>
+                        <th>配置项</th>
+                        <th>说明</th>
+                        <th>默认值</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>data</td>
+                        <td>数据源ID，用于加载内容</td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>dev</td>
+                        <td>开发模式数据源ID</td>
+                        <td>null</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                <i class="icon-file-list-line"></i>
+                快速上手
+            </h2>
+            <ol class="step-list">
+                <li>
+                    <strong>创建列表页面</strong>
+                    <div class="code-block">
+                        <pre>&lt;cms-list data="your_list_id"&gt;
+    &lt;list-node&gt;
+        &lt;node-title&gt;&lt;/node-title&gt;
+        &lt;node-date&gt;&lt;/node-date&gt;
+    &lt;/list-node&gt;
+&lt;/cms-list&gt;</pre>
+                    </div>
+                </li>
+                <li>
+                    <strong>创建详情页面</strong>
+                    <div class="code-block">
+                        <pre>&lt;cms-node data="your_node_id"&gt;
+    &lt;node-title&gt;&lt;/node-title&gt;
+    &lt;node-content&gt;&lt;/node-content&gt;
+&lt;/cms-node&gt;</pre>
+                    </div>
+                </li>
+                <li>
+                    <strong>添加搜索功能</strong>
+                    <div class="code-block">
+                        <pre>&lt;cms-search-result&gt;
+    &lt;node-title&gt;&lt;/node-title&gt;
+    &lt;node-content line="3"&gt;&lt;/node-content&gt;
+&lt;/cms-search-result&gt;</pre>
+                    </div>
+                </li>
+            </ol>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                <i class="icon-question-line"></i>
+                常见问题
+            </h2>
+            <div class="note">
+                <strong>数据加载顺序：</strong>
+                <p>cms-node.data > cms-component.data > url?data=dataId > cms-node.dev</p>
+            </div>
+            <div class="note">
+                <strong>组件嵌套：</strong>
+                <p>当出现多级嵌套时，以cms-list、cms-node、list-list、list-node、list-parent为边界</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

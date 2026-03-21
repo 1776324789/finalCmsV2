@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/aheadUI.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .card {
+            background-color: #fff;
+            flex: 1;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #efefef;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cardTitle {
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <div class="cardTitle">cms-slider标签</div>
+        <info-line label="标签"><span class="componentName">cms-slider</span></info-line>
+        <info-line label="功能">加载轮播图</info-line>
+    </div>
+
+    <div class="card">
+        <div class="cardTitle">组件效果</div>
+        <div style="padding: 10px;border: 1px solid #ddd;border-radius: 10px;">
+            <cms-slider data="l_m5nmpt94" width="300px" height="300px">
+            </cms-slider>
+        </div>
+        <a-html title="用法示例">
+            <cms-slider data="l_m5nmpt94" width="300px" height="300px"> </cms-slider>
+        </a-html>
+        <div class="cardTitle">cms-slider属性</div>
+        <table cellspacing="0" cellpadding="2">
+            <thead>
+                <tr>
+                    <th style="width:150px;">属性名称</th>
+                    <th>说明</th>
+                    <th style="width:150px;">默认值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>data</td>
+                    <td>对应后台中list中的序列号，加载层级最高。</td>
+                    <td>null</td>
+                </tr>
+                <tr>
+                    <td>dev</td>
+                    <td>对应后台中list中的序列号，加载层级最低。</td>
+                    <td>null</td>
+                </tr>
+                <tr>
+                    <td>page</td>
+                    <td>加载列表内容的页面，配合limit使用</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>limit</td>
+                    <td>加载列表内容条数，配合page使用</td>
+                    <td>null</td>
+                </tr>
+                <tr>
+                    <td>auto</td>
+                    <td>是否自动轮播图片，值为切换时间间隔（毫秒）</td>
+                    <td>null</td>
+                </tr>
+                <tr>
+                    <td>width</td>
+                    <td>轮播图宽度</td>
+                    <td>null</td>
+                </tr>
+                <tr>
+                    <td>height</td>
+                    <td>轮播图高度</td>
+                    <td>null</td>
+                </tr>
+                <tr>
+                    <td>slider:bind</td>
+                    <td>data绑定cms-node,详情查看下方slider:bind 属性</td>
+                    <td>null</td>
+                </tr>
+            </tbody>
+        </table>
+        <info-warn>轮播图在未设置高度和宽度的情况下，高宽默认为0
+        </info-warn>
+        <info-warn>data加载顺序:<span class="componentName">cms-node</span>.data
+            &nbsp;&nbsp;>&nbsp;&nbsp;
+            <span class="componentName">
+                cms-component
+            </span>
+            .data&nbsp;&nbsp;>&nbsp;&nbsp;url?data=dataId&nbsp;&nbsp;>&nbsp;&nbsp;
+            <span class="componentName">
+                cms-node
+            </span>.dev
+        </info-warn>
+    </div>
+
+    <div class="card">
+        <div class="cardTitle">slider:bind 属性</div>
+        <info-line label="功能">绑定轮播图当前页的id至相同参数的相关组件，使用在不同组件有不同效果，详情查看示例。</info-line>
+        <div class="cardTitle">绑定至cms-node组件效果</div>
+        <div style="padding: 10px;border: 1px solid #ddd;border-radius: 10px;">
+            <cms-slider data="l_m5nmpt94" width="300px" height="300px" slider:bind="exampleSlider"></cms-slider>
+            <cms-node slider:bind="exampleSlider" style="width: 300px;">
+                <div style="display: flex;flex-direction: column;">
+                    <h2 style="text-align: center;">标题：<node-title></node-title></h2>
+                    <node-date style="text-align: center;"></node-date>
+                    <node-cover style="width: 200px;height: 200px;margin-left: 50px;"></node-cover>
+                </div>
+            </cms-node>
+        </div>
+        <a-html title="用法示例">
+            <cms-slider data="l_m5nmpt94" width="300px" height="300px" slider:bind="exampleSlider"></cms-slider>
+            <cms-node slider:bind="exampleSlider" style="width: 300px;">
+                <div style="display: flex;flex-direction: column;">
+                    <h2 style="text-align: center;">标题：<node-title></node-title></h2>
+                    <node-date style="text-align: center;"></node-date>
+                    <node-cover style="width: 200px;height: 200px;margin-left: 50px;"></node-cover>
+                </div>
+            </cms-node>
+        </a-html>
+
+        <div class="cardTitle">自定义轮播图</div>
+        <info-line label="功能">使用slider:bind自定义翻页按钮和跳转栏组件</info-line>
+        <div class="cardTitle">组件效果</div>
+        <div style="padding: 10px;border: 1px solid #ddd;border-radius: 10px;">
+            <cms-slider data="l_m5nmpt94" width="350px" height="350px" slider:bind="slider1"></cms-slider>
+            <div style="display: flex;width: 350px;margin-top: 10px;">
+                <slider-prev
+                    style="background-color: #55aaff;padding: 10px;color: #fff;cursor: pointer;border-radius: 3px;user-select: none;"
+                    slider:bind="slider1">上一张</slider-prev>
+
+                <slider-bar style="flex: 1;display: flex;" slider:bind="slider1">
+                    <slider-bar-button slider:on="focus"
+                        style="display:block;padding: 10px;background-color: #55aaff;color: #fff;border-radius: 4px;cursor: pointer;flex: 1;margin-left: 2px;margin-right: 2px;text-align: center;">
+                        <slider-bar-button-index></slider-bar-button-index>
+                    </slider-bar-button>
+                </slider-bar>
+                <slider-next
+                    style="background-color: #55aaff;padding: 10px;color: #fff;cursor: pointer;border-radius: 3px;user-select: none;"
+                    slider:bind="slider1">下一张</slider-next>
+            </div>
+        </div>
+        <style>
+            .focus {
+                background-color: #4790da !important;
+            }
+        </style>
+        <a-html title="用法示例">
+            <cms-slider data="l_m5nmpt94" width="350px" height="350px" slider:bind="slider1"></cms-slider>
+            <div style="display: flex;width: 350px;margin-top: 10px;">
+                <slider-prev
+                    style="background-color: #55aaff;padding: 10px;color: #fff;cursor: pointer;border-radius: 3px;user-select: none;"
+                    slider:bind="slider1">上一张</slider-prev>
+
+                <slider-bar style="flex: 1;display: flex;" slider:bind="slider1">
+                    <slider-bar-button slider:on="focus"
+                        style="display:block;padding: 10px;background-color: #55aaff;color: #fff;border-radius: 4px;cursor: pointer;flex: 1;margin-left: 2px;margin-right: 2px;text-align: center;">
+                        <slider-bar-button-index></slider-bar-button-index>
+                    </slider-bar-button>
+                </slider-bar>
+                <slider-next
+                    style="background-color: #55aaff;padding: 10px;color: #fff;cursor: pointer;border-radius: 3px;user-select: none;"
+                    slider:bind="slider1">下一张</slider-next>
+            </div>
+            <style>
+                .focus {
+                    background-color: #4790da !important;
+                }
+            </style>
+        </a-html>
+        <div class="cardTitle">slider:bind涉及子标签</div>
+        <table cellspacing="0" cellpadding="2">
+            <thead>
+                <tr>
+                    <th style="width: 200px;">子标签名称</th>
+                    <th>功能</th>
+                    <th>注意事项</th>
+                </tr>
+            </thead>
+            <tbody class="firstRowLeft">
+                <tr>
+                    <td><span class="componentName">list-name</span></td>
+                    <td>加载列表的名称</td>
+                    <td class="textLeft">无</td>
+                </tr>
+
+                <tr>
+                    <td><span class="componentName">list-note</span></td>
+                    <td>加载列表的备注</td>
+                    <td class="textLeft">无</td>
+                </tr>
+                <tr>
+                    <td><span class="componentName">list-cover</span></td>
+                    <td>加载列表的封面</td>
+                    <td class="textLeft">
+                        自身可以看作为img标签，所有写在该标签的style、class都会继承到创建的img子标签中，然后移除自身标签。
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="componentName">list-node-size</span></td>
+                    <td>包含内容的数量</td>
+                    <td class="textLeft">
+                        无
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="componentName">list-template</span></td>
+                    <td>跳转到列表页面</td>
+                    <td class="textLeft">该标签包裹的部分点击后跳转</td>
+                </tr>
+                <tr>
+                    <td><span class="componentName">list-list</span></td>
+                    <td>加载列表的子列表</td>
+                    <td class="textLeft">通过创建cms-list的方式加载子列表，可嵌套。（cms-list参与加载，但不参与到最终的渲染）</td>
+                </tr>
+                <tr>
+                    <td><span class="componentName">list-node</span></td>
+                    <td>加载列表的子内容列表</td>
+                    <td class="textLeft">通过创建cms-node的方式加载子内容，可嵌套。（cms-node参与加载，但不参与到最终的渲染）</td>
+                </tr>
+                <tr>
+                    <td><span class="componentName">list-pagination</span></td>
+                    <td>子内容列表中的翻页组件</td>
+                    <td class="textLeft">该标签只能在list-node中使用</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
+<script src="../js/FinalCms.js"></script>
+<script src="../js/aheadUI.js"></script>
+<script src="../js/base.js"></script>

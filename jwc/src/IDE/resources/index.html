@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinalCMS后台管理</title>
+    <link rel="stylesheet" href="./css/dependence/aheadUI.css">
+    <link rel="shortcut icon" href="website.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/page/index.css">
+    <link rel="stylesheet" href="./css/page/base.css">
+</head>
+
+<body>
+    <div class="main" style="overflow-y: hidden">
+        <div class="baseColor" style="height: 54px;display: flex;">
+            <div style="flex: 1; color: #fff;line-height: 54px;text-indent: 20px;font-size: 23px;">
+                <b>AHEAD</b> <span style="font-size: 18px;">FinalCMS后台管理</span>
+            </div>
+            <div class="topMenuRightBlock">
+                <div class="userBlock">
+                    <div style="flex: 1;"></div>
+                    <!-- userInfoBlockFocus -->
+                    <div class="userInfoBlock " id="userInfoBlock">
+                        <span class="icon-account-circle-fill"></span>
+                        <div id="userName"></div>
+                    </div>
+                    <div style="flex: 1;"></div>
+                    <div class="menuBlock" id="menuBlock">
+                        <div class="menuButton" onclick="document.getElementById('changePsw').vis=true;">修改密码</div>
+                        <div class="menuButton" id="logout">登出</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cover" id="cover"></div>
+        <a-menu foot="@先锋软件" foldable lazy remember id="mainPage" title="Final CMS" height="calc(100vh - 54px)"></a-menu>
+    </div>
+</body>
+
+</html>
+<script src="./js/system/base.js"></script>
+<script src="./js/system/verify.js"></script>
+<script src="./js/dependence/aheadUI.js"></script>
+<script src="./js/page/index.js"></script>
