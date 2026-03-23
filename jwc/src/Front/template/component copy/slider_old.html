@@ -1,0 +1,270 @@
+<style>
+    .button {
+        user-select: none;
+        color: #909090;
+        text-align: center;
+        cursor: pointer;
+        line-height: 75px;
+        font-size: 30px;
+        background-color: #fff;
+        opacity: 0.3;
+        position: absolute;
+        width: 35px;
+        height: 75px;
+        top: 50%;
+        transform: translate(-50%, 0px);
+
+    }
+
+    .button:hover {
+        opacity: 0.5;
+    }
+
+    .preButton {
+        left: 30px;
+    }
+
+    .nextButton {
+        right: 30px;
+
+    }
+
+    .imgJumper {
+        border-radius: 10px;
+        cursor: pointer;
+        opacity: 0.5;
+        position: absolute;
+        bottom: 10px;
+        height: 16px;
+        background-color: #fff;
+        left: 50%;
+        display: flex;
+        transform: translateX(-50%);
+    }
+
+    .imgJumper:hover {
+        opacity: 0.8;
+    }
+
+    .jumpButton {
+        cursor: pointer;
+        width: 10px;
+        height: 10px;
+        background-color: #909090;
+        margin-left: 11px;
+        margin-right: 11px;
+        margin-top: 3px;
+        border-radius: 10px;
+    }
+
+    .jumpButton:hover {
+        background-color: #545454;
+        box-shadow: 0px 0px 3px #000000;
+    }
+
+    .selectImg {
+        background-color: #545454;
+        box-shadow: 0px 0px 3px #000000;
+    }
+
+    @media screen and (min-width: 800px) {
+        .sliderBlock {
+            background-color: #fff;
+            z-index: 1;
+            overflow: hidden;
+            padding: 0;
+            white-space: nowrap;
+            position: relative;
+            min-width: 1200px;
+            margin: auto;
+            height: 500px;
+        }
+
+        .sliderBlock .imgBlock {
+            transition: 0.3s margin-left;
+            display: inline-block;
+            width: 100%;
+            height: 500px;
+            margin-right: -5px;
+            position: relative;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .sliderBlock .imgBlock img {
+            position: absolute;
+            left: 50%;
+            transform: translate(-50%, 0px);
+
+            height: 100%;
+        }
+    }
+
+    /* 手机端适配 */
+    @media screen and (max-width: 800px) {
+        .sliderBlock {
+            background-color: #fff;
+            z-index: 1;
+            overflow: hidden;
+            padding: 0;
+            white-space: nowrap;
+            position: relative;
+            width: 100vw;
+        }
+
+        .sliderBlock .imgBlock {
+            transition: 0.3s margin-left;
+            display: inline-block;
+            width: 100%;
+            margin-right: -5px;
+            position: relative;
+            padding: 0;
+            height: 250px;
+            overflow: hidden;
+        }
+
+        .sliderBlock .imgBlock img {
+            position: absolute;
+            transform: translate(0%, 50%);
+            width: 100%;
+        }
+    }
+</style>
+<cms-component>
+    <cms-list id="sliderBlock">
+        <div class="sliderBlock" id="sliderImgs">
+            <list-node>
+                <div class="imgBlock">
+                    <node-cover></node-cover>
+                </div>
+            </list-node>
+        </div>
+    </cms-list>
+</cms-component>
+<script type="text/javascript">
+    try {
+        document.addEventListener("cms", () => {
+
+            class Slider {
+                constructor(setting) {
+                    this.setting = setting
+                    this.slider = document.getElementById(this.setting.id)
+                    this.imgs = this.slider.querySelectorAll("div")
+                    this.nowIndex = 0
+                    this.preButton = null
+                    this.nextButton = null
+                    this.jumper = []
+                    this.init()
+                    this.autoNext = null
+                }
+
+                init() {
+                    this.initButtons()
+                    this.initJumpButtons()
+                    if (this.setting.auto) {
+                        this.autoImg()
+                    }
+                }
+                autoImg() {
+                    setTimeout(() => {
+                        this.nextImg()
+                        this.autoImg()
+                    }, 4000)
+                }
+                initButtons() {
+                    this.preButton = document.createElement("div")
+                    this.nextButton = document.createElement("div")
+                    this.preButton.innerText = "<"
+                    this.nextButton.innerText = ">"
+                    this.preButton.classList.add("button")
+                    this.preButton.classList.add("preButton")
+                    this.nextButton.classList.add("button")
+                    this.nextButton.classList.add("nextButton")
+                    this.slider.appendChild(this.preButton)
+                    this.slider.appendChild(this.nextButton)
+                    this.nextButton.onclick = () => {
+                        this.nextImg()
+                    }
+                    this.preButton.onclick = () => {
+                        this.preImg()
+                    }
+                }
+
+                initJumpButtons() {
+                    let jumpBlock = document.createElement("div")
+                    jumpBlock.classList.add('imgJumper')
+                    this.slider.appendChild(jumpBlock)
+                    this.imgs.forEach((img, index) => {
+                        let jump = document.createElement("div")
+                        jump.classList.add('jumpButton')
+                        jumpBlock.appendChild(jump)
+                        this.jumper.push(jump)
+                        jump.onclick = () => {
+                            this.jumpImg(index)
+                        }
+                    })
+                    this.jumper[0].classList.add("selectImg")
+                }
+
+                nextImg() {
+                    this.jumper[this.nowIndex].classList.remove("selectImg")
+                    this.nowIndex++
+
+                    if (this.nowIndex == this.imgs.length) {
+                        this.nowIndex = 0
+                    }
+                    this.jumper[this.nowIndex].classList.add("selectImg")
+                    this.imgs.forEach((img, index) => {
+                        if (index < this.nowIndex) {
+                            img.style.marginLeft = "-100%"
+                        } else {
+                            img.style.marginLeft = "0px"
+                        }
+                    })
+                }
+
+                preImg() {
+                    this.jumper[this.nowIndex].classList.remove("selectImg")
+                    this.nowIndex--
+
+                    if (this.nowIndex == -1) {
+                        this.nowIndex = this.imgs.length - 1
+                    }
+                    this.jumper[this.nowIndex].classList.add("selectImg")
+
+                    this.imgs.forEach((img, index) => {
+                        if (index < this.nowIndex) {
+                            img.style.marginLeft = "-100%"
+                        } else {
+                            img.style.marginLeft = "0px"
+                        }
+                    })
+
+                }
+
+                jumpImg(toIndex) {
+                    this.jumper[this.nowIndex].classList.remove("selectImg")
+                    this.nowIndex = toIndex
+                    this.jumper[this.nowIndex].classList.add("selectImg")
+                    this.imgs.forEach((img, index) => {
+                        if (index < this.nowIndex) {
+                            img.style.marginLeft = "-100%"
+                        } else {
+                            img.style.marginLeft = "0px"
+                        }
+                    })
+
+                }
+            } 
+            new Slider({
+                id: "sliderImgs",
+                auto: true
+            })
+
+        })
+    } catch (error) {
+
+    }
+
+
+</script>

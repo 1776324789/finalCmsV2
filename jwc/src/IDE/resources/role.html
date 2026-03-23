@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/dependence/aheadUI.css">
+    <link href="./css/dependence/view.css" rel="stylesheet">
+    <link href="./css/dependence/editor.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/page/role.css">
+</head>
+
+<body style="background-color: #F8FAFC;">
+    <a-content label="角色管理">
+        <div class="listBlockTop">
+            <div class="formBlock">
+                <a-form col="4" style="display: none;">
+                    <a-form-item name="name" label="列表名称">
+                        <a-input limit="20" placeholder="请输入列表名称" id="listName"></a-input>
+                    </a-form-item>
+                </a-form>
+            </div>
+            <div class="buttonBlock">
+                <a-button id="searchButton" style="display: none;">查询</a-button>
+                <a-button id="addNewList" tip margin-left="10px"
+                    onclick="document.getElementById('dialog').vis=true;">添加角色</a-button>
+            </div>
+        </div>
+        <div class="mainListBlock" id="table">
+
+        </div>
+    </a-content>
+    <a-dialog title="编辑" id="dialog" width="50%" height="500px">
+        <a-form direction="row" col="2" id="form">
+            <a-form-item name="name" label="名称" line col="1.93" require="请输入名称">
+                <a-input></a-input>
+            </a-form-item>
+
+            <a-form-item name="able" label="状态" line>
+                <a-input-switch true="启用" false="停用"></a-input-switch>
+            </a-form-item>
+            <a-form-item name="premission" label="权限">
+                <a-select search placeholder="请选择" id="roleSelector" window multiple></a-select>
+            </a-form-item>
+            <a-form-item name="description" label="描述" line>
+                <a-input-text></a-input-text>
+            </a-form-item>
+        </a-form>
+        <a-dialog-foot>
+            <a-button success style="width: 100px;display: block;float: right;" id="submit">确认</a-button>
+            <a-button tip style="width: 100px;display: block;float: right;margin-right: 10px;"
+                onclick="document.getElementById('dialog').vis=false">取消</a-button>
+        </a-dialog-foot>
+    </a-dialog>
+</body>
+
+</html>
+<script src="./js/system/base.js"></script>
+<script src="./js/system/verifyChildPage.js"></script>
+<script src="./js/dependence/aheadUI.js"></script>
+<script src="./js/page/role.js"></script>

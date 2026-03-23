@@ -1,0 +1,197 @@
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
+
+.scroll {
+    user-select: none;
+    overflow-y: auto;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 5px;
+}
+
+.scroll::-webkit-scrollbar-track {
+    background-color: #ffffff;
+    opacity: 0.5;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+
+    border-radius: 2em;
+
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background-color: #bababa;
+    opacity: 0.5;
+    -webkit-border-radius: 2em;
+
+    -moz-border-radius: 2em;
+
+    border-radius: 2em;
+
+}
+
+.a-component-content-block {
+    flex: 1;
+}
+
+.listArticleBlock {
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.labelLine {
+    display: flex;
+    height: 30px;
+    line-height: 30px;
+    color: #333333;
+    font-size: 14px;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.indexLabel {
+    width: 50px;
+    text-align: center;
+}
+
+.titleLabel {
+    flex: 1;
+    text-align: center;
+}
+
+.clicksLabel {
+    width: 100px;
+    text-align: center;
+}
+
+.ipLabel {
+    width: 150px;
+    text-align: center;
+}
+
+.lineArticle {
+    border-bottom: 1px solid #eeeeee;
+    color: #666666;
+    display: flex;
+    height: 35px;
+    line-height: 35px;
+}
+
+.lineIndex {
+    color: #999999;
+    width: 50px;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.lineTitle {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    flex: 1;
+    font-size: 14px;
+    text-align: left;
+}
+
+.lineClicks {
+    font-size: 13px;
+    color: #407BFF;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    width: 100px;
+    text-align: center;
+}
+
+.lineDate {
+    color: #999999;
+    width: 200px;
+    font-size: 14px;
+    text-align: center;
+}
+
+.dateLabel {
+    text-align: center;
+    width: 200px;
+}
+
+.articleSearchBlock .a-content-block-float {
+    margin-left: -115px;
+    margin-top: 15px;
+}
+
+/* 添加时间选择器样式 */
+.date-range-picker {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+.date-range-picker input[type="date"] {
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    padding: 4px 8px;
+    color: #666;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.date-range-picker input[type="date"]:focus {
+    border-color: #407BFF;
+    box-shadow: 0 0 0 2px rgba(64, 123, 255, 0.1);
+}
+
+.date-range-picker .separator {
+    margin: 0 8px;
+    color: #999;
+}
+
+.date-range-picker .label {
+    color: #666;
+    margin-right: 8px;
+}
+
+.statistics-info {
+    display: flex;
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: #666;
+}
+
+.statistics-item {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.statistics-value {
+    color: #407BFF;
+    font-weight: bold;
+    margin-left: 5px;
+}
+
+.card {
+    background-color: #fff;
+    flex: 1;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #efefef;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardTitle {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}

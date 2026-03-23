@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinalCms</title>
+    <link rel="shortcut icon" href="index.ico" type="image/x-icon">
+    <link rel="stylesheet" href="./css/page/login.css">
+    <link rel="stylesheet" href="./css/dependence/aheadUI.css">
+    <link rel="stylesheet" href="./css/page/base.css">
+</head>
+
+<body>
+    <div style=" display: flex;height: 100vh;overflow: hidden;" id="fontBlock">
+        <div style="width: 38.2%;position: relative;overflow: hidden;" id="block1"
+            class="baseColor">
+            <div class="font" style="color: #fff;left: 100%;" id="font1">Final <br> CMS<br>
+                <div style="margin-top: -60px;">
+                    <span style="font-family: 'Courier New', Courier, monospace;font-size: 25px;display: none;">
+                        beta
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div style="width: 61.8%;background-color: #fff;position: relative;overflow: hidden;" id="block2">
+            <div class="font " id="font2"><span class="baseColorText">Final </span><br> <span
+                    class="baseColorText">CMS</span><br>
+                <div style="margin-top: -60px;">
+                    <span style="font-family: 'Courier New', Courier, monospace;font-size: 25px;display: none;">
+                        beta
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="loginBlock">
+        <div class="title baseColor">
+            FinalCMS后台管理
+        </div>
+        <div class="title-2">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </div>
+        <div class="inputBlock">
+            <div class="label baseColorText">用户名</div>
+            <input type="text" placeholder="请输入用户名" id="account">
+        </div>
+        <div class="inputBlock">
+            <div class="label baseColorText">密码</div>
+            <input type="password" placeholder="请输入密码" id="password">
+        </div>
+        <div class="svgBlock">
+            <div>
+                <input id="verify" type="text" placeholder="请输入验证码">
+                <div class="verifyTip" id="tip">点击验证码刷新</div>
+            </div>
+            <div class="baseColor" id="svg"></div>
+        </div>
+        <button class="submitButton baseColor" id="submit">登录</button>
+        <div class="bottominfo">@AheadSoft</div>
+    </div>
+</body>
+
+</html>
+
+<script src="./js/system/base.js"></script>
+<script src="./js/dependence/aheadUI.js"></script>
+<script src="./js/page/login.js"></script>

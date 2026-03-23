@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="./css/dependence/aheadUI.css">
+    <link rel="stylesheet" href="./css/page/dataSwitch.css">
+</head>
+
+<body>
+    <a-content label="数据导入">
+        <a-tab>
+            <a-tab-item label="从Mysql导入">
+                <a-content label="未连接数据库，请连接数据库后操作" foldable type="clear" id="connectFormBlock">
+                    <div class="warn">数据导入前会清除所有原数据，推荐在备份后进行“生成数据”操作</div>
+                    <a-form col="3" id="connectForm">
+                        <a-form-item label="主机" name="host" require="请输入主机">
+                            <a-input value="localhost"></a-input>
+                        </a-form-item>
+                        <a-form-item label="端口" name="port" require="请输入端口">
+                            <a-input-num min="0" value="3305"></a-input-num>
+                        </a-form-item>
+                        <a-form-item label="数据库名称" name="database" require="请输入数据库名称">
+                            <a-input value="cmstemplate"></a-input>
+                        </a-form-item>
+                        <a-form-item label="用户名" name="user" require="请输入用户名">
+                            <a-input value="root"></a-input>
+                        </a-form-item>
+                        <a-form-item label="密码" name="password" require="请输入密码">
+                            <a-input-password value="145678923Lj."></a-input-password>
+                        </a-form-item>
+                    </a-form>
+                    <a-button style="margin-top: 15px" tip id="connectToMysqlButton">连接数据库</a-button>
+                </a-content>
+                <a-content label="数据生成" foldable fold="false" type="clear" id="dataBlock">
+                    <div style="display: flex;flex-direction: column;">
+                        <div class="title">生成数据结构预览 <i class="icon-error-warning-fill"
+                                ftitle="为保证数据安全性，需要调整数据时，请在数据库中调整数据后，重新点击获取数据进行预览"></i>
+                        </div>
+                        <div class="contentBlock" id="contentBlock">
+                        </div>
+                        <div style="display: flex">
+                            <a-button tip style="flex: 1;margin-right: 5px;" disabled="true" id="reloadDataButton">
+                                重新获取数据
+                            </a-button>
+                            <a-button style="flex: 1;margin-left: 5px;" id="insertDataButton" disabled="true" success>
+                                导入数据
+                            </a-button>
+                        </div>
+                    </div>
+                </a-content>
+            </a-tab-item>
+            <a-tab-item label="将数据导出为SQL">
+                <a-button tip style="margin-top: 30px;" id="dataToSQL">将数据导出为SQL</a-button>
+            </a-tab-item>
+        </a-tab>
+        <a download="data.sql" id="downloadLink" style="display: none"></a>
+    </a-content>
+    <a-dialog title="详情" width="50vw" height="80%" id="detailDialog"></a-dialog>
+    <a-dialog title="预览" id="previewDialog" width="80vw" height="80vh"></a-dialog>
+
+</body>
+
+</html>
+<script src="./js/system/base.js"></script>
+<script src="./js/system/verifyChildPage.js"></script>
+<script src="./js/dependence/aheadUI.js"></script>
+<script src="./js/page/dataSwitch.js"></script>

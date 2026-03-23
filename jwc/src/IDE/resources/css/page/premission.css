@@ -1,0 +1,151 @@
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
+
+.line {
+    margin-top: 5px;
+    border: 1px solid #efefef;
+    border-radius: 3px;
+    color: #666666;
+    display: flex;
+    height: 30px;
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.line:hover {
+    background-color: #f1f1f1;
+}
+
+.mainListBlock {
+    margin-bottom: 20px;
+}
+
+.listArrow {
+    cursor: pointer;
+    border-right: 1px solid #efefef;
+    width: 30px;
+    text-align: center;
+    line-height: 33px;
+}
+
+.button {
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 12px;
+    color: #407BFF;
+}
+
+.buttonBlock {
+    display: flex;
+}
+
+.del {
+    color: #ff5555;
+}
+
+.button:hover {
+    opacity: 0.75;
+}
+
+.listName {
+    flex: 1;
+    border-right: 1px solid #efefef;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.listName::before {
+    color: #bbbbbb;
+    content: "名称：";
+}
+
+.urlBlock {
+    width: 250px;
+    border-right: 1px solid #efefef;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.urlBlock::before {
+    color: #bbbbbb;
+    content: "路径:";
+    margin-right: 10px;
+}
+
+.desBlock {
+    width: 350px;
+    border-right: 1px solid #efefef;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.desBlock::before {
+    color: #bbbbbb;
+    content: "描述:";
+    margin-right: 10px;
+}
+
+.state {
+    width: 110px;
+    border-right: 1px solid #efefef;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 14px;
+}
+
+.state::before {
+    color: #bbbbbb;
+    content: "当前状态:";
+    margin-right: 10px;
+}
+
+.groupBlock {
+    width: 110px;
+    border-right: 1px solid #efefef;
+    padding-left: 15px;
+    padding-right: 15px;
+    font-size: 14px;
+}
+
+.groupBlock::before {
+    color: #bbbbbb;
+    content: "组:";
+    margin-right: 10px;
+}
+
+.listBlockTop {
+    display: flex;
+}
+
+.listBlockTop .formBlock {
+    flex: 1;
+}
+
+.warn {
+    color: #ff5555;
+}
+
+.success {
+    color: #5ebe5e;
+}
+
+.label {
+    width: 65px;
+    line-height: 30px;
+    height: 30px;
+    color: #717171;
+    font-size: 14px;
+    font-weight: 500;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}

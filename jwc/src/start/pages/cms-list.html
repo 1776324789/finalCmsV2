@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/aheadUI.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .card {
+            background-color: #fff;
+            flex: 1;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+            border: 1px solid #efefef;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cardTitle {
+            margin-bottom: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card">
+        <div class="cardTitle">cms-list标签</div>
+        <info-line label="标签"><span class="componentName">cms-list</span></info-line>
+        <info-line label="功能">加载列表数据</info-line>
+    </div>
+    <div class="card">
+        <div class="cardTitle">cms-list属性</div>
+        <table cellspacing="0" cellpadding="2">
+            <thead>
+                <tr>
+                    <th style="width:150px;">属性名称</th>
+                    <th>说明</th>
+                    <th style="width:150px;">默认值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>data</td>
+                    <td>对应后台中list中的序列号，加载层级最高。</td>
+                    <td>null</td>
+                </tr>
+                <tr>
+                    <td>dev</td>
+                    <td>对应后台中list中的序列号，加载层级最低。</td>
+                    <td>null</td>
+                </tr>
+                <tr>
+                    <td>pagetitle</td>
+                    <td>是否将此栏目的名称引用为页面title</td>
+                    <td>null</td>
+                </tr>
+            </tbody>
+        </table>
+        <info-warn>data加载顺序:<span class="componentName">cms-list</span>.data
+            &nbsp;&nbsp;>&nbsp;&nbsp;
+            <span class="componentName">
+                cms-component
+            </span>
+            .data&nbsp;&nbsp;>&nbsp;&nbsp;url?data=dataId&nbsp;&nbsp;>&nbsp;&nbsp;
+            <span class="componentName">
+                cms-list
+            </span>.dev
+        </info-warn>
+    </div>
+    <div class="card">
+        <div class="cardTitle">cms-list子标签</div>
+        <table cellspacing="0" cellpadding="2">
+            <thead>
+                <tr>
+                    <th style="width: 200px;">子标签名称</th>
+                    <th>功能</th>
+                    <th>注意事项</th>
+                </tr>
+            </thead>
+            <tbody class="firstRowLeft">
+                <tr>
+                    <td><span class="componentName">list-name</span></td>
+                    <td>加载列表的名称</td>
+                    <td class="textLeft">无</td>
+                </tr>
+
+                <tr>
+                    <td><span class="componentName">list-note</span></td>
+                    <td>加载列表的备注</td>
+                    <td class="textLeft">无</td>
+                </tr>
+                <tr>
+                    <td><span class="componentName">list-cover</span></td>
+                    <td>加载列表的封面</td>
+                    <td class="textLeft">
+                        自身可以看作为img标签，所有写在该标签的style、class都会继承到创建的img子标签中，然后移除自身标签。
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="componentName">list-node-size</span></td>
+                    <td>包含内容的数量</td>
+                    <td class="textLeft">
+                        无
+                    </td>
+                </tr>
+                <tr>
+                    <td><span class="componentName">list-template</span></td>
+                    <td>跳转到列表页面</td>
+                    <td class="textLeft">该标签包裹的部分点击后跳转</td>
+                </tr>
+                <tr>
+                    <td><span class="componentName">list-list</span></td>
+                    <td>加载列表的子列表</td>
+                    <td class="textLeft">通过创建cms-list的方式加载子列表，可嵌套。（cms-list参与加载，但不参与到最终的渲染）</td>
+                </tr>
+                <tr>
+                    <td><span class="componentName">list-node</span></td>
+                    <td>加载列表的子内容列表</td>
+                    <td class="textLeft">通过创建cms-node的方式加载子内容，可嵌套。（cms-node参与加载，但不参与到最终的渲染）</td>
+                </tr>
+                <tr>
+                    <td><span class="componentName">list-pagination</span></td>
+                    <td>子内容列表中的翻页组件</td>
+                    <td class="textLeft">该标签只能在list-node中使用</td>
+                </tr>
+            </tbody>
+        </table>
+        <info-warn>所有写在页面中的组件标签都可以视作一个div，组件标签自身不带任何样式。</info-warn>
+        <div class="card">
+            <div class="cardTitle">list-name</div>
+            <table cellspacing="0" cellpadding="2">
+                <thead>
+                    <tr>
+                        <th style="width:150px;">属性名称</th>
+                        <th>说明</th>
+                        <th style="width:150px;">默认值</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>en</td>
+                        <td>显示英文名称</td>
+                        <td>null</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card">
+            <div class="cardTitle">list-list</div>
+
+            <div class="cardTitle">组件效果</div>
+            <div style="padding: 10px;border: 1px solid #ddd;border-radius: 10px;">
+                <cms-list data="l_m5nnirho">
+                    <h1><list-name></list-name></h1>
+                    子列表
+                    <list-list style="border: 1px solid #efefef;padding: 10px;margin-top: 10px;border-radius: 5px;">
+                        <div
+                            style="padding: 5px;background-color: #ebebeb;margin: 5px;border-radius: 5px;line-height: 56px;display: flex;">
+                            <list-cover
+                                style="width: 50px;height: 50px;background-color: #fff;border: 3px solid #fff;"></list-cover>
+                            <list-name style="margin-left: 10px;"></list-name>
+                            <span style="margin-left: 10px;font-size: 13px;font-weight: bold;">
+                                包含子内容：</span><list-node-size></list-node-size>
+                        </div>
+                    </list-list>
+                </cms-list>
+            </div>
+            <div style="display: flex;">
+                <a-html style="display: block;flex: 1;" title="示例代码">
+                    <cms-list data="l_m5nnirho">
+                        <h1><list-name style="font-weight: bold;"></list-name></h1>
+                        子列表
+                        <list-list style="border: 1px solid #efefef;padding: 10px;margin-top: 10px;border-radius: 5px;">
+                            <div
+                                style="padding: 5px;background-color: #ebebeb;margin: 5px;border-radius: 5px;line-height: 56px;display: flex;">
+                                <list-cover
+                                    style="width: 50px;height: 50px;background-color: #fff;border: 3px solid #fff;"></list-cover>
+                                <list-name style="margin-left: 10px;"></list-name>
+                                <span style="margin-left: 10px;font-size: 13px;font-weight: bold;">
+                                    包含子内容：</span><list-node-size></list-node-size>
+                            </div>
+                        </list-list>
+                    </cms-list>
+                </a-html>
+
+            </div>
+            <table cellspacing="0" cellpadding="2"></table>
+            <thead>
+                <tr>
+                    <th style="width:150px;">属性名称</th>
+                    <th>说明</th>
+                    <th style="width:150px;">默认值</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>page</td>
+                    <td>页面序号</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>limit</td>
+                    <td>每页的加载数量</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>index</td>
+                    <td>按照list的序号进行排序,desc:按照序号倒序，esc:按照序号正序</td>
+                    <td>desc</td>
+                </tr>
+            </tbody>
+            </table>
+        </div>
+        <div class="card">
+            <div class="cardTitle">list-node</div>
+
+            <div class="cardTitle">组件效果</div>
+            <div style="padding: 10px;border: 1px solid #ddd;border-radius: 10px;">
+                <cms-list data="l_m5nmpt94">
+                    <list-node limit="2" page="1"
+                        style="height: 250px;display: flex;flex-direction: column;position: relative;">
+                        <div
+                            style="height: 53px;display: flex;line-height: 53px;padding: 5px;background-color: #ebebeb;border-radius: 5px;margin: 5px;">
+                            <node-cover style="width: 50px;height:50px;border: 1px solid #fff;"></node-cover>
+                            <node-title style="margin-left: 10px;"></node-title>
+                            &nbsp;&nbsp;&nbsp;点击量：<node-clicks></node-clicks>
+                        </div>
+                        <div style="position: absolute;bottom: 0;">
+                            <list-pagination></list-pagination>
+                        </div>
+                    </list-node>
+                </cms-list>
+            </div>
+            <div style="display: flex;">
+                <a-html style="display: block;flex: 1;" title="示例代码">
+                    <cms-list data="l_m5nmpt94">
+                        <list-node limit="2" page="1"
+                            style="height: 250px;display: flex;flex-direction: column;position: relative;">
+                            <div
+                                style="height: 53px;display: flex;line-height: 53px;padding: 5px;background-color: #ebebeb;border-radius: 5px;margin: 5px;">
+                                <node-cover style="width: 50px;height:50px;border: 1px solid #fff;"></node-cover>
+                                <node-title style="margin-left: 10px;"></node-title>
+                                &nbsp;&nbsp;&nbsp;点击量：<node-clicks></node-clicks>
+                            </div>
+                            <div style="position: absolute;bottom: 0;">
+                                <list-pagination></list-pagination>
+                            </div>
+                        </list-node>
+                    </cms-list>
+                </a-html>
+
+            </div>
+            <table cellspacing="0" cellpadding="2">
+                <thead>
+                    <tr>
+                        <th style="width:150px;">属性名称</th>
+                        <th>说明</th>
+                        <th style="width:150px;">默认值</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>page</td>
+                        <td>页面序号</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>limit</td>
+                        <td>每页的加载数量</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>order</td>
+                        <td>按照时间进行排序,desc:按照时间倒序，asc:按照时间正序</td>
+                        <td>desc</td>
+                    </tr>
+                    <tr>
+                        <td>top</td>
+                        <td>是否使用置顶机制</td>
+                        <td>false</td>
+                    </tr>
+                    <tr>
+                        <td>newpage</td>
+                        <td>是否在新的页面进行翻页</td>
+                        <td>false</td>
+                    </tr>
+                </tbody>
+            </table>
+            <info-warn>
+                list-node中会自动创建需要加载的node节点，并且创建相应的cms-node，然后在cms-node加载前，将除list-pagination相关元素外的所有元素克隆至创建的每个cms-node中，</br>
+                但是cms-node标签在加载后会将自身在list-node中移除，不作为页面元素。
+            </info-warn>
+        </div>
+        <div class="card">
+            <div class="cardTitle">list-template</div>
+            <table cellspacing="0" cellpadding="2">
+                <thead>
+                    <tr>
+                        <th style="width:150px;">属性名称</th>
+                        <th>说明</th>
+                        <th style="width:150px;">默认值</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>newpage</td>
+                        <td>是否在新页标签打开页面</td>
+                        <td>false</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card">
+            <div class="cardTitle">list-pagination</div>
+            <info-line label="标签">list-pagination</info-line>
+            <info-line label="功能">列表的子内容中的翻页组件</info-line>
+            <table cellspacing="0" cellpadding="2">
+                <thead>
+                    <tr>
+                        <th style="width:150px;">属性名称</th>
+                        <th>说明</th>
+                        <th style="width:150px;">默认值</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>page</td>
+                        <td>页面序号</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>limit</td>
+                        <td>每页的加载数量</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>total</td>
+                        <td>总数据条数</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td>显示的模式，值：mini（是否隐藏掉跳转部分只保留页码跳转）</td>
+                        <td>null</td>
+                    </tr>
+                    <tr>
+                        <td>buttonNum</td>
+                        <td>显示的模式，值：mini（是否隐藏掉跳转部分只保留页码跳转）</td>
+                        <td>null</td>
+                    </tr>
+                </tbody>
+            </table>
+            <info-warn>必须在list-node中使用</info-warn>
+        </div>
+    </div>
+
+</body>
+
+</html>
+<script src="../js/FinalCms.js"></script>
+<script src="../js/aheadUI.js"></script>
+<script src="../js/base.js"></script>

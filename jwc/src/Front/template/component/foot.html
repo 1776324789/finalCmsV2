@@ -1,0 +1,54 @@
+<style>
+    .footBlock {
+        width: 100vw;
+        height: 150px;
+        background-color: #772f91;
+    }
+
+    .footBlock .contentBLock {
+        width: 1200px;
+        display: flex;
+        margin-left: calc((100vw - 1200px)/2);
+    }
+
+    .footBlock .contentBLock .logo {
+        width: 80px;
+        height: 80px;
+        margin-top: 9px;
+        border: 1px solid #fff;
+    }
+
+    .footBlock .rightContentBlock {
+
+        float: right;
+        display: flex;
+        flex-direction: column;
+        line-height: 25px;
+        margin-top: 12px;
+        color: #fff;
+    }
+</style>
+<cms-component>
+    <div class="footBlock">
+        <div class="contentBLock">
+            <cms-node data="n_lxwn1afr" style="display:none;">
+                <node-cover class="logo"></node-cover>
+            </cms-node>
+            <div style="flex: 1;"></div>
+            <div class="rightContentBlock">
+                <cms-node data="n_mc2zvfkg">
+                    <node-title></node-title>
+                </cms-node>
+                <cms-node data="n_mc2zvt3n">
+                    <node-title></node-title>
+                </cms-node>
+                <cms-node data="n_mc2zw0es">
+                    <node-title></node-title>
+                </cms-node>
+		<a style="color:#fff;" href="https://beian.miit.gov.cn/#/Integrated/index">赣ICP备13005365号-13</a>
+<a style="color:#fff;" target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=36010502000014"><img src="img/gu.png" alt=""><span class="foot_span">赣公网安备 36010502000014号</span></a>
+            </div>
+            <div style="flex: 1;"></div>
+        </div>
+    </div>
+</cms-component>

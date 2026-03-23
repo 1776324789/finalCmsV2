@@ -1,0 +1,276 @@
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
+
+.mainBlock {
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px #c7c7c7;
+}
+
+.card {
+    background-color: #fff;
+    flex: 1;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #efefef;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardTitle {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.line {
+    min-width: 1000px;
+    margin-top: 5px;
+    border: 1px solid #efefef;
+    border-radius: 3px;
+    color: #666666;
+    display: flex;
+    height: 30px;
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.line:hover {
+    background-color: #f1f1f1;
+}
+
+
+.mainListBlock {
+    margin-bottom: 20px;
+}
+
+.listNo {
+    border-right: 1px solid #efefef;
+    width: 30px;
+    text-align: center;
+    font-size: 14px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.listArrow {
+    cursor: pointer;
+    border-right: 1px solid #efefef;
+    width: 30px;
+    text-align: center;
+    line-height: 33px;
+}
+
+.listArrow:hover {
+    color: #407BFF;
+}
+
+.listArrow i {
+    font-size: 25px;
+}
+
+.button {
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 12px;
+    color: #407BFF;
+    transition: 0.3s width, 0.3s padding-right, 0.3s padding-left;
+}
+
+.buttonBlock {
+    display: flex;
+}
+
+.del {
+    color: #ff5555;
+}
+
+.button:hover {
+    opacity: 0.75;
+}
+
+.listName {
+    flex: 1;
+    border-right: 1px solid #efefef;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.listName::before {
+    color: #bbbbbb;
+    content: "名称：";
+}
+
+.listChild {
+    min-width: 75px;
+    border-right: 1px solid #efefef;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.listChild::before {
+    color: #bbbbbb;
+    content: "子列表：";
+}
+
+.listId {
+    width: 160px;
+    border-right: 1px solid #efefef;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.listId::before {
+    color: #bbbbbb;
+    content: "序列号：";
+}
+
+.listIndex {
+    width: 60px;
+    border-right: 1px solid #efefef;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.listIndex::before {
+    color: #bbbbbb;
+    content: "排序:";
+    margin-right: 10px;
+}
+
+.nodeChild::before {
+
+    color: #bbbbbb;
+    content: "子内容：";
+}
+
+.nodeChild {
+    min-width: 75px;
+    border-right: 1px solid #efefef;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.childBlock {
+    min-width: 1000px;
+    overflow: hidden;
+    border-left: 1px solid #efefef;
+    padding-left: 10px;
+    margin-left: 10px;
+    height: 0;
+}
+
+.copyIcon {
+    float: right;
+    cursor: pointer;
+    margin-left: 5px;
+    color: #999999;
+}
+
+.copyIcon:hover {
+    color: #407BFF;
+}
+
+.listBlockTop {
+    display: flex;
+}
+
+
+
+.uploadButton {
+    cursor: pointer;
+    height: 30px;
+    background-color: #4ebe3f;
+    border: 0;
+    width: 75px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.uploadButton:hover {
+    opacity: 0.75;
+}
+
+.selectFileButton:hover {
+    opacity: 0.75;
+}
+
+.selectFileButton {
+    margin-bottom: 10px;
+    cursor: pointer;
+    height: 30px;
+    background-color: #407BFF;
+    border: 0;
+    width: 75px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+
+.label {
+    width: 65px;
+    line-height: 30px;
+    height: 30px;
+    color: #717171;
+    font-size: 14px;
+    font-weight: 500;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.uploadImgBlock {
+    height: 100px;
+    max-width: 300px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.coverImg {
+    height: 100%;
+}
+
+.icon-subtract-fill {
+    color: #adadad !important;
+    font-size: 15px !important;
+    font-weight: bold;
+}
+
+.emptyTipCreate {
+    margin-left: 5px;
+    margin-right: 5px;
+    color: #55aaff;
+    cursor: pointer;
+
+}
+
+.emptyTip {
+    display: none;
+    height: 50px;
+    line-height: 50px;
+    color: #666;
+    font-size: 14px;
+    text-align: center;
+}

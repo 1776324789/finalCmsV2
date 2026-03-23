@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width initial-scale=1'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' />
+    <style>
+        :root {
+            --primary-gradient: linear-gradient(45deg, #2196F3, #4CAF50);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #2C3E50;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: #f8fafc;
+        }
+
+        .welcome-section {
+            text-align: center;
+            margin: 40px 0;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .welcome-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .welcome-subtitle {
+            font-size: 18px;
+            color: #64748B;
+            margin-bottom: 40px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            animation: slideUp 0.5s ease-out forwards;
+            opacity: 0;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px -1px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-icon {
+            font-size: 24px;
+            margin-bottom: 16px;
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--primary-gradient);
+            color: white;
+        }
+
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #1E293B;
+        }
+
+        .card-content {
+            color: #64748B;
+            font-size: 15px;
+            line-height: 1.6;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            color: #475569;
+        }
+
+        .feature-item i {
+            margin-right: 8px;
+            color: #4CAF50;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+        .card:nth-child(5) { animation-delay: 0.5s; }
+    </style>
+</head>
+<body>
+    <div class="welcome-section">
+        <h1 class="welcome-title">欢迎使用 FinalCMS</h1>
+        <p class="welcome-subtitle">一个现代化的、灵活的、易于使用的内容管理系统</p>
+    </div>
+
+    <div class="cards-container">
+        <div class="card">
+            <div class="card-icon">
+                <i class="icon-layout-2-line"></i>
+            </div>
+            <h2 class="card-title">快速搭建</h2>
+            <div class="card-content">
+                <p>FinalCMS 提供了丰富的组件和灵活的配置选项，帮助您快速构建网站：</p>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <i class="icon-checkbox-circle-fill"></i>
+                        使用 cms-list 和 cms-node 管理内容
+                    </li>
+                    <li class="feature-item">
+                        <i class="icon-checkbox-circle-fill"></i>
+                        支持自定义组件和模板
+                    </li>
+                    <li class="feature-item">
+                        <i class="icon-checkbox-circle-fill"></i>
+                        响应式设计，支持多端适配
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">
+                <i class="icon-code-box-line"></i>
+            </div>
+            <h2 class="card-title">核心组件</h2>
+            <div class="card-content">
+                <p>系统提供了多个核心组件，满足常见的内容管理需求：</p>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <i class="icon-checkbox-circle-fill"></i>
+                        cms-list：列表展示组件
+                    </li>
+                    <li class="feature-item">
+                        <i class="icon-checkbox-circle-fill"></i>
+                        cms-node：内容节点组件
+                    </li>
+                    <li class="feature-item">
+                        <i class="icon-checkbox-circle-fill"></i>
+                        cms-component：自定义组件
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">
+                <i class="icon-search-2-line"></i>
+            </div>
+            <h2 class="card-title">全局搜索</h2>
+            <div class="card-content">
+                <p>强大的搜索功能，帮助用户快速找到所需内容：</p>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <i class="icon-checkbox-circle-fill"></i>
+                        支持多字段搜索
+                    </li>
+                    <li class="feature-item">
+                        <i class="icon-checkbox-circle-fill"></i>
+                        实时搜索结果
+                    </li>
+                    <li class="feature-item">
+                        <i class="icon-checkbox-circle-fill"></i>
+                        自定义搜索范围
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">
+                <i class="icon-tools-line"></i>
+            </div>
+            <h2 class="card-title">开发工具</h2>
+            <div class="card-content">
+                <p>为开发者提供便捷的开发工具和文档：</p>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <i class="icon-checkbox-circle-fill"></i>
+                        详细的API文档
+                    </li>
+                    <li class="feature-item">
+                        <i class="icon-checkbox-circle-fill"></i>
+                        组件开发指南
+                    </li>
+                    <li class="feature-item">
+                        <i class="icon-checkbox-circle-fill"></i>
+                        示例代码和模板
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-icon">
+                <i class="icon-book-open-line"></i>
+            </div>
+            <h2 class="card-title">使用指南</h2>
+            <div class="card-content">
+                <p>了解系统的基本配置和常用操作：</p>
+                <ul class="feature-list">
+                    <li class="feature-item">
+                        <i class="icon-checkbox-circle-fill"></i>
+                        <a href="./guide.html" target="_blank" style="color: inherit; text-decoration: none;">
+                            查看详细文档
+                        </a>
+                    </li>
+                    <li class="feature-item">
+                        <i class="icon-settings-line"></i>
+                        配置参数说明
+                    </li>
+                    <li class="feature-item">
+                        <i class="icon-file-list-line"></i>
+                        常见问题解答
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

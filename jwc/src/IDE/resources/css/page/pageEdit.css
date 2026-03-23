@@ -1,0 +1,441 @@
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    background-color: #eef1f5;
+}
+
+.emptyTip span {
+    position: absolute;
+    display: block;
+    left: 50%;
+    top: 20%;
+    font-size: 16px;
+    color: #888;
+    transform: translate(-50%, -50%);
+}
+
+.codeEditor {
+    width: 100%;
+    height: calc(100% - 30px);
+    position: relative;
+}
+
+.codeEditor img {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.editBlock {
+    flex: 1;
+    padding: 15px;
+    background-color: #fff;
+    margin: 15px;
+    padding-left: 0;
+    padding-right: 0;
+    border-radius: 15px;
+}
+
+.dialogCloseButton {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.dialogCloseButton:hover {
+    color: #55aaff;
+}
+
+.saveButton {
+    margin-left: 100px;
+    margin-top: 50px;
+    width: 300px;
+    height: 50px;
+    font-size: 15px;
+    border: 0;
+    border-radius: 10px;
+    color: #fff;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    cursor: pointer;
+}
+
+.dialog {
+    outline: none;
+    width: 500px;
+    height: 300px;
+    border: 0;
+    border-radius: 15px;
+    background-color: #fff;
+    margin-top: 200px;
+}
+
+.verifyInput {
+    outline: none;
+    position: relative;
+    width: 400px;
+    margin-left: 50px;
+    height: 50px;
+    line-height: 50px;
+
+
+
+}
+
+.dialogTitle {
+    display: flex;
+    height: 30px;
+    line-height: 30px;
+    font-size: 15px;
+    color: #888;
+    padding: 10px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.dialogTip {
+    height: 70px;
+    line-height: 70px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: #555;
+}
+
+.verifyInput input {
+    outline: none;
+    font-size: 25px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 41px;
+    text-indent: 55px;
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    height: 100%;
+    border: 0;
+    background-color: rgba(0, 0, 0, 0);
+
+}
+
+.dot1 {
+    position: absolute;
+    background: linear-gradient(45deg, #abb7ec, #a982cf);
+    width: 40px;
+    height: 50px;
+    left: 0;
+    top: 0;
+    left: 42px;
+    border-radius: 5px;
+    z-index: -1;
+}
+
+.dot2 {
+    position: absolute;
+    background: linear-gradient(45deg, #abb7ec, #a982cf);
+    width: 40px;
+    height: 50px;
+    left: 0;
+    top: 0;
+    left: 97px;
+    border-radius: 5px;
+    z-index: -1;
+}
+
+.dot3 {
+    position: absolute;
+    background: linear-gradient(45deg, #abb7ec, #a982cf);
+    width: 40px;
+    height: 50px;
+    left: 0;
+    top: 0;
+    left: 152px;
+    border-radius: 5px;
+    z-index: -1;
+}
+
+.dot4 {
+    position: absolute;
+    background: linear-gradient(45deg, #abb7ec, #a982cf);
+    width: 40px;
+    height: 50px;
+    left: 0;
+    top: 0;
+    left: 207px;
+    border-radius: 5px;
+    z-index: -1;
+}
+
+.dot5 {
+    position: absolute;
+    background: linear-gradient(45deg, #abb7ec, #a982cf);
+    width: 40px;
+    height: 50px;
+    left: 0;
+    top: 0;
+    left: 262px;
+    border-radius: 5px;
+    z-index: -1;
+}
+
+.dot6 {
+    position: absolute;
+    background: linear-gradient(45deg, #abb7ec, #a982cf);
+    width: 40px;
+    height: 50px;
+    left: 0;
+    top: 0;
+    left: 317px;
+    border-radius: 5px;
+    z-index: -1;
+}
+
+.cover {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.leftFileBlock {
+    padding: 15px;
+    width: 250px;
+    background-color: #fff;
+    margin: 15px;
+    border-radius: 15px;
+    margin-right: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.title {
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #888;
+}
+
+.change {
+    position: relative;
+}
+
+.change::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    background-color: #49a8f5;
+    margin-top: 7px;
+    right: 10px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+.fileBlock {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.fileChildBlock {
+    border-left: 1px solid #eee;
+    margin-left: 20px;
+    text-indent: 15px;
+    display: none;
+}
+
+.fileName {
+    user-select: none;
+    font-size: 14px;
+    height: 25px;
+    line-height: 25px;
+    cursor: pointer;
+}
+
+
+.fileName:hover {
+    background-color: #eee;
+}
+
+.dirBlock {
+    color: #637c94;
+    font-size: 14px;
+    height: 25px;
+    line-height: 25px;
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+}
+
+.ttf {
+    font-size: 14px;
+    height: 25px;
+}
+
+.ttf::before {
+    content: "ttf";
+    background-color: #558f4d;
+    margin-right: 5px;
+    padding: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    margin-left: 5px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 9px;
+}
+
+.png {
+    font-size: 14px;
+    height: 25px;
+}
+
+.png::before {
+    content: "png";
+    background-color: #f5e449;
+    margin-right: 5px;
+    padding: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    margin-left: 5px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 9px;
+}
+
+.ico {
+    font-size: 14px;
+    height: 25px;
+}
+
+.ico::before {
+    content: "ico";
+    background-color: #a19a56;
+    margin-right: 5px;
+    padding: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    margin-left: 5px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 9px;
+}
+
+.jpg {
+    font-size: 14px;
+    height: 25px;
+}
+
+.jpg::before {
+    content: "jpg";
+    background-color: #d349f5;
+    margin-right: 5px;
+    padding: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    margin-left: 5px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 9px;
+}
+
+.js {
+    font-size: 14px;
+    height: 25px;
+}
+
+.js::before {
+    content: "js";
+    background-color: #f54949;
+    margin-right: 5px;
+    padding: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    margin-left: 5px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 9px;
+}
+
+.json {
+    font-size: 14px;
+    height: 25px;
+}
+
+.json::before {
+    content: "json";
+    background-color: #f5ab49;
+    margin-right: 5px;
+    padding: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    margin-left: 5px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 9px;
+}
+
+.css {
+    font-size: 14px;
+    height: 25px;
+}
+
+.css::before {
+    content: "css ";
+    background-color: #1fad55;
+    margin-right: 5px;
+    padding: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    margin-left: 5px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 9px;
+}
+
+.html {
+    font-size: 14px;
+    height: 25px;
+}
+
+.html::before {
+    content: "html";
+    background-color: #49a8f5;
+    margin-right: 5px;
+    padding: 5px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    margin-left: 5px;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 9px;
+}
+
+
+.dirName::before {
+    content: "📁";
+    font-size: 14px;
+}
+
+.select {
+    background-color: #eee;
+}
+
+.dirBlock:hover {
+    background-color: #eee;
+}

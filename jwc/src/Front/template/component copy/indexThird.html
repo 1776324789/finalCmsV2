@@ -1,0 +1,98 @@
+<style>
+    .secondIndex {
+        margin-top: 30px;
+        width: 1200px;
+        margin-left: calc((100% - 1200px)/2);
+        display: flex;
+        margin-bottom: 25px;
+    }
+
+    .indexBlock {
+        margin-left: 5px;
+        margin-right: 5px;
+        border: 1px solid #efefef;
+        flex: 1;
+    }
+
+    .newBlockTitle {
+        text-indent: 15px;
+        height: 40px;
+        padding-right: 15px;
+        line-height: 40px;
+        display: flex;
+    }
+
+    .newBlockTitleName {
+        color: #fff;
+        flex: 1;
+    }
+
+    .moreSecond {
+        color: #fff;
+        font-size: 13px;
+        line-height: 40px;
+        cursor: pointer;
+    }
+
+    .more:hover {
+        color: #55aaff;
+    }
+
+    .newList {
+        min-height: 200px;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .fi {
+        background-color: #6aa437;
+    }
+
+    .se {
+        background-color: #c7bc2d;
+    }
+
+    .th {
+        background-color: #5f5cba;
+    }
+</style>
+<cms-component>
+    <div class="secondIndex">
+        <cms-list class="indexBlock" data="l_ly5knpxi">
+            <div class="newBlockTitle fi">
+                <list-name class="newBlockTitleName"></list-name>
+                <list-template class="moreSecond">MORE>></list-template>
+            </div>
+            <list-node class="newList" page="1" limit="6" order="desc">
+                <node-template>
+                    <div class="artitleTitleLine">
+                        <cms-node data="n_lxovt0o6">
+                            <node-cover style="width: 30px;height: 30px;"></node-cover>
+                        </cms-node>
+                        <node-title class="articleTitle"></node-title>
+                        <node-date format="MM-DD" class="articleDate"></node-date>
+                    </div>
+                </node-template>
+            </list-node>
+        </cms-list>
+        <cms-list class="indexBlock">
+            <div class="newBlockTitle se">
+                <list-name class="newBlockTitleName"></list-name>
+
+            </div>
+            <list-node class="newList" page="1" limit="6" order="desc">
+
+            </list-node>
+        </cms-list>
+        <cms-list class="indexBlock">
+            <div class="newBlockTitle th">
+                <list-name class="newBlockTitleName"></list-name>
+            </div>
+            <list-node class="newList" page="1" limit="6" order="desc">
+
+            </list-node>
+        </cms-list>
+    </div>
+
+</cms-component>

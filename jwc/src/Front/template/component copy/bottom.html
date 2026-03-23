@@ -1,0 +1,65 @@
+<style>
+    .bottomBlock {
+        display: flex;
+        flex-direction: column;
+        width: 1200px;
+        margin-left: calc((100% - 1200px)/2);
+        margin-top: 30px;
+    }
+
+    .bottomBlockTitle {
+        display: flex;
+    }
+
+    .bottomFirstName {
+        border-bottom: 2px solid #55aaff;
+        padding-right: 10px;
+        padding-left: 10px;
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .bottomSecondName {
+        border-bottom: 2px solid #fff;
+        padding-right: 10px;
+        padding-left: 10px;
+        height: 40px;
+        line-height: 40px;
+    }
+
+    .bottomBlockContentBlock {
+        min-height: 150px;
+    }
+
+    .bottomBlockContentLink {
+        padding: 5px;
+        margin-bottom: 10px;
+        width: calc(20% - 10px);
+    }
+</style>
+<cms-component>
+    <div class="bottomBlock">
+        <div class="bottomBlockTitle">
+            <cms-list data="l_lxqaca7z">
+                <list-name class="bottomFirstName"></list-name>
+            </cms-list>
+            <cms-list data="l_lxqacjtl">
+                <list-name class="bottomSecondName"></list-name>
+            </cms-list>
+        </div>
+        <div class="bottomBlockContentBlock">
+            <cms-list data="l_lxqaca7z" class="bottomFi">
+                <list-node style="display: flex;flex-wrap: wrap;">
+                    <node-link class="bottomBlockContentLink">
+                        <node-title></node-title>
+                    </node-link>
+                </list-node>
+            </cms-list>
+            <cms-list data="l_lxqaca7z" class="bottomSe">
+                <list-node style="display: flex;flex-wrap: wrap;">
+                    <node-title class="bottomBlockContentLink"></node-title>
+                </list-node>
+            </cms-list>
+        </div>
+    </div>
+</cms-component>

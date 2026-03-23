@@ -1,0 +1,354 @@
+body,
+html {
+    padding: 0;
+    margin: 0;
+}
+
+.mainBlock {
+    margin: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 0 3px #c7c7c7;
+}
+
+.line {
+    margin-top: 5px;
+    border: 1px solid #efefef;
+    border-radius: 3px;
+    color: #666666;
+    display: flex;
+    height: 30px;
+    font-size: 14px;
+    line-height: 30px;
+}
+
+.pageLoading {
+    position: relative;
+    overflow: hidden;
+    height: 5px;
+    margin-top: -3px;
+    background-color: #6c9aff;
+}
+
+.pageLoading:before {
+    content: " ";
+    position: absolute;
+    left: 0;
+    background-color: #fff;
+    opacity: 0.5;
+    z-index: 10;
+    top: -10px;
+    height: calc(100% + 20px);
+    width: 40%;
+    animation: LoadingAnimation 0.75s linear infinite;
+}
+
+@keyframes LoadingAnimation {
+    0% {
+        left: -20px;
+    }
+
+    100% {
+        left: calc(100% + 20px);
+    }
+}
+
+.mainListBlock {
+    margin-bottom: 20px;
+}
+
+.listNo {
+    border-right: 1px solid #efefef;
+    width: 30px;
+    text-align: center;
+    font-size: 14px;
+}
+
+.listArrow {
+    cursor: pointer;
+    border-right: 1px solid #efefef;
+    width: 30px;
+    text-align: center;
+    line-height: 33px;
+}
+
+.listArrow:hover {
+    color: #407BFF;
+}
+
+.listArrow i {
+    font-size: 25px;
+}
+
+.button {
+    cursor: pointer;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 12px;
+    color: #407BFF;
+}
+
+.buttonBlock {
+    display: flex;
+}
+
+.del {
+    color: #ff5555;
+}
+
+.button:hover {
+    opacity: 0.75;
+}
+
+.listName {
+    flex: 1;
+    border-right: 1px solid #efefef;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.listName::before {
+    color: #bbbbbb;
+    content: "名称：";
+}
+
+.listChild {
+    border-right: 1px solid #efefef;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.listChild::before {
+    color: #bbbbbb;
+    content: "子列表：";
+}
+
+.listId {
+    width: 160px;
+    border-right: 1px solid #efefef;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.listId::before {
+    color: #bbbbbb;
+    content: "序列号:";
+    margin-right: 10px;
+}
+
+.listIndex {
+    width: 60px;
+    border-right: 1px solid #efefef;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.listIndex::before {
+    color: #bbbbbb;
+    content: "排序:";
+    margin-right: 10px;
+}
+
+.nodeChild::before {
+    color: #bbbbbb;
+    content: "子内容：";
+}
+
+.nodeChild {
+    border-right: 1px solid #efefef;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.childBlock {
+    overflow: hidden;
+    border-left: 1px solid #efefef;
+    padding-left: 10px;
+    margin-left: 10px;
+    height: 0;
+}
+
+.copyIcon {
+    float: right;
+    cursor: pointer;
+    margin-left: 5px;
+    color: #999999;
+}
+
+.copyIcon:hover {
+    color: #407BFF;
+}
+
+.listBlockTop {
+    display: flex;
+}
+
+.listBlockTop .formBlock {
+    flex: 1;
+}
+
+.uploadButton {
+    cursor: pointer;
+    height: 30px;
+    background-color: #4ebe3f;
+    border: 0;
+    width: 75px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.uploadButton:hover {
+    opacity: 0.75;
+}
+
+.selectFileButton:hover {
+    opacity: 0.75;
+}
+
+.selectFileButton {
+    margin-bottom: 10px;
+    cursor: pointer;
+    height: 30px;
+    background-color: #407BFF;
+    border: 0;
+    width: 75px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+
+.label {
+    width: 65px;
+    line-height: 30px;
+    height: 30px;
+    color: #717171;
+    font-size: 14px;
+    font-weight: 500;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.uploadImgBlock {
+    height: 100px;
+    max-width: 300px;
+    overflow: hidden;
+    border-radius: 5px;
+}
+
+.coverImg {
+    height: 100%;
+}
+
+.icon-subtract-fill {
+    color: #adadad !important;
+    font-size: 15px !important;
+    font-weight: bold;
+}
+
+.main {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.topMenuRightBlock {
+    width: 150px;
+    margin-right: 25px;
+}
+
+.userBlock {
+    position: relative;
+    color: #fff;
+    cursor: pointer;
+    line-height: 54px;
+    display: flex;
+}
+
+
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.menuBlock {
+
+    animation: slideIn 0.25s ease forwards;
+}
+
+/* .userBlock:hover .menuBlock {
+    display: flex;
+} */
+
+.userBlock span {
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.userInfoBlock {
+    z-index: 100;
+    display: flex;
+}
+
+.cover {
+    display: none;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 50;
+}
+
+.userInfoBlockFocus {
+    background-color: rgba(255, 255, 255, 0.5);
+    height: 40px;
+    line-height: 40px;
+    margin-top: 7px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 4px;
+}
+
+.menuBlock {
+    display: none;
+    border-radius: 3px;
+    background-color: #fff;
+    width: 140px;
+    padding: 5px;
+    flex-direction: column;
+    position: absolute;
+    top: 54px;
+    z-index: 100;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+
+.menuButton {
+    border-radius: 3px;
+    background-color: #f5f5f5;
+    margin-bottom: 5px;
+    cursor: pointer;
+    user-select: none;
+    color: #666666;
+    text-align: center;
+    font-size: 14px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.menuButton:hover {
+    background-color: #efefef;
+    color: #407BFF;
+}

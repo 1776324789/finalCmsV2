@@ -1,0 +1,79 @@
+.listId {
+    width: 175px;
+}
+
+.listDate {
+    border-right: 1px solid #efefef;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.listDate::before {
+    color: #bbbbbb;
+    content: "创建日期：";
+}
+
+.listDate2 {
+    border-right: 1px solid #efefef;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.listDate2::before {
+    color: #bbbbbb;
+    content: "投稿日期：";
+}
+
+.listName::before {
+    content: "" !important;
+}
+
+.listClick {
+    min-width: 70px;
+    border-right: 1px solid #efefef;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+}
+
+.listClick::before {
+    color: #bbbbbb;
+    content: "点击：";
+}
+
+.dialogBottom {
+    height: 50px;
+    position: absolute;
+    bottom: 0;
+    background-color: #fff;
+    width: calc(100% - 30px);
+    z-index: 100000;
+}
+.card {
+    background-color: #fff;
+    flex: 1;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+    border: 1px solid #efefef;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cardTitle {
+    margin-bottom: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}

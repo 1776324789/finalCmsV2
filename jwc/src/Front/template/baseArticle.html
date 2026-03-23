@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <cms-title></cms-title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .articleBody {
+            width: 1000px;
+            display: flex;
+            flex-direction: column;
+            margin-left: calc((100% - 1000px)/2);
+        }
+
+        .articleTitle {
+            height: 50px;
+            line-height: 50px;
+            font-size: 25px;
+            color: #772f91;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .bottomArticleSwitcher {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid #e3e3e3;
+            padding-top: 15px;
+        }
+
+        .bottomArticleSwitcher .switchButton {
+            display: flex;
+            font-size: 16px;
+            height: 30px;
+            line-height: 30px;
+            margin-bottom: 15px;
+        }
+
+        .bottomArticleSwitcher .switchButton .label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #777777;
+            margin-right: 5px;
+        }
+
+        .bottomArticleSwitcher .switchButton .label:after {
+            content: "：";
+        }
+
+        .bottomArticleSwitcher .switchButton .articleName {
+            color: #772f91;
+            cursor: pointer;
+        }
+
+        .bottomArticleSwitcher .switchButton .articleName:hover {
+            opacity: 0.75;
+        }
+    </style>
+</head>
+
+<body>
+
+    <cms-component>
+        head
+    </cms-component>
+    <cms-node class="articleBody" pagetitle>
+        <cms-component>nodeBread</cms-component>
+        <node-title class="articleTitle"></node-title>
+        <div style="text-align: center;color: #666666;">
+            <node-date class="articleDate" format="YYYY-MM-DD" style="margin-right: 15px;"></node-date>
+            阅读次数：<node-clicks class="articleDate"></node-clicks>
+        </div>
+        <node-note></node-note>
+        <node-content></node-content>
+        <div class="bottomArticleSwitcher">
+            <div class="switchButton">
+                <div class="label">上一篇</div>
+                <node-prev class="articleName"></node-prev>
+            </div>
+            <div class="switchButton">
+                <div class="label">下一篇</div>
+                <node-next class="articleName"></node-next>
+            </div>
+        </div>
+    </cms-node>
+    <cms-component>
+        foot
+    </cms-component>
+</body>
+
+</html>

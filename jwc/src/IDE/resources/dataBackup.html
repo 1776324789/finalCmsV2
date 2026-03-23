@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/dependence/aheadUI.css">
+    <link href="./js/dependence/wangEditor/style.css" rel="stylesheet">
+    <link href="./css/dependence/view.css" rel="stylesheet">
+    <link href="./css/dependence/editor.css" rel="stylesheet">
+    <link href="./js/dependence/wangEditor/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/page/dataBackup.css">
+</head>
+
+<body style="background-color: #F8FAFC;">
+    <a-content label="数据备份">
+        <a-tab>
+            <a-tab-item label="创建备份计划">
+                <div style="padding: 15px">
+                    <div style="display: flex">
+                        <a-button tip>立即备份</a-button>
+                        <a-button success icon="icon-add-fill" style="margin-left: 10px;">创建计划</a-button>
+                    </div>
+                    <a-content label="计划列表" type="clear">
+                        <div class="line head">
+                            <div class="no">序号</div>
+                            <div class="name">名称</div>
+                            <div class="file">上传文件
+                                <i class="icon-error-warning-fill" ftitle="文件上传目录可能包含大文件，请确保服务器有富余内存。"></i>
+                            </div>
+                            <div class="file">静态数据</div>
+                            <div class="file">前端文件</div>
+                            <div class="file">启用</div>
+                            <div class="file">执行方式</div>
+                            <div class="file">操作</div>
+                        </div>
+                        <div class="line">
+                            <div class="no">1</div>
+                            <div class="name">
+                                <a-input value="日常静态文件备份" limit="25"></a-input>
+                            </div>
+                            <div class="file">
+                                <a-input-switch value="false">
+                                </a-input-switch>
+                            </div>
+                            <div class="file">
+                                <a-input-switch value="false">
+                                </a-input-switch>
+                            </div>
+                            <div class="file">
+                                <a-input-switch value="false">
+                                </a-input-switch>
+                            </div>
+
+                            <div class="file">
+                                <a-input-switch value="true">
+                                </a-input-switch>
+                            </div>
+                            <div class="file">每24小时
+                            </div>
+                            <div class="file">
+                                <div class="button">删除</div>
+                            </div>
+                        </div>
+
+                    </a-content>
+                </div>
+            </a-tab-item>
+            <a-tab-item label="备份记录">
+                <div style="padding: 15px;">
+                    <div>
+                        备份时间：2024-10-15 00:00:00
+                        备份后文件大小：52.25MB
+                        备份范围：前端页面、静态数据、上传文件
+                        备份方式：立即备份
+                        下载
+                    </div>
+                </div>
+
+            </a-tab-item>
+        </a-tab>
+
+    </a-content>
+</body>
+
+</html>
+<script src="./js/system/base.js"></script>
+<script src="./js/system/verifyChildPage.js"></script>
+<script src="./js/dependence/aheadUI.js"></script>

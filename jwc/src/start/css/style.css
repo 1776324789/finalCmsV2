@@ -1,0 +1,158 @@
+:root {
+    --primary-color: #407BFF;
+    --secondary-color: #6C63FF;
+    --text-primary: #2C3E50;
+    --text-secondary: #606F7B;
+    --bg-light: #F8FAFC;
+    --border-color: #E2E8F0;
+}
+
+body,
+html {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-light);
+    color: var(--text-primary);
+}
+
+/* Top Navigation Bar */
+.topBlock {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    height: 60px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+}
+
+.startTitle {
+    font-family: "Luckiest Guy";
+    font-size: 32px;
+    color: #fff;
+    line-height: 60px;
+    text-indent: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Tables */
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    margin: 1.5rem 0;
+}
+
+table tr th {
+    background-color: #f8fafc;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 2px solid var(--border-color);
+}
+
+table tr td {
+    padding: 12px 16px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.2s;
+}
+
+table tr:hover td {
+    background-color: #f1f5f9;
+}
+
+/* Component Name Tags */
+.componentName {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white !important;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9em;
+    display: inline-block;
+    margin: 0 4px;
+}
+
+/* Info Lines */
+.infoLine {
+    background: white;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin: 8px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.infoLine .label {
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-right: 8px;
+}
+
+/* Warning Blocks */
+.infoWarn {
+    display: flex;
+    background: #FFF5F5;
+    border-left: 4px solid #FC8181;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+}
+
+.infoWarn .info {
+    color: #C53030;
+    font-size: 14px;
+}
+
+/* Code Blocks */
+.codeBlock {
+    background: #2D3748;
+    color: #E2E8F0;
+    padding: 16px;
+    border-radius: 8px;
+    margin: 16px 0;
+    font-family: 'Fira Code', monospace;
+    line-height: 1.5;
+}
+
+.codeBlock div {
+    padding: 2px 0;
+}
+
+/* 页面切换动画 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+a-content {
+    animation: fadeIn 0.3s ease-out;
+    margin-bottom: 24px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* 代码示例容器 */
+a-html {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    margin: 16px 0;
+    overflow: hidden;
+}
