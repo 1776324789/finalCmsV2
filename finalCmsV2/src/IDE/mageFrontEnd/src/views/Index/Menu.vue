@@ -16,7 +16,7 @@
 <script setup>
 import { watch, ref } from 'vue'
 import router from '@/router'
-import { useDataStore } from '@/store';
+import { useSystemStore } from '@/store/systemStore';
 import LeftMenu from './element/LeftMenu.vue';
 const change = ref(0)
 const props = defineProps({ modelValue: Boolean })

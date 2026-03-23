@@ -4,7 +4,8 @@
  * - token 管理
  * - 轻量级内存鉴权
  */
-
+import fs from "fs"
+import path from "path"
 import DB from './db.json' with { type: 'json' }
 import crypto from 'crypto'
 
@@ -17,31 +18,53 @@ const DBController = () => {
     const INSPECT_INTERVAL = 30 * 1000            // 30 秒
     /** ---------------- 用户索引 ---------------- */
 
+
+    function getWebsiteData() {
+
+    }
+
+
+
     function getUserByName(username) {
         return DB.user.find(user => user.username == username)
     }
 
-
     function getUserMenuData(userId) {
-        const roleIds = DB.websiteUserRole.filter(role => role.userId == userId).map(item => item.roleId)
-        const roles = DB.role.filter(role => roleIds.includes(role.id))
-        const website = []
-        roles.forEach(role => role.menu.forEach(menu => {
-            const web = JSON.parse(JSON.stringify(DB.website.find(web => web.id == menu.websiteId)))
-            if (web != null && website.find(item => item.id == web.id) == null) {
-                web["menu"] = []
-                website.push(web)
-            }
+        let systemMenu = []
+        const userSystemRole = DB.systemUserRole.filter(item => item.userId == userId)
 
-        }))
-        roles.forEach(role => role.menu.forEach(roleMenu => {
-            const m = DB.menu.find(item => item.id == roleMenu.menuId)
-            if (m != null) {
-                const web = website.find(item => item.id == roleMenu.websiteId)
-                if (web) web.menu.push(m)
-            }
-        }))
-        return website
+        userSystemRole.forEach(role => {
+            DB.systemRoleMenu.filter(item => item.roleId == role.roleId).forEach(roleMenu => {
+                systemMenu.push(DB.systemMenu.find(item => item.id == roleMenu.menuId))
+            })
+        })
+
+        systemMenu = [...new Set(systemMenu)]
+        const website = []
+        let userWebsiteRole = DB.websiteUserRole.filter(item => item.userId == userId)
+        userWebsiteRole.forEach(userRole => {
+            const websiteRole = DB.websiteRole.find(item => userRole.roleId == item.id)
+            const roleWebsite = DB.website.find(web => websiteRole.websiteId == web.id)
+            roleWebsite["menu"] = []
+
+            websiteRole.menuIds.forEach(menuId => {
+                roleWebsite.menu.push(DB.websiteMenu.find(item => item.id == menuId))
+            })
+            roleWebsite.menuTemp = [...new Set(roleWebsite.menu)]
+            website.push(roleWebsite)
+        })
+
+        website.forEach(website => {
+            website.menu = website.menuTemp.filter(item => item.parentId == null)
+            website.menu.forEach(item => {
+                item.children = website.menuTemp.filter(menu => menu.parentId == item.id)
+                if (item.children.length == 0)
+                    delete item.children
+            })
+        })
+
+
+        return { systemMenu: systemMenu, website: website }
     }
 
 

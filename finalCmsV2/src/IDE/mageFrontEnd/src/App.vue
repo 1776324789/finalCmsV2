@@ -11,19 +11,20 @@
 import ReactBackground from '@/components/element/ReactBackground.vue';
 import { onMounted, ref } from 'vue';
 import Login from './views/Login.vue';
-import { useDataStore } from './store';
+import { useSystemStore } from './store/systemStore';
 import WebMenu from './views/WebMenu/WebMenu.vue';
 const background = ref(null)
 const showLogin = ref(false)
 const showWebMenu = ref(false)
-const dataStore = useDataStore()
+const systemStore = useSystemStore()
 onMounted(() => {
   init()
 })
 
 async function init() {
-  await dataStore.init()
-  if (dataStore.userData == null) showLogin.value = true
+  await systemStore.init()
+
+  if (systemStore.userData == null) showLogin.value = true
   else showWebMenu.value = true
 }
 

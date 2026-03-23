@@ -1,28 +1,32 @@
 import { defineStore } from 'pinia'
 import { onMounted, ref } from 'vue'
 import { verifyToken, getMenuData } from '@/request/login'
-export const useDataStore = defineStore('dataStore', () => {
+export const useSystemStore = defineStore('systemData', () => {
     const userData = ref(null)
     const menuData = ref([])
-    const website = ref([])
+    const userFunctionData = ref([])
     const targetSite = ref(null)
     async function init() {
         if (window.sessionStorage.getItem("token") == null) return
         let res = await verifyToken({ token: window.sessionStorage.getItem("token") })
+
         if (res.code == 200) {
             userData.value = res.data
             await loadMenuData()
         }
     }
+
     async function loadMenuData() {
         let res = await getMenuData()
         if (res.code == 200) {
-            website.value = res.data
-            formatWebMenu()
+            console.log(res.data);
+
+            userFunctionData.value = res.data
         }
     }
 
     function formatWebMenu() {
+        return
         website.value.forEach(web => {
             web.menuTemp = web.menu
             web.menu = []
@@ -44,7 +48,7 @@ export const useDataStore = defineStore('dataStore', () => {
 
     return {
         targetSite,
-        website,
+        userFunctionData,
         init,
         userData,
         menuData

@@ -2,25 +2,25 @@
     <div class="mainMenuBlock" v-bind:class="{ leftIn: show }">
         <div class="title">Final<br>CMS</div>
         <div style="flex:1;">
-            <div class="menuBlock" v-for="item in dataStore.targetSite?.menu || []">
+            <div class="menuBlock" v-for="item in systemStore.targetSite?.menu || []">
                 <div class="menuButton" v-bind:class="{
-                    'parentButton': item.child != null,
-                    'parentSelected': (item.child != null && item.child.filter(child => child.target == target).length == 1),
+                    'parentButton': item.children != null,
+                    'parentSelected': (item.children != null && item.children.filter(children => children.target == target).length == 1),
                     'selected': item.target == target
                 }" @click="handelMenuClick(item)">
                     <span :class="item.icon"></span>
                     <div class="name">
                         {{ item.name }}</div>
                 </div>
-                <div class="childMenuBlock" v-bind:class="{ 'childMenuBlockOpen': item.open }"
-                    :style="'height:' + (item.open ? (item.child.length * 70 + (item.child.length - 1) * 10) + 'px;' : 0 + 'px;')"
-                    v-if="item.child != null">
-                    <template v-for="child in item.child">
+                <div class="childrenMenuBlock" v-bind:class="{ 'childrenMenuBlockOpen': item.open }"
+                    :style="'height:' + (item.open ? (item.children.length * 70 + (item.children.length - 1) * 10) + 'px;' : 0 + 'px;')"
+                    v-if="item.children != null">
+                    <template v-for="children in item.children">
                         <div v-bind:class="{
-                            'selected': child.target == target
-                        }" class="menuButton" @click=" handelMenuClick(child)">
-                            <span :class="child.icon"></span>
-                            <div class="name">{{ child.name }}</div>
+                            'selected': children.target == target
+                        }" class="menuButton" @click=" handelMenuClick(children)">
+                            <span :class="children.icon"></span>
+                            <div class="name">{{ children.name }}</div>
                         </div>
                     </template>
                 </div>
@@ -34,8 +34,8 @@
 
 <script setup>
 import { watch, ref } from 'vue'
-import { useDataStore } from '@/store';
-const dataStore = useDataStore()
+import { useSystemStore } from '@/store/systemStore';
+const systemStore = useSystemStore()
 const props = defineProps({ modelValue: Boolean })
 const show = ref(true)
 const emit = defineEmits(['logout', 'update:modelValue', 'change'])
@@ -56,10 +56,10 @@ function logoutHandel() {
 
 
 function handelMenuClick(menu) {
-    if (menu.child != null) {
-        dataStore.targetSite.menu.forEach(item => {
+    if (menu.children != null) {
+        systemStore.targetSite.menu.forEach(item => {
             if (item == menu) return
-            if (item.child != null) item.open = false
+            if (item.children != null) item.open = false
         })
         menu.open = !menu.open
         return
@@ -131,7 +131,7 @@ function handelMenuClick(menu) {
     color: #fff;
 }
 
-.childMenuBlock {
+.childrenMenuBlock {
     transition: all 0.25s;
     margin-top: 0px;
     display: flex;
@@ -141,7 +141,7 @@ function handelMenuClick(menu) {
 }
 
 
-.childMenuBlockOpen {
+.childrenMenuBlockOpen {
     margin-top: 10px;
     overflow: unset;
 }
@@ -156,9 +156,9 @@ function handelMenuClick(menu) {
     transform: translateX(-20vw);
 }
 
-.mainMenuBlock:hover {
+/* .mainMenuBlock:hover {
     width: 170px;
-}
+} */
 
 .mainMenuBlock:hover .menuButton .name {
     opacity: 1;

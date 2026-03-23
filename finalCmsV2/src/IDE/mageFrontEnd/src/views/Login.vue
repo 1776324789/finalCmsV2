@@ -1,5 +1,5 @@
 <template>
-  <div class="main" :style="`pointer-events:${showLogin ? 'auto' : 'none'};`">
+  <div class="main" :style="`pointer-events:${showLogin ? 'auto' : 'none'};`" v-if="installLogin">
     <div class="bottomTitle" v-bind:class="{ outBottom: !showLogin }">POWERED BY AHEAD SOFT</div>
     <div class="rightBlock" v-bind:class="{ outRight: !showLogin }">
       <!-- <GlassSurface :displace="10" className="mainBlockContent" :width="500" :height="800" :Saturation="3"
@@ -53,15 +53,17 @@
   <!-- </div> -->
 </template>
 <script setup>
+
 import { nextTick, onMounted, ref, watch } from 'vue'
 import { getverifyCode, login as loginApi } from '@/request/login'
-import { useDataStore } from '@/store'
+import { useSystemStore } from '@/store/systemStore'
+const installLogin = ref(true)
 const showLogin = ref(true)
 const showTip = ref(false)
 const tipStr = ref("")
 const emit = defineEmits(['login'])
 const props = defineProps({ modelValue: Boolean })
-const dataStore = useDataStore()
+const systemStore = useSystemStore()
 const form = ref({
   username: "刘军",
   password: "145678923Lj.",
@@ -72,15 +74,25 @@ const form = ref({
 const svg = ref('')
 onMounted(() => {
   loadVerifyCode()
+  document.addEventListener("keydown", (e) => {
+    if (e.key == "Enter") {
+      login()
+    }
+  })
 })
 
 watch(
   () => props.modelValue,
   (val) => {
+    console.log(val);
     if (val) {
       showLogin.value = true
+      // installLogin.value = true
     } else {
       showLogin.value = false
+      // setTimeout(() => {
+      //   installLogin.value = false
+      // }, 300);
     }
   },
   { immediate: true } // 👈 初始化时也同步一次状态
@@ -108,7 +120,7 @@ async function login() {
   if (res.code == 200) {
     window.sessionStorage.setItem('token', res.token)
     emit("login")
-    await dataStore.init()
+    await systemStore.init()
   } else {
     if (res.code == 401)
       loadVerifyCode()

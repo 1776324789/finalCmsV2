@@ -10,9 +10,9 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import { useDataStore } from '@/store'
+import { useSystemStore } from '@/store/systemStore'
 const cardRef = ref(null)
-const dataStore = useDataStore()
+const systemStore = useSystemStore()
 const emit = defineEmits(['toindex'])
 // dot 的位置
 const dotX = ref(200)
@@ -29,7 +29,7 @@ const props = defineProps({
 })
 
 function toIndexHandel() {
-    dataStore.targetSite = props.data
+    systemStore.targetSite = props.data
     emit('toindex')
 }
 document.addEventListener('wheel', (e) => {

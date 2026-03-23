@@ -45,7 +45,6 @@ const LoginServer = (app, DB) => {
     })
 
     app.tokenPost("/getMenuData", (req, res, user) => {
-        console.log(user);
         return res.json({ code: 200, data: DB.getUserMenuData(user.id) })
     })
 

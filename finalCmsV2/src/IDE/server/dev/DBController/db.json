@@ -7,49 +7,80 @@
             "password": "a5b5ce234c33ef70bb42d1d9a1ef8d3e594cc39ad9c6474ab72a8efb83bdfcc5"
         }
     ],
-    "systemUserRole": [],
+    "systemRole": [
+        {
+            "id": "7ds98f7g9",
+            "name": "admin"
+        }
+    ],
+    "systemRoleMenu": [
+        {
+            "roleId": "7ds98f7g9",
+            "menuId": "56df798s"
+        },
+        {
+            "roleId": "7ds98f7g9",
+            "menuId": "oclapf0y"
+        },
+        {
+            "roleId": "7ds98f7g9",
+            "menuId": "ns9g82kj"
+        },
+        {
+            "roleId": "7ds98f7g9",
+            "menuId": "423fwfzxd"
+        },
+        {
+            "roleId": "7ds98f7g9",
+            "menuId": "vt34tvw34"
+        },
+        {
+            "roleId": "7ds98f7g9",
+            "menuId": "b754367b345"
+        }
+    ],
+    "systemUserRole": [
+        {
+            "userId": "s78d6f8s",
+            "roleId": "7ds98f7g9"
+        }
+    ],
     "systemMenu": [
         {
             "id": "56df798s",
             "name": "数据统计",
             "icon": "icon-database-line",
-            "target": "dataAnalysis"
+            "target": "systemDataAnalysis"
         },
         {
             "id": "oclapf0y",
-            "name": "公共知识库",
+            "name": "公共数据管理",
             "icon": "icon-database-line",
-            "target": "dataAnalysis"
+            "target": "systemPublicData"
         },
         {
             "id": "ns9g82kj",
             "name": "站点功能管理",
             "icon": "icon-database-line",
-            "target": "dataAnalysis"
+            "target": "systemWebsiteMenuManage"
         },
         {
-            "id": "ns9g82kj",
+            "id": "423fwfzxd",
             "name": "功能管理",
             "icon": "icon-database-line",
-            "target": "dataAnalysis"
+            "target": "systemFunctionManage"
         },
         {
-            "id": "ns9g82kj",
+            "id": "vt34tvw34",
             "name": "角色管理",
             "icon": "icon-database-line",
-            "target": "dataAnalysis"
+            "target": "systemRoleManage"
         },
         {
-            "id": "ns9g82kj",
+            "id": "b754367b345",
             "name": "用户管理",
             "icon": "icon-database-line",
-            "target": "dataAnalysis"
-        }
-    ],
-    "websiteUserRole": [
-        {
-            "userId": "s78d6f8s",
-            "roleId": "jb57kl56"
+            "target": "systemUserManage"
         }
     ],
     "websiteMenu": [
@@ -104,171 +135,26 @@
             "parentId": "76t7klzk"
         }
     ],
+    "websiteUserRole": [
+        {
+            "userId": "s78d6f8s",
+            "roleId": "jb57kl56"
+        }
+    ],
     "websiteRole": [
         {
             "id": "jb57kl56",
+            "websiteId": "57rdn8ow",
             "name": "管理员",
-            "menu": [
-                {
-                    "websiteId": "57rdn8ow",
-                    "menuId": "aa6f6m86"
-                },
-                {
-                    "websiteId": "57rdn8ow",
-                    "menuId": "iwx9z21d"
-                },
-                {
-                    "websiteId": "57rdn8ow",
-                    "menuId": "66pwl3j7"
-                },
-                {
-                    "websiteId": "57rdn8ow",
-                    "menuId": "keaa0was"
-                },
-                {
-                    "websiteId": "57rdn8ow",
-                    "menuId": "jiqzsicr"
-                },
-                {
-                    "websiteId": "57rdn8ow",
-                    "menuId": "76t7klzk"
-                },
-                {
-                    "websiteId": "57rdn8ow",
-                    "menuId": "66qt3lge"
-                },
-                {
-                    "websiteId": "57rdn8ow",
-                    "menuId": "b0995e84"
-                },
-                {
-                    "websiteId": "gjj8rw06",
-                    "menuId": "aa6f6m86"
-                },
-                {
-                    "websiteId": "gjj8rw06",
-                    "menuId": "iwx9z21d"
-                },
-                {
-                    "websiteId": "gjj8rw06",
-                    "menuId": "66pwl3j7"
-                },
-                {
-                    "websiteId": "gjj8rw06",
-                    "menuId": "keaa0was"
-                },
-                {
-                    "websiteId": "gjj8rw06",
-                    "menuId": "jiqzsicr"
-                },
-                {
-                    "websiteId": "gjj8rw06",
-                    "menuId": "76t7klzk"
-                },
-                {
-                    "websiteId": "gjj8rw06",
-                    "menuId": "66qt3lge"
-                },
-                {
-                    "websiteId": "gjj8rw06",
-                    "menuId": "b0995e84"
-                },
-                {
-                    "websiteId": "b69hk3gb",
-                    "menuId": "aa6f6m86"
-                },
-                {
-                    "websiteId": "b69hk3gb",
-                    "menuId": "iwx9z21d"
-                },
-                {
-                    "websiteId": "b69hk3gb",
-                    "menuId": "66pwl3j7"
-                },
-                {
-                    "websiteId": "b69hk3gb",
-                    "menuId": "keaa0was"
-                },
-                {
-                    "websiteId": "b69hk3gb",
-                    "menuId": "jiqzsicr"
-                },
-                {
-                    "websiteId": "b69hk3gb",
-                    "menuId": "76t7klzk"
-                },
-                {
-                    "websiteId": "b69hk3gb",
-                    "menuId": "66qt3lge"
-                },
-                {
-                    "websiteId": "b69hk3gb",
-                    "menuId": "b0995e84"
-                },
-                {
-                    "websiteId": "gsobp5d5",
-                    "menuId": "aa6f6m86"
-                },
-                {
-                    "websiteId": "gsobp5d5",
-                    "menuId": "iwx9z21d"
-                },
-                {
-                    "websiteId": "gsobp5d5",
-                    "menuId": "66pwl3j7"
-                },
-                {
-                    "websiteId": "gsobp5d5",
-                    "menuId": "keaa0was"
-                },
-                {
-                    "websiteId": "gsobp5d5",
-                    "menuId": "jiqzsicr"
-                },
-                {
-                    "websiteId": "gsobp5d5",
-                    "menuId": "76t7klzk"
-                },
-                {
-                    "websiteId": "gsobp5d5",
-                    "menuId": "66qt3lge"
-                },
-                {
-                    "websiteId": "gsobp5d5",
-                    "menuId": "b0995e84"
-                },
-                {
-                    "websiteId": "88chs4i7",
-                    "menuId": "aa6f6m86"
-                },
-                {
-                    "websiteId": "88chs4i7",
-                    "menuId": "iwx9z21d"
-                },
-                {
-                    "websiteId": "88chs4i7",
-                    "menuId": "66pwl3j7"
-                },
-                {
-                    "websiteId": "88chs4i7",
-                    "menuId": "keaa0was"
-                },
-                {
-                    "websiteId": "88chs4i7",
-                    "menuId": "jiqzsicr"
-                },
-                {
-                    "websiteId": "88chs4i7",
-                    "menuId": "76t7klzk"
-                },
-                {
-                    "websiteId": "88chs4i7",
-                    "menuId": "66qt3lge"
-                },
-                {
-                    "websiteId": "88chs4i7",
-                    "menuId": "b0995e84"
-                }
+            "menuIds": [
+                "aa6f6m86",
+                "iwx9z21d",
+                "66pwl3j7",
+                "keaa0was",
+                "jiqzsicr",
+                "76t7klzk",
+                "66qt3lge",
+                "b0995e84"
             ]
         }
     ],

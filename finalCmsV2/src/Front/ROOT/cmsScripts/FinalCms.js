@@ -13,37 +13,37 @@
      * @type {URL} 当前脚本的 URL 对象
      */
     const url = new URL(document.currentScript.src);
-    
+
     /**
      * 解析 URL 中的查询参数
      * @type {Object} 包含所有查询参数的对象
      */
     const params = Object.fromEntries(url.searchParams.entries());
-    
+
     /**
      * CMS 基础 URL，格式为：当前域名 + "/" + web 参数
      * @type {string} CMS 系统的基础 URL
      */
     const BaseCmsURL = window.location.origin + "/" + params.web
-    
+
     /**
      * 是否总是从服务器加载数据
      * @type {boolean} 如果 alwaysLoad 参数为 'true'，则总是从服务器加载
      */
     const alwaysLoad = params.alwaysLoad == 'true'
-    
+
     /**
      * 存储列表数据的数组
      * @type {Array} 存储从服务器或本地存储加载的列表数据
      */
     const listIndex = []
-    
+
     /**
      * 节点索引映射，用于快速查找节点
      * @type {Object} 以节点 ID 为键，节点数据为值的映射
      */
     const NodeIndexMap = {}
-    
+
     /**
      * 列表索引映射，用于快速查找列表
      * @type {Object} 以列表 ID 为键，列表数据为值的映射
@@ -62,7 +62,7 @@
     function init() {
         // 初始化基础样式
         initBaseStyle()
-        
+
         // 如果总是加载，则直接从服务器加载数据
         if (alwaysLoad) {
             loadDataFromServer()
@@ -101,16 +101,40 @@
         style.textContent = `
             cms-list, list-list, list-node, cms-node {display: block;}
             cms-pagination .a-page-info-block{display:flex;}
-            cms-pagination .a-page-info-block .cmsInput {height: 26px;text-indent: 10px;border-radius: 3px;border: 1px solid #d0d0d0;width: 50px;margin-right: 10px;}
+            cms-pagination .a-page-info-block .cmsInput {height: 26px;text-align: center;border-radius: 3px;border: 1px solid #d0d0d0;width: 50px;margin-right: 10px;}
             cms-pagination .a-page-info-block select {height: 30px;border-radius: 3px;border: 1px solid #d0d0d0;width: 50px;margin-right: 10px;}
             cms-pagination .a-page-info-block .cmsButton {color: #555555;cursor: pointer;height: 30px;border-radius: 3px;background-color: #fff;border: 1px solid #d0d0d0;padding-left: 10px;padding-right: 10px;margin-right: 10px;}
             cms-pagination .a-page-info-block .cmsButton:hover {color: #555555;background-color: #f4f4f4;}
             cms-pagination .a-page-info-block .select {background-color: #407BFF;color: #fff;border: 1px solid #407BFF;}
             cms-pagination .a-page-info-block .select:hover {background-color: #407BFF;color: #fff;border: 1px solid #407BFF;opacity: 0.75;}
-            cms-pagination .a-page-info-block i {color: #999999;margin-left: -5px;margin-right: 5px;}
+            cms-pagination .a-page-info-block i {color: #999999;margin-right: 5px;}
             cms-pagination .a-page-info-block label {margin-right: 10px;font-size: 14px;line-height: 30px;color: #666666;}
             cms-pagination .a-page-info-block .a-page-button-block {display: flex;}
-            cms-pagination .a-page-info-block .a-set-block {display: flex;}`
+            cms-pagination .a-page-info-block .a-set-block {display: flex;}
+            cms-slider {overflow: hidden;position: relative;}
+            cms-slider:hover .sliderButton{opacity: 1;}
+            cms-slider:hover .sliderBottomSelectButton{opacity: 1;}
+            cms-slider .sliderPrevButton {  --svgFontSize:25px;position: absolute;left: 2.5%;top: 50%;}
+            cms-slider .sliderNextButton {--svgFontSize:25px;right: 2.5%;top: 50%;position: absolute;}
+            cms-slider .sliderButton {z-index: 2;border-radius: 3px;cursor: pointer;position: relative;width: 100%;height: 100%;opacity: 0.2;transition: 0.2s opacity;background-color: rgba(0, 0, 0, 0.25);transform: translate(0%, -50%);}
+            cms-slider .sliderButton svg{width:var(--svgFontSize);height:var(--svgFontSize);}
+            cms-slider .sliderButton:hover {opacity: 0.75;}
+            cms-slider .sliderButtonIcon {position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);}
+            cms-slider .sliderBottomSelectButtonBlock {z-index: 2;padding-left: 10px;padding-right: 10px;display: flex;position: absolute;background-color: rgba(0, 0, 0, 0.25);left: 50%;bottom: 5%;border-radius: 10px;transform: translateX(-50%);}
+            cms-slider .sliderBottomSelectButtonBlock:hover .sliderBottomSelectButton {width: 20px;height: 20px;margin-left: 7px;margin-right: 7px;}
+            cms-slider .sliderBottomSelectButton {opacity: 0.2;transition: 0.2s opacity;transition: 0.2s width, 0.2s height, 0.2s margin-left, 0.2s margin-right;cursor: pointer;margin-top: 3px;margin-bottom: 3px;margin-left: 5px;margin-right: 5px;background-color: #fff;width: 15px;height: 15px;border-radius: 10px;}
+            cms-slider .sliderBottomSelectButton:hover {box-shadow: 0 0 5px #ffffff;}
+            cms-slider .sliderImgMainBlock {z-index: 0;width: 100%;height: 100%;position: relative;left: 0;top: 0;}
+            cms-slider .sliderImgBlock {position: relative;overflow: hidden;width: 100%;height: 100%;}
+            cms-slider .sliderImgBlock .img {position: absolute;z-index: 1;padding: 0;margin: 0;left: 50%;top: 50%;transform: translate(-50%, -50%);}
+            cms-slider .sliderImgBlockBg {filter: blur(20px);z-index: 0;width: 150%;position: absolute;left: 50%;top: 50%;transform: translate(-50%, -50%);}
+            cms-slider .coverBlock {transition: 0.3s left;position: absolute;width: 100%;height: 100%;}
+            cms-slider .imgSelect {box-shadow: 0 0 5px rgb(200, 200, 200);background-color: rgb(134, 134, 134) !important;animation: sliderAnimationImgSelected 0.25s ease forwards;width: 13px;height: 13px;border: 1px solid rgb(160, 160, 160);}
+            @keyframes sliderAnimationImgSelected {0% {margin-top: 0;margin-bottom: 0;}50% {margin-top: -3px;margin-bottom: 3px;}100% {margin-top: 0;margin-bottom: 0;}}
+            slider-prev{display:block;}
+            slider-next{display:block;}
+            slider-bar{display:block;}
+            slider-bar-button{display:block;}`
         document.head.appendChild(style)
     }
 
@@ -121,7 +145,7 @@
      * 3. 格式化数据
      */
     function loadDataFromServer() {
-        fetch(BaseCmsURL + '/data/listIndex.json')
+        fetch(BaseCmsURL + '/data/list.json')
             .then(res => res.json())
             .then(json => {
                 json.forEach(item => {
@@ -147,10 +171,14 @@
             // 构建列表索引映射
             listIndexMap[list.id] = list
             // 递归处理子列表
-            list.children.forEach(item => format(item))
+            list.children.forEach(item => {
+                format(item)
+                item.parent = list
+            })
             // 处理节点数据
             if (list.nodes)
                 list.nodes.forEach(item => {
+                    item["parent"] = list
                     NodeIndexMap[item.id] = item
                 })
         }
@@ -340,7 +368,6 @@
     class CmsList extends BaseCmsElement {
         constructor() {
             super()
-            this.data = null
         }
 
         /**
@@ -358,17 +385,25 @@
          */
         render() {
             // 处理 LIST-NAME 元素
-            findScopedElements(this, "LIST-NAME", ["CMS-LIST", "LIST-LIST"]).forEach(child => {
+            findScopedElements(this, "LIST-NAME", ["CMS-LIST", "LIST-LIST", "LIST-PARENT"]).forEach(child => {
+                child.data = this.data
+            })
+
+            findScopedElements(this, "LIST-COVER", ["CMS-LIST", "LIST-LIST", "LIST-PARENT"]).forEach(child => {
+                child.data = this.data
+            })
+
+            findScopedElements(this, "LIST-TEMPLATE", ["CMS-LIST", "LIST-LIST", "LIST-PARENT"]).forEach(child => {
                 child.data = this.data
             })
 
             // 处理 LIST-INFO 元素
-            findScopedElements(this, "LIST-INFO", ["CMS-LIST", "LIST-LIST"]).forEach(child => {
+            findScopedElements(this, "LIST-INFO", ["CMS-LIST", "LIST-LIST", "LIST-PARENT"]).forEach(child => {
                 child.data = this.data
             })
 
             // 处理 LIST-LIST 元素
-            findScopedElements(this, "LIST-LIST", ["CMS-LIST", "LIST-LIST"]).forEach(child => {
+            findScopedElements(this, "LIST-LIST", ["CMS-LIST", "LIST-LIST", "LIST-PARENT"]).forEach(child => {
                 if (this.data.children == null) return
                 // 克隆元素并设置数据
                 this.data.children.forEach(item => {
@@ -381,7 +416,7 @@
             })
 
             // 处理 LIST-NODE 元素
-            findScopedElements(this, "LIST-NODE", ["CMS-LIST", "LIST-LIST", "LIST-NODE"]).forEach(child => {
+            findScopedElements(this, "LIST-NODE", ["CMS-LIST", "LIST-LIST", "LIST-NODE", "LIST-PARENT"]).forEach(child => {
                 if (this.data.nodes == null) return
                 const nodeElement = []
                 const targetParentNode = child.parentNode
@@ -394,18 +429,22 @@
                     cloneElement.sisterNodes = nodeElement
                     cloneElement.targetParentNode = targetParentNode
                 })
-
+                let limit = nodeElement.length
+                if (child.getAttribute("limit") != null)
+                    limit = parseInt(child.getAttribute("limit"))
                 // 处理 limit 属性，限制显示数量
-                if (child.getAttribute("limit") != null) {
-                    const limit = parseInt(child.getAttribute("limit"))
-                    nodeElement.forEach((item, index) => {
-                        if (index < limit) {
-                            item.targetParentNode.appendChild(item)
-                        }
-                    })
-                }
+
+                nodeElement.forEach((item, index) => {
+                    if (index < limit) {
+                        item.targetParentNode.appendChild(item)
+                    }
+                })
                 // 移除原始元素
                 child.parentNode.removeChild(child)
+            })
+            // 处理 LIST-PARENT 元素
+            findScopedElements(this, "LIST-PARENT", ["CMS-LIST", "LIST-LIST", "LIST-PARENT"]).forEach(child => {
+                child.data = this.data.parent
             })
         }
     }
@@ -534,12 +573,12 @@
             let jumpButton = null
             let prevButton = null
             let nextButton = null
-            
+
             // 查找自定义输入框
             Array.from(this.getElementsByTagName("INPUT")).forEach(item => {
                 customInput = item
             })
-            
+
             // 查找自定义按钮
             Array.from(this.getElementsByTagName("BUTTON")).forEach(item => {
                 if (item.getAttribute("type") == "jump") {
@@ -648,11 +687,11 @@
                 this.refs.pageBlock.appendChild(button)
 
                 // 添加省略号
-                if (pageList[index + 1] != null && pageList[index + 1] - page > 1) {
-                    let i = dc("i", "icon-more-fill")
-                    this.refs.pageBlock.appendChild(i)
-                    i.textContent = "..."
-                }
+                // if (pageList[index + 1] != null && pageList[index + 1] - page > 1) {
+                // let i = dc("i", "icon-more-fill")
+                // this.refs.pageBlock.appendChild(i)
+                // i.textContent = "..."
+                // }
 
                 // 添加点击事件
                 button.onclick = () => {
@@ -775,11 +814,7 @@
      * 列表列表元素类
      * CmsList 的子类
      */
-    class ListList extends CmsList {
-        constructor() {
-            super()
-        }
-    }
+    class ListList extends CmsList { constructor() { super() } }
 
     /**
      * 列表名称元素类
@@ -845,30 +880,38 @@
         render() {
             if (this.data == null) return
             // 处理 NODE-TITLE 元素
-            findScopedElements(this, "NODE-TITLE", ["CMS-NODE"]).forEach(child => {
+            findScopedElements(this, "NODE-TITLE", ["CMS-NODE", "NODE-PARENT"]).forEach(child => {
                 child.data = this.data
             })
             // 处理 NODE-INFO 元素
-            findScopedElements(this, "NODE-INFO", ["CMS-NODE"]).forEach(child => {
+            findScopedElements(this, "NODE-INFO", ["CMS-NODE", "NODE-PARENT"]).forEach(child => {
                 child.data = this.data
             })
             // 处理 NODE-DATE 元素
-            findScopedElements(this, "NODE-DATE", ["CMS-NODE"]).forEach(child => {
+            findScopedElements(this, "NODE-DATE", ["CMS-NODE", "NODE-PARENT"]).forEach(child => {
                 child.data = this.data
+            })
+            // 处理 NODE-TEMPLATE 元素
+            findScopedElements(this, "NODE-TEMPLATE", ["CMS-NODE", "NODE-PARENT"]).forEach(child => {
+                child.data = this.data
+            })
+            // 处理 NODE-COVER 元素
+            findScopedElements(this, "NODE-COVER", ["CMS-NODE", "NODE-PARENT"]).forEach(child => {
+                child.data = this.data
+            })
+            // 处理 NODE-PARENT 元素
+            findScopedElements(this, "NODE-PARENT", ["CMS-NODE", "NODE-PARENT"]).forEach(child => {
+                child.data = this.data.parent
             })
         }
     }
-    
+
     /**
      * 列表节点元素类
      * CmsNode 的子类
      */
-    class ListNode extends CmsNode {
-        constructor() {
-            super()
-        }
-    }
-    
+    class ListNode extends CmsNode { constructor() { super() } }
+
     /**
      * 节点日期元素类
      * 用于显示节点日期
@@ -891,7 +934,7 @@
             // 格式化日期并显示
             this.textContent = this.formatDate(this.data.date, format)
         }
-        
+
         /**
          * 时间格式化函数
          * @param {string|number} date 日期字符串或时间戳
@@ -960,7 +1003,9 @@
         }
     }
 
+    class NodeParent extends CmsList { constructor() { super() } connectedCallback() { } }
 
+    class ListParent extends CmsList { constructor() { super() } connectedCallback() { } }
     /**
      * 查找作用域内的元素
      * @param {Element} rootEl 根元素
@@ -1010,20 +1055,420 @@
         return results
     }
 
+    //list-封面，可以直接当作img使用
+    class ListCover extends BaseCmsElement {
+        constructor() {
+            super()
+        }
+        render() {
+            const img = document.createElement("img")
+            this.classList.forEach(item => {
+                img.classList.add(item)
+            })
+            img.style = this.getAttribute("style")
+            this.parentNode.insertBefore(img, this)
+            this.parentNode.removeChild(this)
+            img.src = this.data.cover
+        }
+    }
+
+    class NodeCover extends ListCover { constructor() { super() } }
+
+    //list-模板
+    class ListTemplate extends BaseCmsElement {
+        constructor() {
+            super()
+        }
+        render() {
+            this.addEventListener("click", this.click.bind(this))
+        }
+        click(e) {
+            window.location.href = `${BaseCmsURL}/${this.data.template}?dataId=${this.data.id}`
+        }
+    }
+
+    //list-模板
+    class NodeTemplate extends ListTemplate {
+        constructor() {
+            super()
+        }
+
+        click(e) {
+            window.location.href = `${BaseCmsURL}/${this.data.parent.nodeTemplate}?dataId=${this.data.id}`
+        }
+    }
+
+    // 轮播图组件
+    class CmsSlider extends BaseCmsElement {
+        constructor() {
+            super()
+            this.style.display = "block"
+            this.dataId
+            this.data
+            this.indexTem = 0
+            this.nodeCover = []
+            this.page
+            this.limit
+            this.autoIndex = 0
+        }
+
+        //初始化，启动函数
+        connectedCallback() {
+            if (this.getAttribute("page") == null || this.getAttribute("page") == "") {
+                this.page = null
+            } else {
+                this.page = this.getAttribute("page") * 1
+            }
+            if (this.getAttribute("limit") == null || this.getAttribute("limit") == "") {
+                this.limit = null
+            } else {
+                this.limit = this.getAttribute("limit") * 1
+            }
+            this.dataId = this.getAttribute("data")
+            if (this.dataId == null) return console.error("cms slider does not have a datId")
+            this.loadBaseBlock()
+            this.loadNodeList()
+
+        }
+
+        autoSlide(index) {
+            index++
+            if (this.getAttribute("auto") != null && this.getAttribute("auto") != "") {
+                setTimeout(() => {
+                    if (index == this.autoIndex + 1) {
+                        this.autoIndex = index
+                        this.index++
+                        this.autoSlide(index)
+                    }
+                }, this.getAttribute("auto"));
+            }
+        }
+
+        resetAuto() {
+            if (this.getAttribute("auto") != null && this.getAttribute("auto") != "") {
+                this.autoIndex++
+                this.autoSlide(this.autoIndex)
+            }
+        }
+
+        // 加载列表节点中的所有子节点
+        loadNodeList() {
+            this.data = listIndexMap[this.dataId]
+            this.loadNode(0)
+        }
+
+        render() { }
+
+        //加载子节点并且将节点中的cover添加至nodeCover
+        loadNode(index) {
+            if (index === this.data.nodes.length) {
+                this.loadCovers(0)
+                this.index = 0
+                return
+            }
+            if (this.limit != null && this.page != null) {
+                //如果index小于开始页码或者大于结束页码，则加载下一页
+                if (index < (this.page - 1) * this.limit || index >= this.page * this.limit) {
+                    index++
+                    this.loadNode(index)
+                    return
+                }
+            }
+            this.nodeCover.push(this.data.nodes[index])
+            index++
+            this.loadNode(index)
+        }
+
+        // 为每个cover创建相应的元素，并且替换原来的nodeCover
+        loadCovers(index) {
+            if (index == this.nodeCover.length) {
+                this.fixPositionImgs()
+                window.addEventListener("resize", () => {
+                    this.fixPositionImgs()
+                })
+                this.autoSlide(0)
+                return
+            }
+
+            let item = this.nodeCover[index].cover
+            let img = document.createElement("img")
+            let imgBg = document.createElement("img")
+            let coverBlock = document.createElement("div")
+            coverBlock.classList.add("coverBlock")
+            let imgBlock = document.createElement("div")
+            imgBlock.classList.add("sliderImgBlock")
+            imgBlock.appendChild(img)
+            imgBlock.appendChild(imgBg)
+            let url = item.substring(0, 4) == "http" ? item : BaseCmsURL + item
+            if (this.getAttribute("quality")) {
+                url = url.replace("imgQuality_1", "imgQuality_" + this.getAttribute("quality"))
+            }
+            img.src = url
+            imgBg.src = url
+            img.classList.add("img")
+            imgBg.classList.add("sliderImgBlockBg")
+            coverBlock.appendChild(imgBlock)
+            coverBlock.link = this.nodeCover[index].link
+            this.nodeCover[index] = coverBlock
+            this.appendImg(coverBlock, img, index)
+            index++
+            this.loadCovers(index)
+            img.onclick = () => {
+                if (coverBlock.link) {
+                    toPage(coverBlock.link)
+                }
+            }
+        }
+
+        set height(value) {
+            this.setAttribute("height", value)
+            this.style.height = value
+        }
+
+        set width(value) {
+            this.setAttribute("width", value)
+            this.style.width = value
+        }
+
+        get height() {
+            return this.clientHeight
+        }
+
+        get width() {
+            return this.clientWidth
+        }
+
+        // 加载轮播图的基础框架
+        loadBaseBlock() {
+            if (this.getAttribute("width")) this.style.width = this.getAttribute("width")
+            if (this.getAttribute("height")) this.style.height = this.getAttribute("height")
+            let prev = this.findBindElement(document.body, "SLIDER-PREV")
+
+            if (prev.length === 0) {
+                this.prevButton = dp(`<div class="sliderPrevButton"><div class="sliderButton"><svg t="1720075833515" class="sliderButtonIcon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="26002" ><path d="M461.994667 512l211.2 211.2-60.330667 60.330667L341.333333 512l271.530667-271.530667 60.330667 60.330667z" p-id="26003" fill="#ffffff"></path></svg></div></div>`).element
+                this.prevButton.onclick = () => {
+                    this.index--
+                    this.resetAuto()
+                }
+                this.appendChild(this.prevButton)
+            } else {
+                prev.forEach(item => {
+                    item.onclick = () => {
+                        this.index--
+                        this.resetAuto()
+                    }
+                })
+            }
+
+            let next = this.findBindElement(document.body, "SLIDER-NEXT")
+            if (next.length === 0) {
+                this.nextButton = dp(`<div class="sliderNextButton"><div class="sliderButton"> <svg t="1720076228912" class="sliderButtonIcon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="26190" ><path d="M562.005333 512l-211.2-211.2 60.330667-60.330667L682.666667 512l-271.530667 271.530667-60.330667-60.330667z" p-id="26191" fill="#ffffff"></path></svg></div></div>`).element
+                this.nextButton.onclick = () => {
+                    this.index++
+                    this.resetAuto()
+                }
+                this.appendChild(this.nextButton)
+            } else {
+                next.forEach(item => {
+                    item.onclick = () => {
+                        this.index++
+                        this.resetAuto()
+                    }
+                })
+            }
+
+            let bar = this.findBindElement(document.body, "SLIDER-BAR")
+            for (let a = bar.length - 1; a >= 0; a--) {
+                if (Array.from(bar[a].getElementsByTagName("SLIDER-BAR-BUTTON")).length === 0) {
+                    bar.splice(a, 1)
+                }
+            }
+
+            if (bar.length === 0) {
+                this.selectButtonBlock = [dp(`<div class="sliderBottomSelectButtonBlock"></div>`).element]
+                this.appendChild(this.selectButtonBlock[0])
+            } else {
+                this.selectButtonBlock = bar
+            }
+
+            this.imgBlock = dp(`<div class="sliderImgMainBlock"></div>`).element
+            this.appendChild(this.imgBlock)
+        }
+
+        insertSelectButton(index, block) {
+            const insertDefaultButton = () => {
+                let selectButton = document.createElement("div")
+                selectButton.classList.add("sliderBottomSelectButton")
+                this.selectButtonBlock[0].appendChild(selectButton)
+                block["selectButton"] = selectButton
+                selectButton.onclick = () => {
+                    this.index = index
+                    this.resetAuto()
+                }
+                if (index == this.index) selectButton.classList.add("imgSelect")
+            }
+            this.selectButtonBlock.forEach(item => {
+                if (item.tagName === "SLIDER-BAR") {
+                    let successBarNum = 0
+                    let button
+                    if (item.sliderBarButton) {
+                        button = item.sliderBarButton.cloneNode(true)
+                    } else {
+                        button = Array.from(item.getElementsByTagName("SLIDER-BAR-BUTTON"))[0]
+                        if (button == null) return console.error("slider-bar do not has a slider-bar-button")
+                        item["sliderBarButton"] = button
+                        item.innerHTML = ""
+                        button = button.cloneNode(true)
+                    }
+                    item.appendChild(button)
+                    block["selectButton"] = button
+                    if (item["buttons"]) {
+                        item["buttons"].push(button)
+                    } else {
+                        item["buttons"] = [button]
+                    }
+                    button["index"] = index
+                    button.onclick = () => {
+                        this.index = index
+                        this.resetAuto()
+                    }
+                    Array.from(button.getElementsByTagName("SLIDER-BAR-BUTTON-INDEX")).forEach(indexBtn => {
+                        indexBtn.innerText = index
+                    })
+                    // button.innerText = index + 1
+                    if (index == this.index && button.getAttribute("slider:on")) button.classList.add(button.getAttribute("slider:on"))
+                    successBarNum++
+                    if (successBarNum === 0) {
+                        insertDefaultButton()
+                    }
+                } else {
+                    insertDefaultButton()
+                }
+            })
+        }
+
+        appendImg(block, img, index) {
+            this.imgBlock.appendChild(block)
+            if (img.naturalHeight > img.naturalWidth) {
+                img.style.height = "100%"
+            } else {
+                img.style.width = "100%"
+            }
+            this.insertSelectButton(index, block)
+        }
+
+        //修正图片在空间中的位置
+        fixPositionImgs() {
+            this.nodeCover.forEach((item, index) => {
+                item.style.transition = "0s left"
+                item.style.left = (index - this.index) * this.clientWidth + "px"
+                setTimeout(() => {
+                    if (this.getAttribute("transition")) {
+                        item.style.transition = this.getAttribute("transition") + "s left"
+                    } else {
+                        item.style.transition = item.clientWidth / 1000 + "s left"
+                    }
+                }, 300);
+            })
+            if (this.prevButton) {
+                this.prevButton.style.width = (this.clientWidth / 12 > 40 ? 40 : this.clientWidth / 12 < 20 ? 20 : this
+                    .clientWidth / 12) + "px"
+                this.prevButton.style.height = (this.clientHeight / 4 > 75 ? 75 : this.clientHeight / 4 < 40 ? 40 : this
+                    .clientHeight / 4) + "px"
+                this.prevButton.style.setProperty('--svgFontSize', (this.clientWidth / 13 > 40 ?
+                    40 : this.clientWidth / 13 < 15 ? 15 : this.clientWidth / 13) + "px");
+            }
+            if (this.nextButton) {
+                this.nextButton.style.width = (this.clientWidth / 12 > 40 ? 40 : this.clientWidth / 12 < 20 ? 20 : this
+                    .clientWidth / 12) + "px"
+                this.nextButton.style.height = (this.clientHeight / 4 > 75 ? 75 : this.clientHeight / 4 < 40 ? 40 : this
+                    .clientHeight / 4) + "px"
+                this.nextButton.style.setProperty('--svgFontSize', (this.clientWidth / 13 > 40 ?
+                    40 : this.clientWidth / 13 < 15 ? 15 : this.clientWidth / 13) + "px");
+            }
+        }
+
+        // 当前显示的图片，传入图片在数组中的下标切换图片
+        set index(value) {
+            if (value == -1) value = this.nodeCover.length - 1
+            this.sliderBindEvent(value)
+            if (value == this.nodeCover.length) value = 0
+
+            this.indexTem = value
+            this.nodeCover.forEach((item, index) => {
+                if (index == (value % this.nodeCover.length)) {
+                    item.selectButton.classList.add("imgSelect")
+                } else {
+                    item.selectButton.classList.remove("imgSelect")
+                }
+                item.style.left = (index - value) * this.clientWidth + "px"
+            })
+            this.selectButtonBlock.forEach(item => {
+                if (item.tagName == "SLIDER-BAR") {
+                    item.buttons.forEach(button => {
+                        if (button.getAttribute("slider:on")) {
+                            let onClass = button.getAttribute("slider:on")
+                            button.classList.remove(onClass)
+                            if (value == button.index)
+                                button.classList.add(onClass)
+                        }
+                    })
+                }
+            })
+
+        }
+
+        sliderBindEvent(index) {
+            this.findBindElement(document.body, "CMS-NODE").forEach(item => {
+                item.dataId = this.data.nodes[index % this.nodeCover.length].id
+            })
+        }
+
+        get index() {
+            return this.indexTem
+        }
+
+        findBindElement(dom, tagName, result) {
+            if (result == null)
+                result = []
+            let bindNodeId = this.getAttribute("slider:bind")
+            if (bindNodeId) {
+
+                if (!dom.getAttribute) return result
+                if (dom.getAttribute("slider:bind") === bindNodeId) {
+                    if (dom.tagName && dom.tagName === tagName)
+                        result.push(dom)
+                }
+                Array.from(dom.childNodes).forEach(item => {
+                    this.findBindElement(item, tagName, result)
+                })
+            }
+            return result
+        }
+    }
     /**
      * 初始化组件
      * 定义所有自定义元素
      */
     function initComponents() {
+        customElements.define('node-cover', NodeCover)
+        customElements.define('node-template', NodeTemplate)
+        customElements.define('list-template', ListTemplate)
+        customElements.define('list-cover', ListCover)
         customElements.define('node-title', NodeTitle)
         customElements.define('node-info', NodeInfo)
         customElements.define('node-date', NodeDate)
-        customElements.define('cms-node', CmsNode)
         customElements.define('list-name', ListName)
         customElements.define('list-info', ListInfo)
         customElements.define('list-list', ListList)
         customElements.define('list-node', ListNode)
+
+        customElements.define('node-parent', NodeParent)
+        customElements.define('list-parent', ListParent)
+        customElements.define('cms-node', CmsNode)
         customElements.define('cms-list', CmsList)
         customElements.define('cms-pagination', CmsPagination)
+
+        customElements.define("cms-slider", CmsSlider)
     }
 })()

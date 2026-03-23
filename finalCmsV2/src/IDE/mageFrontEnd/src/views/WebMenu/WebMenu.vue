@@ -1,12 +1,16 @@
 <template>
     <div class="BaseTopTitle" v-bind:class="{ leftIn: showWebMenu }">
-        Web
-        <span style="line-height: 50px;margin-left: -10px;margin-right: -10px;">|</span>
-        全部站点
+        Web <span style="line-height: 50px;margin-left: -10px;margin-right: -10px;">|</span>全部站点
+        <div class="consoleBlock" @click="enterConsole">
+            <i class="icon-code-box-fill"></i>
+            <div style="width: 80px;word-break: keep-all;">进入控制台</div>
+            <i class="icon-arrow-right-line"></i>
+        </div>
     </div>
     <div class="cardList" ref="cardListRef" @wheel.prevent="handleWheel">
-        <div style=" width: calc(50vw - 200px);height: 400px;flex-shrink: 0;" class="number">共{{dataStore.website.length}}个站点</div>
-        <template v-for="web in dataStore.website" :key="item">
+        <div style=" width: calc(50vw - 200px);height: 400px;flex-shrink: 0;" class="number">
+            共{{ systemStore.userFunctionData.website?.length }}个站点</div>
+        <template v-for="web in systemStore.userFunctionData.website" :key="item">
             <WebCard @toindex="toIndex" :data="web" />
         </template>
         <div style=" width: calc(50vw - 200px);height: 400px;flex-shrink: 0;"></div>
@@ -22,20 +26,35 @@
         </div>
     </div>
     <Menu @logout="menuLogoutHandel" v-model="showIndex"></Menu>
+    <Index v-model="showConsole"></Index>
 </template>
 <script setup>
-
 import { onMounted, onUnmounted, ref, watch } from 'vue'
-import { useDataStore } from '@/store'
+import { useSystemStore } from '@/store/systemStore'
 import WebCard from '@/components/element/WebCard.vue'
 import Menu from '@/views/Index/Menu.vue'
-const dataStore = useDataStore()
+import Index from '../Console/Index.vue'
+const systemStore = useSystemStore()
 const showIndex = ref(false)
 const showWebMenu = ref(false)
 const cardListRef = ref(null)
 const emit = defineEmits(['logout'])
 const props = defineProps({ modelValue: Boolean })
 const showLogoutTip = ref(false)
+const showConsole = ref(false)
+
+onMounted(() => {
+    showConsole.value = localStorage.getItem("showConsole") === "true"
+})
+
+
+function enterConsole() {
+    showConsole.value = true
+    localStorage.setItem("showConsole", "true")
+}
+
+
+
 watch(
     () => props.modelValue,
     (val) => {
@@ -47,13 +66,13 @@ watch(
     },
     { immediate: true } // 👈 初始化时也同步一次状态
 )
+
 function menuLogoutHandel() {
     show()
 }
+
 function toIndex() {
     close()
-    console.log(dataStore.targetSite);
-    
     setTimeout(() => {
         showIndex.value = true
     }, 200);
@@ -151,6 +170,33 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+.consoleBlock {
+    transition: all 0.25s;
+    cursor: pointer;
+    position: absolute;
+    font-size: 20px;
+    color: #000000;
+    cursor: pointer;
+    right: -200px;
+    width: 180px;
+    font-size: 15px;
+    line-height: 57px;
+    height: 57px;
+    background-color: #fff;
+    border-radius: 30px;
+    display: flex;
+}
+
+.consoleBlock:hover {
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.75);
+}
+
+.consoleBlock i {
+    line-height: 60px;
+    width: 30px;
+    font-size: 25px;
+}
+
 .logoutTip {
     background-color: rgba(255, 255, 255, 0.15);
     position: absolute;
@@ -266,7 +312,7 @@ onUnmounted(() => {
     line-height: 55px;
     width: 300px;
     text-indent: 25px;
-    left: -330px;
+    left: -530px;
     /* left: calc((100vh - 800px) / 2 * (100vw / 100vh)); */
     top: calc((100vh - 800px) / 2);
     backdrop-filter: blur(15px);

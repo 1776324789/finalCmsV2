@@ -36,7 +36,7 @@
 </template>
 <script setup>
 // 这里引入我们导出的 useStore；
-import { useStore } from '@/store/index'
+import { useStore } from '@/store/systemStore'
 // 值得注意的是 useStore 是一个方法，调用之后会给我们返回一个对象。
 //  这个时候，你就会发现，页面上就能正常显示我们在index.js 里面的 state 里面定义的 count 数据。
 

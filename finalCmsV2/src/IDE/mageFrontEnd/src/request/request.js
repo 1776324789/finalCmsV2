@@ -1,7 +1,7 @@
 import axios from 'axios'
 let baseURL
 if (window.location.href.indexOf('localhost') !== -1) {
-    baseURL = 'http://localhost:5174'
+    baseURL = 'http://localhost:17514'
 } else {
     baseURL = "https://reservation.jxuspt.com/reservation-server/"
 }
