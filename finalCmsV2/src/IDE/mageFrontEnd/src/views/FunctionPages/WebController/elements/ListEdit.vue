@@ -1,64 +1,67 @@
 <template>
-    <div style="padding-top: 20px;padding-right: 30px;">
+    <div style="padding-top: 20px;padding-right: 30px;" v-if="value">
         <div class="lineBlock">
             <div class="line">
-                <div class="tip">请输入内容</div>
+                <div class="tip" v-if="value.name?.length == 0">请输入内容</div>
                 <div class="label require">栏目名称</div>
-                <input type="text" placeholder="请输入内容" v-model="editData.name">
+                <CmsInput style="width:250px;" type="text" placeholder="请输入内容" v-model="value.name"></CmsInput>
             </div>
             <div class="line">
-                <div class="tip">请输入内容</div>
-                <div class="label require">英文名称</div>
-                <input type="text" placeholder="请输入内容" v-model="editData.enName">
+                <div class="label ">英文名称</div>
+                <CmsInput style="width:250px;" type="text" placeholder="请输入内容" v-model="value.enName"></CmsInput>
             </div>
         </div>
         <div class="lineBlock">
             <div class="line">
-                <div class="label">序列号</div>
-                <input type="text" placeholder="请输入内容" disabled="true" v-model="editData.id">
+                <div class="label">key</div>
+                <CmsInput style="width:250px;" type="text" placeholder="请输入内容" disabled="true" v-model="value.id">
+                </CmsInput>
             </div>
             <div class="line">
                 <div class="label">序号</div>
-                <input type="number" placeholder="请输入内容" v-model="editData.index" step="5">
+                <CmsInput style="width:250px;" type="number" placeholder="请输入内容" v-model="value.index" step="5">
+                </CmsInput>
             </div>
         </div>
 
         <div class="lineBlock">
             <div class="line">
-                <div class="tip">列表页面路径</div>
                 <div class="label">列表路径</div>
-                <input type="text" placeholder="请输入内容" v-model="editData.template">
+                <CmsInput style="width:250px;" type="text" placeholder="请输入内容" v-model="value.template"></CmsInput>
             </div>
             <div class="line">
-                <div class="tip">请输入内容</div>
                 <div class="label">内容路径</div>
-                <input type="text" placeholder="请输入内容" v-model="editData.nodeTemplate">
+                <CmsInput style="width:250px;" type="text" placeholder="请输入内容" v-model="value.nodeTemplate">
+                </CmsInput>
             </div>
         </div>
         <div class="line">
             <div class="label">描述</div>
-            <textarea ref="textareaRef" placeholder="请输入内容" style="width: 610px;" v-model="editData.info"
-                @input="autoResize"></textarea>
+            <CmsTextarea autosize="true" showCount="true" placeholder="请输入内容" style="width: 610px;"
+                v-model="value.info">
+            </CmsTextarea>
         </div>
         <div class="line">
             <div class="label">封面图</div>
             <ImageUpload></ImageUpload>
         </div>
-        <div class="line" style="flex-direction: column;">
+        <!-- <div class="line" style="flex-direction: column;">
             <div class="label">动态变量</div>
             <DynamicPropEdit></DynamicPropEdit>
-        </div>
+        </div> -->
     </div>
-    <!-- {{ editData }} -->
 </template>
 
 <script setup>
-import ImageUpload from '@/components/element/ImageUpload.vue';
+
 import { ref, watch, nextTick } from 'vue'
 import DynamicPropEdit from './DynamicPropEdit.vue';
-const textareaRef = ref(null)
-const editData = ref({})
+import CmsTextarea from '@/components/baseElements/CmsTextarea.vue';
+const value = ref({})
 
+defineExpose({
+    value
+})
 const props = defineProps({
     data: Object
 })
@@ -66,21 +69,16 @@ const props = defineProps({
 watch(
     () => props.data,
     async (val) => {
-        if (val == null) val = {}
-        editData.value = val
+        console.log(val);
+
+        if (val == null) value.value = {}
+        value.value = JSON.parse(JSON.stringify(val))
         await nextTick()
-        autoResize()
     },
     { immediate: true }
 )
 
-/** 自动调整高度 */
-function autoResize() {
-    const el = textareaRef.value
-    if (!el) return
-    el.style.height = 'auto'
-    el.style.height = el.scrollHeight + 'px'
-}
+
 </script>
 
 <style scoped>
@@ -137,34 +135,12 @@ textarea::placeholder {
     text-align: right;
     width: 75px;
     color: #666;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 350;
 }
 
 .label::after {
     content: ":";
     margin-right: -5px;
-}
-
-input {
-    min-width: 250px;
-    border: 1px solid #757575;
-    background-color: rgba(235, 235, 235, 0.75);
-    height: 30px;
-    border-radius: 10px;
-    outline: none;
-    text-indent: 10px;
-    color: #666;
-}
-
-input:disabled {
-    border: 1px solid #c2c2c2;
-    background-color: rgba(196, 196, 196, 0.75);
-    cursor: not-allowed;
-    color: #999;
-}
-
-input::placeholder {
-    color: #aaa;
 }
 </style>

@@ -1,10 +1,9 @@
 <template>
     <div class="contentBlock" v-bind:class="{ show: show }">
         <div class="leftMenuBlock">
-            <div @click="exit" class="exitButton">退出控制台</div>
+            <CmsButton @click="exit">退出控制台</CmsButton>
             <div class="title">FinalCMS Console</div>
             <SystemLeftMenu></SystemLeftMenu>
-
         </div>
 
         <RouterView v-slot="{ Component }">
@@ -36,6 +35,7 @@ function exit() {
 </script>
 <style scoped>
 .title {
+    margin-top: 15px;
     font-size: 20px;
     font-weight: 300;
     margin-bottom: 15px;

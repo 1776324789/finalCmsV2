@@ -22,10 +22,14 @@ onMounted(() => {
 })
 
 async function init() {
-  await systemStore.init()
-
-  if (systemStore.userData == null) showLogin.value = true
-  else showWebMenu.value = true
+  let res = await systemStore.init()
+  if (!res) {
+    showLogin.value = true
+    background.value.style.filter = "blur(0px)"
+  } else {
+    showWebMenu.value = true
+    background.value.style.filter = "blur(70px)"
+  }
 }
 
 function logoutHandel() {
@@ -35,7 +39,7 @@ function logoutHandel() {
 }
 
 function loginHandel() {
-  background.value.style.filter = "blur(30px)"
+  background.value.style.filter = "blur(70px)"
   showLogin.value = false
   showWebMenu.value = true
 }

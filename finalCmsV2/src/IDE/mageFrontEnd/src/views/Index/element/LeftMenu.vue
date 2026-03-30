@@ -6,11 +6,12 @@
                 <div class="menuButton" v-bind:class="{
                     'parentButton': item.children != null,
                     'parentSelected': (item.children != null && item.children.filter(children => children.target == target).length == 1),
-                    'selected': item.target == target
+                    'selected': '/' + item.target == router.currentRoute.value.path
                 }" @click="handelMenuClick(item)">
                     <span :class="item.icon"></span>
                     <div class="name">
-                        {{ item.name }}</div>
+                        {{ item.name }}
+                    </div>
                 </div>
                 <div class="childrenMenuBlock" v-bind:class="{ 'childrenMenuBlockOpen': item.open }"
                     :style="'height:' + (item.open ? (item.children.length * 70 + (item.children.length - 1) * 10) + 'px;' : 0 + 'px;')"
@@ -18,7 +19,7 @@
                     <template v-for="children in item.children">
                         <div v-bind:class="{
                             'selected': children.target == target
-                        }" class="menuButton" @click=" handelMenuClick(children)">
+                        }" class="menuButton" @click="handelMenuClick(children)">
                             <span :class="children.icon"></span>
                             <div class="name">{{ children.name }}</div>
                         </div>
@@ -33,8 +34,10 @@
 </template>
 
 <script setup>
-import { watch, ref } from 'vue'
+import { watch, ref, onMounted } from 'vue'
 import { useSystemStore } from '@/store/systemStore';
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const systemStore = useSystemStore()
 const props = defineProps({ modelValue: Boolean })
 const show = ref(true)
@@ -49,11 +52,17 @@ watch(
 )
 
 function logoutHandel() {
+    router.push('/')
     emit('update:modelValue', false)
     emit('logout')
 }
 
-
+onMounted(() => {
+    systemStore.addEvent('setTargetSite', (target) => {
+        if (target.menu[0]?.target)
+            emit('change', target.menu[0]?.target)
+    })
+})
 
 function handelMenuClick(menu) {
     if (menu.children != null) {
@@ -65,6 +74,7 @@ function handelMenuClick(menu) {
         return
     }
     target.value = menu.target
+    localStorage.setItem(systemStore.targetSite.id + "_path", menu.target)
     emit('change', menu.target)
 }
 </script>
@@ -201,17 +211,18 @@ function handelMenuClick(menu) {
     overflow: hidden;
     height: 40px;
     transition: all 0.25s;
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: rgba(104, 104, 104, 0.693);
     left: 80px;
     top: 15px;
     width: 0;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     word-break: keep-all;
     line-height: 40px;
     font-size: 13px;
     border-radius: 20px;
     color: #fff;
     position: absolute;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(15px);
 }
 
 .menuButton {

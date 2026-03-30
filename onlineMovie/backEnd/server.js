@@ -37,10 +37,8 @@ const movieList = [{
 
 const wsFunctionMap = {
   login: (user, ws) => {
-
     if (user == null) return
     if (loginUserWsData.get(user) != null) {
-      console.log("同个账户在其他设备登录:" + user);
       loginUserWsData.get(user).send(JSON.stringify({ type: "logout", data: "同个账户在其他设备登录" }))
     }
     loginUserWsData.set(user, ws)
@@ -51,7 +49,6 @@ const wsFunctionMap = {
 }
 
 wss.on("connection", (ws) => {
-
   const defaultSystemInfoSync = setInterval(() => {
     const userList = []
     loginUserWsData.forEach((value, key) => {

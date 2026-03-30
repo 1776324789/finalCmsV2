@@ -84,15 +84,10 @@ onMounted(() => {
 watch(
   () => props.modelValue,
   (val) => {
-    console.log(val);
     if (val) {
       showLogin.value = true
-      // installLogin.value = true
     } else {
       showLogin.value = false
-      // setTimeout(() => {
-      //   installLogin.value = false
-      // }, 300);
     }
   },
   { immediate: true } // 👈 初始化时也同步一次状态
@@ -119,11 +114,12 @@ async function login() {
   let res = await loginApi(form.value)
   if (res.code == 200) {
     window.sessionStorage.setItem('token', res.token)
-    emit("login")
     await systemStore.init()
+    emit("login")
   } else {
     if (res.code == 401)
       loadVerifyCode()
+    form.value.verifyCode = ""
     tip(res.message)
   }
 }

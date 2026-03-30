@@ -31,9 +31,11 @@
 <script setup>
 import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { useSystemStore } from '@/store/systemStore'
-import WebCard from '@/components/element/WebCard.vue'
+import WebCard from './WebCard.vue'
 import Menu from '@/views/Index/Menu.vue'
 import Index from '../Console/Index.vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 const systemStore = useSystemStore()
 const showIndex = ref(false)
 const showWebMenu = ref(false)
@@ -43,9 +45,6 @@ const props = defineProps({ modelValue: Boolean })
 const showLogoutTip = ref(false)
 const showConsole = ref(false)
 
-onMounted(() => {
-    showConsole.value = localStorage.getItem("showConsole") === "true"
-})
 
 
 function enterConsole() {
@@ -53,13 +52,32 @@ function enterConsole() {
     localStorage.setItem("showConsole", "true")
 }
 
+function init() {
+    showConsole.value = localStorage.getItem("showConsole") === "true"
+    if (localStorage.getItem("targetSite") != null) {
+        console.log( systemStore);
+        
+        systemStore.targetSite = systemStore.userFunctionData.website.find(item => item.id === localStorage.getItem("targetSite"))
+        close()
+        setTimeout(() => {
+            showIndex.value = true
+        }, 200);
+    }
+    window.addEventListener('popstate', function (event) {
+        showIndex.value = false
+        // 事件处理代码
+        menuLogoutHandel()
+    });
 
+}
 
 watch(
     () => props.modelValue,
     (val) => {
         if (val) {
             show()
+            init()
+
         } else {
             close()
         }
@@ -68,10 +86,19 @@ watch(
 )
 
 function menuLogoutHandel() {
+    localStorage.removeItem("targetSite")
     show()
 }
 
-function toIndex() {
+function toIndex(targetSite) {
+    if (systemStore.targetSite != targetSite) {
+        systemStore.targetSite = targetSite
+        systemStore.dispatch('setTargetSite', targetSite)
+    } else {
+        if (localStorage.getItem(systemStore.targetSite.id + "_path") != null)
+            router.push(localStorage.getItem(systemStore.targetSite.id + "_path"))
+    }
+    localStorage.setItem("targetSite", targetSite.id)
     close()
     setTimeout(() => {
         showIndex.value = true
@@ -79,6 +106,8 @@ function toIndex() {
 }
 
 function logoutHandel() {
+
+    router.push("/")
     showLogoutTip.value = false
     window.sessionStorage.removeItem("token")
     emit('logout')

@@ -4,7 +4,7 @@
         <div class="index blockLine">序号</div>
         <div class="index blockLine">子列表</div>
         <div class="index blockLine">内容</div>
-        <div class="index blockLine" style="width: 125px;">序列号</div>
+        <div class="index blockLine" style="width: 125px;">key</div>
         <div class="index blockLine" style="flex:1;text-align: left;text-indent: 25px;">列表页面路径</div>
         <div class="index blockLine" style="flex:1;text-align: left;text-indent: 25px;">内容页面路径 </div>
         <div class="index" style="width: 155px;">操作 </div>

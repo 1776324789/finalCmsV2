@@ -1,77 +1,91 @@
 <template>
     <div class="mainContent">
         <div style="margin-bottom: 25px;font-weight: 350;font-size: 18px;display: flex;">
-            站点内容\WebContent
-            <div class="searchBlock" style="display: none;">
-                搜索名称<input @input="searchInputHandel" v-model="search" placeholder="请输入栏目名称" type="text">
+            <div style="flex:1;">
+                站点内容\WebContent
             </div>
+            <CmsButton @click="createList">创建栏目</CmsButton>
         </div>
         <ListTitle>栏目名称</ListTitle>
         <div class="contentBlock scroll">
             <template v-if="render">
-                <List :ref="el => listRefs[index] = el" :search="search" @edit="editHandel" v-for="item, index in data"
-                    :data="item" :key="item"></List>
+                <List @edit="editHandel" v-for="item in data" :data="item" :key="item.id"></List>
             </template>
         </div>
     </div>
     <Dialog :title="editTarget?.name" v-model="showEdit">
-        <ListEdit :data="editTarget"></ListEdit>
+        <ListEdit :data="editTarget" ref="listEdit"></ListEdit>
+        <template #footer>
+            <div style="display: flex;">
+                <div style="flex:1;"></div>
+                <CmsButton v-if="editTarget?.id == null" style="margin-right: 15px;" @click="createHandel">创建</CmsButton>
+                <CmsButton v-else style="margin-right: 15px;" @click="saveHandel">保存</CmsButton>
+                <CmsButton @click="showEdit = false">取消</CmsButton>
+            </div>
+        </template>
     </Dialog>
 </template>
 <script setup>
-import Dialog from '@/components/element/Dialog.vue';
+import { getWebsiteList } from '@/request/websiteListApi.js'
+import { updateWebsiteList } from '@/request/websiteListApi'
+import Dialog from '@/components/baseElements/Dialog.vue';
 import List from './elements/List.vue';
 import ListTitle from './elements/ListTitle.vue';
-import { nextTick, onMounted, ref } from 'vue';
+import { onActivated, ref } from 'vue';
 import ListEdit from './elements/ListEdit.vue';
-const search = ref("")
+import { useSystemStore } from '@/store/systemStore';
+const listEdit = ref(null)
+const systemStore = useSystemStore()
 const data = ref([])
 const render = ref(true)
 const showEdit = ref(false)
 const editTarget = ref(null)
-const listRefs = ref([])
+
+function createList() {
+    editTarget.value = {}
+    showEdit.value = true
+}
+
+
 function editHandel(e) {
     editTarget.value = e
     showEdit.value = true
 }
 
-function searchInputHandel() {
-    if (search.value.length > 0) {
-        render.value = false
-        nextTick(() => {
-            render.value = true
-            nextTick(() => {
-                listRefs.value.forEach(item => {
-                    item.openAll()
-                })
-            })
-        })
-    } else {
-        listRefs.value.forEach(item => {
-            item.closeAll()
-        })
-    }
-
+async function saveHandel() {
+    await updateWebsiteListData(listEdit.value.value)
+    showEdit.value = false
 }
 
-onMounted(() => {
-    let parents = []
-    let temp = []
-    let tempMap = new Map()
-    webData.forEach(item => {
-        let tempData = JSON.parse(item)
-        tempMap.set(tempData.id, tempData)
-        temp.push(tempData)
-        if (tempData.parentId == null) parents.push(tempData)
+async function getWebsiteListData() {
+    if (systemStore.targetSite?.id == null) return setTimeout(() => {
+        getWebsiteListData()
+    }, 100);
+
+    let res = await getWebsiteList({
+        id: systemStore.targetSite?.id
     })
-    temp.forEach(item => {
-        if (item.parentId != null) {
-            if (tempMap.get(item.parentId).child == null)
-                tempMap.get(item.parentId).child = [item]
-            else tempMap.get(item.parentId).child.push(item)
-        }
-    })
-    data.value = parents
+    data.value = res
+}
+
+async function updateWebsiteListData(target) {
+    const updateTargetInList = (id, target, list) => {
+        list.forEach(item => {
+            if (item.id == id) {
+                for (let key in target) {
+                    item[key] = target[key]
+                }
+                return
+            }
+            item.children && updateTargetInList(id, target, item.children)
+        })
+    }
+    updateTargetInList(target.id, target, data.value)
+    return await updateWebsiteList({ data: target, targetWebsite: systemStore.targetSite.target })
+}
+
+onActivated(() => {
+    getWebsiteListData()
 })
 
 </script>

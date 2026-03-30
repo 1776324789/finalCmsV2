@@ -1,59 +1,56 @@
 <template>
-    <template v-if="checkSearch(data)">
-        <div class="line" @dblclick="openHandel">
-            <div class="closeButton" @click="openHandel" v-if="data.child != null" :class="{ openArrow: open }">
-                <span class="icon-arrow-drop-right-line"></span>
-            </div>
-
-            <div class="blockLine" ref="lineName" :style="`width:${370 - lineName?.offsetLeft + 'px'};`"
-                style="font-weight: 350;">
-                {{ data.name }}
-            </div>
-
-            <div class="index blockLine">{{ data.index }}</div>
-            <div class="index blockLine">{{ data.listId.length }}</div>
-            <div class="index blockLine">{{ data.nodeId.length }}</div>
-            <div class="index blockLine" style="width: 125px;">{{ data.id }}</div>
-
-            <div class="index blockLine" style="flex:1;text-align:left;text-indent:25px;">
-                {{ data.template || "--" }}
-            </div>
-
-            <div class="index blockLine" style="flex:1;text-align:left;text-indent:25px;">
-                {{ data.nodeTemplate || "--" }}
-            </div>
-
-            <div class="menuBlock">
-                <div class="lineButton addButton">
-                    <span class="icon-add-fill"></span>
-                </div>
-                <div class="lineButton contentButton">
-                    <span class="icon-function-fill"></span>
-                </div>
-                <div class="lineButton editButton" @click="editHandel(data)">
-                    <span class="icon-edit-2-line"></span>
-                </div>
-                <div class="lineButton delButton">
-                    <span class="icon-delete-bin-6-line"></span>
-                </div>
-            </div>
+    <div class="line" @dblclick="openHandel">
+        <div class="closeButton" @click="openHandel" v-if="data.children != null && data.children.length > 0"
+            :class="{ openArrow: open }">
+            <span class="icon-arrow-drop-right-line"></span>
         </div>
 
-        <div v-if="data.child != null" class="childBlock scroll" ref="childBlock">
-            <List v-for="(item, index) in data.child" :key="item.id || index" :data="item" :search="search"
-                @edit="editHandel" @onopen="childOpen" @onclose="childClose" @openall="openAllHandel"
-                :ref="el => (childList[index] = el)" />
+        <div class="blockLine" ref="lineName" :style="`width:${370 - lineName?.offsetLeft + 'px'};`"
+            style="font-weight: 350;">
+            {{ data.name }}
         </div>
-    </template>
+
+        <div class="index blockLine">{{ data.index || 0 }}</div>
+        <div class="index blockLine">{{ data.children.length }}</div>
+        <div class="index blockLine">{{ data.nodes?.length || 0 }}</div>
+        <div class="index blockLine" style="width: 125px;">{{ data.id }}</div>
+
+        <div class="index blockLine" style="flex:1;text-align:left;text-indent:25px;">
+            {{ data.template || "--" }}
+        </div>
+
+        <div class="index blockLine" style="flex:1;text-align:left;text-indent:25px;">
+            {{ data.nodeTemplate || "--" }}
+        </div>
+
+        <div class="menuBlock">
+            <div class="lineButton addButton">
+                <span class="icon-add-fill"></span>
+            </div>
+            <div class="lineButton contentButton">
+                <span class="icon-function-fill"></span>
+            </div>
+            <div class="lineButton editButton" @click="editHandel(data)">
+                <span class="icon-edit-2-line"></span>
+            </div>
+            <div class="lineButton delButton">
+                <span class="icon-delete-bin-6-line"></span>
+            </div>
+        </div>
+    </div>
+
+    <div v-if="data.children != null && data.children.length > 0" class="childBlock scroll" ref="childBlock">
+        <List v-for="(item, index) in data.children" :key="item.id || index" :data="item" @edit="editHandel"
+            @onopen="childOpen" @onclose="childClose" :ref="el => (childList[index] = el)" />
+    </div>
 </template>
 
 <script setup>
 import List from "./List.vue";
-import { ref, watch, nextTick } from "vue";
+import { ref, watch } from "vue";
 
 const props = defineProps({
-    data: Object,
-    search: String
+    data: Object
 });
 
 const emit = defineEmits(["onopen", "onclose", "edit", "openall"]);
@@ -63,10 +60,7 @@ const childBlock = ref(null);
 const open = ref(false);
 const childList = ref([]);
 
-/* ===== 暴露给父级 ===== */
-defineExpose({ openAll, closeAll });
 
-/* ===== 搜索联动 ===== */
 watch(
     () => props.search,
     () => {
@@ -78,54 +72,6 @@ watch(
     { immediate: true }
 );
 
-/* ===== 搜索过滤 ===== */
-function checkSearch(data) {
-    if (!props.search) return true;
-
-    if (data.name.includes(props.search)) return true;
-
-    const loop = list =>
-        list.some(item =>
-            item.name.includes(props.search) ||
-            (item.child && loop(item.child))
-        );
-
-    return Array.isArray(data.child) && loop(data.child);
-}
-
-/* =========================================================
-   ⭐⭐⭐ 核心：openAll（从最底层向上展开）
-   ========================================================= */
-async function openAll() {
-    if (props.data.child != null)
-        childList.value.forEach(item => {
-            item.openAll()
-        })
-    else emit('openall')
-}
-
-/* ===== 子级触发 openAll ===== */
-function openAllHandel() {
-    open.value = true
-    childBlock.value.style.transition = 'unset'
-    childBlock.value.style.height = "0px";
-    childBlock.value.style.height = childBlock.value.scrollHeight + "px";
-    emit('openall')
-    childBlock.value.style.transition = 'all 0.3s'
-}
-
-/* =========================================================
-   ⭐⭐⭐ 核心：openAll（从最底层向上展开）
-   ========================================================= */
-async function closeAll() {
-    if (props.data.child != null) {
-        childList.value.forEach(item => {
-            item.closeAll()
-        })
-        open.value = false
-        childBlock.value.style.height = "0px";
-    }
-}
 
 /* ===== 单层展开 / 收起 ===== */
 function openHandel() {

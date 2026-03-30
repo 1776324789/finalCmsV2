@@ -1,56 +1,63 @@
 import { defineStore } from 'pinia'
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue'
 import { verifyToken, getMenuData } from '@/request/login'
+
+
 export const useSystemStore = defineStore('systemData', () => {
     const userData = ref(null)
     const menuData = ref([])
     const userFunctionData = ref([])
     const targetSite = ref(null)
+    const eventMap = ref({})
+
+
     async function init() {
         if (window.sessionStorage.getItem("token") == null) return
         let res = await verifyToken({ token: window.sessionStorage.getItem("token") })
-
         if (res.code == 200) {
             userData.value = res.data
             await loadMenuData()
-        }
+            return true
+        } else return false
+
     }
 
     async function loadMenuData() {
         let res = await getMenuData()
         if (res.code == 200) {
-            console.log(res.data);
-
             userFunctionData.value = res.data
         }
     }
 
-    function formatWebMenu() {
-        return
-        website.value.forEach(web => {
-            web.menuTemp = web.menu
-            web.menu = []
-            const menuMap = new Map()
 
-            web.menuTemp.forEach(menu => {
-                menuMap.set(menu.id, menu)
-                if (menu.parentId == null)
-                    web.menu.push(menu)
-            })
-            web.menuTemp.forEach(menu => {
-                if (menu.parentId != null) {
-                    if (menuMap.get(menu.parentId).child == null) menuMap.get(menu.parentId).child = [menu]
-                    else menuMap.get(menu.parentId).child.push(menu)
-                }
-            })
+
+
+
+    function addEvent(eventName, callback) {
+        if (!eventMap.value[eventName])
+            eventMap.value[eventName] = []
+        eventMap.value[eventName].push(callback)
+    }
+
+    function dispatch(eventName, ...args) {
+        eventMap.value[eventName].forEach(item => {
+            item(...args)
         })
+    }
+
+    function removeEvent(eventName, callback) {
+        eventMap.value[eventName] = eventMap.value[eventName].filter(item => item != callback)
     }
 
     return {
         targetSite,
         userFunctionData,
-        init,
         userData,
-        menuData
+        menuData,
+        init,
+        addEvent,
+        removeEvent,
+        dispatch,
+
     }
 })

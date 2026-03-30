@@ -3,8 +3,6 @@
         <LeftMenu @change="handelMenuChange" @logout="logoutHandel" v-model="show"></LeftMenu>
         <!--  , change1: (change != 0 && change % 2 == 1), change2: (change != 0 && change % 2 == 0) -->
         <div class="contentBlock scroll" v-bind:class="{ rightIn: show }">
-            <!-- <DataAnalysis v-if="target == 'dataAnalysis'"></DataAnalysis>
-            <WebController v-if="target == 'webController'"></WebController> -->
             <RouterView v-slot="{ Component }">
                 <KeepAlive>
                     <component :is="Component" />
@@ -15,13 +13,12 @@
 </template>
 <script setup>
 import { watch, ref } from 'vue'
-import router from '@/router'
-import { useSystemStore } from '@/store/systemStore';
 import LeftMenu from './element/LeftMenu.vue';
-const change = ref(0)
+import { useRouter } from 'vue-router'
+const router = useRouter()
+
 const props = defineProps({ modelValue: Boolean })
 const show = ref(true)
-const target = ref(0)
 const emit = defineEmits(['logout', 'update:modelValue'])
 watch(
     () => props.modelValue,
@@ -36,18 +33,8 @@ function logoutHandel() {
     emit('logout')
 }
 
-
-
 function handelMenuChange(menu) {
-    // change.value += 0.5
-    // setTimeout(() => {
-    //     change.value += 1
-    // });
-    // setTimeout(() => {
-    // console.log(menu);
-
     router.push({ name: menu })
-    // }, 175);
 }
 </script>
 <style scoped>
