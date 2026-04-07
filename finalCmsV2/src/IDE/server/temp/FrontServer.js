@@ -250,7 +250,6 @@ ${wrappedScript}
         // 匹配除 "/" 以外所有路径
         this.app.get(/^\/.+/, (req, res) => {
             let filePath = this.initUrl(req.path);
-            console.log(filePath);
 
             let ext = this.path.extname(filePath).toLowerCase();
             res.type(ext);

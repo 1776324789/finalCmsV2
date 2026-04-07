@@ -9,12 +9,12 @@
                 </span>
                 &nbsp;&nbsp;\&nbsp;&nbsp;栏目内容&nbsp;&nbsp;\&nbsp;&nbsp;{{ targetList?.name }}
             </div>
-            <CmsButton @click="createList">创建内容</CmsButton>
+            <CmsButton @click="createNode">创建内容</CmsButton>
         </div>
         <NodeTitle></NodeTitle>
         <div class="contentBlock scroll">
             <template v-for="item, index in data" :key="item.id">
-                <Node @edit="editHandel" :index="index + 1" :data="item"
+                <Node @delete="deleteNode" @change="nodeChange" @edit="editHandel" :index="index + 1" :data="item"
                     v-if="index >= ((page - 1) * count) && index < (page * count)">
                 </Node>
             </template>
@@ -44,6 +44,8 @@ import NodeTitle from './elements/NodeTitle.vue'
 import Node from './elements/Node.vue'
 import { onActivated, ref } from 'vue';
 import { getWebsiteList } from '@/request/websiteListApi'
+import { getNodeContent, updateNode, createNode as createNodeApi, deleteNodeApi } from '@/request/websiteNodeApi'
+
 import { useSystemStore } from '@/store/systemStore';
 import { useRouter } from 'vue-router';
 import CmsPagination from '@/components/baseElements/CmsPagination.vue';
@@ -56,15 +58,97 @@ const showEdit = ref(false)
 const targetList = ref(null)
 const editTarget = ref(null)
 const nodeEdit = ref(null)
+
 function back() {
     router.back()
 }
 
+async function deleteNode(target) {
+    console.log(target);
 
-function editHandel(targetNode) {
-    editTarget.value = JSON.parse(JSON.stringify(targetNode))
+    const res = await deleteNodeApi({
+        websiteId: systemStore.targetSite?.id,
+        nodeId: target
+    })
+    if (res.code == 200) {
+        toast.success("已删除")
+        showEdit.value = false
+        getWebsiteNodeData()
+    } else {
+        toast.danger("删除失败:" + res.message)
+    }
+
+}
+
+
+async function createHandel() {
+    const res = await createNodeApi({
+        listId: router.currentRoute.value.query.id,
+        websiteId: systemStore.targetSite?.id,
+        node: nodeEdit.value.value
+    })
+    if (res.code == 200) {
+        toast.success("已创建")
+        showEdit.value = false
+        getWebsiteNodeData()
+    } else {
+        toast.danger("创建失败:" + res.message)
+    }
+}
+
+async function editHandel(targetNode) {
+    const res = await getNodeContent({
+        nodeId: targetNode.id,
+        websiteId: systemStore.targetSite?.id
+    })
+
+    if (res.code == 200 || res.code == 201) {
+        const target = JSON.parse(JSON.stringify(targetNode))
+        target.content = res.data
+        editTarget.value = target
+    }
+
     showEdit.value = true
 }
+
+function createNode() {
+    editTarget.value = { publish: true, clicks: 0 }
+    showEdit.value = true
+}
+
+
+async function saveHandel() {
+    const value = nodeEdit.value.value
+    value.clicks = value.clicks ? value.clicks * 1 : 0
+
+    //更新节点数据
+    const res = await updateNode({
+        websiteId: systemStore.targetSite?.id,
+        node: value
+    })
+    if (res.code == 200) {
+        toast.success("已保存")
+        showEdit.value = false
+        getWebsiteNodeData()
+    } else {
+        toast.danger("保存失败:" + res.message)
+    }
+
+}
+
+async function nodeChange(targetNode) {
+    const res = await updateNode({
+        websiteId: systemStore.targetSite?.id,
+        node: targetNode
+    })
+    if (res.code == 200) {
+        toast.success("已保存")
+        getWebsiteNodeData()
+    } else {
+        toast.danger("保存失败:" + res.message)
+    }
+}
+
 
 async function getWebsiteNodeData() {
     if (systemStore.targetSite?.id == null) return setTimeout(() => {
@@ -88,8 +172,10 @@ async function getWebsiteNodeData() {
     }
     const list = findList(res, router.currentRoute.value.query.id)
     targetList.value = list
+    console.log(list.nodes)
     data.value = list.nodes || []
 }
+
 
 
 onActivated(() => {

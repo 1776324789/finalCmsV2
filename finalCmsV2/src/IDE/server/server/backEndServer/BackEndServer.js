@@ -4,6 +4,7 @@ import SystemController from '../../DataBase/SystemController.js'
 import LoginServer from './server/LoginServer.js'
 import WebsiteListServer from './server/WebsiteListServer.js'
 import FileServer from './server/FileServer.js'
+import WebsiteNodeServer from './server/WebsiteNodeServer.js'
 const BackEndServer = () => {
     const app = express()
     const PORT = 17514
@@ -53,6 +54,7 @@ const BackEndServer = () => {
     LoginServer(app)
     WebsiteListServer(app)
     FileServer(app)
+    WebsiteNodeServer(app)
     return app
 }
 

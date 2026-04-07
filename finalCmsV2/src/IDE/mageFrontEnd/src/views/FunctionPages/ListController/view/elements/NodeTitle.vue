@@ -2,7 +2,7 @@
     <div class="line">
         <div class="index " style="width: 25px;text-align: left;font-weight: 300;color: #666;;">uid</div>
         <div class="labelName blockLine" style="flex:1;text-indent: 10px;">栏目名称</div>
-        <div class="index blockLine" style="width: 100px;">key</div>
+        <div class="index blockLine" style="width: 130px;">key</div>
         <div class="index blockLine" style="width: 180px;">发布时间</div>
         <div class="index blockLine" style="width: 75px;">阅读</div>
         <div class="index blockLine" style="width: 115px;">置顶</div>

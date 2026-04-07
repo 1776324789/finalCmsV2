@@ -53,6 +53,12 @@
             "target": "systemDataAnalysis"
         },
         {
+            "id": "9285g82kj",
+            "name": "站点管理",
+            "icon": "icon-database-line",
+            "target": "systemWebsiteManage"
+        },
+        {
             "id": "oclapf0y",
             "name": "公共数据管理",
             "icon": "icon-database-line",

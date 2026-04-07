@@ -2,7 +2,7 @@
     <div class="main" ref="main" :style="{ height: main?.parentNode.clientHeight + 'px' }">
         <div :id="editorId" style="display: flex;flex-direction: column;height: 100%;">
             <div :id="editorTool"></div>
-            <div style="flex:1;" class="scroll">
+            <div style="flex:1;border-radius: 15px;" class="scroll">
                 <div :id="editorContent"></div>
             </div>
         </div>
@@ -110,9 +110,7 @@ async function upload(file) {
 </script>
 
 <style scoped>
-.main {
-    background-color: #fff;
-}
+.main {}
 </style>
 
 <style>
@@ -122,5 +120,16 @@ async function upload(file) {
 
 .w-e-bar-item:last-child {
     display: none;
+}
+
+.w-e-toolbar {
+    border-radius: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #999;
+    background-color: unset !important;
+}
+
+.w-e-text-container {
+    border-radius: 15px;
 }
 </style>

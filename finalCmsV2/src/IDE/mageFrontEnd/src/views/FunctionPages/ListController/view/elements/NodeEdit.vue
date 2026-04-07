@@ -10,7 +10,7 @@
                 </div>
                 <div class="line">
                     <div class="label">key</div>
-                    <CmsInput style="width:250px;" type="text" placeholder="请输入内容" disabled="true" v-model="value.id">
+                    <CmsInput style="width:250px;" type="text" placeholder="自动生成" disabled="true" v-model="value.id">
                     </CmsInput>
                 </div>
             </div>
@@ -22,7 +22,8 @@
                 </div>
                 <div class="line">
                     <div class="label">发布时间</div>
-                    <CmsInput style="width:250px;" type="datetime-local" placeholder="请输入内容" v-model="value.date">
+                    <CmsInput style="width:250px;" format="YYYY-MM-DD HH:mm" type="datetime-local"
+                        placeholder="请输入内容" v-model="value.date">
                     </CmsInput>
                 </div>
             </div>
@@ -43,6 +44,11 @@
                 </CmsTextarea>
             </div>
             <div class="line">
+                <div class="label">链接</div>
+                <CmsInput style="width:640px;" type="text" placeholder="请输入内容" v-model="value.link">
+                </CmsInput>
+            </div>
+            <div class="line">
                 <div class="label">封面图</div>
                 <ImageUpload v-model="value.cover"></ImageUpload>
             </div>
@@ -60,7 +66,7 @@
             <DynamicPropEdit></DynamicPropEdit>
         </div> -->
         </div>
-        <div style="flex:1;" class="scroll">
+        <div style="flex:1;margin-left: 10px;" v-if="value" class="scroll">
             <RichEditor v-model="value.content"></RichEditor>
         </div>
     </div>
@@ -87,20 +93,9 @@ defineExpose({
     value
 })
 
-onMounted(() => {
-    console.log(container.value.parentNode.clientHeight)
-})
-
-function check() {
-    console.log(quill.value.getHTML());
-}
-
-const content = ref('<p>hello</p>')
-
 const props = defineProps({
     data: Object
 })
-
 
 watch(
     () => props.data,

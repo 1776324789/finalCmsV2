@@ -6,7 +6,7 @@
             <div class="topMark" v-if="data.top">置顶</div>
             {{ data.title }}
         </div>
-        <div class="index blockLine" style="width: 100px;position: relative;text-align: left;text-indent: 15px;">
+        <div class="index blockLine" style="width: 130px;position: relative;text-align: left;text-indent: 15px;">
             {{ data.id }}
             <div class="copyIcon">
                 <span class="icon-file-copy-line"></span>
@@ -15,11 +15,13 @@
         <div class="index blockLine" style="width: 180px;">{{ data.date }}</div>
         <div class="index blockLine" style="width: 75px;">{{ data.clicks || 0 }}</div>
         <div class="index blockLine" style="width: 115px;display: flex;">
-            <CmsSwitch :label="['已置顶', '未置顶']" v-model="data.top" style="margin-left: 10px;margin-top: 5px;">
+            <CmsSwitch :label="['已置顶', '未置顶']" @change="changeHandel" v-model="data.top"
+                style="margin-left: 10px;margin-top: 5px;">
             </CmsSwitch>
         </div>
         <div class="index blockLine" style="width: 115px;display: flex;">
-            <CmsSwitch :label="['已发布', '未发布']" v-model="data.publish" style="margin-left: 10px;margin-top: 5px;">
+            <CmsSwitch :label="['已发布', '未发布']" @change="changeHandel" v-model="data.publish"
+                style="margin-left: 10px;margin-top: 5px;">
             </CmsSwitch>
         </div>
 
@@ -54,13 +56,17 @@ const props = defineProps({
     index: Number
 });
 const showDelBlock = ref(false)
-const emit = defineEmits(["edit"]);
+const emit = defineEmits(["edit", "change"]);
 
 
 
 function deleteHandel(id) {
     emit("delete", id)
     showDelBlock.value = false
+}
+
+function changeHandel() {
+    emit("change", props.data);
 }
 
 function editHandel() {
