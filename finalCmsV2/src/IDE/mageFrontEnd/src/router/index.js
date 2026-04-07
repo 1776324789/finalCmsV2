@@ -1,14 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import WebController from '../views/FunctionPages/WebController/WebController.vue';
+import ListController from '../views/FunctionPages/ListController/ListController.vue';
+import NodeController from '../views/FunctionPages/ListController/view/NodeController.vue';
 import DataAnalysis from '../views/FunctionPages/DataAnalysis/DataAnalysis.vue';
 import SystemDataAnalysis from '../views/Console/view/systemDataAnalysis.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/webController',
-      name: 'webController',
-      component: WebController
+      path: '/listController',
+      name: 'listController',
+      component: ListController,
+    },
+    {
+      path: '/nodeController',
+      name: 'nodeController',
+      component: NodeController
     },
     {
       path: '/dataAnalysis',

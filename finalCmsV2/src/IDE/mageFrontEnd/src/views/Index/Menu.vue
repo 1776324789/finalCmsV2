@@ -3,6 +3,7 @@
         <LeftMenu @change="handelMenuChange" @logout="logoutHandel" v-model="show"></LeftMenu>
         <!--  , change1: (change != 0 && change % 2 == 1), change2: (change != 0 && change % 2 == 0) -->
         <div class="contentBlock scroll" v-bind:class="{ rightIn: show }">
+
             <RouterView v-slot="{ Component }">
                 <KeepAlive>
                     <component :is="Component" />
@@ -15,7 +16,10 @@
 import { watch, ref } from 'vue'
 import LeftMenu from './element/LeftMenu.vue';
 import { useRouter } from 'vue-router'
+import { useSystemStore } from '@/store/systemStore'
+
 const router = useRouter()
+const systemStore = useSystemStore()
 
 const props = defineProps({ modelValue: Boolean })
 const show = ref(true)
@@ -38,6 +42,7 @@ function handelMenuChange(menu) {
 }
 </script>
 <style scoped>
+
 .change1 {
     animation: changeAni 0.35s ease;
 }

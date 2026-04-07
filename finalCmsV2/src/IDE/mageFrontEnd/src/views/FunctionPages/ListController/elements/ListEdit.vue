@@ -43,7 +43,7 @@
         </div>
         <div class="line">
             <div class="label">封面图</div>
-            <ImageUpload></ImageUpload>
+            <ImageUpload v-model="value.cover"></ImageUpload>
         </div>
         <!-- <div class="line" style="flex-direction: column;">
             <div class="label">动态变量</div>
@@ -66,11 +66,10 @@ const props = defineProps({
     data: Object
 })
 
+
 watch(
     () => props.data,
     async (val) => {
-        console.log(val);
-
         if (val == null) value.value = {}
         value.value = JSON.parse(JSON.stringify(val))
         await nextTick()

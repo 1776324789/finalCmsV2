@@ -93,7 +93,7 @@
         {
             "name": "栏目管理",
             "icon": "icon-archive-drawer-line",
-            "target": "webController",
+            "target": "listController",
             "id": "iwx9z21d"
         },
         {
@@ -139,6 +139,10 @@
         {
             "userId": "s78d6f8s",
             "roleId": "jb57kl56"
+        },
+        {
+            "userId": "s78d6f8s",
+            "roleId": "jb5ugfie6"
         }
     ],
     "websiteRole": [
@@ -155,6 +159,18 @@
                 "76t7klzk",
                 "66qt3lge",
                 "b0995e84"
+            ]
+        },
+        {
+            "id": "jb5ugfie6",
+            "websiteId": "gjj8rw06",
+            "name": "管理员",
+            "menuIds": [
+                "aa6f6m86",
+                "iwx9z21d",
+                "66pwl3j7",
+                "keaa0was",
+                "jiqzsicr"
             ]
         }
     ],

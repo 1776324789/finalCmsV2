@@ -14,11 +14,14 @@ export const useSystemStore = defineStore('systemData', () => {
     async function init() {
         if (window.sessionStorage.getItem("token") == null) return
         let res = await verifyToken({ token: window.sessionStorage.getItem("token") })
+
         if (res.code == 200) {
             userData.value = res.data
             await loadMenuData()
+  
             return true
         } else return false
+
 
     }
 

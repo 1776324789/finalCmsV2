@@ -45,8 +45,6 @@ const props = defineProps({ modelValue: Boolean })
 const showLogoutTip = ref(false)
 const showConsole = ref(false)
 
-
-
 function enterConsole() {
     showConsole.value = true
     localStorage.setItem("showConsole", "true")
@@ -55,20 +53,25 @@ function enterConsole() {
 function init() {
     showConsole.value = localStorage.getItem("showConsole") === "true"
     if (localStorage.getItem("targetSite") != null) {
-        console.log( systemStore);
-        
+        console.log(systemStore);
+
         systemStore.targetSite = systemStore.userFunctionData.website.find(item => item.id === localStorage.getItem("targetSite"))
         close()
         setTimeout(() => {
             showIndex.value = true
         }, 200);
     }
-    window.addEventListener('popstate', function (event) {
-        showIndex.value = false
-        // 事件处理代码
-        menuLogoutHandel()
-    });
 
+    window.addEventListener('popstate', function (event) {
+        console.log(systemStore.userFunctionData);
+
+        if (router.currentRoute.value.path == "/") {
+            showIndex.value = false
+            showConsole.value = false
+            // 事件处理代码
+            menuLogoutHandel()
+        }
+    });
 }
 
 watch(
@@ -91,6 +94,10 @@ function menuLogoutHandel() {
 }
 
 function toIndex(targetSite) {
+
+    systemStore.userFunctionData.website.splice(systemStore.userFunctionData.website.indexOf(targetSite), 1)
+    systemStore.userFunctionData.website.unshift(targetSite)
+
     if (systemStore.targetSite != targetSite) {
         systemStore.targetSite = targetSite
         systemStore.dispatch('setTargetSite', targetSite)

@@ -1,6 +1,8 @@
 <template>
     <div class="mainMenuBlock" v-bind:class="{ leftIn: show }">
+
         <div class="title">Final<br>CMS</div>
+       
         <div style="flex:1;">
             <div class="menuBlock" v-for="item in systemStore.targetSite?.menu || []">
                 <div class="menuButton" v-bind:class="{

@@ -11,7 +11,7 @@
         </div>
 
         <div class="index blockLine">{{ data.index || 0 }}</div>
-        <div class="index blockLine">{{ data.children.length }}</div>
+        <div class="index blockLine">{{ data.children.length || 0 }}</div>
         <div class="index blockLine">{{ data.nodes?.length || 0 }}</div>
         <div class="index blockLine" style="width: 125px;">{{ data.id }}</div>
 
@@ -24,24 +24,33 @@
         </div>
 
         <div class="menuBlock">
-            <div class="lineButton addButton">
+            <div class="lineButton addButton" @click="createChild(data.id)">
                 <span class="icon-add-fill"></span>
             </div>
-            <div class="lineButton contentButton">
+            <div class="lineButton contentButton" @click="editNodeHandel(data.id)">
                 <span class="icon-function-fill"></span>
             </div>
             <div class="lineButton editButton" @click="editHandel(data)">
                 <span class="icon-edit-2-line"></span>
             </div>
-            <div class="lineButton delButton">
+            <div class="lineButton delButton" @click="showDelBlock = true">
                 <span class="icon-delete-bin-6-line"></span>
             </div>
+            <div class="confirmBlock" v-bind:class="{ showConfirmBlock: showDelBlock }">
+                <div class="deleteConfirm" @click="deleteHandel(data.id)">
+                    确认删除
+                </div>
+                <div class="cancelButton" @click="showDelBlock = false">
+                    取消
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <div v-if="data.children != null && data.children.length > 0" class="childBlock scroll" ref="childBlock">
-        <List v-for="(item, index) in data.children" :key="item.id || index" :data="item" @edit="editHandel"
-            @onopen="childOpen" @onclose="childClose" :ref="el => (childList[index] = el)" />
+    <div v-if="data.children != null && data.children.length > 0 && open" class="childBlock">
+        <List @editNode="editNodeHandel" @delete="deleteHandel" @createChildList="createChild"
+            v-for="(item, index) in data.children" :key="item.id || index" :data="item" @edit="editHandel" />
     </div>
 </template>
 
@@ -52,63 +61,130 @@ import { ref, watch } from "vue";
 const props = defineProps({
     data: Object
 });
-
-const emit = defineEmits(["onopen", "onclose", "edit", "openall"]);
+const showDelBlock = ref(false)
+const emit = defineEmits(["onopen", "onclose", "edit", "openall", "createChildList", "delete", "editNode"]);
 
 const lineName = ref(null);
-const childBlock = ref(null);
+// const childBlock = ref(null);
 const open = ref(false);
 const childList = ref([]);
 
+function createChild(id) {
+    emit("createChildList", id)
+}
 
-watch(
-    () => props.search,
-    () => {
-        if (!childBlock.value) return;
-        childBlock.value.style.height = open.value
-            ? childBlock.value.scrollHeight + "px"
-            : "0px";
-    },
-    { immediate: true }
-);
+function editNodeHandel(id) {
+    emit("editNode", id)
+}
+
+function deleteHandel(id) {
+    emit("delete", id)
+    showDelBlock.value = false
+}
+
+// watch(
+//     () => props.search,
+//     () => {
+//         if (!childBlock.value) return;
+//         childBlock.value.style.height = open.value
+//             ? childBlock.value.scrollHeight + "px"
+//             : "0px";
+//     },
+//     { immediate: true }
+// );
 
 
 /* ===== 单层展开 / 收起 ===== */
 function openHandel() {
-    if (!childBlock.value) return;
+    // if (!childBlock.value) return;
 
-    if (open.value) {
-        childBlock.value.style.height = "0px";
-        emit("onclose", childBlock.value.scrollHeight);
-    } else {
-        childBlock.value.style.height = childBlock.value.scrollHeight + "px";
-        emit("onopen", childBlock.value.scrollHeight);
-    }
+    // if (open.value) {
+    //     childBlock.value.style.height = "0px";
+    //     emit("onclose", childBlock.value.scrollHeight);
+    // } else {
+    //     childBlock.value.style.height = childBlock.value.scrollHeight + "px";
+    //     emit("onopen", childBlock.value.scrollHeight);
+    // }
 
     open.value = !open.value;
 }
 
 /* ===== 子节点高度联动 ===== */
-function childOpen(height) {
-    childBlock.value.style.height =
-        childBlock.value.scrollHeight + height + "px";
-    emit("onopen", height);
-}
+// function childOpen(height) {
+//     childBlock.value.style.height =
+//         childBlock.value.scrollHeight + height + "px";
+//     emit("onopen", height);
+// }
 
-function childClose(height) {
-    childBlock.value.style.height =
-        childBlock.value.scrollHeight - height + "px";
-    emit("onclose", height);
-}
+// function childClose(height) {
+//     childBlock.value.style.height =
+//         childBlock.value.scrollHeight - height + "px";
+//     emit("onclose", height);
+// }
 
 function editHandel(e) {
     emit("edit", e);
 }
+
 </script>
 
 
 <style scoped>
+.confirmBlock {
+    position: absolute;
+    right: -175px;
+    border-radius: 20px;
+    width: 170px;
+    height: 38px;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    display: flex;
+    transition: all 0.3s;
+}
+
+.showConfirmBlock {
+    right: 0px;
+}
+
+.deleteConfirm {
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    background-color: #ff5353;
+    height: 30px;
+    margin-top: 5px;
+    margin-left: 5px;
+    line-height: 30px;
+    font-size: 13px;
+    border-radius: 17px;
+    color: #fff;
+}
+
+.deleteConfirm:hover {
+    opacity: 0.75;
+}
+
+.cancelButton {
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    background-color: #838383;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: 5px;
+    margin-right: 5px;
+    line-height: 30px;
+    font-size: 13px;
+    border-radius: 17px;
+    color: #fff;
+}
+
+.cancelButton:hover {
+    opacity: 0.75;
+}
+
 .menuBlock {
+    position: relative;
     margin-left: 15px;
     display: flex;
 }
@@ -339,8 +415,6 @@ function editHandel(e) {
 }
 
 .childBlock {
-    height: 0;
-    overflow-y: auto;
     margin-left: 15px;
     border-left: 1px solid #ffffff77;
     padding-left: 15px;

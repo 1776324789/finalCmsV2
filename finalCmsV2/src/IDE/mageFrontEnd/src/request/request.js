@@ -8,10 +8,7 @@ if (window.location.href.indexOf('localhost') !== -1) {
 
 const instance = axios.create({
     baseURL: baseURL,
-    timeout: 150000,
-    headers: {
-        'Content-Type': 'application/json;charset=UTF-8',
-    }
+    timeout: 150000
 })
 
 // 添加请求拦截器

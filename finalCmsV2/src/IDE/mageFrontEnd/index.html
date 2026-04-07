@@ -15,6 +15,7 @@
   <link rel="stylesheet" type="text/css" href="./TableEditor/css/MouseMenu.css" />
   <link rel="stylesheet" type="text/css" href="./TableEditor/css/rename.css" /> -->
 </head>
+
 <style>
   .confirmWindow {
     display: block;
@@ -96,162 +97,288 @@
     border: 1px solid #fff;
     color: #fff;
   }
+
+  .a-tip-block {
+    z-index: 1000000;
+    position: fixed;
+    top: 0px;
+    left: 50%;
+    translate: -50% 0;
+  }
+
+  .a-tip-block .a-tip-content {
+    margin-top: 15px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+    border-radius: 1px;
+  }
+
+  .a-tip-block .a-content {
+    font-size: 14px;
+    max-width: 300px;
+    word-break: break-all;
+    text-align: center;
+    padding: 7px 25px;
+
+  }
+
+
+  .a-tip-block .a-tip {
+    min-width: 150px;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(15px);
+    color: #fff;
+    overflow: hidden;
+    border: 1px solid #fff;
+  }
+
+  .a-tip-block .a-tip-bar {
+    height: 4px;
+    background-color: #fff;
+  }
+
+  .a-tip-block .a-info {
+    color: #555555;
+    background-color: #e6e6e6;
+    border: 1px solid #a3a3a3;
+  }
+
+  .a-tip-block .a-info-bar {
+    height: 4px;
+    background-color: #a3a3a3;
+  }
+
+  .a-tip-block .a-success {
+    overflow: hidden;
+    min-width: 150px;
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+    color: #ffffff;
+    background-color: #6cac75a1;
+    border: 1px solid #2f5234;
+  }
+
+  .a-tip-block .a-success-bar {
+    height: 4px;
+    background-color: #2e5333;
+  }
+
+  .a-tip-block .a-warn {
+    overflow: hidden;
+    min-width: 150px;
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+    color: #ffffff;
+    background-color: #dfab3ba4;
+    border: 1px solid #ad852f;
+  }
+
+  .a-tip-block .a-warn-bar {
+    height: 4px;
+    background-color: #ad852f;
+  }
+
+  .a-tip-block .a-danger {
+    overflow: hidden;
+    min-width: 150px;
+    border-radius: 15px;
+    backdrop-filter: blur(15px);
+    color: #ffffff;
+    background-color: #ee5d5d91;
+    border: 1px solid #b34646;
+  }
+
+  .a-tip-block .a-danger-bar {
+    height: 4px;
+    background-color: #b34646;
+  }
+
+
+  @keyframes slideOut {
+    0% {
+      transform: translateY(0px);
+      opacity: 1;
+    }
+
+    100% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+  }
+
+  .slideOut {
+    animation: slideOut 0.25s ease forwards;
+  }
 </style>
 
 <body>
 
   <div id="app"></div>
+  <script src="./public/wangEditor.js"></script>
+  <link rel="stylesheet" href="./public/wangEditor.css"></link>
   <script>
-    function getMaxZIndex() {
-      let maxZIndex = 0; // 初始化最大zIndex为0
-      const elements = document.querySelectorAll('*'); // 选择页面中的所有元素
+    //生成dom队列
+    function dp(pageString) {
+      let domElement = {}
+      pageString = pageString.replaceAll("\n", '').replaceAll("\t", '');
+      let content = document.createElement("div")
+      content.innerHTML = pageString
+      domList(content.childNodes[0], domElement)
+      return {
+        element: content.childNodes[0],
+        children: domElement
+      }
+    }
 
-      elements.forEach((element) => {
-        const zIndex = window.getComputedStyle(element).zIndex; // 获取元素的z-index样式
+    //生成dom队列
+    function domList(dom, domElement) {
+      initDomFunctions(dom)
+      if (dom.getAttribute != null && dom.getAttribute("ref") != "" && dom.getAttribute("ref") != null) {
+        domElement[dom.getAttribute("ref")] = dom
+      }
+      if (dom.childNodes.length > 0) {
+        dom.childNodes.forEach((node) => {
+          domList(node, domElement)
+        })
+      }
+    }
 
-        if (!isNaN(zIndex)) { // 检查z-index是否为有效数字
-          maxZIndex = Math.max(maxZIndex, parseInt(zIndex, 10)); // 更新最大zIndex
+
+
+    //初始化Dom的函数
+    function initDomFunctions(dom) {
+      dom["show"] = (display) => {
+        if (display == null) {
+          dom.style.display = "block"
+        } else {
+          dom.style.display = display
         }
-      });
-      return maxZIndex;
+        return dom
+      }
+      dom["hide"] = () => {
+        dom.style.display = "none"
+        return dom
+      }
+      dom["val"] = (val) => {
+        dom.value = val
+        return dom
+      }
+      dom["txt"] = (text) => {
+        dom.innerText = text
+        return dom
+      }
+      dom["add"] = (ele) => {
+        dom.appendChild(ele)
+        return dom
+      }
+
     }
 
-    function toast(text, time = 2000) {
-      let toastElement = document.createElement("div")
-      toastElement.classList.add("Toast")
-      toastElement.textContent = text
-      document.body.appendChild(toastElement)
-      toastElement.style.zIndex = getMaxZIndex()
-      setTimeout(() => {
-        document.body.removeChild(toastElement)
-      }, time);
+    // 传入变量判断其是否是数字
+    // 是：返回整数
+    // 否：返回false
+    function toNum(inputContent) {
+      // 将输入内容转换成字符串
+      inputContent = String(inputContent);
+
+      // 检查输入内容是否为数字
+      if (!isNaN(inputContent)) {
+        // 如果是数字，返回数字或取整后的数字
+        if (inputContent.includes('.')) {
+          return Math.floor(parseFloat(inputContent)); // 返回取整后的数字
+        } else {
+          return parseInt(inputContent); // 返回整数
+        }
+      } else {
+        // 如果不是数字，返回 false
+        return false;
+      }
     }
 
 
 
-    const OA = new class OAImpl {
+    class Tip {
       constructor() {
-        this.userOaData
-        this.functionMap = {}
-        this.missionFunctionCall = {}
-        this.missionId = Date.now()
+        this.tipMain
         this.init()
       }
 
-      addMission(action, data, callback) {
-
-        let missionId
-        if (callback) {
-          this.missionId++
-          missionId = this.missionId.toString(36)
-          this.missionFunctionCall[missionId] = callback
-        }
-        let req = {
-          action: action,
-          data: data,
-          missionId: missionId
-        }
-        window.parent.postMessage(req, "*")
-      }
-
       init() {
-        window.addEventListener("message", (event) => {
-          if (event.data.missionId == null) return
-          else this.missionFunctionCall[event.data.missionId](event.data.data)
-        });
+        this.initStyle()
+        this.tipMain = dp(`<div class="a-tip-block"></div>`)
+        document.body.appendChild(this.tipMain.element)
       }
-    }
 
-    function confirm(setting) {
-      let ele = getConfirmWindow()
-      if (setting.title) ele.confirmWindowTitle.innerText = setting.title
-      if (setting.content) ele.confirmWindowInfo.textContent = setting.content
-      if (setting.cancelText) ele.confirmCancelButton.innerText = setting.cancelText
-      if (setting.confirmText) ele.confirmConfirmButton.innerText = setting.confirmText
-      if (setting.input) {
-        ele.confirmWindowWordLimit.style.display = "block"
-        ele.confirmBlockTextarea.style.display = "block"
+      getTipElement(type) {
+        return dp(`<div class="a-tip-content a-${type}">
+				<div class="a-content" ref="content"></div>
+				<div class="a-${type}-bar" ref="bar"></div>
+			</div>`)
       }
-      else {
-        ele.confirmWindowWordLimit.style.display = "none"
-        ele.confirmBlockTextarea.style.display = "none"
+
+      tip(text, time) {
+        let tip = this.getTipElement("tip")
+        tip.children.content.innerText = text
+        this.insert(tip, time)
       }
-      if (setting.inputLimit != null) {
-        ele.confirmWindowWordLimit.innerText = "0/" + setting.inputLimit
-        ele.confirmBlockTextarea.onkeyup = (e) => {
-          ele.confirmBlockTextarea.value = ele.confirmBlockTextarea.value.substring(0, setting.inputLimit)
-          ele.confirmWindowWordLimit.innerText = ele.confirmBlockTextarea.value.length + "/" + setting.inputLimit
+
+      warn(text, time) {
+        let tip = this.getTipElement("warn")
+        tip.children.content.innerText = text
+        this.insert(tip, time)
+      }
+
+      info(text, time) {
+        let tip = this.getTipElement("info")
+        tip.children.content.innerText = text
+        this.insert(tip, time)
+      }
+
+      danger(text, time) {
+        let tip = this.getTipElement("danger")
+        tip.children.content.innerText = text
+        this.insert(tip, time)
+      }
+
+      success(text, time) {
+        let tip = this.getTipElement("success")
+        tip.children.content.innerText = text
+        this.insert(tip, time)
+      }
+
+      insert(tip, time) {
+        if (time == null) {
+          time = 1500
         }
-      } else {
-        ele.confirmBlockTextarea.onkeyup = null
+        this.tipMain.element.insertBefore(tip.element, this.tipMain.element.firstChild)
+        tip.element.style.marginTop = -(tip.element.clientHeight + 2) + "px"
+        tip.children.bar.style.width = tip.children.content.clientWidth + "px"
+        tip.children.bar.style.transition = time + "ms linear width"
+        setTimeout(() => {
+          tip.element.style.transition = "0.5s margin-top"
+        }, 10);
+        setTimeout(() => {
+          tip.element.style.marginTop = "15px"
+          tip.children.bar.style.width = "0px"
+        }, 20);
+
+        setTimeout(() => {
+          tip.element.classList.add("slideOut")
+          setTimeout(() => {
+            this.tipMain.element.removeChild(tip.element)
+          }, 300)
+        }, time + 30);
       }
 
-      if (setting.placeholder != null) ele.confirmBlockTextarea.placeholder = setting.placeholder
-      else ele.confirmBlockTextarea.placeholder = "请输入内容"
-
-      ele.confirmCancelButton.onclick = () => {
-        if (setting.cancel) setting.cancel()
-        ele.confirmCover.style.display = "none"
-        ele.confirmWindow.style.display = "none"
-        document.body.removeChild(ele.confirmCover)
-        document.body.removeChild(ele.confirmWindow)
+      initStyle() {
+        let style = document.createElement("style")
+        style.innerHTML = ``
+        document.body.appendChild(style)
       }
-
-      ele.confirmConfirmButton.onclick = () => {
-        if (setting.confirm) setting.confirm(ele.confirmBlockTextarea.value)
-        document.body.removeChild(ele.confirmCover)
-        document.body.removeChild(ele.confirmWindow)
-      }
-      ele.confirmCover.onclick = ele.confirmConfirmButton.onclick
     }
 
-    function dc(tag, className) {
-      const element = document.createElement(tag)
-      if (typeof className == "string") {
-        element.classList.add(className)
-      } else {
-        element.classList.add(...className)
-      }
-      element["add"] = (ele) => {
-        element.appendChild(ele)
-        return element
-      }
-      element["txt"] = (txt) => {
-        element.innerText = txt
-        return element
-      }
-      return element
-    }
-    //  <div class="confirmCover" id="confirmCover"></div>
+    const toast = new Tip
 
-
-    //   <div class="confirmWindow" id="confirmWindow">
-    //     <div class="confirmWindowTitle" id="confirmWindowTitle">确认</div>
-    //     <div class="confirmWindowInfo" id="confirmWindowInfo">确认取消申请？</div>
-    //     <textarea id="confirmBlockTextarea" class="confirmBlockTextarea" placeholder="请输入取消理由"></textarea>
-    //     <div id="confirmWindowWordLimit" class="confirmWindowWordLimit">0/100</div>
-    //     <div class="confirmWindowBar">
-    //       <button class="confirmCancelButton" id="confirmCancelButton">取消</button>
-    //       <button class="confirmConfirmButton" id="confirmConfirmButton">确认</button>
-    //     </div>
-    //   </div>
-    function getConfirmWindow() {
-      let element = dc("div", "confirmWindow")
-        .add(dc("div", "confirmWindowTitle"))
-        .add(dc("div", "confirmWindowInfo"))
-        .add(dc("textarea", "confirmBlockTextarea"))
-        .add(dc("div", "confirmWindowWordLimit"))
-        .add(dc("div", "confirmWindowBar").add(dc("button", "confirmCancelButton").txt("取消")).add(dc("button", "confirmConfirmButton").txt("确认")))
-      let res = {}
-      Array.from(element.querySelectorAll("*")).forEach(item => {
-        res[item.className] = item
-      })
-      res['confirmCover'] = dc("div", "confirmCover")
-      res['confirmWindow'] = element
-      document.body.appendChild(res.confirmCover)
-      document.body.appendChild(element)
-      return res
-    }
 
   </script>
   <script type="module" src="/src/main.js"></script>

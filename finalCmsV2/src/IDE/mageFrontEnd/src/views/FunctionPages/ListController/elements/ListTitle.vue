@@ -7,7 +7,7 @@
         <div class="index blockLine" style="width: 125px;">key</div>
         <div class="index blockLine" style="flex:1;text-align: left;text-indent: 25px;">列表页面路径</div>
         <div class="index blockLine" style="flex:1;text-align: left;text-indent: 25px;">内容页面路径 </div>
-        <div class="index" style="width: 155px;">操作 </div>
+        <div class="index" style="width: 160px;">操作 </div>
     </div>
 </template>
 <style scoped>

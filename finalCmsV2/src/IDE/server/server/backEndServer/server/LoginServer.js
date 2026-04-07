@@ -1,6 +1,8 @@
 import svgCaptcha from 'svg-captcha'
 import crypto from 'crypto'
-const LoginServer = (app, DB) => {
+import SystemController from '../../../DataBase/SystemController.js'
+
+const LoginServer = (app) => {
     const verifyCodeMap = new Map()
     // 获取验证码
     app.post('/getverifyCode', (req, res) => {
@@ -11,8 +13,8 @@ const LoginServer = (app, DB) => {
 
         // 生成验证码
         const captcha = svgCaptcha.create({
-            size: 4,
-            ignoreChars: '0123456789oOiIl',
+            size: 4, 
+            ignoreChars: '0123456789oOiIlqgp',
             noise: 5,
             width: 175,
             height: 40
@@ -34,7 +36,7 @@ const LoginServer = (app, DB) => {
 
     app.post('/verifyToken', (req, res) => {
         const { token } = req.body
-        const data = DB.verifyToken(token)
+        const data = SystemController.verifyToken(token)
         if (data != null)
             return res.json({
                 code: 200,
@@ -48,7 +50,7 @@ const LoginServer = (app, DB) => {
     })
 
     app.tokenPost("/getMenuData", async (req, res, user) => {
-        return res.json({ code: 200, data: await DB.getUserMenuData(user.id) })
+        return res.json({ code: 200, data: await SystemController.getUserMenuData(user.id) })
     })
 
 
@@ -68,7 +70,7 @@ const LoginServer = (app, DB) => {
                 message: "二维码错误"
             })
 
-        const user = await DB.getUserByName(username)
+        const user = await SystemController.getUserByName(username)
 
         if (user == null)
             return res.json({
@@ -83,7 +85,7 @@ const LoginServer = (app, DB) => {
         else {
             res.json({
                 code: 200,
-                token: DB.registerToken(user)
+                token: SystemController.registerToken(user)
             })
         }
     })

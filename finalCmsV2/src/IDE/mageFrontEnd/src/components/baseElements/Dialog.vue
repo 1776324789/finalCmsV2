@@ -1,6 +1,6 @@
 <template>
     <Teleport to="body">
-        <div class="dialog" v-bind:class="{ show: show, close: !show }" :style="`z-index:${getMaxZIndex() + 1};`">
+        <div class="dialog" v-bind:class="{ show: show, close: !show }" style="z-index:100;">
             <div class="titleBlock">
                 <div class="title">{{ title }}</div>
                 <div class="closeButton" @click="close()">
@@ -14,7 +14,7 @@
                 <slot name="footer"></slot>
             </div>
         </div>
-        <div @click="close" class="cover" v-bind:class="{ showCover: show }" :style="`z-index:${getMaxZIndex()};`">
+        <div @click="close" class="cover" v-bind:class="{ showCover: show }" style="z-index:99;">
         </div>
     </Teleport>
 </template>

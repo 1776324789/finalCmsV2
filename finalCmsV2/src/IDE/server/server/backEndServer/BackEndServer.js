@@ -1,9 +1,10 @@
 import express from 'express'
 import cors from 'cors'
+import SystemController from '../../DataBase/SystemController.js'
 import LoginServer from './server/LoginServer.js'
 import WebsiteListServer from './server/WebsiteListServer.js'
 import FileServer from './server/FileServer.js'
-const BackEndServer = (DB) => {
+const BackEndServer = () => {
     const app = express()
     const PORT = 17514
 
@@ -24,7 +25,7 @@ const BackEndServer = (DB) => {
         app.post(url, async (req, res) => {
             try {
                 const token = req.get("token")
-                const user = DB.verifyToken(token)
+                const user = SystemController.verifyToken(token)
                 if (user == null) return res.json({ code: 400, message: "登录信息不存在或已过期，请重新登录" })
                 await handler(req, res, user)
             } catch (e) {
@@ -34,10 +35,25 @@ const BackEndServer = (DB) => {
         })
     }
 
-    LoginServer(app, DB)
-    WebsiteListServer(app, DB)
-    FileServer(app, DB)
+    // 文件上传（带 token 校验）
+    app.tokenFileUpload = (url, upload, handler) => {
+        app.post(url, upload, async (req, res) => {
+            try {
+                const token = req.get("token")
+                const user = SystemController.verifyToken(token)
+                if (user == null) return res.json({ code: 400, message: "登录信息不存在或已过期，请重新登录" })
+                await handler(req, res, user)
+            } catch (e) {
+                console.log(e);
+                res.json({ code: 400, message: e })
+            }
+        })
+    }
+
+    LoginServer(app)
+    WebsiteListServer(app)
+    FileServer(app)
     return app
 }
 
-export default BackEndServer
+export default BackEndServer()

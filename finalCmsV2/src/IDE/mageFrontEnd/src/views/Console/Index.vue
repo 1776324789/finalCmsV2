@@ -17,6 +17,8 @@
 <script setup>
 import SystemLeftMenu from './components/SystemLeftMenu.vue'
 import { ref, watch } from 'vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 
 const emit = defineEmits(['update:modelValue'])
 const show = ref(false)
@@ -24,11 +26,14 @@ const props = defineProps({ modelValue: Boolean })
 watch(
     () => props.modelValue,
     (val) => {
+        if (val)
+            router.push("/" + localStorage.getItem("systemTargetMenu"))
         show.value = val
     }
 )
 
 function exit() {
+    router.push("/")
     emit('update:modelValue', false)
     localStorage.setItem("showConsole", "false")
 }

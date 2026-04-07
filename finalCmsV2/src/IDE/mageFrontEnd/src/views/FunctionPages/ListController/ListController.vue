@@ -1,15 +1,22 @@
 <template>
     <div class="mainContent">
         <div style="margin-bottom: 25px;font-weight: 350;font-size: 18px;display: flex;">
-            <div style="flex:1;">
-                站点内容\WebContent
+
+            <div style="flex:1;display: flex;">
+                站点栏目
+                <div class="web">
+                    <div class="webName"> {{ systemStore.targetSite?.name }}</div>
+                    <div class="webTarget"> {{ systemStore.targetSite?.target }}</div>
+                </div>
             </div>
             <CmsButton @click="createList">创建栏目</CmsButton>
         </div>
         <ListTitle>栏目名称</ListTitle>
         <div class="contentBlock scroll">
             <template v-if="render">
-                <List @edit="editHandel" v-for="item in data" :data="item" :key="item.id"></List>
+                <List @editNode="editNodeHandel" @delete="deleteHandel" @createChildList="createList" @edit="editHandel"
+                    v-for="item in data" :data="item" :key="item.id">
+                </List>
             </template>
         </div>
     </div>
@@ -18,7 +25,8 @@
         <template #footer>
             <div style="display: flex;">
                 <div style="flex:1;"></div>
-                <CmsButton v-if="editTarget?.id == null" style="margin-right: 15px;" @click="createHandel">创建</CmsButton>
+                <CmsButton v-if="editTarget?.id == null" style="margin-right: 15px;" @click="createHandel">创建
+                </CmsButton>
                 <CmsButton v-else style="margin-right: 15px;" @click="saveHandel">保存</CmsButton>
                 <CmsButton @click="showEdit = false">取消</CmsButton>
             </div>
@@ -26,14 +34,15 @@
     </Dialog>
 </template>
 <script setup>
-import { getWebsiteList } from '@/request/websiteListApi.js'
-import { updateWebsiteList } from '@/request/websiteListApi'
-import Dialog from '@/components/baseElements/Dialog.vue';
+import { updateWebsiteList, createWebsiteList, deleteWebsiteList, getWebsiteList } from '@/request/websiteListApi'
 import List from './elements/List.vue';
 import ListTitle from './elements/ListTitle.vue';
 import { onActivated, ref } from 'vue';
 import ListEdit from './elements/ListEdit.vue';
 import { useSystemStore } from '@/store/systemStore';
+import { useRouter } from 'vue-router';
+const router = useRouter()
+
 const listEdit = ref(null)
 const systemStore = useSystemStore()
 const data = ref([])
@@ -41,9 +50,43 @@ const render = ref(true)
 const showEdit = ref(false)
 const editTarget = ref(null)
 
-function createList() {
-    editTarget.value = {}
+function createList(parentId) {
+    editTarget.value = {
+        parentId: parentId
+    }
     showEdit.value = true
+}
+
+function editNodeHandel(id) {
+    router.push({
+        path: '/nodeController',
+        query: {
+            id: id
+        }
+    })
+}
+
+async function deleteHandel(id) {
+    const res = await deleteWebsiteList({ id: id, websiteId: systemStore.targetSite.id })
+    console.log(res);
+    if (res.code == 200) {
+        getWebsiteListData()
+        toast.success("已删除")
+    } else {
+        toast.danger("删除失败:" + res.message)
+    }
+}
+
+
+async function createHandel() {
+    let res = await createWebsiteList({ data: listEdit.value.value, websiteId: systemStore.targetSite.id })
+    if (res.code == 200) {
+        getWebsiteListData()
+        toast.success("已创建")
+        showEdit.value = false
+    } else {
+        toast.danger("创建失败:" + res.message)
+    }
 }
 
 
@@ -53,8 +96,15 @@ function editHandel(e) {
 }
 
 async function saveHandel() {
-    await updateWebsiteListData(listEdit.value.value)
-    showEdit.value = false
+    const target = listEdit.value.value
+    let res = await updateWebsiteList({ data: target, websiteId: systemStore.targetSite.id })
+    if (res.code == 200) {
+        getWebsiteListData()
+        toast.success("已保存")
+        showEdit.value = false
+    } else {
+        toast.danger("保存失败:" + res.message)
+    }
 }
 
 async function getWebsiteListData() {
@@ -65,24 +115,10 @@ async function getWebsiteListData() {
     let res = await getWebsiteList({
         id: systemStore.targetSite?.id
     })
+    console.log(systemStore.targetSite?.id);
     data.value = res
 }
 
-async function updateWebsiteListData(target) {
-    const updateTargetInList = (id, target, list) => {
-        list.forEach(item => {
-            if (item.id == id) {
-                for (let key in target) {
-                    item[key] = target[key]
-                }
-                return
-            }
-            item.children && updateTargetInList(id, target, item.children)
-        })
-    }
-    updateTargetInList(target.id, target, data.value)
-    return await updateWebsiteList({ data: target, targetWebsite: systemStore.targetSite.target })
-}
 
 onActivated(() => {
     getWebsiteListData()
@@ -90,6 +126,27 @@ onActivated(() => {
 
 </script>
 <style scoped>
+.web {
+    cursor: pointer;
+    display: flex;
+    margin-left: 15px;
+    margin-top: 2px;
+}
+
+.web:hover {
+    color: #144e85c7;
+}
+
+.webName {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.webTarget {
+    font-size: 16px;
+    font-weight: 300;
+}
+
 .searchBlock {
     display: flex;
     margin-left: 30px;

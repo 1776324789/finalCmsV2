@@ -24,8 +24,8 @@
 </template>
 
 <script setup>
+import { uploadImage } from '@/request/file'
 import { ref, watch } from 'vue'
-import axios from 'axios'
 
 const props = defineProps({
     modelValue: Object
@@ -71,29 +71,28 @@ function clear() {
 async function upload() {
     const formData = new FormData()
     formData.append('file', originalImage.value)
-    formData.append('cover', compressedImage.value)
+    // 为cover文件添加正确的文件名和扩展名
+    const originalExt = originalImage.value.name.split('.').pop()
+    const coverName = `cover_${Date.now()}.${originalExt}`
+    formData.append('cover', compressedImage.value, coverName)
 
     uploading.value = true
     progress.value = 0
 
     try {
-        const res = await axios.post('/upload/image', formData, {
-            headers: {
-                token: localStorage.getItem('token')
-            },
+        const res = await uploadImage(formData, {
             onUploadProgress: (e) => {
                 if (e.total) {
                     progress.value = Math.round((e.loaded / e.total) * 100)
                 }
             }
         })
-
+        console.log(res)
         uploading.value = false
 
-        if (res.data.code === 200) {
-            emit('update:modelValue', res.data.data)
+        if (res.code === 200) {
+            emit('update:modelValue', res.data)
         } else {
-            alert(res.data.message)
         }
     } catch (err) {
         uploading.value = false
@@ -162,16 +161,16 @@ function compressImage(file, maxWidth = 800, quality = 0.7) {
     text-align: center;
     padding: 4px 25px;
     border-radius: 10px;
-    border: 1px solid #000;
+    border: 1px solid #333;
     height: 20px;
     font-size: 13px;
     font-weight: 350;
     line-height: 20px;
-    color: #000;
+    color: #333;
 }
 
 .reselect:hover {
-    background-color: #000;
+    background-color: #333;
     color: #fff;
 }
 
