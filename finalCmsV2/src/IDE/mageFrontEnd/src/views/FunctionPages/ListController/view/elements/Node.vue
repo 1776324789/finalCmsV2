@@ -311,7 +311,7 @@ function editHandel() {
     transition: all 0.5s;
     width: 0;
     overflow: hidden;
-    content: "编辑栏目";
+    content: "编辑内容";
     position: absolute;
     background-color: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(15px);
@@ -338,7 +338,7 @@ function editHandel() {
     transition: all 0.5s;
     width: 0;
     overflow: hidden;
-    content: "删除栏目";
+    content: "删除内容";
     position: absolute;
     background-color: rgba(255, 97, 97, 0.5);
     backdrop-filter: blur(15px);

@@ -12,7 +12,6 @@ const WebsiteListServer = (app) => {
 
     app.tokenPost("/getWebsiteListById", async (req, res, user) => {
         const { id } = req.body
-        console.log(WebsiteController);
         
         const result = await WebsiteController.getWebsiteData(id)
         return res.json(result)

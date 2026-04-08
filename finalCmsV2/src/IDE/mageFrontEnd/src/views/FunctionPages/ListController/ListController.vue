@@ -14,8 +14,8 @@
         <ListTitle>栏目名称</ListTitle>
         <div class="contentBlock scroll">
             <template v-if="render">
-                <List @editNode="editNodeHandel" @delete="deleteHandel" @createChildList="createList" @edit="editHandel"
-                    v-for="item in data" :data="item" :key="item.id">
+                <List @change="changeHandel" @editNode="editNodeHandel" @delete="deleteHandel"
+                    @createChildList="createList" @edit="editHandel" v-for="item in data" :data="item" :key="item.id">
                 </List>
             </template>
         </div>
@@ -93,6 +93,16 @@ async function createHandel() {
 function editHandel(e) {
     editTarget.value = e
     showEdit.value = true
+}
+
+async function changeHandel(e) {
+    let res = await updateWebsiteList({ data: e, websiteId: systemStore.targetSite.id })
+    if (res.code == 200) {
+        getWebsiteListData()
+        toast.success("已保存")
+    } else {
+        toast.danger("保存失败:" + res.message)
+    }
 }
 
 async function saveHandel() {

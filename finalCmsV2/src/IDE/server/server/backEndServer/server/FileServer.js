@@ -54,7 +54,8 @@ const FileServer = (app) => {
                         message: 'file 文件缺失'
                     })
                 }
-
+                // ✅ 修复文件名乱码
+                const originalName = Buffer.from(file.originalname, 'latin1').toString('utf8')
                 // 日期路径
                 const today = new Date();
                 const year = today.getFullYear();
@@ -67,7 +68,7 @@ const FileServer = (app) => {
                 // 基础返回
                 const result = {
                     url: baseUrl + datePath + '/' + file.filename,
-                    filename: file.originalname
+                    filename: originalName
                 }
 
                 // 如果有 cover，就加上

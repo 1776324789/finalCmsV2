@@ -13,6 +13,12 @@
         </div>
         <div class="lineBlock">
             <div class="line">
+                <div class="label">发布</div>
+                <CmsSwitch v-model="value.publish"></CmsSwitch>
+            </div>
+        </div>
+        <div class="lineBlock">
+            <div class="line">
                 <div class="label">key</div>
                 <CmsInput style="width:250px;" type="text" placeholder="请输入内容" disabled="true" v-model="value.id">
                 </CmsInput>

@@ -1,5 +1,4 @@
-{
-    "webTargetUrl": "http://localhost:20829",
+{   
     "user": [
         {
             "id": "s78d6f8s",
@@ -145,10 +144,6 @@
         {
             "userId": "s78d6f8s",
             "roleId": "jb57kl56"
-        },
-        {
-            "userId": "s78d6f8s",
-            "roleId": "jb5ugfie6"
         }
     ],
     "websiteRole": [
@@ -166,18 +161,6 @@
                 "66qt3lge",
                 "b0995e84"
             ]
-        },
-        {
-            "id": "jb5ugfie6",
-            "websiteId": "gjj8rw06",
-            "name": "管理员",
-            "menuIds": [
-                "aa6f6m86",
-                "iwx9z21d",
-                "66pwl3j7",
-                "keaa0was",
-                "jiqzsicr"
-            ]
         }
     ],
     "website": [
@@ -185,26 +168,6 @@
             "name": "招生网",
             "target": "zhaosheng",
             "id": "57rdn8ow"
-        },
-        {
-            "name": "校友网",
-            "target": "alumni",
-            "id": "gjj8rw06"
-        },
-        {
-            "name": "经管学院官网",
-            "target": "jgfy",
-            "id": "b69hk3gb"
-        },
-        {
-            "name": "教务处官网",
-            "target": "jwc",
-            "id": "gsobp5d5"
-        },
-        {
-            "name": "软件学院官网",
-            "target": "softWare",
-            "id": "88chs4i7"
         }
     ]
 }

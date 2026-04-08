@@ -903,6 +903,10 @@
             findScopedElements(this, "NODE-PARENT", ["CMS-NODE", "NODE-PARENT"]).forEach(child => {
                 child.data = this.data.parent
             })
+            // 处理 NODE-PARENT 元素
+            findScopedElements(this, "NODE-CONTENT", ["CMS-NODE", "NODE-PARENT"]).forEach(child => {
+                child.data = this.data
+            })
         }
     }
 
@@ -983,7 +987,29 @@
             }
         }
     }
+    /**
+        * 节点内容元素类
+        * 用于显示节点内容
+        */
+    class NodeContent extends BaseCmsElement {
+        constructor() {
+            super()
+            this.data
+        }
+        /**
+         * 渲染方法
+         * 显示节点标题
+         */
+        render() {
+            console.log(this.data);
+            console.log(BaseCmsURL + '/data/content/' + this.data.id + ".node");
 
+            // 否则，先获取修改信息，判断是否需要更新数据
+            fetch(BaseCmsURL + '/data/content/' + this.data.id + ".node")
+                .then(res => res.text())
+                .then(content => { this.innerHTML = content })
+        }
+    }
     /**
      * 节点信息元素类
      * 用于显示节点信息
@@ -1061,14 +1087,23 @@
             super()
         }
         render() {
-            const img = document.createElement("img")
-            this.classList.forEach(item => {
-                img.classList.add(item)
-            })
-            img.style = this.getAttribute("style")
-            this.parentNode.insertBefore(img, this)
-            this.parentNode.removeChild(this)
-            img.src = this.data.cover
+            if (this.data.cover) {
+                const img = document.createElement("img")
+                this.classList.forEach(item => {
+                    img.classList.add(item)
+                })
+                img.style = this.getAttribute("style")
+                this.parentNode.insertBefore(img, this)
+                this.parentNode.removeChild(this)
+
+                this.setAttribute("alt", this.data.cover.filename)
+                if (this.getAttribute("cover") != null) {
+                    img.src = this.data.cover.cover
+                } else {
+                    img.src = this.data.cover.url
+                }
+            }
+
         }
     }
 
@@ -1456,6 +1491,7 @@
         customElements.define('list-template', ListTemplate)
         customElements.define('list-cover', ListCover)
         customElements.define('node-title', NodeTitle)
+        customElements.define('node-content', NodeContent)
         customElements.define('node-info', NodeInfo)
         customElements.define('node-date', NodeDate)
         customElements.define('list-name', ListName)

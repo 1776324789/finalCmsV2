@@ -22,7 +22,11 @@
         <div class="index blockLine" style="flex:1;text-align:left;text-indent:25px;">
             {{ data.nodeTemplate || "--" }}
         </div>
-
+        <div class="index blockLine" style="width: 115px;display: flex;">
+            <CmsSwitch :label="['已发布', '未发布']" @change="changeHandel" v-model="data.publish"
+                style="margin-left: 10px;margin-top: 5px;">
+            </CmsSwitch>
+        </div>
         <div class="menuBlock">
             <div class="lineButton addButton" @click="createChild(data.id)">
                 <span class="icon-add-fill"></span>
@@ -49,7 +53,7 @@
     </div>
 
     <div v-if="data.children != null && data.children.length > 0 && open" class="childBlock">
-        <List @editNode="editNodeHandel" @delete="deleteHandel" @createChildList="createChild"
+        <List @change="changeHandel" @editNode="editNodeHandel" @delete="deleteHandel" @createChildList="createChild"
             v-for="(item, index) in data.children" :key="item.id || index" :data="item" @edit="editHandel" />
     </div>
 </template>
@@ -62,7 +66,7 @@ const props = defineProps({
     data: Object
 });
 const showDelBlock = ref(false)
-const emit = defineEmits(["onopen", "onclose", "edit", "openall", "createChildList", "delete", "editNode"]);
+const emit = defineEmits(["onopen", "onclose", "edit", "openall", "createChildList", "delete", "editNode", "change"]);
 
 const lineName = ref(null);
 // const childBlock = ref(null);
@@ -71,6 +75,10 @@ const childList = ref([]);
 
 function createChild(id) {
     emit("createChildList", id)
+}
+
+function changeHandel() {
+    emit("change", props.data);
 }
 
 function editNodeHandel(id) {

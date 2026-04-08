@@ -13,7 +13,7 @@ const LoginServer = (app) => {
 
         // 生成验证码
         const captcha = svgCaptcha.create({
-            size: 4, 
+            size: 4,
             ignoreChars: '0123456789oOiIlqgp',
             noise: 5,
             width: 175,
@@ -59,16 +59,16 @@ const LoginServer = (app) => {
     app.post('/login', async (req, res) => {
         const { connectId, username, password, verifyCode } = req.body
 
-        if (!verifyCodeMap.has(connectId))
-            return res.json({
-                code: 401,
-                message: "二维码已过期"
-            })
-        else if (verifyCodeMap.get(connectId).toString().toUpperCase() != verifyCode.toUpperCase())
-            return res.json({
-                code: 400,
-                message: "二维码错误"
-            })
+        // if (!verifyCodeMap.has(connectId))
+        //     return res.json({
+        //         code: 401,
+        //         message: "验证码已过期"
+        //     })
+        // else if (verifyCodeMap.get(connectId).toString().toUpperCase() != verifyCode.toUpperCase())
+        //     return res.json({
+        //         code: 400,
+        //         message: "验证码错误"
+        //     })
 
         const user = await SystemController.getUserByName(username)
 

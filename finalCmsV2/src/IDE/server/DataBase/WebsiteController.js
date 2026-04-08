@@ -91,7 +91,7 @@ const WebsiteController = () => {
         const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "list.json")
         const webData = sortTree(data)
 
-        await fs.writeFileSync(webListPath, JSON.stringify(webData))
+        await fs.writeFileSync(webListPath, JSON.stringify(webData), { flag: 'w' })
     }
     /**
     * 对树结构数据进行排序（children + nodes）
@@ -260,7 +260,7 @@ const WebsiteController = () => {
         const DB = await getDB()
         const target = DB.website.find(item => item.id == websiteId)?.target
         if (target == null) return { code: 404, message: "网站不存在" }
-        const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "content", nodeId)
+        const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "content", nodeId + ".node")
         if (fs.existsSync(webListPath)) {
             const content = await fs.readFileSync(webListPath, "utf-8")
             return { code: 200, message: "success", data: content }
@@ -298,7 +298,7 @@ const WebsiteController = () => {
 
         if (content != null) {
             const fsp = fs.promises
-            const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "content", node.id)
+            const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "content", node.id + ".node")
 
             try {
                 // ✅ 1. 确保目录存在
@@ -347,7 +347,7 @@ const WebsiteController = () => {
 
         if (content != null) {
             const fsp = fs.promises
-            const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "content", node.id)
+            const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "content", node.id + ".node")
 
             try {
                 // ✅ 1. 确保目录存在

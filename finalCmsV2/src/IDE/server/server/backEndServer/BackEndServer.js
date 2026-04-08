@@ -5,9 +5,11 @@ import LoginServer from './server/LoginServer.js'
 import WebsiteListServer from './server/WebsiteListServer.js'
 import FileServer from './server/FileServer.js'
 import WebsiteNodeServer from './server/WebsiteNodeServer.js'
+import SystemConfig from '../../DataBase/SystemConfig.js'
+
 const BackEndServer = () => {
     const app = express()
-    const PORT = 17514
+    const PORT = SystemConfig.backPort
 
     app.use(cors())
     app.use(express.json())
