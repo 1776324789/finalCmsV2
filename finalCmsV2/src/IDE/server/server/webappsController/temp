@@ -1,0 +1,53 @@
+
+    /** 初始化站点文件 */
+    function initSiteFiles() {
+        try {
+            // 读取 webapps 目录下的所有站点
+            const sites = fs.readdirSync(webappsDir, { withFileTypes: true })
+                .filter(dirent => dirent.isDirectory())
+                .map(dirent => dirent.name)
+
+            // 遍历每个站点
+            sites.forEach(siteName => {
+                const sitePath = path.join(webappsDir, siteName)
+
+                // 确保 CmsComponent 文件夹存在
+                const cmsComponentPath = path.join(sitePath, 'CmsComponent')
+                ensureDir(cmsComponentPath)
+
+                // 检查 index.html 文件
+                const indexPath = path.join(sitePath, 'index.html')
+                if (!fs.existsSync(indexPath)) {
+                    const indexContent = `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>网站首页</title>
+</head>
+<body>
+    <h1>欢迎访问本网站</h1>
+</body>
+</html>`
+                    fs.writeFileSync(indexPath, indexContent)
+                    console.log(`为站点 ${siteName} 创建 index.html 文件`)
+                }
+
+                // 检查 404.html 文件
+                const _404Path = path.join(sitePath, '404.html')
+                if (!fs.existsSync(_404Path)) {
+                    const root404Path = path.join(rootDir, '404.html')
+                    if (fs.existsSync(root404Path)) {
+                        fs.copyFileSync(root404Path, _404Path)
+                        console.log(`为站点 ${siteName} 创建 404.html 文件`)
+                    }
+                }
+            })
+
+            console.log('站点文件初始化完成')
+        } catch (error) {
+            console.error('初始化站点文件失败:', error)
+        }
+    }
+
+    initSiteFiles()

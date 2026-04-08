@@ -2,12 +2,7 @@
   "name": "src",
   "version": "1.0.0",
   "scripts": {
-    "pro": "node IDE/server/main.js",
-    "dev": "node IDE/server/main.js",
-    "dev:vue": "npm --prefix ./IDE/mageFrontEnd run dev",
-    "dev:all": "concurrently \"npm run dev\" \"npm run dev:vue\"",
-    "pro:vue": "npm --prefix ./IDE/mageFrontEnd run build",
-    "pro:all": "concurrently \"npm run pro\" \"npm run pro:vue\""
+    "pro": "node IDE/server/main.js"
   },
   "keywords": [],
   "author": "",

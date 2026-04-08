@@ -16,13 +16,20 @@ const WebsiteDataSync = () => {
     function getTargetPath(srcPath) {
         const relative = path.relative(webappsDir, srcPath)
 
-        // 👉 拆分路径：baidu/xxx.json
+        // 👉 拆分路径：baidu/data/xxx.json
         const parts = relative.split(path.sep)
 
         const siteName = parts.shift() // 👉 一级目录 = 网站名
+        
+        // 👉 确保是 data 目录
+        if (parts[0] !== 'data') {
+            return null
+        }
+        
+        parts.shift() // 移除 data 目录
 
-        // 👉 拼接到 data 目录
-        const targetBase = path.join(targetDir, siteName, 'data')
+        // 👉 拼接到目标目录
+        const targetBase = path.join(targetDir, siteName)
 
         return path.join(targetBase, ...parts)
     }
@@ -78,6 +85,8 @@ const WebsiteDataSync = () => {
     function syncFile(srcPath) {
         const targetPath = getTargetPath(srcPath)
 
+        if (!targetPath) return
+
         ensureDir(path.dirname(targetPath))
 
         if (path.basename(srcPath) === 'list.json') {
@@ -99,6 +108,8 @@ const WebsiteDataSync = () => {
     function removeFile(srcPath) {
         const targetPath = getTargetPath(srcPath)
 
+        if (!targetPath) return
+
         if (fs.existsSync(targetPath)) {
             fs.rmSync(targetPath, { recursive: true, force: true })
             console.log('删除:', targetPath)
@@ -117,7 +128,9 @@ const WebsiteDataSync = () => {
             .on('unlink', removeFile)
             .on('addDir', dirPath => {
                 const targetPath = getTargetPath(dirPath)
-                ensureDir(targetPath)
+                if (targetPath) {
+                    ensureDir(targetPath)
+                }
             })
             .on('unlinkDir', removeFile)
 

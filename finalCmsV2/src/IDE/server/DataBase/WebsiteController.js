@@ -38,7 +38,7 @@ const WebsiteController = () => {
         const DB = await getDB()
         const target = DB.website.find(item => item.id == websiteId)?.target
         if (target == null) return { code: 404, message: "网站不存在" }
-        const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "list.json")
+        const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "data", "list.json")
         let data = []
         try {
             data = await fs.readFileSync(webListPath, "utf-8")
@@ -88,7 +88,7 @@ const WebsiteController = () => {
         const DB = await getDB()
         const target = DB.website.find(item => item.id == websiteId)?.target
         if (target == null) return { code: 404, message: "网站不存在" }
-        const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "list.json")
+        const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "data", "list.json")
         const webData = sortTree(data)
 
         await fs.writeFileSync(webListPath, JSON.stringify(webData), { flag: 'w' })
@@ -260,7 +260,7 @@ const WebsiteController = () => {
         const DB = await getDB()
         const target = DB.website.find(item => item.id == websiteId)?.target
         if (target == null) return { code: 404, message: "网站不存在" }
-        const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "content", nodeId + ".node")
+        const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "data", "content", nodeId + ".node")
         if (fs.existsSync(webListPath)) {
             const content = await fs.readFileSync(webListPath, "utf-8")
             return { code: 200, message: "success", data: content }
@@ -273,7 +273,7 @@ const WebsiteController = () => {
         const DB = await getDB()
         const target = DB.website.find(item => item.id == websiteId)?.target
         if (target == null) return { code: 404, message: "网站不存在" }
-        const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "list.json")
+        const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "data", "list.json")
 
         const content = node.content
         delete node.content
@@ -298,7 +298,7 @@ const WebsiteController = () => {
 
         if (content != null) {
             const fsp = fs.promises
-            const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "content", node.id + ".node")
+            const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "data", "content", node.id + ".node")
 
             try {
                 // ✅ 1. 确保目录存在
@@ -325,7 +325,7 @@ const WebsiteController = () => {
         const DB = await getDB()
         const target = DB.website.find(item => item.id == websiteId)?.target
         if (target == null) return { code: 404, message: "网站不存在" }
-        const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "list.json")
+        const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "data", "list.json")
         node.id = getNodeId()
         node.createData = Date.now()
         const content = node.content
@@ -347,7 +347,7 @@ const WebsiteController = () => {
 
         if (content != null) {
             const fsp = fs.promises
-            const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "content", node.id + ".node")
+            const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "data", "content", node.id + ".node")
 
             try {
                 // ✅ 1. 确保目录存在
@@ -373,7 +373,7 @@ const WebsiteController = () => {
         const DB = await getDB()
         const target = DB.website.find(item => item.id == websiteId)?.target
         if (target == null) return { code: 404, message: "网站不存在" }
-        const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "list.json")
+        const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "data", "list.json")
 
         const list = await getWebsiteData(websiteId, true)
         const findNode = (lists, nodeId, handel) => {

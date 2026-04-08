@@ -2,7 +2,7 @@
   {
     "delFlag": 0,
     "id": "l_37eogl7x",
-    "name": "主栏目",
+    "name": "顶部导航栏",
     "cover": {
       "url": "http://localhost:20829/upload/2026-04-03/1775198516794-wgbhiue6s2.png",
       "filename": "5097c2e0032d38a2d90be5b83451d00a.png",
@@ -11,7 +11,48 @@
     "template": "listIndex",
     "nodeTemplate": "nodeIndex",
     "info": "这是一个测试介绍,父栏目",
-    "children": [],
+    "children": [
+      {
+        "parentId": "l_37eogl7x",
+        "name": "首页",
+        "id": "l_i4ozhsj6",
+        "children": [],
+        "nodes": [],
+        "publish": true
+      },
+      {
+        "parentId": "l_37eogl7x",
+        "name": "学院概况",
+        "publish": true,
+        "id": "l_7rp2cdkm",
+        "children": [],
+        "nodes": []
+      },
+      {
+        "parentId": "l_37eogl7x",
+        "name": "学院公告",
+        "publish": true,
+        "id": "l_kbernco6",
+        "children": [],
+        "nodes": []
+      },
+      {
+        "parentId": "l_37eogl7x",
+        "name": "专业介绍",
+        "publish": true,
+        "id": "l_89wi49x7",
+        "children": [],
+        "nodes": []
+      },
+      {
+        "parentId": "l_37eogl7x",
+        "name": "党团工作",
+        "publish": true,
+        "id": "l_a0jkt621",
+        "children": [],
+        "nodes": []
+      }
+    ],
     "nodes": [
       {
         "publish": true,
