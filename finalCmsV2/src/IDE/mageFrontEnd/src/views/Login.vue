@@ -509,7 +509,7 @@ async function login() {
   right: calc((100vh - 800px) / 2 * (100vw / 100vh));
   top: calc((100vh - 800px) / 2);
   border: 1px solid #fff;
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: rgba(59, 59, 59, 0.25);
   border-radius: 50px;
 }
 

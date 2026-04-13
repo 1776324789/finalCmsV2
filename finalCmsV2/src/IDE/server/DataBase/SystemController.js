@@ -4,158 +4,128 @@
  * - 用户索引管理
  * - Token 管理与验证
  * - 轻量级内存鉴权
- * - 网站数据的CRUD操作
+ * - 网站数据的 CRUD 操作
  */
-import fs from "fs"      // 文件系统模块，用于读写文件
-import path from "path"  // 路径模块，用于处理文件路径
-import crypto from 'crypto'  // 加密模块，用于生成token哈希
-/**
- * 创建数据库控制器实例
- * @returns {Object} 数据库控制器对象，包含各种方法
- */
+import fs from "fs"
+import path from "path"
+import crypto from 'crypto'
+import { formatTimestamp } from "../utils/timeUtils.js"
+
 const SystemController = () => {
-    /**
-     * token 池，用于存储用户token信息
-     * 结构: { token: { user, registerTime, activateTime } }
-     */
     const tokenPool = {}
+    const BaseUrl = process.cwd()
+    const TOKEN_EXPIRE_TIME = 2 * 60 * 60 * 1000
+    const TOKEN_IDLE_TIME = 15 * 60 * 1000
+    const INSPECT_INTERVAL = 30 * 1000
 
-    /**
-     * 项目根路径
-     */
-    const BaseUrl = process.cwd();
-
-    /**
-     * Token 过期时间：2小时
-     */
-    const TOKEN_EXPIRE_TIME = 2 * 60 * 60 * 1000   // 2 小时
-
-    /**
-     * Token 空闲时间：15分钟
-     */
-    const TOKEN_IDLE_TIME = 15 * 60 * 1000       // 15 分钟
-
-    /**
-     * Token 巡检间隔：30秒
-     */
-    const INSPECT_INTERVAL = 30 * 1000            // 30 秒
-
-    /**
-     * 读取数据库配置文件
-     * @returns {Promise<Object>} 数据库配置对象
-     */
     async function getDB() {
         const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
         const data = await fs.readFileSync(webListPath, "utf-8")
         return JSON.parse(data)
     }
 
-    /**
-     * 根据用户名获取用户信息
-     * @param {string} username 用户名
-     * @returns {Promise<Object|null>} 用户信息或null
-     */
     async function getUserByName(username) {
         const DB = await getDB()
         return DB.user.find(user => user.username == username)
     }
 
-    /**
-     * 获取用户菜单数据
-     * @param {string} userId 用户ID
-     * @returns {Promise<Object>} 包含系统菜单和网站菜单的对象
-     */
     async function getUserMenuData(userId) {
         let systemMenu = []
         const DB = await getDB()
         const userSystemRole = DB.systemUserRole.filter(item => item.userId == userId)
 
-        // 获取用户的系统角色对应的菜单
         userSystemRole.forEach(async role => {
             DB.systemRoleMenu.filter(item => item.roleId == role.roleId).forEach(roleMenu => {
                 systemMenu.push(DB.systemMenu.find(item => item.id == roleMenu.menuId))
             })
         })
 
-        // 去重
         systemMenu = [...new Set(systemMenu)]
 
+        // 过滤掉停用的菜单
+        systemMenu = systemMenu.filter(menu => menu && menu.status !== false)
+
         const website = []
-        let userWebsiteRole = DB.websiteUserRole.filter(item => item.userId == userId)
+        const userWebsiteRole = DB.websiteUserRole.filter(item => item.userId == userId)
 
-        // 获取用户的网站角色对应的菜单
-        userWebsiteRole.forEach(userRole => {
-            const websiteRole = DB.websiteRole.find(item => userRole.roleId == item.id)
-            const roleWebsite = DB.website.find(web => websiteRole.websiteId == web.id)
-            roleWebsite["menu"] = []
+        // 遍历所有站点
+        DB.website.forEach(roleWebsite => {
+            // 过滤掉停用的站点
+            if (roleWebsite.status === false) return
 
-            websiteRole.menuIds.forEach(menuId => {
-                roleWebsite.menu.push(DB.websiteMenu.find(item => item.id == menuId))
-            })
+            // 克隆站点对象，避免修改原数据
+            const websiteData = JSON.parse(JSON.stringify(roleWebsite))
+            websiteData.menu = []
 
-            // 去重
-            roleWebsite.menuTemp = [...new Set(roleWebsite.menu)]
-            website.push(roleWebsite)
+            // 检查是否是默认管理员
+            if (websiteData.defaultAdmin == userId) {
+                // 默认管理员拥有全部站点菜单权限
+                websiteData.menu = DB.websiteMenu.filter(m => m.status !== false)
+                websiteData.menuTemp = websiteData.menu
+                website.push(websiteData)
+            } else {
+                // 检查是否有角色绑定
+                const userRoleForThisSite = userWebsiteRole.find(ur => {
+                    const role = DB.websiteRole.find(r => r.id == ur.roleId)
+                    return role && role.websiteId == websiteData.id
+                })
+
+                if (userRoleForThisSite) {
+                    // 从角色获取菜单权限
+                    const websiteRole = DB.websiteRole.find(item => userRoleForThisSite.roleId == item.id)
+                    websiteRole.menuIds.forEach(menuId => {
+                        const menu = DB.websiteMenu.find(item => item.id == menuId)
+                        if (menu != null && menu.status !== false)
+                            websiteData.menu.push(menu)
+                    })
+                    websiteData.menuTemp = [...new Set(websiteData.menu)]
+                    website.push(websiteData)
+                }
+                // 如果既不是 defaultAdmin 也没有角色，不添加到结果中
+            }
         })
 
-        // 构建网站菜单的层级结构
         website.forEach(async website => {
-            // 获取父菜单
             website.menu = website.menuTemp.filter(item => item.parentId == null)
-
-            // 获取子菜单
             website.menu.forEach(item => {
                 item.children = website.menuTemp.filter(menu => menu.parentId == item.id)
                 if (item.children.length == 0)
                     delete item.children
             })
+            delete website.menuTemp
         })
 
         return { systemMenu: systemMenu, website: website }
     }
 
-    /**
-     * Token 巡检，定期清理过期或空闲的token
-     */
     setInterval(() => {
         const now = Date.now()
 
         Object.keys(tokenPool).forEach(token => {
             const info = tokenPool[token]
 
-            // 注册时间超过 2 小时，删除token
             if (now - info.registerTime > TOKEN_EXPIRE_TIME) {
                 delete tokenPool[token]
                 return
             }
 
-            // 15 分钟未激活，删除token
             if (now - info.activateTime > TOKEN_IDLE_TIME) {
                 delete tokenPool[token]
             }
         })
     }, INSPECT_INTERVAL)
 
-    /**
-     * 注册 token
-     * @param {Object} user 用户信息
-     * @returns {string} 生成的token
-     */
     function registerToken(user) {
-
-        // 如果该用户已有 token → 覆盖
         Object.keys(tokenPool).forEach(token => {
             if (tokenPool[token].user.username === user.username) {
                 delete tokenPool[token]
             }
         })
 
-        // 生成新token
         const token = stringToHash(
             Date.now().toString(36) + JSON.stringify(user)
         )
 
-        // 存储token信息
         tokenPool[token] = {
             user,
             registerTime: Date.now(),
@@ -164,25 +134,14 @@ const SystemController = () => {
         return token
     }
 
-    /**
-     * 校验 token
-     * @param {string} token 要校验的token
-     * @returns {Object|null} 用户信息或null
-     */
     function verifyToken(token) {
         const info = tokenPool[token]
         if (!info) return null
 
-        // 刷新活跃时间
         info.activateTime = Date.now()
         return info.user
     }
 
-    /**
-     * 将字符串转换为哈希值
-     * @param {string} str 要转换的字符串
-     * @returns {string} 哈希值
-     */
     function stringToHash(str) {
         return crypto
             .createHash('sha256')
@@ -190,12 +149,510 @@ const SystemController = () => {
             .digest('hex')
     }
 
-    // 返回控制器方法
+    function generateUserId() {
+        return "u_" + Math.floor(Math.random() * Date.now()).toString(36)
+    }
+
+    async function getUserList() {
+        const DB = await getDB()
+        return DB.user || []
+    }
+
+    async function createUser(userData, creator) {
+        const DB = await getDB()
+
+        const existingUser = DB.user.find(u => u.username === userData.username)
+        if (existingUser) {
+            return { code: 400, message: "用户名已存在" }
+        }
+
+        const newUser = {
+            id: generateUserId(),
+            username: userData.username,
+            password: stringToHash(userData.password),
+            status: userData.status !== undefined ? userData.status : 1,
+            createTime: formatTimestamp(new Date()),
+            createBy: creator.username,
+            updateTime: formatTimestamp(new Date()),
+            updateBy: creator.username
+        }
+
+        DB.user.push(newUser)
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "创建成功", data: { id: newUser.id } }
+    }
+
+    async function updateUser(userData, modifier) {
+        const DB = await getDB()
+
+        const userIndex = DB.user.findIndex(u => u.id === userData.id)
+        if (userIndex === -1) {
+            return { code: 404, message: "用户不存在" }
+        }
+
+        const user = DB.user[userIndex]
+
+        user.username = userData.username !== undefined ? userData.username : user.username
+        if (userData.password !== undefined && userData.password !== '') {
+            user.password = stringToHash(userData.password)
+        }
+        user.status = userData.status !== undefined ? userData.status : user.status
+        user.updateTime = formatTimestamp(new Date())
+        user.updateBy = modifier.username
+
+        DB.user[userIndex] = user
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "更新成功" }
+    }
+
+    async function deleteUser(userId) {
+        const DB = await getDB()
+
+        const userIndex = DB.user.findIndex(u => u.id === userId)
+        if (userIndex === -1) {
+            return { code: 404, message: "用户不存在" }
+        }
+
+        DB.user.splice(userIndex, 1)
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "删除成功" }
+    }
+
+    async function changePassword(userId, oldPassword, newPassword, modifier) {
+        const DB = await getDB()
+
+        const userIndex = DB.user.findIndex(u => u.id === userId)
+        if (userIndex === -1) {
+            return { code: 404, message: "用户不存在" }
+        }
+
+        const user = DB.user[userIndex]
+        const oldPasswordHash = stringToHash(oldPassword)
+
+        if (user.password !== oldPasswordHash) {
+            return { code: 400, message: "原密码错误" }
+        }
+
+        user.password = stringToHash(newPassword)
+        user.updateTime = formatTimestamp(new Date())
+        user.updateBy = modifier.username
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "密码修改成功" }
+    }
+
+    function generateMenuId() {
+        return "m_" + Math.floor(Math.random() * Date.now()).toString(36)
+    }
+
+    async function getSystemMenuList() {
+        const DB = await getDB()
+        return DB.systemMenu || []
+    }
+
+    async function createSystemMenu(menuData, creator) {
+        const DB = await getDB()
+
+        const existingMenu = DB.systemMenu.find(m => m.target === menuData.target)
+        if (existingMenu) {
+            return { code: 400, message: "目标路由已存在" }
+        }
+
+        const newMenu = {
+            id: generateMenuId(),
+            name: menuData.name,
+            icon: menuData.icon,
+            target: menuData.target,
+            status: menuData.status !== undefined ? menuData.status : 1,
+            createTime: formatTimestamp(new Date()),
+            createBy: creator.username,
+            updateTime: formatTimestamp(new Date()),
+            updateBy: creator.username
+        }
+
+        DB.systemMenu.push(newMenu)
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "创建成功", data: { id: newMenu.id } }
+    }
+
+    async function updateSystemMenu(menuData, modifier) {
+        const DB = await getDB()
+
+        const menuIndex = DB.systemMenu.findIndex(m => m.id === menuData.id)
+        if (menuIndex === -1) {
+            return { code: 404, message: "菜单不存在" }
+        }
+
+        const menu = DB.systemMenu[menuIndex]
+
+        menu.name = menuData.name !== undefined ? menuData.name : menu.name
+        menu.icon = menuData.icon !== undefined ? menuData.icon : menu.icon
+        menu.target = menuData.target !== undefined ? menuData.target : menu.target
+        menu.status = menuData.status !== undefined ? menuData.status : menu.status
+        menu.updateTime = formatTimestamp(new Date())
+        menu.updateBy = modifier.username
+
+        DB.systemMenu[menuIndex] = menu
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "更新成功" }
+    }
+
+    async function deleteSystemMenu(menuId) {
+        const DB = await getDB()
+
+        const menuIndex = DB.systemMenu.findIndex(m => m.id === menuId)
+        if (menuIndex === -1) {
+            return { code: 404, message: "菜单不存在" }
+        }
+
+        DB.systemMenu.splice(menuIndex, 1)
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "删除成功" }
+    }
+
+    // ==================== 角色管理 ====================
+
+    function generateRoleId() {
+        return "r_" + Math.floor(Math.random() * Date.now()).toString(36)
+    }
+
+    async function getRoleList() {
+        const DB = await getDB()
+        return DB.systemRole || []
+    }
+
+    async function createRole(roleData, creator) {
+        const DB = await getDB()
+
+        const existingRole = DB.systemRole.find(r => r.name === roleData.name)
+        if (existingRole) {
+            return { code: 400, message: "角色名称已存在" }
+        }
+
+        const newRole = {
+            id: generateRoleId(),
+            name: roleData.name,
+            description: roleData.description || "",
+            status: roleData.status !== undefined ? roleData.status : true,
+            createTime: formatTimestamp(new Date()),
+            createBy: creator.username,
+            updateTime: formatTimestamp(new Date()),
+            updateBy: creator.username
+        }
+
+        DB.systemRole.push(newRole)
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "创建成功", data: { id: newRole.id } }
+    }
+
+    async function updateRole(roleData, modifier) {
+        const DB = await getDB()
+
+        const roleIndex = DB.systemRole.findIndex(r => r.id === roleData.id)
+        if (roleIndex === -1) {
+            return { code: 404, message: "角色不存在" }
+        }
+
+        const role = DB.systemRole[roleIndex]
+
+        role.name = roleData.name !== undefined ? roleData.name : role.name
+        role.description = roleData.description !== undefined ? roleData.description : role.description
+        role.status = roleData.status !== undefined ? roleData.status : role.status
+        role.updateTime = formatTimestamp(new Date())
+        role.updateBy = modifier.username
+
+        DB.systemRole[roleIndex] = role
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "更新成功" }
+    }
+
+    async function deleteRole(roleId) {
+        const DB = await getDB()
+
+        const roleIndex = DB.systemRole.findIndex(r => r.id === roleId)
+        if (roleIndex === -1) {
+            return { code: 404, message: "角色不存在" }
+        }
+
+        // 删除角色关联的菜单权限
+        DB.systemRoleMenu = DB.systemRoleMenu.filter(item => item.roleId !== roleId)
+
+        // 删除角色关联的用户关系
+        DB.systemUserRole = DB.systemUserRole.filter(item => item.roleId !== roleId)
+
+        DB.systemRole.splice(roleIndex, 1)
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "删除成功" }
+    }
+
+    async function getRoleMenu(roleId) {
+        const DB = await getDB()
+        const roleMenus = DB.systemRoleMenu.filter(item => item.roleId === roleId)
+        const menuIds = roleMenus.map(item => item.menuId)
+        return { code: 200, data: menuIds }
+    }
+
+    async function saveRoleMenu(roleId, menuIds, modifier) {
+        const DB = await getDB()
+
+        // 删除该角色的所有菜单权限
+        DB.systemRoleMenu = DB.systemRoleMenu.filter(item => item.roleId !== roleId)
+
+        // 添加新的菜单权限
+        menuIds.forEach(menuId => {
+            DB.systemRoleMenu.push({
+                roleId: roleId,
+                menuId: menuId
+            })
+        })
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "保存成功" }
+    }
+
+    async function getRoleUsers(roleId) {
+        const DB = await getDB()
+        const roleUsers = DB.systemUserRole.filter(item => item.roleId === roleId)
+        const userIds = roleUsers.map(item => item.userId)
+        const users = DB.user.filter(user => userIds.includes(user.id))
+        return { code: 200, data: users }
+    }
+
+    async function saveRoleUsers(roleId, userIds, modifier) {
+        const DB = await getDB()
+
+        // 删除该角色的所有用户关系
+        DB.systemUserRole = DB.systemUserRole.filter(item => item.roleId !== roleId)
+
+        // 添加新的用户关系
+        userIds.forEach(userId => {
+            DB.systemUserRole.push({
+                userId: userId,
+                roleId: roleId
+            })
+        })
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "保存成功" }
+    }
+
+    // 获取用户的角色列表
+    async function getUserRoles(userId) {
+        const DB = await getDB()
+        const userRoles = DB.systemUserRole.filter(item => item.userId === userId)
+        const roleIds = userRoles.map(item => item.roleId)
+        const roles = DB.systemRole.filter(role => roleIds.includes(role.id))
+        return { code: 200, data: roles }
+    }
+
+    // 保存用户的角色关系（通过 userId）
+    async function saveUserRoles(userId, roleIds, modifier) {
+        const DB = await getDB()
+
+        // 删除该用户的所有角色关系
+        DB.systemUserRole = DB.systemUserRole.filter(item => item.userId !== userId)
+
+        // 添加新的角色关系
+        roleIds.forEach(roleId => {
+            DB.systemUserRole.push({
+                userId: userId,
+                roleId: roleId
+            })
+        })
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "保存成功" }
+    }
+
+    // ==================== 网站菜单管理 ====================
+
+    function generateWebsiteMenuId() {
+        return "wm_" + Math.floor(Math.random() * Date.now()).toString(36)
+    }
+
+    function generateWebsiteId() {
+        return "w_" + Math.floor(Math.random() * Date.now()).toString(36)
+    }
+
+    async function getWebsiteList() {
+        const DB = await getDB()
+        return DB.website || []
+    }
+
+    async function getWebsiteMenuList() {
+        const DB = await getDB()
+
+        return DB.websiteMenu
+    }
+
+    async function createWebsiteMenu(menuData, creator) {
+        const DB = await getDB()
+
+        // 检查目标路由是否已存在（只有当提供了 target 时才检查）
+        if (menuData.target) {
+            const existingMenu = DB.websiteMenu.find(m => m.target === menuData.target)
+            if (existingMenu) {
+                return { code: 400, message: "目标路由已存在" }
+            }
+        }
+
+        const newMenu = {
+            id: generateWebsiteMenuId(),
+            name: menuData.name,
+            icon: menuData.icon,
+            target: menuData.target,
+            parentId: menuData.parentId || null,
+            status: menuData.status !== undefined ? menuData.status : true,
+            createTime: formatTimestamp(new Date()),
+            createBy: creator.username,
+            updateTime: formatTimestamp(new Date()),
+            updateBy: creator.username
+        }
+
+        DB.websiteMenu.push(newMenu)
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "创建成功", data: { id: newMenu.id } }
+    }
+
+    async function updateWebsiteMenu(menuData, modifier) {
+        const DB = await getDB()
+
+        const menuIndex = DB.websiteMenu.findIndex(m => m.id === menuData.id)
+        if (menuIndex === -1) {
+            return { code: 404, message: "菜单不存在" }
+        }
+
+        const menu = DB.websiteMenu[menuIndex]
+
+        menu.name = menuData.name !== undefined ? menuData.name : menu.name
+        menu.icon = menuData.icon !== undefined ? menuData.icon : menu.icon
+        menu.target = menuData.target !== undefined ? menuData.target : menu.target
+        menu.parentId = menuData.parentId !== undefined ? menuData.parentId : menu.parentId
+        menu.status = menuData.status !== undefined ? menuData.status : menu.status
+        menu.updateTime = formatTimestamp(new Date())
+        menu.updateBy = modifier.username
+
+        DB.websiteMenu[menuIndex] = menu
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "更新成功" }
+    }
+
+    async function deleteWebsiteMenu(menuId) {
+        const DB = await getDB()
+        console.log(menuId)
+        console.log(DB.websiteMenu);
+
+        const menuIndex = DB.websiteMenu.findIndex(m => m.id === menuId)
+        if (menuIndex === -1) {
+            return { code: 404, message: "菜单不存在" }
+        }
+
+        // 从所有 websiteRole 中移除该菜单
+        DB.websiteRole.forEach(role => {
+            if (role.menuIds) {
+                role.menuIds = role.menuIds.filter(id => id !== menuId)
+            }
+        })
+
+        DB.websiteMenu.splice(menuIndex, 1)
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "删除成功" }
+    }
+
+    async function getWebsiteMenuTree() {
+        const DB = await getDB()
+        let menus = DB.websiteMenu || []
+
+        // 构建树形结构
+        const rootMenus = menus.filter(item => !item.parentId)
+        const childrenMenus = menus.filter(item => item.parentId)
+
+        rootMenus.forEach(item => {
+            item.children = childrenMenus.filter(menu => menu.parentId == item.id)
+            if (item.children.length === 0) {
+                delete item.children
+            }
+        })
+
+        return rootMenus
+    }
+
     return {
-        getUserMenuData,    // 获取用户菜单数据
-        getUserByName,      // 根据用户名获取用户信息
-        registerToken,      // 注册token
-        verifyToken         // 校验token
+        getUserMenuData,
+        getUserByName,
+        getUserList,
+        createUser,
+        updateUser,
+        deleteUser,
+        changePassword,
+        getSystemMenuList,
+        createSystemMenu,
+        updateSystemMenu,
+        deleteSystemMenu,
+        getRoleList,
+        createRole,
+        updateRole,
+        deleteRole,
+        getRoleMenu,
+        saveRoleMenu,
+        getRoleUsers,
+        saveRoleUsers,
+        getUserRoles,
+        saveUserRoles,
+        getWebsiteList,
+        getWebsiteMenuList,
+        createWebsiteMenu,
+        updateWebsiteMenu,
+        deleteWebsiteMenu,
+        getWebsiteMenuTree,
+        registerToken,
+        verifyToken,
+        getDB,
+        generateWebsiteId
     }
 }
 

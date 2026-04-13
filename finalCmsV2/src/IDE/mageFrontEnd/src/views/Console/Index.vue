@@ -1,17 +1,19 @@
 <template>
     <div class="contentBlock" v-bind:class="{ show: show }">
         <div class="leftMenuBlock">
-            <CmsButton @click="exit">退出控制台</CmsButton>
             <div class="title">FinalCMS Console</div>
-            <SystemLeftMenu></SystemLeftMenu>
+            <div style="flex:1;">
+                <SystemLeftMenu></SystemLeftMenu>
+            </div>
+            <CmsButton @click="exit">退出控制台</CmsButton>
         </div>
-
-        <RouterView v-slot="{ Component }">
-            <KeepAlive>
-                <component :is="Component" />
-            </KeepAlive>
-        </RouterView>
-
+        <div style="display: flex;flex:1;flex-direction: column;">
+            <RouterView v-slot="{ Component }">
+                <KeepAlive>
+                    <component :is="Component" />
+                </KeepAlive>
+            </RouterView>
+        </div>
     </div>
 </template>
 <script setup>
@@ -70,6 +72,8 @@ function exit() {
     width: 200px;
     padding-right: 15px;
     border-right: 1px solid #fff;
+    display: flex;
+    flex-direction: column;
 }
 
 .contentBlock {
@@ -77,7 +81,7 @@ function exit() {
     display: flex;
     pointer-events: none;
     opacity: 0;
-    transition: all 0.3s;
+    transition: all 0.5s;
     position: fixed;
     width: 180px;
     height: 57px;

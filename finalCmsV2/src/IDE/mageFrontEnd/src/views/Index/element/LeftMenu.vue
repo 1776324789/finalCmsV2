@@ -2,7 +2,7 @@
     <div class="mainMenuBlock" v-bind:class="{ leftIn: show }">
 
         <div class="title">Final<br>CMS</div>
-       
+
         <div style="flex:1;">
             <div class="menuBlock" v-for="item in systemStore.targetSite?.menu || []">
                 <div class="menuButton" v-bind:class="{
@@ -12,7 +12,8 @@
                 }" @click="handelMenuClick(item)">
                     <span :class="item.icon"></span>
                     <div class="name">
-                        {{ item.name }}
+                        {{ item.name }}<span v-if="item.children != null" v-bind:class="{ 'arrowUp': item.open }"
+                            class="icon-arrow-drop-up-fill"></span>
                     </div>
                 </div>
                 <div class="childrenMenuBlock" v-bind:class="{ 'childrenMenuBlockOpen': item.open }"
@@ -177,6 +178,21 @@ function handelMenuClick(menu) {
     padding-left: 20px;
     padding-right: 20px;
     width: auto;
+    display: flex;
+}
+
+
+
+.mainMenuBlock:hover .menuButton .name span {
+    font-size: 25px;
+    margin-left: 10px;
+    color: #fff;
+    margin-right: -5px;
+    transition: all 0.25s;
+}
+
+.mainMenuBlock:hover .menuButton .name .arrowUp {
+    transform: rotate(180deg);
 }
 
 .leftIn {

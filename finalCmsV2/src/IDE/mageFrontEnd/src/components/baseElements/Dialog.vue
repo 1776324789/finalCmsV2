@@ -1,6 +1,8 @@
 <template>
     <Teleport to="body">
-        <div class="dialog" v-bind:class="{ show: show, close: !show }" style="z-index:100;">
+        <div @click="close" class="cover" v-bind:class="{ showCover: showCover }" :style="{ zIndex: maxZIndex - 1 }">
+        </div>
+        <div class="dialog" v-bind:class="{ show: show, close: !show }" :style="{ zIndex: maxZIndex }">
             <div class="titleBlock">
                 <div class="title">{{ title }}</div>
                 <div class="closeButton" @click="close()">
@@ -14,19 +16,20 @@
                 <slot name="footer"></slot>
             </div>
         </div>
-        <div @click="close" class="cover" v-bind:class="{ showCover: show }" style="z-index:99;">
-        </div>
+
     </Teleport>
 </template>
 <script setup>
 import { ref, watch } from 'vue'
 
 const show = ref(false)
+const showCover = ref(false)
 const props = defineProps({
     modelValue: Boolean,
     title: String
 })
 
+const maxZIndex = ref(0)
 const emit = defineEmits(['close', 'show', 'update:modelValue'])
 
 function close() {
@@ -37,7 +40,12 @@ function close() {
 watch(
     () => props.modelValue,
     (val) => {
+
         show.value = val
+        setTimeout(() => {
+            showCover.value = val
+        });
+        maxZIndex.value = getMaxZIndex()
         if (show.value) emit('show')
     },
     { immediate: true } // 👈 初始化时也同步一次状态

@@ -56,15 +56,7 @@
                 <div class="label">附件</div>
                 <FileUpload v-model="value.file"></FileUpload>
             </div>
-            <!-- <TinyMCEEditor></TinyMCEEditor> -->
-            <!-- <div style="border: 1px solid #fff;">
-            <QuillEditor style="width:80vw;min-height:500px;" @input="check" placeholder="请输入内容" v-model:content="content" ref="quill"
-                theme="snow"></QuillEditor>
-        </div> -->
-            <!-- <div class="line" style="flex-direction: column;">
-            <div class="label">动态变量</div>
-            <DynamicPropEdit></DynamicPropEdit>
-        </div> -->
+
         </div>
         <div style="flex:1;margin-left: 10px;" v-if="value" class="scroll">
             <RichEditor v-model="value.content"></RichEditor>
@@ -76,17 +68,13 @@
 <script setup>
 import FileUpload from '@/components/baseElements/FileUpload.vue';
 
-// import { QuillEditor } from '@vueup/vue-quill'
 import { ref, watch, nextTick, onMounted } from 'vue'
 import DynamicPropEdit from './DynamicPropEdit.vue';
 import CmsTextarea from '@/components/baseElements/CmsTextarea.vue';
-// import TinyMCEEditor from './TinyMCEEditor.vue';
 
-import '@vueup/vue-quill/dist/vue-quill.snow.css'
 import RichEditor from '@/components/baseElements/RichEditor.vue';
 
 const value = ref({})
-const quill = ref(null)
 const container = ref(null)
 
 defineExpose({

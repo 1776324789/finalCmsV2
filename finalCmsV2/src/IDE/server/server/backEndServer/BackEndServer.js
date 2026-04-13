@@ -5,6 +5,8 @@ import LoginServer from './server/LoginServer.js'
 import WebsiteListServer from './server/WebsiteListServer.js'
 import FileServer from './server/FileServer.js'
 import WebsiteNodeServer from './server/WebsiteNodeServer.js'
+import UserManageServer from './server/UserManageServer.js'
+import WebsiteManageServer from './server/WebsiteManageServer.js'
 import SystemConfig from '../../DataBase/SystemConfig.js'
 
 const BackEndServer = () => {
@@ -57,6 +59,8 @@ const BackEndServer = () => {
     WebsiteListServer(app)
     FileServer(app)
     WebsiteNodeServer(app)
+    UserManageServer(app)
+    WebsiteManageServer(app)
     return app
 }
 

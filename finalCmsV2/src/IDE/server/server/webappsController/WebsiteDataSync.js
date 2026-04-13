@@ -16,16 +16,16 @@ const WebsiteDataSync = () => {
     function getTargetPath(srcPath) {
         const relative = path.relative(webappsDir, srcPath)
 
-        // 👉 拆分路径：baidu/data/xxx.json
-        const parts = relative.split(path.sep)
+        // 👉 chokidar 总是返回使用/的路径，所以用/分割
+        const parts = relative.split('/')
 
         const siteName = parts.shift() // 👉 一级目录 = 网站名
-        
+
         // 👉 确保是 data 目录
         if (parts[0] !== 'data') {
             return null
         }
-        
+
         parts.shift() // 移除 data 目录
 
         // 👉 拼接到目标目录

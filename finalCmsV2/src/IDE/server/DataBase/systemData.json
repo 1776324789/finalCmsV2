@@ -1,15 +1,36 @@
-{   
+{
     "user": [
         {
             "id": "s78d6f8s",
             "username": "刘军",
-            "password": "a5b5ce234c33ef70bb42d1d9a1ef8d3e594cc39ad9c6474ab72a8efb83bdfcc5"
+            "password": "a5b5ce234c33ef70bb42d1d9a1ef8d3e594cc39ad9c6474ab72a8efb83bdfcc5",
+            "status": true,
+            "createTime": "2026-04-08 00:00:00",
+            "createBy": "system",
+            "updateTime": "2026-04-08 15:00:55",
+            "updateBy": "刘军"
+        },
+        {
+            "id": "u_7pg7kdg9",
+            "username": "许良",
+            "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+            "status": true,
+            "createTime": "2026-04-13 16:22:53",
+            "createBy": "刘军",
+            "updateTime": "2026-04-13 16:40:50",
+            "updateBy": "刘军"
         }
     ],
     "systemRole": [
         {
             "id": "7ds98f7g9",
-            "name": "admin"
+            "name": "admin",
+            "description": "系统管理员",
+            "status": true,
+            "createTime": "2026-04-08 00:00:00",
+            "createBy": "system",
+            "updateTime": "2026-04-08 00:00:00",
+            "updateBy": "system"
         }
     ],
     "systemRoleMenu": [
@@ -36,6 +57,10 @@
         {
             "roleId": "7ds98f7g9",
             "menuId": "b754367b345"
+        },
+        {
+            "roleId": "7ds98f7g9",
+            "menuId": "9285g82kj"
         }
     ],
     "systemUserRole": [
@@ -49,43 +74,78 @@
             "id": "56df798s",
             "name": "数据统计",
             "icon": "icon-database-line",
-            "target": "systemDataAnalysis"
+            "target": "systemDataAnalysis",
+            "status": true,
+            "createTime": "2026-04-08 00:00:00",
+            "createBy": "system",
+            "updateTime": "2026-04-08 15:53:52",
+            "updateBy": "刘军"
         },
         {
             "id": "9285g82kj",
             "name": "站点管理",
             "icon": "icon-database-line",
-            "target": "systemWebsiteManage"
+            "target": "systemWebsiteManage",
+            "status": true,
+            "createTime": "2026-04-08 00:00:00",
+            "createBy": "system",
+            "updateTime": "2026-04-08 15:53:51",
+            "updateBy": "刘军"
         },
         {
             "id": "oclapf0y",
             "name": "公共数据管理",
             "icon": "icon-database-line",
-            "target": "systemPublicData"
+            "target": "systemPublicData",
+            "status": true,
+            "createTime": "2026-04-08 00:00:00",
+            "createBy": "system",
+            "updateTime": "2026-04-08 15:53:51",
+            "updateBy": "刘军"
         },
         {
             "id": "ns9g82kj",
             "name": "站点功能管理",
             "icon": "icon-database-line",
-            "target": "systemWebsiteMenuManage"
+            "target": "systemWebsiteMenuManage",
+            "status": true,
+            "createTime": "2026-04-08 00:00:00",
+            "createBy": "system",
+            "updateTime": "2026-04-08 15:53:51",
+            "updateBy": "刘军"
         },
         {
             "id": "423fwfzxd",
             "name": "功能管理",
             "icon": "icon-database-line",
-            "target": "systemFunctionManage"
+            "target": "systemFunctionManage",
+            "status": true,
+            "createTime": "2026-04-08 00:00:00",
+            "createBy": "system",
+            "updateTime": "2026-04-08 00:00:00",
+            "updateBy": "system"
         },
         {
             "id": "vt34tvw34",
             "name": "角色管理",
             "icon": "icon-database-line",
-            "target": "systemRoleManage"
+            "target": "systemRoleManage",
+            "status": true,
+            "createTime": "2026-04-08 00:00:00",
+            "createBy": "system",
+            "updateTime": "2026-04-08 00:00:00",
+            "updateBy": "system"
         },
         {
             "id": "b754367b345",
             "name": "用户管理",
             "icon": "icon-database-line",
-            "target": "systemUserManage"
+            "target": "systemUserManage",
+            "status": true,
+            "createTime": "2026-04-08 00:00:00",
+            "createBy": "system",
+            "updateTime": "2026-04-08 00:00:00",
+            "updateBy": "system"
         }
     ],
     "websiteMenu": [
@@ -93,51 +153,91 @@
             "name": "数据统计",
             "icon": "icon-database-line",
             "target": "dataAnalysis",
-            "id": "aa6f6m86"
+            "id": "aa6f6m86",
+            "status": true,
+            "createTime": "2026-04-08 00:00:00",
+            "createBy": "system",
+            "updateTime": "2026-04-13 14:31:41",
+            "updateBy": "刘军"
         },
         {
             "name": "栏目管理",
             "icon": "icon-archive-drawer-line",
             "target": "listController",
-            "id": "iwx9z21d"
+            "id": "iwx9z21d",
+            "status": true,
+            "createTime": "2026-04-08 00:00:00",
+            "createBy": "system",
+            "updateTime": "2026-04-08 00:00:00",
+            "updateBy": "system"
         },
         {
             "name": "后台管理",
             "icon": "icon-folder-settings-fill",
-            "id": "66pwl3j7"
+            "id": "66pwl3j7",
+            "status": true,
+            "createTime": "2026-04-08 00:00:00",
+            "createBy": "system",
+            "updateTime": "2026-04-13 14:31:40",
+            "updateBy": "刘军"
         },
         {
             "name": "用户管理",
             "icon": "icon-user-settings-line",
             "target": "userMage",
             "id": "keaa0was",
-            "parentId": "66pwl3j7"
+            "parentId": "66pwl3j7",
+            "status": true,
+            "createTime": "2026-04-08 00:00:00",
+            "createBy": "system",
+            "updateTime": "2026-04-08 00:00:00",
+            "updateBy": "system"
         },
         {
             "name": "角色管理",
             "icon": "icon-user-2-fill",
             "target": "roleMage",
             "id": "jiqzsicr",
-            "parentId": "66pwl3j7"
+            "parentId": "66pwl3j7",
+            "status": true,
+            "createTime": "2026-04-08 00:00:00",
+            "createBy": "system",
+            "updateTime": "2026-04-08 00:00:00",
+            "updateBy": "system"
         },
         {
             "name": "内容管理",
             "icon": "icon-archive-fill",
-            "id": "76t7klzk"
+            "id": "76t7klzk",
+            "status": true,
+            "createTime": "2026-04-08 00:00:00",
+            "createBy": "system",
+            "updateTime": "2026-04-13 14:31:40",
+            "updateBy": "刘军"
         },
         {
             "name": "数据传输",
             "icon": "icon-upload-cloud-2-fill",
             "target": "dataTrans",
             "id": "66qt3lge",
-            "parentId": "76t7klzk"
+            "parentId": "76t7klzk",
+            "status": true,
+            "createTime": "2026-04-08 00:00:00",
+            "createBy": "system",
+            "updateTime": "2026-04-08 00:00:00",
+            "updateBy": "system"
         },
         {
             "name": "文件管理",
             "icon": "icon-file-settings-fill",
             "target": "fileMage",
             "id": "b0995e84",
-            "parentId": "76t7klzk"
+            "parentId": "76t7klzk",
+            "status": true,
+            "createTime": "2026-04-08 00:00:00",
+            "createBy": "system",
+            "updateTime": "2026-04-08 00:00:00",
+            "updateBy": "system"
         }
     ],
     "websiteUserRole": [
@@ -165,9 +265,26 @@
     ],
     "website": [
         {
-            "name": "招生网",
+            "name": "招生网1",
             "target": "zhaosheng",
-            "id": "57rdn8ow"
+            "id": "57rdn8ow",
+            "status": true,
+            "createTime": "2026-04-13 15:58:50",
+            "createBy": "刘军",
+            "updateTime": "2026-04-13 16:41:11",
+            "updateBy": "刘军",
+            "defaultAdmin": "s78d6f8s"
+        },
+        {
+            "name": "测试站点1",
+            "target": "test",
+            "id": "w_evelefv1",
+            "status": true,
+            "createTime": "2026-04-13 15:58:50",
+            "createBy": "刘军",
+            "updateTime": "2026-04-13 16:41:34",
+            "updateBy": "刘军",
+            "defaultAdmin": "s78d6f8s"
         }
     ]
 }

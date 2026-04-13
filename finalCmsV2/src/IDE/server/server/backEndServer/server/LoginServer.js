@@ -59,17 +59,6 @@ const LoginServer = (app) => {
     app.post('/login', async (req, res) => {
         const { connectId, username, password, verifyCode } = req.body
 
-        // if (!verifyCodeMap.has(connectId))
-        //     return res.json({
-        //         code: 401,
-        //         message: "验证码已过期"
-        //     })
-        // else if (verifyCodeMap.get(connectId).toString().toUpperCase() != verifyCode.toUpperCase())
-        //     return res.json({
-        //         code: 400,
-        //         message: "验证码错误"
-        //     })
-
         const user = await SystemController.getUserByName(username)
 
         if (user == null)
@@ -77,17 +66,24 @@ const LoginServer = (app) => {
                 code: 401,
                 message: "用户不存在"
             })
-        else if (user.password != stringToHash(password))
+
+        // 检查账户状态
+        if (!user.status)
+            return res.json({
+                code: 402,
+                message: "账户已停用，请联系管理员"
+            })
+
+        if (user.password != stringToHash(password))
             return res.json({
                 code: 401,
                 message: "密码错误"
             })
-        else {
-            res.json({
-                code: 200,
-                token: SystemController.registerToken(user)
-            })
-        }
+
+        res.json({
+            code: 200,
+            token: SystemController.registerToken(user)
+        })
     })
 
     /**

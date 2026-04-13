@@ -14,16 +14,18 @@ const WebsiteFileSync = () => {
 
     function getTargetPath(srcPath) {
         const relative = path.relative(webappsDir, srcPath)
-        const parts = relative.split(path.sep)
+        // chokidar 总是返回使用/的路径，所以用/分割
+        const parts = relative.split('/')
         const siteName = parts.shift()
 
         if (!siteName) return null
 
-        const relativePath = parts.join(path.sep)
-
-        if (relativePath.startsWith('data') || relativePath.startsWith('CmsComponent')) {
+        // 检查第一个目录段是否完全等于排除目录（排除其所有子目录）
+        if (parts[0] === 'data' || parts[0] === 'CmsComponent') {
             return null
         }
+
+        const relativePath = parts.join('/')
 
         return path.join(targetDir, siteName, relativePath)
     }
@@ -31,14 +33,14 @@ const WebsiteFileSync = () => {
     function handleHtmlFile(srcPath, targetPath) {
         try {
             let content = fs.readFileSync(srcPath, 'utf-8')
-            
+
             const sitePath = path.dirname(srcPath)
             const siteName = path.basename(sitePath)
             const cmsComponentPath = path.join(sitePath, 'CmsComponent')
-            
+
             content = replaceCmsComponents(content, cmsComponentPath)
             content = addFinalCmsScript(content, siteName)
-            
+
             ensureDir(path.dirname(targetPath))
             fs.writeFileSync(targetPath, content)
             console.log('同步 HTML 文件:', srcPath, '->', targetPath)
@@ -49,7 +51,7 @@ const WebsiteFileSync = () => {
 
     function addFinalCmsScript(content, siteName) {
         const scriptTag = `<script src="cmsScripts/FinalCms.js?web=${siteName}"></script>`
-        
+
         if (content.includes('</body>')) {
             return content.replace('</body>', `${scriptTag}\n</body>`)
         } else if (content.includes('</html>')) {
@@ -61,11 +63,11 @@ const WebsiteFileSync = () => {
 
     function replaceCmsComponents(content, cmsComponentPath) {
         const cmsComponentRegex = /<cms-component[^>]*>([^<]+)<\/cms-component>/g
-        
+
         return content.replace(cmsComponentRegex, (match, componentName) => {
             const componentFileName = componentName.trim() + '.html'
             const componentFilePath = path.join(cmsComponentPath, componentFileName)
-            
+
             if (fs.existsSync(componentFilePath)) {
                 try {
                     const componentContent = fs.readFileSync(componentFilePath, 'utf-8').trim()
@@ -126,18 +128,18 @@ const WebsiteFileSync = () => {
     function updateAllHtmlFiles(changedComponentPath) {
         const sitePath = path.dirname(path.dirname(changedComponentPath))
         const siteName = path.basename(sitePath)
-        
+
         console.log(`Component changed: ${changedComponentPath}, updating all HTML files in ${siteName}`)
-        
+
         traverseAndUpdateHtml(sitePath)
     }
 
     function traverseAndUpdateHtml(directory) {
         const files = fs.readdirSync(directory, { withFileTypes: true })
-        
+
         files.forEach(file => {
             const filePath = path.join(directory, file.name)
-            
+
             if (file.isDirectory()) {
                 if (file.name !== 'data' && file.name !== 'CmsComponent') {
                     traverseAndUpdateHtml(filePath)
