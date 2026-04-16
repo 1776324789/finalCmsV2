@@ -15,10 +15,10 @@ const WebsiteManageServer = (app) => {
 
     // 创建站点
     app.tokenPost("/createWebsite", async (req, res, user) => {
-        const { name, target } = req.body
+        const { name, target, defaultAdmin } = req.body
 
-        if (!name || !target) {
-            return res.json({ code: 400, message: "站点名称和标识不能为空" })
+        if (!name || !target || !defaultAdmin) {
+            return res.json({ code: 400, message: "站点名称、标识和默认管理员不能为空" })
         }
 
         // 检查标识是否已存在
@@ -41,10 +41,8 @@ const WebsiteManageServer = (app) => {
 
             // 创建 Front 下的站点目录
             fs.mkdirSync(frontSiteDir, { recursive: true })
-            fs.mkdirSync(path.join(frontSiteDir, 'css'), { recursive: true })
-            fs.mkdirSync(path.join(frontSiteDir, 'js'), { recursive: true })
             fs.mkdirSync(path.join(frontSiteDir, 'data'), { recursive: true })
-
+            fs.mkdirSync(path.join(frontSiteDir, 'data', 'content'), { recursive: true })
             // 创建默认的 list.json
             const listJsonPath = path.join(webappSiteDir, 'data', 'list.json')
             fs.writeFileSync(listJsonPath, JSON.stringify([], null, 2))
@@ -105,7 +103,8 @@ const WebsiteManageServer = (app) => {
                 createTime: formatTimestamp(new Date()),
                 createBy: user.username,
                 updateTime: formatTimestamp(new Date()),
-                updateBy: user.username
+                updateBy: user.username,
+                defaultAdmin: defaultAdmin
             }
             DB.website.push(newWebsite)
 
@@ -121,7 +120,7 @@ const WebsiteManageServer = (app) => {
 
     // 更新站点
     app.tokenPost("/updateWebsite", async (req, res, user) => {
-        const { id, name, target, status,defaultAdmin } = req.body
+        const { id, name, target, status, defaultAdmin } = req.body
 
         if (!id) {
             return res.json({ code: 400, message: "站点 ID 不能为空" })
@@ -225,6 +224,141 @@ const WebsiteManageServer = (app) => {
 
         return res.json({ code: 200, data: website })
     })
+
+    // 获取站点详情
+    app.tokenPost("/getWebsiteFileList", async (req, res, user) => {
+        const { id } = req.body
+
+        if (!id) {
+            return res.json({ code: 400, message: "站点 ID 不能为空" })
+        }
+
+        const DB = await SystemController.getDB()
+        const website = DB.website.find(w => w.id === id)
+
+        if (!website) {
+            return res.json({ code: 404, message: "站点不存在" })
+        }
+        console.log(website.target);
+        const result = readDirTreeSync(path.join(webappsDir, website.target));
+        return res.json({ code: 200, data: result })
+    })
+    // 获取站点详情
+    app.tokenPost("/getWebsiteFileEditContent", async (req, res, user) => {
+        const { target, id } = req.body
+
+        if (!id) {
+            return res.json({ code: 400, message: "站点 ID 不能为空" })
+        }
+
+        const DB = await SystemController.getDB()
+        const website = DB.website.find(w => w.id === id)
+
+        if (!website) {
+            return res.json({ code: 404, message: "站点不存在" })
+        }
+        const webFilePath = target.split("\\")
+        webFilePath.shift()
+
+
+        const filePath = path.join(webappsDir, website.target, ...webFilePath)
+
+        if (!fs.existsSync(filePath)) {
+            return res.json({ code: 200, data: "" })
+        }
+        return res.json({ code: 200, data: fs.readFileSync(filePath, 'utf-8') })
+    })
+
+    app.tokenPost("/saveWebsiteFile", async (req, res, user) => {
+        const { target, id, content } = req.body
+
+        if (!id) {
+            return res.json({ code: 400, message: "站点 ID 不能为空" })
+        }
+
+        const DB = await SystemController.getDB()
+        const website = DB.website.find(w => w.id === id)
+
+        if (!website) {
+            return res.json({ code: 404, message: "站点不存在" })
+        }
+        const webFilePath = target.split("\\")
+        webFilePath.shift()
+
+
+        const filePath = path.join(webappsDir, website.target, ...webFilePath)
+
+        if (!fs.existsSync(filePath)) {
+            return res.json({ code: 400, message: "文件不存在" })
+        }
+        fs.writeFileSync(filePath, content, 'utf-8')
+        return res.json({ code: 200, message: "更新成功" })
+    })
+
+
+    app.tokenPost("/createWebsiteFile", async (req, res, user) => {
+        const { type, targetPath, id } = req.body
+
+        console.log(targetPath, type, id);
+
+        if (!id) {
+            return res.json({ code: 400, message: "站点 ID 不能为空" })
+        }
+
+        const DB = await SystemController.getDB()
+        const website = DB.website.find(w => w.id === id)
+
+        if (!website) {
+            return res.json({ code: 404, message: "站点不存在" })
+        }
+        const webFilePath = targetPath.split("\\")
+        webFilePath.shift()
+
+
+        const filePath = path.join(webappsDir, website.target, ...webFilePath)
+        console.log(filePath);
+        if (type == "file") {
+            if (fs.existsSync(filePath)) {
+                return res.json({ code: 400, message: "文件已存在" })
+            }
+            fs.writeFileSync(filePath, '', 'utf-8', { flag: 'w' })
+            return res.json({ code: 200, message: "创建成功" })
+        } else {
+            if (fs.existsSync(filePath)) {
+                return res.json({ code: 400, message: "文件夹已存在" })
+            }
+            fs.mkdirSync(filePath, { recursive: true })
+            return res.json({ code: 200, message: "创建成功" })
+        }
+
+
+    })
+
+    function readDirTreeSync(dirPath) {
+        const stats = fs.statSync(dirPath);
+
+        // 文件
+        if (stats.isFile()) {
+            return {
+                name: path.basename(dirPath),
+                type: 'file',
+                fullPath: path.relative(webappsDir, dirPath)
+            };
+        }
+
+        // 文件夹
+        const files = fs.readdirSync(dirPath);
+
+        return {
+            name: path.basename(dirPath),
+            type: 'directory',
+            fullPath: path.relative(webappsDir, dirPath),
+            children: files.map(file =>
+                readDirTreeSync(path.join(dirPath, file))
+            )
+        };
+    }
+
 }
 
 export default WebsiteManageServer

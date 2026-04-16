@@ -13,6 +13,8 @@ import { onMounted, ref } from 'vue';
 import Login from './views/Login.vue';
 import { useSystemStore } from './store/systemStore';
 import WebMenu from './views/WebMenu/WebMenu.vue';
+import { useRouter } from 'vue-router';
+const router = useRouter()
 const background = ref(null)
 const showLogin = ref(false)
 const showWebMenu = ref(false)
@@ -22,6 +24,7 @@ onMounted(() => {
 })
 
 async function init() {
+
   let res = await systemStore.init()
   if (!res) {
     showLogin.value = true
@@ -30,6 +33,7 @@ async function init() {
     showWebMenu.value = true
     background.value.style.filter = "blur(70px)"
   }
+  router.replace("/")
 }
 
 function logoutHandel() {
@@ -39,9 +43,11 @@ function logoutHandel() {
 }
 
 function loginHandel() {
+
   background.value.style.filter = "blur(70px)"
   showLogin.value = false
   showWebMenu.value = true
+
 }
 
 </script>

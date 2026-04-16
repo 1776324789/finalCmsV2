@@ -15,7 +15,7 @@ const WebsiteFileSync = () => {
     function getTargetPath(srcPath) {
         const relative = path.relative(webappsDir, srcPath)
         // chokidar 总是返回使用/的路径，所以用/分割
-        const parts = relative.split('/')
+        const parts = relative.split('\\')
         const siteName = parts.shift()
 
         if (!siteName) return null

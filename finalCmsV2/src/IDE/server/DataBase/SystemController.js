@@ -136,6 +136,7 @@ const SystemController = () => {
 
     function verifyToken(token) {
         const info = tokenPool[token]
+
         if (!info) return null
 
         info.activateTime = Date.now()
@@ -180,7 +181,7 @@ const SystemController = () => {
         DB.user.push(newUser)
 
         const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
-        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
 
         return { code: 200, message: "创建成功", data: { id: newUser.id } }
     }
@@ -206,7 +207,7 @@ const SystemController = () => {
         DB.user[userIndex] = user
 
         const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
-        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
 
         return { code: 200, message: "更新成功" }
     }
@@ -222,7 +223,7 @@ const SystemController = () => {
         DB.user.splice(userIndex, 1)
 
         const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
-        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
 
         return { code: 200, message: "删除成功" }
     }
@@ -247,7 +248,7 @@ const SystemController = () => {
         user.updateBy = modifier.username
 
         const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
-        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
 
         return { code: 200, message: "密码修改成功" }
     }
@@ -284,7 +285,7 @@ const SystemController = () => {
         DB.systemMenu.push(newMenu)
 
         const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
-        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
 
         return { code: 200, message: "创建成功", data: { id: newMenu.id } }
     }
@@ -309,7 +310,7 @@ const SystemController = () => {
         DB.systemMenu[menuIndex] = menu
 
         const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
-        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
 
         return { code: 200, message: "更新成功" }
     }
@@ -325,7 +326,7 @@ const SystemController = () => {
         DB.systemMenu.splice(menuIndex, 1)
 
         const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
-        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
 
         return { code: 200, message: "删除成功" }
     }
@@ -363,7 +364,7 @@ const SystemController = () => {
         DB.systemRole.push(newRole)
 
         const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
-        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
 
         return { code: 200, message: "创建成功", data: { id: newRole.id } }
     }
@@ -387,7 +388,7 @@ const SystemController = () => {
         DB.systemRole[roleIndex] = role
 
         const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
-        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
 
         return { code: 200, message: "更新成功" }
     }
@@ -409,7 +410,7 @@ const SystemController = () => {
         DB.systemRole.splice(roleIndex, 1)
 
         const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
-        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
 
         return { code: 200, message: "删除成功" }
     }
@@ -436,7 +437,7 @@ const SystemController = () => {
         })
 
         const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
-        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
 
         return { code: 200, message: "保存成功" }
     }
@@ -464,7 +465,7 @@ const SystemController = () => {
         })
 
         const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
-        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
 
         return { code: 200, message: "保存成功" }
     }
@@ -494,7 +495,7 @@ const SystemController = () => {
         })
 
         const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
-        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
 
         return { code: 200, message: "保存成功" }
     }
@@ -573,15 +574,13 @@ const SystemController = () => {
         DB.websiteMenu[menuIndex] = menu
 
         const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
-        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
 
         return { code: 200, message: "更新成功" }
     }
 
     async function deleteWebsiteMenu(menuId) {
         const DB = await getDB()
-        console.log(menuId)
-        console.log(DB.websiteMenu);
 
         const menuIndex = DB.websiteMenu.findIndex(m => m.id === menuId)
         if (menuIndex === -1) {
@@ -598,7 +597,7 @@ const SystemController = () => {
         DB.websiteMenu.splice(menuIndex, 1)
 
         const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
-        await fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
 
         return { code: 200, message: "删除成功" }
     }

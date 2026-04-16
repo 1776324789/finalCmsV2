@@ -70,7 +70,7 @@
         }
 
         // 否则，先获取修改信息，判断是否需要更新数据
-        fetch(BaseCmsURL + '/data/modifyInfo.json')
+        fetch(BaseCmsURL + '/data/modifyInfo.json?id=' + Math.random())
             .then(res => res.json())
             .then(json => {
                 // 如果本地存储中没有修改信息，或服务器数据更新时间较新，则从服务器加载数据
@@ -1001,8 +1001,6 @@
          * 显示节点标题
          */
         render() {
-            console.log(this.data);
-            console.log(BaseCmsURL + '/data/content/' + this.data.id + ".node");
 
             // 否则，先获取修改信息，判断是否需要更新数据
             fetch(BaseCmsURL + '/data/content/' + this.data.id + ".node")

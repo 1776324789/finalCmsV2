@@ -1,17 +1,17 @@
 <template>
     <div class="pagination">
         <!-- 上一页 -->
-        <button :disabled="page <= 1" @click="changePage(page - 1)">
+        <button class="switchButton" :disabled="page <= 1" @click="changePage(page - 1)">
             上一页
         </button>
 
         <!-- 页码 -->
-        <button v-for="p in pages" :key="p" :class="{ active: p === page }" @click="changePage(p)">
+        <button class="numberButton" v-for="p in pages" :key="p" :class="{ active: p === page }" @click="changePage(p)">
             {{ p }}
         </button>
 
         <!-- 下一页 -->
-        <button :disabled="page >= totalPages" @click="changePage(page + 1)">
+        <button class="switchButton" :disabled="page >= totalPages" @click="changePage(page + 1)">
             下一页
         </button>
 
@@ -77,12 +77,11 @@ function changeCount(e) {
 <style scoped>
 .pagination {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    gap: 15px;
 }
 
 button {
-    padding: 4px 10px;
+    transition: all 0.2s;
     cursor: pointer;
 }
 
@@ -97,12 +96,48 @@ button:disabled {
 }
 
 select {
-    padding: 4px;
+    border-radius: 15px;
+    height: 30px;
+    min-width: 30px;
+    border: 1px solid #979797;
+    background-color: rgba(0, 0, 0, 0.25);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    padding-left: 15px;
+    padding-right: 10px;
 }
 
 .info {
+    line-height: 30px;
+    color: #fff;
     margin-left: 10px;
     font-size: 12px;
-    color: #666;
+}
+
+button:hover {
+    border: 1px solid #cccccc;
+}
+
+.numberButton {
+    border-radius: 15px;
+    height: 30px;
+    min-width: 30px;
+    border: 1px solid #979797;
+    background-color: rgba(0, 0, 0, 0.25);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.switchButton {
+    border-radius: 15px;
+    height: 30px;
+    border: 1px solid #979797;
+    background-color: rgba(0, 0, 0, 0.25);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    width: 75px;
 }
 </style>

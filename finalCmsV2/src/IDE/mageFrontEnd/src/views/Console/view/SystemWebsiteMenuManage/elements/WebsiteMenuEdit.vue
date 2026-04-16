@@ -6,7 +6,7 @@
         </div>
         <div class="line" style="margin-bottom: 20px;">
             <div class="label require">图标</div>
-            <CmsInput style="flex:1;" placeholder="请输入图标类名，如：icon-database-line" v-model="form.icon"></CmsInput>
+            <CmsInput type="icon" style="flex:1;" placeholder="请输入图标类名，如：icon-database-line" v-model="form.icon"></CmsInput>
         </div>
         <div class="line" style="margin-bottom: 20px;">
             <div class="label">目标路由</div>

@@ -163,7 +163,19 @@
       }
     }
 
+    function getMaxZIndex() {
+      let maxZIndex = 0; // 初始化最大zIndex为0
+      const elements = document.querySelectorAll('*'); // 选择页面中的所有元素
 
+      elements.forEach((element) => {
+        const zIndex = window.getComputedStyle(element).zIndex; // 获取元素的z-index样式
+
+        if (!isNaN(zIndex)) { // 检查z-index是否为有效数字
+          maxZIndex = Math.max(maxZIndex, parseInt(zIndex, 10)); // 更新最大zIndex
+        }
+      });
+      return maxZIndex + 1;
+    }
 
     //初始化Dom的函数
     function initDomFunctions(dom) {
@@ -230,7 +242,7 @@
       }
 
       getTipElement(type) {
-        return dp(`<div class="a-tip-content a-${type}">
+        return dp(`<div class="a-tip-content a-${type}" style="z-index: ${getMaxZIndex()};">
 				<div class="a-content" ref="content"></div>
 				<div class="a-${type}-bar" ref="bar"></div>
 			</div>`)
@@ -270,6 +282,7 @@
         if (time == null) {
           time = 1500
         }
+        this.tipMain.element.style.zIndex = getMaxZIndex()
         this.tipMain.element.insertBefore(tip.element, this.tipMain.element.firstChild)
         tip.element.style.marginTop = -(tip.element.clientHeight + 2) + "px"
         tip.children.bar.style.width = tip.children.content.clientWidth + "px"
@@ -297,8 +310,14 @@
       }
     }
 
+
+
     const toast = new Tip
 
+
+
+
+    
   </script>
   <script type="module" src="/src/main.js"></script>
 </body>

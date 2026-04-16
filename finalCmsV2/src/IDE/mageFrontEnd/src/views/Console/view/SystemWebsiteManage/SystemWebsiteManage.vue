@@ -39,7 +39,8 @@ import WebsiteTitle from './elements/WebsiteTitle.vue'
 import WebsiteItem from './elements/WebsiteItem.vue'
 import { ref, onActivated } from 'vue';
 import { getWebsiteList, createWebsite as createWebsiteApi, updateWebsite, deleteWebsite as deleteWebsiteApi } from '@/request/websiteManageApi'
-
+import { useSystemStore } from '@/store/systemStore';
+const systemStore = useSystemStore()
 const data = ref([])
 const page = ref(1)
 const count = ref(10)
@@ -55,20 +56,38 @@ async function deleteWebsite(target) {
         toast.success("已删除")
         showEdit.value = false
         getWebsiteData()
+        systemStore.dispatch("websiteRender")
     } else {
         toast.danger("删除失败:" + res.message)
     }
 }
 
 async function createHandel() {
+    if (!websiteEdit.value.value.name) {
+        toast.danger("请输入站点名称")
+        return
+    }
+    if (!websiteEdit.value.value.target) {
+        toast.danger("请输入站点目标")
+        return
+    }
+    if (!websiteEdit.value.value.defaultAdmin) {
+        toast.danger("请选择管理员")
+        return
+    }
+
+
+
     const res = await createWebsiteApi({
         name: websiteEdit.value.value.name,
-        target: websiteEdit.value.value.target
+        target: websiteEdit.value.value.target,
+        defaultAdmin: websiteEdit.value.value.defaultAdmin
     })
     if (res.code == 200) {
         toast.success("已创建")
         showEdit.value = false
         getWebsiteData()
+        systemStore.dispatch("websiteRender")
     } else {
         toast.danger("创建失败:" + res.message)
     }
@@ -86,7 +105,6 @@ async function createWebsite() {
 
 async function saveHandel() {
     const value = websiteEdit.value.value
-    console.log(value)
     const res = await updateWebsite({
         id: value.id,
         name: value.name,
@@ -98,6 +116,7 @@ async function saveHandel() {
         toast.success("已保存")
         showEdit.value = false
         getWebsiteData()
+        systemStore.dispatch("websiteRender")
     } else {
         toast.danger("保存失败:" + res.message)
     }
@@ -113,6 +132,7 @@ async function websiteChange(targetWebsite) {
     if (res.code == 200) {
         toast.success("已保存")
         getWebsiteData()
+        systemStore.dispatch("websiteRender")
     } else {
         toast.danger("保存失败:" + res.message)
     }

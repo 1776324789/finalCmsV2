@@ -17,7 +17,7 @@ const WebsiteDataSync = () => {
         const relative = path.relative(webappsDir, srcPath)
 
         // 👉 chokidar 总是返回使用/的路径，所以用/分割
-        const parts = relative.split('/')
+        const parts = relative.split('\\')
 
         const siteName = parts.shift() // 👉 一级目录 = 网站名
 
@@ -26,13 +26,21 @@ const WebsiteDataSync = () => {
             return null
         }
 
-        parts.shift() // 移除 data 目录
-
         // 👉 拼接到目标目录
         const targetBase = path.join(targetDir, siteName)
 
         return path.join(targetBase, ...parts)
     }
+    function getTargetSite(srcPath) {
+        const relative = path.relative(webappsDir, srcPath)
+
+        // 👉 chokidar 总是返回使用/的路径，所以用/分割
+        const parts = relative.split('\\')
+
+        const siteName = parts.shift() // 👉 一级目录 = 网站名
+        return siteName
+    }
+
 
     /** 处理 list.json（你可以自定义逻辑） */
     function handleListJson(srcPath, targetPath) {
@@ -94,13 +102,13 @@ const WebsiteDataSync = () => {
         } else {
             fs.copyFileSync(srcPath, targetPath)
         }
-        if (path.basename(srcPath).endsWith(".json")) {
 
-            console.log(path.join(path.dirname(srcPath), "modifyInfo.json"));
+        if (path.basename(srcPath).endsWith(".json") || path.basename(srcPath).endsWith(".node")) {
             const data = {
                 "updateTime": Date.now()
             }
-            fs.writeFileSync(path.join(path.dirname(srcPath), "modifyInfo.json"), JSON.stringify(data, null, 2))
+            const siteName = getTargetSite(srcPath)
+            fs.writeFileSync(path.join(webappsDir, siteName, "data", "modifyInfo.json"), JSON.stringify(data, null, 2))
         }
     }
 

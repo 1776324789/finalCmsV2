@@ -87,7 +87,6 @@ async function upload() {
                 }
             }
         })
-        console.log(res)
         uploading.value = false
 
         if (res.code === 200) {

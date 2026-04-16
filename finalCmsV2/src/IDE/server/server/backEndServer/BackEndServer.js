@@ -30,6 +30,7 @@ const BackEndServer = () => {
         app.post(url, async (req, res) => {
             try {
                 const token = req.get("token")
+
                 const user = SystemController.verifyToken(token)
                 if (user == null) return res.json({ code: 400, message: "登录信息不存在或已过期，请重新登录" })
                 await handler(req, res, user)

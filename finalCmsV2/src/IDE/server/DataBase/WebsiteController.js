@@ -25,7 +25,7 @@ const WebsiteController = () => {
      */
     async function getDB() {
         const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
-        const data = await fs.readFileSync(webListPath, "utf-8")
+        const data = fs.readFileSync(webListPath, "utf-8")
         return JSON.parse(data)
     }
 
@@ -41,7 +41,7 @@ const WebsiteController = () => {
         const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "data", "list.json")
         let data = []
         try {
-            data = await fs.readFileSync(webListPath, "utf-8")
+            data = fs.readFileSync(webListPath, "utf-8")
             data = JSON.parse(data)
             if (!original)
                 data = filterTree(data)
@@ -90,8 +90,7 @@ const WebsiteController = () => {
         if (target == null) return { code: 404, message: "网站不存在" }
         const webListPath = path.join(BaseUrl, "IDE", "server", "webapps", target, "data", "list.json")
         const webData = sortTree(data)
-
-        await fs.writeFileSync(webListPath, JSON.stringify(webData), { flag: 'w' })
+        fs.writeFileSync(webListPath, JSON.stringify(webData, null, 2), { flag: 'w' })
     }
     /**
     * 对树结构数据进行排序（children + nodes）
@@ -389,8 +388,6 @@ const WebsiteController = () => {
         }
         findNode(list, nodeId, ((target, list) => {
             target.delFlag = 1
-            console.log(target);
-            console.log(list);
         }))
         await writeWebsiteData(list, websiteId)
         return { code: 200, message: "success" }

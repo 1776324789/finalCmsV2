@@ -5,7 +5,7 @@
             <div style="flex:1;display: flex;">
                 站点栏目
                 <div class="web">
-                    <div class="webName"> {{ systemStore.targetSite?.name }}</div>
+                    <div class="webName"> {{ systemStore.targetSite?.name }}</div>&nbsp;&nbsp;&nbsp;
                     <div class="webTarget"> {{ systemStore.targetSite?.target }}</div>
                 </div>
             </div>

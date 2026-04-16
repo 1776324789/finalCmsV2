@@ -18,7 +18,9 @@ export const useSystemStore = defineStore('systemData', () => {
         if (res.code == 200) {
             userData.value = res.data
             await loadMenuData()
-  
+            addEvent("websiteRender", async () => {
+                await loadMenuData()
+            })
             return true
         } else return false
 

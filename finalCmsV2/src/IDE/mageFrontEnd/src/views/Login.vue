@@ -57,6 +57,7 @@
 import { nextTick, onMounted, ref, watch } from 'vue'
 import { getverifyCode, login as loginApi } from '@/request/login'
 import { useSystemStore } from '@/store/systemStore'
+import { onUnmounted } from 'vue'
 const installLogin = ref(true)
 const showLogin = ref(true)
 const showTip = ref(false)
@@ -70,23 +71,24 @@ const form = ref({
   verifyCode: "",
   connectId: Date.now().toString(36)
 })
-
+function keyDownHandel(e) {
+  if (e.key == "Enter") {
+    login()
+  }
+}
 const svg = ref('')
 onMounted(() => {
   loadVerifyCode()
-  document.addEventListener("keydown", (e) => {
-    if (e.key == "Enter") {
-      login()
-    }
-  })
 })
 
 watch(
   () => props.modelValue,
   (val) => {
     if (val) {
+      document.addEventListener("keydown", keyDownHandel)
       showLogin.value = true
     } else {
+      document.removeEventListener("keydown", keyDownHandel)
       showLogin.value = false
     }
   },

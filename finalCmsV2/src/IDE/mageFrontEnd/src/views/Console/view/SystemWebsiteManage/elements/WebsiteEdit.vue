@@ -14,13 +14,13 @@
                         :disabled="value.id != null"></CmsInput>
                 </div>
             </div>
-            <div class="lineBlock" v-if="value.id">
+            <div class="lineBlock">
                 <div class="line">
-                    <div class="label">启用</div>
-                    <div style="font-size: 14px;color: #666;" v-if="value.defaultAdmin">管理员：{{userList.find(item =>
-                        item.id == value.defaultAdmin)?.username
+                    <div class="label require">管理员</div>
+                    <div style="font-size: 14px;color: #666;" v-if="value?.defaultAdmin">{{userList.find(item =>
+                        item.id == value?.defaultAdmin)?.username
                         || '-'}}</div>
-                    <CmsButton style="width:150px;" @click="showDialog = true">{{ data.defaultAdmin ? '重新分配' :
+                    <CmsButton style="width:150px;" @click="showDialog = true">{{ data?.defaultAdmin ? '重新分配' :
                         '分配默认管理员' }}</CmsButton>
                 </div>
             </div>

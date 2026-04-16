@@ -73,79 +73,79 @@
         {
             "id": "56df798s",
             "name": "数据统计",
-            "icon": "icon-database-line",
+            "icon": "icon-line-chart-fill",
             "target": "systemDataAnalysis",
             "status": true,
             "createTime": "2026-04-08 00:00:00",
             "createBy": "system",
-            "updateTime": "2026-04-08 15:53:52",
+            "updateTime": "2026-04-15 15:09:33",
             "updateBy": "刘军"
         },
         {
             "id": "9285g82kj",
             "name": "站点管理",
-            "icon": "icon-database-line",
+            "icon": "icon-apps-2-line",
             "target": "systemWebsiteManage",
             "status": true,
             "createTime": "2026-04-08 00:00:00",
             "createBy": "system",
-            "updateTime": "2026-04-08 15:53:51",
+            "updateTime": "2026-04-15 15:06:54",
             "updateBy": "刘军"
         },
         {
             "id": "oclapf0y",
             "name": "公共数据管理",
-            "icon": "icon-database-line",
+            "icon": "icon-file-cloud-fill",
             "target": "systemPublicData",
             "status": true,
             "createTime": "2026-04-08 00:00:00",
             "createBy": "system",
-            "updateTime": "2026-04-08 15:53:51",
+            "updateTime": "2026-04-15 15:11:10",
             "updateBy": "刘军"
         },
         {
             "id": "ns9g82kj",
             "name": "站点功能管理",
-            "icon": "icon-database-line",
+            "icon": "icon-function-fill",
             "target": "systemWebsiteMenuManage",
             "status": true,
             "createTime": "2026-04-08 00:00:00",
             "createBy": "system",
-            "updateTime": "2026-04-08 15:53:51",
+            "updateTime": "2026-04-15 15:11:24",
             "updateBy": "刘军"
         },
         {
             "id": "423fwfzxd",
             "name": "功能管理",
-            "icon": "icon-database-line",
+            "icon": "icon-function-line",
             "target": "systemFunctionManage",
             "status": true,
             "createTime": "2026-04-08 00:00:00",
             "createBy": "system",
-            "updateTime": "2026-04-08 00:00:00",
-            "updateBy": "system"
+            "updateTime": "2026-04-15 15:11:31",
+            "updateBy": "刘军"
         },
         {
             "id": "vt34tvw34",
             "name": "角色管理",
-            "icon": "icon-database-line",
+            "icon": "icon-account-pin-circle-line",
             "target": "systemRoleManage",
             "status": true,
             "createTime": "2026-04-08 00:00:00",
             "createBy": "system",
-            "updateTime": "2026-04-08 00:00:00",
-            "updateBy": "system"
+            "updateTime": "2026-04-15 15:11:42",
+            "updateBy": "刘军"
         },
         {
             "id": "b754367b345",
             "name": "用户管理",
-            "icon": "icon-database-line",
+            "icon": "icon-account-pin-circle-fill",
             "target": "systemUserManage",
             "status": true,
             "createTime": "2026-04-08 00:00:00",
             "createBy": "system",
-            "updateTime": "2026-04-08 00:00:00",
-            "updateBy": "system"
+            "updateTime": "2026-04-15 15:11:47",
+            "updateBy": "刘军"
         }
     ],
     "websiteMenu": [
@@ -265,24 +265,35 @@
     ],
     "website": [
         {
-            "name": "招生网1",
+            "name": "招生网",
             "target": "zhaosheng",
             "id": "57rdn8ow",
             "status": true,
             "createTime": "2026-04-13 15:58:50",
             "createBy": "刘军",
-            "updateTime": "2026-04-13 16:41:11",
+            "updateTime": "2026-04-15 15:18:30",
             "updateBy": "刘军",
             "defaultAdmin": "s78d6f8s"
         },
         {
-            "name": "测试站点1",
+            "id": "w_4wwmsuyz",
+            "name": "测试站点",
             "target": "test",
-            "id": "w_evelefv1",
             "status": true,
-            "createTime": "2026-04-13 15:58:50",
+            "createTime": "2026-04-15 11:44:13",
             "createBy": "刘军",
-            "updateTime": "2026-04-13 16:41:34",
+            "updateTime": "2026-04-15 11:44:13",
+            "updateBy": "刘军",
+            "defaultAdmin": "s78d6f8s"
+        },
+        {
+            "id": "w_drd6kh7r",
+            "name": "hello",
+            "target": "hello",
+            "status": true,
+            "createTime": "2026-04-15 15:32:41",
+            "createBy": "刘军",
+            "updateTime": "2026-04-15 15:40:42",
             "updateBy": "刘军",
             "defaultAdmin": "s78d6f8s"
         }

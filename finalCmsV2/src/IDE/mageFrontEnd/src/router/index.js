@@ -8,6 +8,7 @@ import SystemFunctionManage from '../views/Console/view/SystemFunctionManage/Sys
 import SystemRoleManage from '../views/Console/view/SystemRoleManage/SystemRoleManage.vue';
 import SystemWebsiteMenuManage from '../views/Console/view/SystemWebsiteMenuManage/SystemWebsiteMenuManage.vue';
 import SystemWebsiteManage from '../views/Console/view/SystemWebsiteManage/SystemWebsiteManage.vue';
+import FileController from '../views/FunctionPages/FileController/FileController.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -55,6 +56,11 @@ const router = createRouter({
       path: '/systemWebsiteManage',
       name: 'systemWebsiteManage',
       component: SystemWebsiteManage
+    },
+    {
+      path: '/fileMage',
+      name: 'fileMage',
+      component: FileController
     }
   ]
 });

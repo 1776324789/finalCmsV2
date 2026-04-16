@@ -53,8 +53,6 @@ function enterConsole() {
 function init() {
     showConsole.value = localStorage.getItem("showConsole") === "true"
     if (localStorage.getItem("targetSite") != null) {
-        console.log(systemStore);
-
         systemStore.targetSite = systemStore.userFunctionData.website.find(item => item.id === localStorage.getItem("targetSite"))
         close()
         setTimeout(() => {
