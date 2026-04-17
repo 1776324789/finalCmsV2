@@ -61,8 +61,6 @@ function init() {
     }
 
     window.addEventListener('popstate', function (event) {
-        console.log(systemStore.userFunctionData);
-
         if (router.currentRoute.value.path == "/") {
             showIndex.value = false
             showConsole.value = false

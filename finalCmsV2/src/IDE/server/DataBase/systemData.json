@@ -271,29 +271,18 @@
             "status": true,
             "createTime": "2026-04-13 15:58:50",
             "createBy": "刘军",
-            "updateTime": "2026-04-15 15:18:30",
+            "updateTime": "2026-04-17 09:25:31",
             "updateBy": "刘军",
             "defaultAdmin": "s78d6f8s"
         },
         {
-            "id": "w_4wwmsuyz",
-            "name": "测试站点",
-            "target": "test",
+            "id": "w_33t2theh",
+            "name": "马克思主义学院官网",
+            "target": "marxism",
             "status": true,
-            "createTime": "2026-04-15 11:44:13",
+            "createTime": "2026-04-17 11:34:47",
             "createBy": "刘军",
-            "updateTime": "2026-04-15 11:44:13",
-            "updateBy": "刘军",
-            "defaultAdmin": "s78d6f8s"
-        },
-        {
-            "id": "w_drd6kh7r",
-            "name": "hello",
-            "target": "hello",
-            "status": true,
-            "createTime": "2026-04-15 15:32:41",
-            "createBy": "刘军",
-            "updateTime": "2026-04-15 15:40:42",
+            "updateTime": "2026-04-17 11:34:47",
             "updateBy": "刘军",
             "defaultAdmin": "s78d6f8s"
         }

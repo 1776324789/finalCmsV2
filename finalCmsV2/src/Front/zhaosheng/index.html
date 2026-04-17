@@ -13,6 +13,7 @@
     <cms-component data="l_37eogl7x"><div>hello this is headComponent</div></cms-component>
     <cms-component data="l_37eogl7x"><div>hello this is headComponent</div></cms-component>
     <cms-component data="l_37eogl7x"><div>hello this is headComponent</div></cms-component>
+  
     <cms-list data="l_37eogl7x">
         <list-name></list-name>
         <list-list>
@@ -37,7 +38,11 @@
         </list-node>
     </cms-list>
     <cms-pagination cms-bind="listNode2"></cms-pagination>
-<script src="cmsScripts/FinalCms.js?web=zhaosheng"></script>
+<script>
+            const Cms=document.createElement("script")
+            Cms.src=window.location.origin+"/cmsScripts/FinalCms.js?web=zhaosheng"
+            document.body.appendChild(Cms)
+        </script>
 </body>
 
 </html>

@@ -1,7 +1,7 @@
 <template>
     <div class="line">
         <div class="index " style="width: 25px;text-align: left;font-weight: 300;color: #666;margin-left: 5px;">{{ index
-            }}</div>
+        }}</div>
         <div class="blockLine" style="font-weight: 350;display: flex;text-indent: 5px;flex: 1;">
             {{ data.name }}
         </div>

@@ -369,7 +369,7 @@ async function login() {
 .main {
   z-index: 100;
   transition: 0.5s all;
-  user-select: none;
+
   position: relative;
   width: 100vw;
   height: 100vh;

@@ -18,7 +18,8 @@
         </div>
     </div>
     <template v-if="nodeTarget != null">
-        <NodeController ref="nodeController" @back="backHandel" :id="nodeTarget"></NodeController>
+        <NodeController @change="nodeChangeHandel" ref="nodeController" @back="backHandel" :id="nodeTarget">
+        </NodeController>
     </template>
     <Dialog :title="editTarget?.name" v-model="showEdit">
         <ListEdit :data="editTarget" ref="listEdit"></ListEdit>
@@ -52,7 +53,11 @@ const editTarget = ref(null)
 const nodeController = ref(null)
 
 const nodeTarget = ref(null)
+const emit = defineEmits(['change'])
 
+function nodeChangeHandel(e) {
+    emit("change", e)
+}
 
 function backHandel() {
     nodeTarget.value = null
@@ -74,10 +79,10 @@ function editNodeHandel(id) {
 
 async function deleteHandel(id) {
     const res = await deleteWebsiteList({ id: id, websiteId: systemStore.targetSite.id })
-    console.log(res);
     if (res.code == 200) {
         getWebsiteListData()
         toast.success("已删除")
+        emit("change")
     } else {
         toast.danger("删除失败:" + res.message)
     }
@@ -90,6 +95,7 @@ async function createHandel() {
         getWebsiteListData()
         toast.success("已创建")
         showEdit.value = false
+        emit("change")
     } else {
         toast.danger("创建失败:" + res.message)
     }
@@ -106,6 +112,7 @@ async function changeHandel(e) {
     if (res.code == 200) {
         getWebsiteListData()
         toast.success("已保存")
+        emit("change")
     } else {
         toast.danger("保存失败:" + res.message)
     }
@@ -118,6 +125,7 @@ async function saveHandel() {
         getWebsiteListData()
         toast.success("已保存")
         showEdit.value = false
+        emit("change")
     } else {
         toast.danger("保存失败:" + res.message)
     }
@@ -131,7 +139,6 @@ async function getWebsiteListData() {
     let res = await getWebsiteList({
         id: systemStore.targetSite?.id
     })
-    console.log(systemStore.targetSite?.id);
     data.value = res
 }
 

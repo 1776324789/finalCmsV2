@@ -5,6 +5,7 @@ import { formatTimestamp } from '../../../utils/timeUtils.js'
 
 const WebsiteManageServer = (app) => {
     const webappsDir = path.join(process.cwd(), 'IDE', 'server', 'webapps')
+    const webappsHistoryDir = path.join(process.cwd(), 'IDE', 'server', 'webappsHistory')
     const frontDir = path.join(process.cwd(), 'Front')
 
     // 获取站点列表
@@ -60,7 +61,6 @@ const WebsiteManageServer = (app) => {
 
 <body>
     <cms-component>head</cms-component>
-    <script src="cmsScripts/FinalCms.js?web=${target}"></script>
 </body>
 
 </html>`
@@ -239,7 +239,6 @@ const WebsiteManageServer = (app) => {
         if (!website) {
             return res.json({ code: 404, message: "站点不存在" })
         }
-        console.log(website.target);
         const result = readDirTreeSync(path.join(webappsDir, website.target));
         return res.json({ code: 200, data: result })
     })
@@ -299,8 +298,6 @@ const WebsiteManageServer = (app) => {
     app.tokenPost("/createWebsiteFile", async (req, res, user) => {
         const { type, targetPath, id } = req.body
 
-        console.log(targetPath, type, id);
-
         if (!id) {
             return res.json({ code: 400, message: "站点 ID 不能为空" })
         }
@@ -314,9 +311,7 @@ const WebsiteManageServer = (app) => {
         const webFilePath = targetPath.split("\\")
         webFilePath.shift()
 
-
         const filePath = path.join(webappsDir, website.target, ...webFilePath)
-        console.log(filePath);
         if (type == "file") {
             if (fs.existsSync(filePath)) {
                 return res.json({ code: 400, message: "文件已存在" })
@@ -330,8 +325,158 @@ const WebsiteManageServer = (app) => {
             fs.mkdirSync(filePath, { recursive: true })
             return res.json({ code: 200, message: "创建成功" })
         }
+    })
+
+    app.tokenPost("/createWebsiteFileHistory", async (req, res, user) => {
+        const { targetPath, id } = req.body
+
+        if (!id) {
+            return res.json({ code: 400, message: "站点 ID 不能为空" })
+        }
+
+        const DB = await SystemController.getDB()
+        const website = DB.website.find(w => w.id === id)
+
+        if (!website) {
+            return res.json({ code: 404, message: "站点不存在" })
+        }
+
+        const webFilePath = targetPath.split("\\")
+        webFilePath.shift()
+
+        // 原文件
+        const targetFilePath = path.join(webappsDir, website.target, ...webFilePath)
+
+        // 备份文件路径
+        const historyFilePath = path.join(
+            webappsHistoryDir,
+            "fileBackup",
+            website.target,
+            ...webFilePath
+        )
+
+        // ⭐ 关键：确保目录存在
+        const historyDir = path.dirname(historyFilePath)
+        fs.mkdirSync(historyDir, { recursive: true })
+
+        // 复制文件
+        fs.copyFileSync(targetFilePath, historyFilePath + "." + Date.now())
+
+        return res.json({ code: 200, message: "备份成功" })
+    })
+
+    app.tokenPost("/getWebsiteFileHistoryList", async (req, res, user) => {
+        const { targetPath, id } = req.body
+
+        if (!id) {
+            return res.json({ code: 400, message: "站点 ID 不能为空" })
+        }
+
+        const DB = await SystemController.getDB()
+        const website = DB.website.find(w => w.id === id)
+
+        if (!website) {
+            return res.json({ code: 404, message: "站点不存在" })
+        }
+
+        // 路径拆分（建议兼容写法）
+        const webFilePath = targetPath.split(/[/\\]/)
+        webFilePath.shift()
+
+        // 原文件路径（仅用于取文件名）
+        const targetFilePath = path.join(webappsDir, website.target, ...webFilePath)
+
+        // 文件名（例如 index.js）
+        const fileName = path.basename(targetFilePath)
+
+        // history目录
+        const historyDir = path.join(
+            webappsHistoryDir,
+            "fileBackup",
+            website.target,
+            ...webFilePath.slice(0, -1) // 去掉文件名
+        )
+
+        // 如果目录不存在，直接返回空
+        if (!fs.existsSync(historyDir)) {
+            return res.json({ code: 200, data: [] })
+        }
+
+        // 读取目录
+        const files = fs.readdirSync(historyDir)
+
+        // 过滤属于该文件的备份
+        const historyFiles = files
+            .filter(name => name.startsWith(fileName + "."))
+            .map(name => ({
+                name,
+                path: path.relative(webappsHistoryDir, path.join(historyDir, name))
+            }))
+            // 可选：按时间倒序
+            .sort((a, b) => {
+                const t1 = Number(a.name.split(".").pop())
+                const t2 = Number(b.name.split(".").pop())
+                return t2 - t1
+            })
+
+        return res.json({
+            code: 200,
+            data: historyFiles
+        })
+    })
+
+    app.tokenPost("/getWebsiteFileHistoryContent", async (req, res, user) => {
+        const { targetPath } = req.body
+
+        // 备份文件路径
+        const historyFilePath = path.join(
+            webappsHistoryDir, targetPath
+        )
+
+        return res.json({ code: 200, data: fs.readFileSync(historyFilePath, 'utf-8') })
+    })
 
 
+    app.tokenPost("/deleteWebsiteFile", async (req, res, user) => {
+        const { targetPath, id } = req.body
+
+        if (!id) {
+            return res.json({ code: 400, message: "站点 ID 不能为空" })
+        }
+
+        const DB = await SystemController.getDB()
+        const website = DB.website.find(w => w.id === id)
+
+        if (!website) {
+            return res.json({ code: 404, message: "站点不存在" })
+        }
+
+        const webFilePath = targetPath.split(/[/\\]/)
+        webFilePath.shift()
+
+        const targetFilePath = path.join(webappsDir, website.target, ...webFilePath)
+
+        if (!fs.existsSync(targetFilePath)) {
+            return res.json({ code: 404, message: "文件不存在" })
+        }
+
+        try {
+            const stat = fs.statSync(targetFilePath)
+
+            if (stat.isFile()) {
+                // ✅ 删除文件
+                fs.unlinkSync(targetFilePath)
+            } else if (stat.isDirectory()) {
+                // ✅ 删除文件夹（递归）
+                fs.rmSync(targetFilePath, { recursive: true, force: true })
+            }
+
+            return res.json({ code: 200, message: "删除成功" })
+
+        } catch (err) {
+            console.error(err)
+            return res.json({ code: 500, message: "删除失败" })
+        }
     })
 
     function readDirTreeSync(dirPath) {

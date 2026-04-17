@@ -50,7 +50,11 @@ const WebsiteFileSync = () => {
     }
 
     function addFinalCmsScript(content, siteName) {
-        const scriptTag = `<script src="cmsScripts/FinalCms.js?web=${siteName}"></script>`
+        const scriptTag = `<script>
+            const Cms=document.createElement("script")
+            Cms.src=window.location.origin+"/cmsScripts/FinalCms.js?web=${siteName}"
+            document.body.appendChild(Cms)
+        </script>`
 
         if (content.includes('</body>')) {
             return content.replace('</body>', `${scriptTag}\n</body>`)

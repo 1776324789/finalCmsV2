@@ -1,11 +1,12 @@
 <template>
     <div class="main" ref="main">
-        <FileTree :onEditFullPath="targetFile?.fullPath" @edit="edit" @fullScreen="fullScreenHandel"></FileTree>
+        <FileTree ref="fileTree" :onEditFullPath="targetFile?.fullPath" @edit="edit" @fullScreen="fullScreenHandel">
+        </FileTree>
 
-        <div class="contentBlock">
+        <div class="contentBlock scroll">
+            <div v-show="targetFile != null" ref="editorRef" class="editor"></div>
 
-            <div :style="{ display: targetFile != null ? 'block' : 'none' }" ref="editorRef" class="editor"></div>
-            <div :style="{ display: targetFile == null ? 'block' : 'none' }" class="emptyTipBlock">
+            <div v-show="targetFile == null" class="emptyTipBlock">
                 请选择文件
             </div>
         </div>
@@ -16,24 +17,38 @@
                 <span class="icon-arrow-drop-right-line" v-else></span>
             </div>
 
-            <ListController ref="listController"></ListController>
+            <ListController @change="listChangeHandel" ref="listController"></ListController>
         </div>
     </div>
 </template>
-
 <script setup>
-import * as monaco from 'monaco-editor'
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import FileTree from './elements/FileTree.vue'
 import ListController from './elements/ListController/ListController.vue'
 import { getWebsiteFileEditContent, saveWebsiteFile } from '@/request/websiteFileManageApi.js'
 import { useSystemStore } from '@/store/systemStore'
 
+// ✅ CodeMirror
+import { EditorView, keymap } from "@codemirror/view"
+import { EditorState } from "@codemirror/state"
+import { defaultKeymap } from "@codemirror/commands"
+import { oneDark } from "@codemirror/theme-one-dark"
+
+// ✅ 自动提示（核心）
+import { autocompletion, startCompletion } from "@codemirror/autocomplete"
+
+// 语言
+import { javascript } from "@codemirror/lang-javascript"
+import { json } from "@codemirror/lang-json"
+import { html } from "@codemirror/lang-html"
+import { css } from "@codemirror/lang-css"
+
 const systemStore = useSystemStore()
 
 const showListController = ref(false)
 const listController = ref(null)
 const main = ref(null)
+const fileTree = ref(null)
 
 const editorRef = ref(null)
 let editor = null
@@ -41,96 +56,82 @@ let editor = null
 const targetFile = ref(null)
 let isSettingValue = false
 
+// ✅ 语言映射（增强JS）
 const langMap = {
-    '.js': 'javascript',
-    '.json': 'json',
-    '.html': 'html',
-    '.css': 'css',
-    '.node': 'html'
+    '.js': () => javascript({ typescript: true }), // 🔥 提升智能提示
+    '.json': json,
+    '.html': html,
+    '.css': css,
+    '.node': html
 }
 
-// ✅ 获取语言
-function getLanguage(filename) {
+function listChangeHandel() {
+    fileTree.value.initFileList()
+}
+
+// ✅ 获取语言扩展
+function getLanguageExt(filename) {
     const index = filename.lastIndexOf('.')
-    if (index === -1) return 'plaintext'
-    return langMap[filename.substring(index)] || 'plaintext'
+    if (index === -1) return []
+    const ext = filename.substring(index)
+    return langMap[ext] ? [langMap[ext]()] : []
 }
 
-// ✅ 全屏切换
-function fullScreenHandel() {
-    if (!document.fullscreenElement) {
-        main.value.requestFullscreen()
-    } else {
-        document.exitFullscreen()
-    }
-
-    // 🔥 双保险重新布局
-    setTimeout(relayoutEditor, 100)
-}
-
-// ✅ 控制右侧面板
-function showListControllerHandel() {
-    showListController.value = !showListController.value
-    if (showListController.value) {
-        nextTick(() => {
-            listController.value.getWebsiteListData()
+// ✅ 公共扩展（不会被覆盖）
+function getBaseExtensions() {
+    return [
+        keymap.of([
+            ...defaultKeymap,
+            {
+                key: "Ctrl-Space",
+                run: startCompletion // 🔥 手动触发提示
+            }
+        ]),
+        oneDark,
+        autocompletion({
+            activateOnTyping: true // 🔥 输入自动触发
         })
-    }
+    ]
 }
 
 // ✅ 初始化
 onMounted(() => {
     initEditor()
     initKeyListener()
-
-    window.addEventListener('resize', relayoutEditor)
-    document.addEventListener('fullscreenchange', relayoutEditor)
 })
 
 onBeforeUnmount(() => {
     window.removeEventListener('keydown', handleKeydown)
-    window.removeEventListener('resize', relayoutEditor)
-    document.removeEventListener('fullscreenchange', relayoutEditor)
 })
 
 // ✅ 初始化编辑器
 function initEditor() {
-    if (!editorRef.value) {
-        return setTimeout(initEditor, 100)
-    }
-
-    editor = monaco.editor.create(editorRef.value, {
-        value: '',
-        language: 'plaintext',
-        theme: 'vs-dark',
-        automaticLayout: false // ❗关闭自动，改为手动控制（更稳定）
+    editor = new EditorView({
+        state: EditorState.create({
+            doc: '',
+            extensions: getBaseExtensions()
+        }),
+        parent: editorRef.value
     })
 
-    editor.onDidChangeModelContent(() => {
+    // 监听变化
+    const originalDispatch = editor.dispatch
+    editor.dispatch = (tr) => {
+        originalDispatch.call(editor, tr)
+
         if (isSettingValue) return
         if (!targetFile.value) return
 
-        const current = editor.getValue()
+        if (tr.docChanged) {
+            const current = editor.state.doc.toString()
 
-        targetFile.value.content = current
-        targetFile.value.state =
-            current === targetFile.value.originalContent
-                ? 'saved'
-                : 'changed'
-    })
-}
-
-// ✅ 手动布局（核心修复）
-function relayoutEditor() {
-    if (!editor) return
-
-    requestAnimationFrame(() => {
-        try {
-            editor.layout()
-        } catch (e) {
-            console.warn('layout error', e)
+            targetFile.value.content = current
+            targetFile.value.state =
+                current === targetFile.value.originalContent
+                    ? 'saved'
+                    : 'changed'
         }
-    })
+    }
 }
 
 // ✅ Ctrl + S
@@ -149,7 +150,7 @@ function handleKeydown(e) {
 async function saveFile() {
     if (!targetFile.value) return
 
-    const content = editor.getValue()
+    const content = editor.state.doc.toString()
 
     const res = await saveWebsiteFile({
         target: targetFile.value.fullPath,
@@ -173,7 +174,7 @@ async function edit(node) {
     targetFile.value = node
 
     if (node.content != null) {
-        setEditorContent(node.content, node.language)
+        setEditorContent(node.content, node.name)
         return
     }
 
@@ -184,33 +185,80 @@ async function edit(node) {
 
     if (res.code === 200) {
         const content = res.data || ''
-        const language = getLanguage(node.name)
 
         node.content = content
         node.originalContent = content
-        node.language = language
         node.state = 'saved'
 
-        setEditorContent(content, language)
+        setEditorContent(content, node.name)
     } else {
         toast.error(res.message)
     }
 }
 
-// ✅ 设置内容
-function setEditorContent(content, language) {
+// ✅ 设置内容（关键修复点）
+function setEditorContent(content, filename) {
     isSettingValue = true
 
-    editor.setValue(content)
-    monaco.editor.setModelLanguage(editor.getModel(), language)
+    editor.setState(EditorState.create({
+        doc: content,
+        extensions: [
+            ...getBaseExtensions(), // ✅ 不再丢失自动提示
+            ...getLanguageExt(filename)
+        ]
+    }))
 
     isSettingValue = false
+}
 
-    // 🔥 关键：每次切换文件也重新布局
-    setTimeout(relayoutEditor, 0)
+// ✅ UI控制
+function fullScreenHandel() {
+    if (!document.fullscreenElement) {
+        main.value.requestFullscreen()
+    } else {
+        document.exitFullscreen()
+    }
+}
+
+function showListControllerHandel() {
+    showListController.value = !showListController.value
+    if (showListController.value) {
+        nextTick(() => {
+            listController.value.getWebsiteListData()
+        })
+    }
 }
 </script>
+<style>
+.cm-editor {
+    height: 100% !important;
+}
 
+
+.cm-editor {
+    overflow-y: auto;
+}
+
+.cm-editor ::-webkit-scrollbar {
+    width: 3px;
+    height: 5px;
+}
+
+.cm-editor ::-webkit-scrollbar-track {
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+
+}
+
+.cm-editor ::-webkit-scrollbar-thumb {
+    background-color: #bababa;
+    opacity: 0.5;
+    -webkit-border-radius: 2em;
+    -moz-border-radius: 2em;
+    border-radius: 2em;
+}
+</style>
 <style scoped>
 .emptyTipBlock {
     text-align: center;
@@ -230,7 +278,6 @@ function setEditorContent(content, language) {
     position: relative;
 }
 
-/* 🔥 防止被挤压的关键 */
 .contentBlock {
     flex: 1;
     min-width: 0;
@@ -241,7 +288,6 @@ function setEditorContent(content, language) {
     height: 100%;
 }
 
-/* 右侧面板 */
 .listControllerPreviewBlock {
     transition: all 0.3s ease-in-out;
     width: 500px;

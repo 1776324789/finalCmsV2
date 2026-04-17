@@ -65,7 +65,6 @@ function deleteHandel(id) {
 }
 // ✅ 复制方法（带兼容）
 async function copyId() {
-    console.log(props.data)
     const text = props.data?.id
     if (!text) return
 

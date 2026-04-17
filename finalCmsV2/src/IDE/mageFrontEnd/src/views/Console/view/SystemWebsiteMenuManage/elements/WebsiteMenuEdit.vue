@@ -75,8 +75,6 @@ function checkTarget() {
 
 // 监听 data 变化
 watch(() => props.data, (newVal) => {
-    console.log(newVal);
-
     loadParentMenus()
     if (newVal && newVal.id) {
         form.value = { ...newVal }

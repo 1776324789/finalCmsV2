@@ -4,10 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>测试站点</title>
 </head>
 
 <body>
+    1
     <cms-component>head</cms-component>
+    <script src="cmsScripts/FinalCms.js?web=test"></script>
 </body>
+
 </html>

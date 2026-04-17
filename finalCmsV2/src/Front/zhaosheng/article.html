@@ -1,2 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
 
-<script src="cmsScripts/FinalCms.js?web=zhaosheng"></script>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FinalCms</title>
+</head>
+
+<body>
+    <cms-component data="l_37eogl7x"><div>hello this is headComponent</div></cms-component>
+    <cms-component data="l_37eogl7x"><div>hello this is headComponent</div></cms-component>
+    <cms-component data="l_37eogl7x"><div>hello this is headComponent</div></cms-component>
+    <cms-component data="l_37eogl7x"><div>hello this is headComponent</div></cms-component>
+    <cms-component data="l_37eogl7x"><div>hello this is headComponent</div></cms-component>
+    <cms-list data="l_37eogl7x">
+        <list-name></list-name>
+        <list-list>
+            <list-name></list-name>
+            <list-node>
+                <div>
+                    <node-title></node-title>
+                </div>
+                <div>
+                    <node-content></node-content>
+                </div>
+            </list-node>
+        </list-list>
+        <list-node limit="10" cms-bind="listNode2">
+            <div>
+                <node-title></node-title>
+                <node-cover style="width: 100px;height: 100px;"></node-cover>
+            </div>
+            <div>
+                <node-content></node-content>
+            </div>
+        </list-node>
+    </cms-list>
+    <cms-pagination cms-bind="listNode2"></cms-pagination>
+<script>
+            const Cms=document.createElement("script")
+            Cms.src=window.location.origin+"/cmsScripts/FinalCms.js?web=zhaosheng"
+            document.body.appendChild(Cms)
+        </script>
+</body>
+</html>

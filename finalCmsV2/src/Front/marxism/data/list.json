@@ -1,0 +1,43 @@
+[
+  {
+    "name": "头部导航栏",
+    "publish": true,
+    "id": "l_jseif9ys",
+    "children": [
+      {
+        "parentId": "l_jseif9ys",
+        "name": "通知公告",
+        "publish": true,
+        "id": "l_bvwf8721",
+        "children": [],
+        "nodes": [
+          {
+            "publish": true,
+            "clicks": 0,
+            "date": "2026-04-17 14:31",
+            "title": "cs",
+            "id": "n_cqxqb71l",
+            "createData": 1776407508189
+          }
+        ]
+      },
+      {
+        "parentId": "l_jseif9ys",
+        "name": "政策文件",
+        "publish": true,
+        "id": "l_g3hjnu1o",
+        "children": [],
+        "nodes": []
+      },
+      {
+        "parentId": "l_jseif9ys",
+        "name": "工作动态",
+        "publish": true,
+        "id": "l_h0fyfx6p",
+        "children": [],
+        "nodes": []
+      }
+    ],
+    "nodes": []
+  }
+]

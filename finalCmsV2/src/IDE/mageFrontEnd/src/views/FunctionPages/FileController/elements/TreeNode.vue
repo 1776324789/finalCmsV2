@@ -1,19 +1,32 @@
 <template>
-    <div class="tree-node ">
+    <div class="tree-node " v-if="!(node.fullPath.split('\\').length == 2 && node.fullPath.split('\\')[1] == 'data')">
         <div class="node-label" :class="{ 'edit': onEditFullPath == node.fullPath }" @click="toggle">
-            <div style="flex:1;">
-                <span v-if="node.type === 'directory'">
+            <div style="flex:1;display: flex;">
+                <span v-if="node.type === 'directory'" style="margin-right: 3px;">
                     {{ isOpen ? '📂' : '📁' }}
                 </span>
-                <span v-else>📄</span>
+                <span v-else style="margin-right: 3px;">📄</span>
                 {{ node.name }}
+                <span v-if="node.fullPath.split('\\').length == 2 && node.fullPath.split('\\')[1] == 'data'"
+                    class="icon-error-warning-line fileWarn"></span>
             </div>
             <div v-if="node.state == 'changed'" class="changeMark"></div>
             <div class="addButton" v-if="node.type === 'directory'">
-                <span class="icon-add-fill"></span>
+                <span class="icon-menu-fill"></span>
                 <div class="addChildBlock" v-if="createType == null">
                     <div @click.stop="addChild('file')">添加文件</div>
                     <div @click.stop="addChild('directory')">添加文件夹</div>
+                    <div @click.stop="deleteNode(node.fullPath)"
+                        v-if="node.fullPath.split('\\').length > 1 && !(node.fullPath.split('\\')[1] == 'CmsComponent'&&node.fullPath.split('\\').length==2)">删除
+                    </div>
+                </div>
+            </div>
+            <div class="addButton" v-if="node.type === 'file'">
+                <span class="icon-menu-fill"></span>
+                <div class="addChildBlock" v-if="createType == null">
+                    <div @click.stop="showBackup(node.fullPath)">查看备份</div>
+                    <div @click.stop="createBackup">创建备份</div>
+                    <div @click.stop="deleteNode(node.fullPath)">删除</div>
                 </div>
             </div>
         </div>
@@ -21,8 +34,9 @@
         <div v-if="isOpen && node.children" class="children">
             <input @focus="onFocus" v-model="createName" @blur="onBlur" v-if="createType != null" ref="createInput"
                 class="inputBlock" placeholder="请输入名称" />
-            <TreeNode :onEditFullPath="onEditFullPath" @create="createHandel" @edit="edit"
-                v-for="(child, index) in node.children" :key="index" :node="child" />
+            <TreeNode @delete="deleteNode" @showBackup="childShowBackup" :onEditFullPath="onEditFullPath"
+                @create="createHandel" @edit="edit" v-for="(child, index) in node.children" :key="index"
+                :node="child" />
         </div>
     </div>
 </template>
@@ -31,6 +45,11 @@
 import { ref } from 'vue'
 import TreeNode from './TreeNode.vue'
 import { nextTick } from 'vue'
+import { createWebsiteFileHistory } from '@/request/websiteFileManageApi'
+import { useSystemStore } from '@/store/systemStore'
+
+const systemStore = useSystemStore()
+
 const editFile = ["txt", "html", "js", "css", "json", "node"]
 const props = defineProps({
     node: Object,
@@ -39,11 +58,29 @@ const props = defineProps({
         default: ""
     }
 })
+
 const createInput = ref(null)
 const createName = ref("")
-const emit = defineEmits(["edit", "create"])
+const emit = defineEmits(["edit", "create", "showBackup", "delete"])
 const isOpen = ref(localStorage.getItem(props.node.fullPath) === 'true')
 const createType = ref(null)
+function deleteNode(fullPath) {
+    emit("delete", fullPath)
+}
+
+function childShowBackup(e) {
+    emit("showBackup", e)
+}
+
+function showBackup(fullPath) {
+    emit("showBackup", {
+        fullPath: fullPath,
+        handel: (e) => {
+
+        }
+    })
+}
+
 function addChild(type) {
     createType.value = type
     isOpen.value = true
@@ -51,6 +88,22 @@ function addChild(type) {
     nextTick(() => {
         createInput.value.focus()
     })
+}
+
+async function createBackup() {
+    const res = await createWebsiteFileHistory({
+        targetPath: props.node.fullPath,
+        id: systemStore.targetSite.id,
+    })
+    if (res.code == 200) {
+        toast.success("已创建备份")
+        createType.value = "file"
+        setTimeout(() => {
+            createType.value = null
+        }, 100);
+    } else {
+        toast.danger("创建备份失败:" + res.message)
+    }
 }
 
 function onFocus() {
@@ -82,6 +135,12 @@ function createTargetHandel() {
         } else {
             toast.danger("仅可创建：txt、html、js、css、json、node", 3000)
         }
+    } else {
+        emit("create", {
+            path: props.node.fullPath,
+            name: createName.value,
+            type: createType.value
+        })
     }
 }
 function toggle() {
@@ -122,7 +181,6 @@ function edit(node) {
 .addButton {
     width: 30px;
     cursor: pointer;
-    text-align: center;
     font-size: 14px;
     font-weight: 300;
     display: flex;
@@ -145,24 +203,37 @@ function edit(node) {
     color: #fff;
     position: absolute;
     width: 75px;
-    right: 0;
+    right: 25px;
     padding: 5px;
     font-size: 12px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    top: 25px;
+    top: 0px;
     z-index: 100;
-    background-color: #333;
+    background-color: #444;
+}
+
+.addChildBlock div {
+    text-indent: 10px;
 }
 
 .addChildBlock div:hover {
-    background-color: #333;
+    background-color: #555;
     color: #55aaff;
 }
 
 .tree-node {
     padding-left: 10px;
 }
+
+.fileWarn {
+    margin-top: 1px;
+    margin-left: 5px;
+    font-size: 14px;
+    position: relative;
+}
+
+
 
 .node-label {
     color: #fff;

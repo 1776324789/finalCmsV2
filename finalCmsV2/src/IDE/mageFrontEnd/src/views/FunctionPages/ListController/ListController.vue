@@ -68,7 +68,6 @@ function editNodeHandel(id) {
 
 async function deleteHandel(id) {
     const res = await deleteWebsiteList({ id: id, websiteId: systemStore.targetSite.id })
-    console.log(res);
     if (res.code == 200) {
         getWebsiteListData()
         toast.success("已删除")
@@ -125,7 +124,6 @@ async function getWebsiteListData() {
     let res = await getWebsiteList({
         id: systemStore.targetSite?.id
     })
-    console.log(systemStore.targetSite?.id);
     data.value = res
 }
 

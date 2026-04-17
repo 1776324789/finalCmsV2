@@ -4,10 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>马克思主义学院官网</title>
 </head>
 
 <body>
     <cms-component>head</cms-component>
 </body>
+
 </html>

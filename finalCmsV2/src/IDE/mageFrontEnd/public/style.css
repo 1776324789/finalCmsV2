@@ -58,7 +58,6 @@
 
 
     .scroll {
-      user-select: none;
       overflow-y: auto;
     }
 

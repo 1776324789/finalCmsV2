@@ -64,8 +64,6 @@ function back() {
 }
 
 async function deleteNode(target) {
-    console.log(target);
-
     const res = await deleteNodeApi({
         websiteId: systemStore.targetSite?.id,
         nodeId: target
@@ -172,7 +170,6 @@ async function getWebsiteNodeData() {
     }
     const list = findList(res, router.currentRoute.value.query.id)
     targetList.value = list
-    console.log(list.nodes)
     data.value = list.nodes || []
 }
 

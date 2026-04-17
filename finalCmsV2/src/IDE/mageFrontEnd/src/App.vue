@@ -33,7 +33,7 @@ async function init() {
     showWebMenu.value = true
     background.value.style.filter = "blur(70px)"
   }
-  router.replace("/")
+  // router.replace("/")
 }
 
 function logoutHandel() {

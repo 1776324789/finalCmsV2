@@ -9,7 +9,10 @@
 
 <body>
     <cms-component><div>hello this is headComponent</div></cms-component>
-<script src="cmsScripts/FinalCms.js?web=zhaosheng"></script>
+<script>
+            const Cms=document.createElement("script")
+            Cms.src=window.location.origin+"/cmsScripts/FinalCms.js?web=zhaosheng"
+            document.body.appendChild(Cms)
+        </script>
 </body>
-
 </html>

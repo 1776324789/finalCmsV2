@@ -19,12 +19,6 @@ const systemStore = useSystemStore()
 const router = useRouter()
 const targetMenu = ref("")
 
-// onActivated(() => {
-//     targetMenu.value = localStorage.getItem("systemTargetMenu") || "/systemDataAnalysis"
-//     console.log(targetMenu.value);
-//     router.push(targetMenu.value)
-// })
-
 function handleClick(menu) {
     targetMenu.value = menu.target
     localStorage.setItem("systemTargetMenu", menu.target)

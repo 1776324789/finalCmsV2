@@ -67,7 +67,7 @@ const props = defineProps({
     }
 })
 
-const emit = defineEmits(['back'])
+const emit = defineEmits(['back', 'change'])
 
 function back() {
     emit('back')
@@ -82,6 +82,7 @@ async function deleteNode(target) {
         toast.success("已删除")
         showEdit.value = false
         getWebsiteNodeData()
+        emit('change')
     } else {
         toast.danger("删除失败:" + res.message)
     }
@@ -99,6 +100,7 @@ async function createHandel() {
         toast.success("已创建")
         showEdit.value = false
         getWebsiteNodeData()
+        emit('change')
     } else {
         toast.danger("创建失败:" + res.message)
     }
@@ -138,6 +140,7 @@ async function saveHandel() {
         toast.success("已保存")
         showEdit.value = false
         getWebsiteNodeData()
+        emit('change')
     } else {
         toast.danger("保存失败:" + res.message)
     }
@@ -152,6 +155,7 @@ async function nodeChange(targetNode) {
     if (res.code == 200) {
         toast.success("已保存")
         getWebsiteNodeData()
+        emit('change')
     } else {
         toast.danger("保存失败:" + res.message)
     }
@@ -183,7 +187,6 @@ async function getWebsiteNodeData() {
     }
     const list = findList(res, props.id)
     targetList.value = list
-    console.log(list.nodes)
     data.value = list.nodes || []
 }
 
