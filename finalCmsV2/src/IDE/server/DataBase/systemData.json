@@ -285,6 +285,28 @@
             "updateTime": "2026-04-17 11:34:47",
             "updateBy": "刘军",
             "defaultAdmin": "s78d6f8s"
+        },
+        {
+            "id": "w_9wd0pqc1",
+            "name": "校友网",
+            "target": "alumni",
+            "status": true,
+            "createTime": "2026-04-17 16:30:43",
+            "createBy": "刘军",
+            "updateTime": "2026-04-17 16:30:43",
+            "updateBy": "刘军",
+            "defaultAdmin": "s78d6f8s"
+        },
+        {
+            "id": "w_craaa8ww",
+            "name": "经济管理学院",
+            "target": "jgfy",
+            "status": true,
+            "createTime": "2026-04-17 16:31:03",
+            "createBy": "刘军",
+            "updateTime": "2026-04-17 16:31:03",
+            "updateBy": "刘军",
+            "defaultAdmin": "s78d6f8s"
         }
     ]
 }

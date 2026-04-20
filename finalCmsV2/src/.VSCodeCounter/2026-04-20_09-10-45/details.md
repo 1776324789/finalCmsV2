@@ -1,0 +1,171 @@
+# Details
+
+Date : 2026-04-20 09:10:45
+
+Directory f:\\Work\\GitHub\\finalCmsV2\\finalCmsV2\\src\\IDE
+
+Total : 156 files,  48924 codes, 7431 comments, 9156 blanks, all 65511 lines
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)
+
+## Files
+| filename | language | code | comment | blank | total |
+| :--- | :--- | ---: | ---: | ---: | ---: |
+| [IDE/mageFrontEnd/README.md](/IDE/mageFrontEnd/README.md) | Markdown | 2 | 0 | 2 | 4 |
+| [IDE/mageFrontEnd/index.html](/IDE/mageFrontEnd/index.html) | HTML | 266 | 7 | 52 | 325 |
+| [IDE/mageFrontEnd/jsconfig.json](/IDE/mageFrontEnd/jsconfig.json) | JSON with Comments | 8 | 0 | 1 | 9 |
+| [IDE/mageFrontEnd/package.json](/IDE/mageFrontEnd/package.json) | JSON | 42 | 0 | 1 | 43 |
+| [IDE/mageFrontEnd/public/style.css](/IDE/mageFrontEnd/public/style.css) | CSS | 151 | 0 | 33 | 184 |
+| [IDE/mageFrontEnd/public/wangEditor.css](/IDE/mageFrontEnd/public/wangEditor.css) | CSS | 24 | 0 | 3 | 27 |
+| [IDE/mageFrontEnd/public/wangEditor.js](/IDE/mageFrontEnd/public/wangEditor.js) | JavaScript | 15,363 | 5,418 | 3,349 | 24,130 |
+| [IDE/mageFrontEnd/src/App.vue](/IDE/mageFrontEnd/src/App.vue) | vue | 54 | 0 | 7 | 61 |
+| [IDE/mageFrontEnd/src/assets/css/index.css](/IDE/mageFrontEnd/src/assets/css/index.css) | CSS | 0 | 0 | 1 | 1 |
+| [IDE/mageFrontEnd/src/assets/css/moonIcon.css](/IDE/mageFrontEnd/src/assets/css/moonIcon.css) | CSS | 6,836 | 0 | 2,276 | 9,112 |
+| [IDE/mageFrontEnd/src/components/baseElements/CmsButton.vue](/IDE/mageFrontEnd/src/components/baseElements/CmsButton.vue) | vue | 49 | 0 | 4 | 53 |
+| [IDE/mageFrontEnd/src/components/baseElements/CmsInput.vue](/IDE/mageFrontEnd/src/components/baseElements/CmsInput.vue) | vue | 355 | 2 | 65 | 422 |
+| [IDE/mageFrontEnd/src/components/baseElements/CmsPagination.vue](/IDE/mageFrontEnd/src/components/baseElements/CmsPagination.vue) | vue | 117 | 5 | 21 | 143 |
+| [IDE/mageFrontEnd/src/components/baseElements/CmsSwitch.vue](/IDE/mageFrontEnd/src/components/baseElements/CmsSwitch.vue) | vue | 56 | 0 | 7 | 63 |
+| [IDE/mageFrontEnd/src/components/baseElements/CmsTextarea.vue](/IDE/mageFrontEnd/src/components/baseElements/CmsTextarea.vue) | vue | 134 | 1 | 26 | 161 |
+| [IDE/mageFrontEnd/src/components/baseElements/Dialog.vue](/IDE/mageFrontEnd/src/components/baseElements/Dialog.vue) | vue | 138 | 0 | 22 | 160 |
+| [IDE/mageFrontEnd/src/components/baseElements/FileUpload.vue](/IDE/mageFrontEnd/src/components/baseElements/FileUpload.vue) | vue | 182 | 3 | 35 | 220 |
+| [IDE/mageFrontEnd/src/components/baseElements/ImageUpload.vue](/IDE/mageFrontEnd/src/components/baseElements/ImageUpload.vue) | vue | 179 | 4 | 37 | 220 |
+| [IDE/mageFrontEnd/src/components/baseElements/RichEditor.vue](/IDE/mageFrontEnd/src/components/baseElements/RichEditor.vue) | vue | 112 | 0 | 23 | 135 |
+| [IDE/mageFrontEnd/src/components/baseElements/iconList.json](/IDE/mageFrontEnd/src/components/baseElements/iconList.json) | JSON | 2,275 | 0 | 0 | 2,275 |
+| [IDE/mageFrontEnd/src/components/element/BackGround.vue](/IDE/mageFrontEnd/src/components/element/BackGround.vue) | vue | 108 | 0 | 8 | 116 |
+| [IDE/mageFrontEnd/src/components/element/Ballpit.vue](/IDE/mageFrontEnd/src/components/element/Ballpit.vue) | vue | 840 | 0 | 70 | 910 |
+| [IDE/mageFrontEnd/src/components/element/BoidsWeb.vue](/IDE/mageFrontEnd/src/components/element/BoidsWeb.vue) | vue | 202 | 0 | 27 | 229 |
+| [IDE/mageFrontEnd/src/components/element/CardSwap .vue](/IDE/mageFrontEnd/src/components/element/CardSwap%20.vue) | vue | 247 | 0 | 38 | 285 |
+| [IDE/mageFrontEnd/src/components/element/ContentTemplate.vue](/IDE/mageFrontEnd/src/components/element/ContentTemplate.vue) | vue | 49 | 0 | 8 | 57 |
+| [IDE/mageFrontEnd/src/components/element/DotBackground.vue](/IDE/mageFrontEnd/src/components/element/DotBackground.vue) | vue | 97 | 0 | 24 | 121 |
+| [IDE/mageFrontEnd/src/components/element/ElectricBorder.vue](/IDE/mageFrontEnd/src/components/element/ElectricBorder.vue) | vue | 181 | 0 | 35 | 216 |
+| [IDE/mageFrontEnd/src/components/element/Element2.vue](/IDE/mageFrontEnd/src/components/element/Element2.vue) | vue | 53 | 31 | 14 | 98 |
+| [IDE/mageFrontEnd/src/components/element/GlassSurface .vue](/IDE/mageFrontEnd/src/components/element/GlassSurface%20.vue) | vue | 325 | 0 | 44 | 369 |
+| [IDE/mageFrontEnd/src/components/element/GradientText.vue](/IDE/mageFrontEnd/src/components/element/GradientText.vue) | vue | 60 | 0 | 12 | 72 |
+| [IDE/mageFrontEnd/src/components/element/GridScan.vue](/IDE/mageFrontEnd/src/components/element/GridScan.vue) | vue | 800 | 0 | 113 | 913 |
+| [IDE/mageFrontEnd/src/components/element/Iridescence.vue](/IDE/mageFrontEnd/src/components/element/Iridescence.vue) | vue | 160 | 0 | 41 | 201 |
+| [IDE/mageFrontEnd/src/components/element/MagicBento.vue](/IDE/mageFrontEnd/src/components/element/MagicBento.vue) | vue | 792 | 0 | 115 | 907 |
+| [IDE/mageFrontEnd/src/components/element/ReactBackground.vue](/IDE/mageFrontEnd/src/components/element/ReactBackground.vue) | vue | 266 | 0 | 35 | 301 |
+| [IDE/mageFrontEnd/src/components/element/ShinyText.vue](/IDE/mageFrontEnd/src/components/element/ShinyText.vue) | vue | 41 | 0 | 8 | 49 |
+| [IDE/mageFrontEnd/src/components/element/SpotlightCard .vue](/IDE/mageFrontEnd/src/components/element/SpotlightCard%20.vue) | vue | 46 | 0 | 12 | 58 |
+| [IDE/mageFrontEnd/src/main.js](/IDE/mageFrontEnd/src/main.js) | JavaScript | 26 | 0 | 4 | 30 |
+| [IDE/mageFrontEnd/src/request/file.js](/IDE/mageFrontEnd/src/request/file.js) | JavaScript | 15 | 1 | 2 | 18 |
+| [IDE/mageFrontEnd/src/request/functionManageApi.js](/IDE/mageFrontEnd/src/request/functionManageApi.js) | JavaScript | 28 | 4 | 5 | 37 |
+| [IDE/mageFrontEnd/src/request/login.js](/IDE/mageFrontEnd/src/request/login.js) | JavaScript | 25 | 0 | 6 | 31 |
+| [IDE/mageFrontEnd/src/request/request.js](/IDE/mageFrontEnd/src/request/request.js) | JavaScript | 56 | 9 | 7 | 72 |
+| [IDE/mageFrontEnd/src/request/roleManageApi.js](/IDE/mageFrontEnd/src/request/roleManageApi.js) | JavaScript | 70 | 10 | 11 | 91 |
+| [IDE/mageFrontEnd/src/request/userManageApi.js](/IDE/mageFrontEnd/src/request/userManageApi.js) | JavaScript | 16 | 0 | 6 | 22 |
+| [IDE/mageFrontEnd/src/request/websiteFileManageApi.js](/IDE/mageFrontEnd/src/request/websiteFileManageApi.js) | JavaScript | 25 | 0 | 10 | 35 |
+| [IDE/mageFrontEnd/src/request/websiteListApi.js](/IDE/mageFrontEnd/src/request/websiteListApi.js) | JavaScript | 25 | 0 | 5 | 30 |
+| [IDE/mageFrontEnd/src/request/websiteManageApi.js](/IDE/mageFrontEnd/src/request/websiteManageApi.js) | JavaScript | 16 | 5 | 6 | 27 |
+| [IDE/mageFrontEnd/src/request/websiteMenuManageApi.js](/IDE/mageFrontEnd/src/request/websiteMenuManageApi.js) | JavaScript | 19 | 6 | 7 | 32 |
+| [IDE/mageFrontEnd/src/request/websiteNodeApi.js](/IDE/mageFrontEnd/src/request/websiteNodeApi.js) | JavaScript | 25 | 0 | 5 | 30 |
+| [IDE/mageFrontEnd/src/router/index.js](/IDE/mageFrontEnd/src/router/index.js) | JavaScript | 67 | 0 | 1 | 68 |
+| [IDE/mageFrontEnd/src/store/systemStore.js](/IDE/mageFrontEnd/src/store/systemStore.js) | JavaScript | 51 | 0 | 18 | 69 |
+| [IDE/mageFrontEnd/src/utils/util.js](/IDE/mageFrontEnd/src/utils/util.js) | JavaScript | 14 | 0 | 5 | 19 |
+| [IDE/mageFrontEnd/src/views/Console/Index.vue](/IDE/mageFrontEnd/src/views/Console/Index.vue) | vue | 98 | 0 | 8 | 106 |
+| [IDE/mageFrontEnd/src/views/Console/components/SystemLeftMenu.vue](/IDE/mageFrontEnd/src/views/Console/components/SystemLeftMenu.vue) | vue | 58 | 0 | 7 | 65 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemDataAnalysis/systemDataAnalysis.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemDataAnalysis/systemDataAnalysis.vue) | vue | 3 | 0 | 0 | 3 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemFunctionManage/SystemFunctionManage.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemFunctionManage/SystemFunctionManage.vue) | vue | 132 | 0 | 13 | 145 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemFunctionManage/elements/FunctionEdit.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemFunctionManage/elements/FunctionEdit.vue) | vue | 79 | 0 | 10 | 89 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemFunctionManage/elements/FunctionItem.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemFunctionManage/elements/FunctionItem.vue) | vue | 223 | 0 | 33 | 256 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemFunctionManage/elements/FunctionTitle.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemFunctionManage/elements/FunctionTitle.vue) | vue | 54 | 0 | 7 | 61 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemRoleManage/SystemRoleManage.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemRoleManage/SystemRoleManage.vue) | vue | 168 | 0 | 15 | 183 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemRoleManage/elements/RoleEdit.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemRoleManage/elements/RoleEdit.vue) | vue | 75 | 0 | 10 | 85 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemRoleManage/elements/RoleItem.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemRoleManage/elements/RoleItem.vue) | vue | 254 | 0 | 37 | 291 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemRoleManage/elements/RolePermission.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemRoleManage/elements/RolePermission.vue) | vue | 97 | 0 | 14 | 111 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemRoleManage/elements/RoleTitle.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemRoleManage/elements/RoleTitle.vue) | vue | 53 | 0 | 7 | 60 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemUserManage/SystemUserManage.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemUserManage/SystemUserManage.vue) | vue | 291 | 0 | 31 | 322 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemUserManage/elements/UserEdit.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemUserManage/elements/UserEdit.vue) | vue | 169 | 0 | 18 | 187 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemUserManage/elements/UserItem.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemUserManage/elements/UserItem.vue) | vue | 219 | 0 | 32 | 251 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemUserManage/elements/UserTitle.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemUserManage/elements/UserTitle.vue) | vue | 50 | 0 | 4 | 54 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemWebsiteManage/SystemWebsiteManage.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemWebsiteManage/SystemWebsiteManage.vue) | vue | 196 | 0 | 22 | 218 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemWebsiteManage/elements/WebsiteEdit.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemWebsiteManage/elements/WebsiteEdit.vue) | vue | 175 | 0 | 23 | 198 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemWebsiteManage/elements/WebsiteItem.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemWebsiteManage/elements/WebsiteItem.vue) | vue | 219 | 0 | 32 | 251 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemWebsiteManage/elements/WebsiteTitle.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemWebsiteManage/elements/WebsiteTitle.vue) | vue | 50 | 0 | 5 | 55 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemWebsiteMenuManage/SystemWebsiteMenuManage.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemWebsiteMenuManage/SystemWebsiteMenuManage.vue) | vue | 143 | 0 | 16 | 159 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemWebsiteMenuManage/elements/WebsiteMenuEdit.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemWebsiteMenuManage/elements/WebsiteMenuEdit.vue) | vue | 129 | 0 | 13 | 142 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemWebsiteMenuManage/elements/WebsiteMenuItem.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemWebsiteMenuManage/elements/WebsiteMenuItem.vue) | vue | 225 | 0 | 33 | 258 |
+| [IDE/mageFrontEnd/src/views/Console/view/SystemWebsiteMenuManage/elements/WebsiteMenuTitle.vue](/IDE/mageFrontEnd/src/views/Console/view/SystemWebsiteMenuManage/elements/WebsiteMenuTitle.vue) | vue | 54 | 0 | 7 | 61 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/DataAnalysis/DataAnalysis.vue](/IDE/mageFrontEnd/src/views/FunctionPages/DataAnalysis/DataAnalysis.vue) | vue | 3 | 0 | 0 | 3 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/FileController/FileController.vue](/IDE/mageFrontEnd/src/views/FunctionPages/FileController/FileController.vue) | vue | 272 | 0 | 52 | 324 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/FileTree.vue](/IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/FileTree.vue) | vue | 279 | 1 | 54 | 334 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/ListController.vue](/IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/ListController.vue) | vue | 210 | 0 | 34 | 244 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/elements/DynamicPropEdit.vue](/IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/elements/DynamicPropEdit.vue) | vue | 160 | 3 | 30 | 193 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/elements/List.vue](/IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/elements/List.vue) | vue | 372 | 0 | 68 | 440 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/elements/ListEdit.vue](/IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/elements/ListEdit.vue) | vue | 130 | 4 | 17 | 151 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/elements/ListTitle.vue](/IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/elements/ListTitle.vue) | vue | 47 | 0 | 4 | 51 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/view/NodeController.vue](/IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/view/NodeController.vue) | vue | 242 | 0 | 35 | 277 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/view/elements/DynamicPropEdit.vue](/IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/view/elements/DynamicPropEdit.vue) | vue | 160 | 3 | 30 | 193 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/view/elements/Node.vue](/IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/view/elements/Node.vue) | vue | 362 | 0 | 76 | 438 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/view/elements/NodeEdit.vue](/IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/view/elements/NodeEdit.vue) | vue | 142 | 1 | 20 | 163 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/view/elements/NodeTitle.vue](/IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/ListController/view/elements/NodeTitle.vue) | vue | 47 | 0 | 4 | 51 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/TreeNode.vue](/IDE/mageFrontEnd/src/views/FunctionPages/FileController/elements/TreeNode.vue) | vue | 233 | 0 | 30 | 263 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/ListController/ListController.vue](/IDE/mageFrontEnd/src/views/FunctionPages/ListController/ListController.vue) | vue | 199 | 0 | 29 | 228 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/ListController/elements/DynamicPropEdit.vue](/IDE/mageFrontEnd/src/views/FunctionPages/ListController/elements/DynamicPropEdit.vue) | vue | 160 | 3 | 30 | 193 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/ListController/elements/List.vue](/IDE/mageFrontEnd/src/views/FunctionPages/ListController/elements/List.vue) | vue | 362 | 0 | 70 | 432 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/ListController/elements/ListEdit.vue](/IDE/mageFrontEnd/src/views/FunctionPages/ListController/elements/ListEdit.vue) | vue | 130 | 4 | 17 | 151 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/ListController/elements/ListTitle.vue](/IDE/mageFrontEnd/src/views/FunctionPages/ListController/elements/ListTitle.vue) | vue | 53 | 0 | 4 | 57 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/ListController/view/NodeController.vue](/IDE/mageFrontEnd/src/views/FunctionPages/ListController/view/NodeController.vue) | vue | 230 | 0 | 35 | 265 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/ListController/view/elements/DynamicPropEdit.vue](/IDE/mageFrontEnd/src/views/FunctionPages/ListController/view/elements/DynamicPropEdit.vue) | vue | 160 | 3 | 30 | 193 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/ListController/view/elements/Node.vue](/IDE/mageFrontEnd/src/views/FunctionPages/ListController/view/elements/Node.vue) | vue | 372 | 0 | 72 | 444 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/ListController/view/elements/NodeEdit.vue](/IDE/mageFrontEnd/src/views/FunctionPages/ListController/view/elements/NodeEdit.vue) | vue | 142 | 1 | 20 | 163 |
+| [IDE/mageFrontEnd/src/views/FunctionPages/ListController/view/elements/NodeTitle.vue](/IDE/mageFrontEnd/src/views/FunctionPages/ListController/view/elements/NodeTitle.vue) | vue | 52 | 0 | 4 | 56 |
+| [IDE/mageFrontEnd/src/views/Home/Home.vue](/IDE/mageFrontEnd/src/views/Home/Home.vue) | vue | 80 | 0 | 6 | 86 |
+| [IDE/mageFrontEnd/src/views/Index/Menu.vue](/IDE/mageFrontEnd/src/views/Index/Menu.vue) | vue | 213 | 1 | 40 | 254 |
+| [IDE/mageFrontEnd/src/views/Index/element/LeftMenu.vue](/IDE/mageFrontEnd/src/views/Index/element/LeftMenu.vue) | vue | 257 | 0 | 52 | 309 |
+| [IDE/mageFrontEnd/src/views/Login.vue](/IDE/mageFrontEnd/src/views/Login.vue) | vue | 503 | 11 | 62 | 576 |
+| [IDE/mageFrontEnd/src/views/WebMenu/WebCard.vue](/IDE/mageFrontEnd/src/views/WebMenu/WebCard.vue) | vue | 129 | 0 | 24 | 153 |
+| [IDE/mageFrontEnd/src/views/WebMenu/WebMenu.vue](/IDE/mageFrontEnd/src/views/WebMenu/WebMenu.vue) | vue | 309 | 0 | 49 | 358 |
+| [IDE/mageFrontEnd/vite.config.js](/IDE/mageFrontEnd/vite.config.js) | JavaScript | 17 | 1 | 2 | 20 |
+| [IDE/server/DataBase/SystemConfig.js](/IDE/server/DataBase/SystemConfig.js) | JavaScript | 7 | 0 | 2 | 9 |
+| [IDE/server/DataBase/SystemController.js](/IDE/server/DataBase/SystemController.js) | JavaScript | 482 | 32 | 145 | 659 |
+| [IDE/server/DataBase/WebsiteController.js](/IDE/server/DataBase/WebsiteController.js) | JavaScript | 270 | 81 | 60 | 411 |
+| [IDE/server/DataBase/systemData.json](/IDE/server/DataBase/systemData.json) | JSON | 312 | 0 | 0 | 312 |
+| [IDE/server/main.js](/IDE/server/main.js) | JavaScript | 4 | 3 | 1 | 8 |
+| [IDE/server/server/FrontServer/FrontServer.js](/IDE/server/server/FrontServer/FrontServer.js) | JavaScript | 129 | 49 | 36 | 214 |
+| [IDE/server/server/backEndServer/BackEndServer.js](/IDE/server/server/backEndServer/BackEndServer.js) | JavaScript | 57 | 2 | 10 | 69 |
+| [IDE/server/server/backEndServer/server/FileServer.js](/IDE/server/server/backEndServer/server/FileServer.js) | JavaScript | 107 | 14 | 20 | 141 |
+| [IDE/server/server/backEndServer/server/LoginServer.js](/IDE/server/server/backEndServer/server/LoginServer.js) | JavaScript | 74 | 10 | 18 | 102 |
+| [IDE/server/server/backEndServer/server/UserManageServer.js](/IDE/server/server/backEndServer/server/UserManageServer.js) | JavaScript | 209 | 27 | 67 | 303 |
+| [IDE/server/server/backEndServer/server/WebsiteListServer.js](/IDE/server/server/backEndServer/server/WebsiteListServer.js) | JavaScript | 28 | 0 | 5 | 33 |
+| [IDE/server/server/backEndServer/server/WebsiteManageServer.js](/IDE/server/server/backEndServer/server/WebsiteManageServer.js) | JavaScript | 362 | 39 | 109 | 510 |
+| [IDE/server/server/backEndServer/server/WebsiteNodeServer.js](/IDE/server/server/backEndServer/server/WebsiteNodeServer.js) | JavaScript | 28 | 0 | 4 | 32 |
+| [IDE/server/server/webappsController/WebsiteDataSync.js](/IDE/server/server/webappsController/WebsiteDataSync.js) | JavaScript | 100 | 17 | 34 | 151 |
+| [IDE/server/server/webappsController/WebsiteFileSync.js](/IDE/server/server/webappsController/WebsiteFileSync.js) | JavaScript | 153 | 2 | 36 | 191 |
+| [IDE/server/utils/timeUtils.js](/IDE/server/utils/timeUtils.js) | JavaScript | 12 | 4 | 5 | 21 |
+| [IDE/server/webapps/ROOT/404.html](/IDE/server/webapps/ROOT/404.html) | HTML | 187 | 0 | 1 | 188 |
+| [IDE/server/webapps/ROOT/cmsScripts/FinalCms.js](/IDE/server/webapps/ROOT/cmsScripts/FinalCms.js) | JavaScript | 978 | 378 | 152 | 1,508 |
+| [IDE/server/webapps/ROOT/cmsScripts/FinalCms_1.0.js](/IDE/server/webapps/ROOT/cmsScripts/FinalCms_1.0.js) | JavaScript | 266 | 4 | 52 | 322 |
+| [IDE/server/webapps/ROOT/cmsScripts/quill.js](/IDE/server/webapps/ROOT/cmsScripts/quill.js) | JavaScript | 1 | 2 | 0 | 3 |
+| [IDE/server/webapps/ROOT/cmsScripts/quill.snow.css](/IDE/server/webapps/ROOT/cmsScripts/quill.snow.css) | CSS | 1,035 | 8 | 245 | 1,288 |
+| [IDE/server/webapps/ROOT/data/list.json](/IDE/server/webapps/ROOT/data/list.json) | JSON | 73 | 0 | 1 | 74 |
+| [IDE/server/webapps/ROOT/data/modifyInfo.json](/IDE/server/webapps/ROOT/data/modifyInfo.json) | JSON | 3 | 0 | 0 | 3 |
+| [IDE/server/webapps/ROOT/index.html](/IDE/server/webapps/ROOT/index.html) | HTML | 11 | 0 | 1 | 12 |
+| [IDE/server/webapps/alumni/404.html](/IDE/server/webapps/alumni/404.html) | HTML | 20 | 0 | 0 | 20 |
+| [IDE/server/webapps/alumni/CmsComponent/head.html](/IDE/server/webapps/alumni/CmsComponent/head.html) | HTML | 1 | 0 | 0 | 1 |
+| [IDE/server/webapps/alumni/data/list.json](/IDE/server/webapps/alumni/data/list.json) | JSON | 1 | 0 | 0 | 1 |
+| [IDE/server/webapps/alumni/data/modifyInfo.json](/IDE/server/webapps/alumni/data/modifyInfo.json) | JSON | 3 | 0 | 0 | 3 |
+| [IDE/server/webapps/alumni/index.html](/IDE/server/webapps/alumni/index.html) | HTML | 11 | 0 | 3 | 14 |
+| [IDE/server/webapps/jgfy/404.html](/IDE/server/webapps/jgfy/404.html) | HTML | 20 | 0 | 0 | 20 |
+| [IDE/server/webapps/jgfy/CmsComponent/head.html](/IDE/server/webapps/jgfy/CmsComponent/head.html) | HTML | 1 | 0 | 0 | 1 |
+| [IDE/server/webapps/jgfy/data/list.json](/IDE/server/webapps/jgfy/data/list.json) | JSON | 1 | 0 | 0 | 1 |
+| [IDE/server/webapps/jgfy/data/modifyInfo.json](/IDE/server/webapps/jgfy/data/modifyInfo.json) | JSON | 3 | 0 | 0 | 3 |
+| [IDE/server/webapps/jgfy/index.html](/IDE/server/webapps/jgfy/index.html) | HTML | 11 | 0 | 3 | 14 |
+| [IDE/server/webapps/marxism/404.html](/IDE/server/webapps/marxism/404.html) | HTML | 20 | 0 | 0 | 20 |
+| [IDE/server/webapps/marxism/CmsComponent/head.html](/IDE/server/webapps/marxism/CmsComponent/head.html) | HTML | 5 | 0 | 1 | 6 |
+| [IDE/server/webapps/marxism/data/list.json](/IDE/server/webapps/marxism/data/list.json) | JSON | 43 | 0 | 0 | 43 |
+| [IDE/server/webapps/marxism/data/modifyInfo.json](/IDE/server/webapps/marxism/data/modifyInfo.json) | JSON | 3 | 0 | 0 | 3 |
+| [IDE/server/webapps/marxism/index.html](/IDE/server/webapps/marxism/index.html) | HTML | 11 | 0 | 0 | 11 |
+| [IDE/server/webapps/zhaosheng/404.html](/IDE/server/webapps/zhaosheng/404.html) | HTML | 187 | 0 | 3 | 190 |
+| [IDE/server/webapps/zhaosheng/CmsComponent/foot.html](/IDE/server/webapps/zhaosheng/CmsComponent/foot.html) | HTML | 0 | 0 | 1 | 1 |
+| [IDE/server/webapps/zhaosheng/CmsComponent/head.html](/IDE/server/webapps/zhaosheng/CmsComponent/head.html) | HTML | 1 | 0 | 0 | 1 |
+| [IDE/server/webapps/zhaosheng/article.html](/IDE/server/webapps/zhaosheng/article.html) | HTML | 39 | 0 | 2 | 41 |
+| [IDE/server/webapps/zhaosheng/data/list.json](/IDE/server/webapps/zhaosheng/data/list.json) | JSON | 92 | 0 | 0 | 92 |
+| [IDE/server/webapps/zhaosheng/data/modifyInfo.json](/IDE/server/webapps/zhaosheng/data/modifyInfo.json) | JSON | 3 | 0 | 0 | 3 |
+| [IDE/server/webapps/zhaosheng/index.html](/IDE/server/webapps/zhaosheng/index.html) | HTML | 39 | 0 | 4 | 43 |
+| [IDE/server/webapps/zhaosheng/list.html](/IDE/server/webapps/zhaosheng/list.html) | HTML | 11 | 0 | 2 | 13 |
+| [IDE/server/webapps/zhaosheng/test.json](/IDE/server/webapps/zhaosheng/test.json) | JSON | 0 | 0 | 1 | 1 |
+| [IDE/utils/chokidar.js](/IDE/utils/chokidar.js) | JavaScript | 16 | 5 | 6 | 27 |
+| [IDE/utils/socket.io.js](/IDE/utils/socket.io.js) | JavaScript | 3,165 | 1,212 | 62 | 4,439 |
+
+[Summary](results.md) / Details / [Diff Summary](diff.md) / [Diff Details](diff-details.md)

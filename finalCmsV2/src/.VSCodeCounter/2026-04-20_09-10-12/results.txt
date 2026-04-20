@@ -1,0 +1,79 @@
+Date : 2026-04-20 09:10:12
+Directory : f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front
+Total : 34 files,  3393 codes, 405 comments, 487 blanks, all 4285 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JavaScript |          4 |      1,310 |        397 |        211 |      1,918 |
+| CSS        |          2 |      1,070 |          8 |        252 |      1,330 |
+| HTML       |         13 |        630 |          0 |         22 |        652 |
+| JSON       |         15 |        383 |          0 |          2 |        385 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                           | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                              |         34 |      3,393 |        405 |        487 |      4,285 |
+| ROOT                                                                           |         11 |      2,643 |        392 |        455 |      3,490 |
+| ROOT (Files)                                                                   |          5 |        287 |          0 |          5 |        292 |
+| ROOT\cmsScripts                                                                |          4 |      2,280 |        392 |        449 |      3,121 |
+| ROOT\data                                                                      |          2 |         76 |          0 |          1 |         77 |
+| alumni                                                                         |          4 |         45 |          0 |          3 |         48 |
+| alumni (Files)                                                                 |          2 |         41 |          0 |          3 |         44 |
+| alumni\data                                                                    |          2 |          4 |          0 |          0 |          4 |
+| jgfy                                                                           |          4 |         45 |          0 |          3 |         48 |
+| jgfy (Files)                                                                   |          2 |         41 |          0 |          3 |         44 |
+| jgfy\data                                                                      |          2 |          4 |          0 |          0 |          4 |
+| marxism                                                                        |          4 |         91 |          0 |          0 |         91 |
+| marxism (Files)                                                                |          2 |         45 |          0 |          0 |         45 |
+| marxism\data                                                                   |          2 |         46 |          0 |          0 |         46 |
+| zhaosheng                                                                      |         11 |        569 |         13 |         26 |        608 |
+| zhaosheng (Files)                                                              |          7 |        374 |          0 |         12 |        386 |
+| zhaosheng\css                                                                  |          1 |         35 |          0 |          7 |         42 |
+| zhaosheng\data                                                                 |          2 |         95 |          0 |          0 |         95 |
+| zhaosheng\js                                                                   |          1 |         65 |         13 |          7 |         85 |
++--------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                                       | language   | code       | comment    | blank      | total      |
++--------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\ROOT\403.html                   | HTML       |         11 |          0 |          3 |         14 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\ROOT\404.html                   | HTML       |        188 |          0 |          1 |        189 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\ROOT\cmsScripts\FinalCms.js     | JavaScript |        978 |        378 |        152 |      1,508 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\ROOT\cmsScripts\FinalCms_1.0.js | JavaScript |        266 |          4 |         52 |        322 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\ROOT\cmsScripts\quill.js        | JavaScript |          1 |          2 |          0 |          3 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\ROOT\cmsScripts\quill.snow.css  | CSS        |      1,035 |          8 |        245 |      1,288 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\ROOT\data\list.json             | JSON       |         73 |          0 |          1 |         74 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\ROOT\data\modifyInfo.json       | JSON       |          3 |          0 |          0 |          3 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\ROOT\index.html                 | HTML       |         12 |          0 |          1 |         13 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\ROOT\list.json                  | JSON       |         73 |          0 |          0 |         73 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\ROOT\modifyInfo.json            | JSON       |          3 |          0 |          0 |          3 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\alumni\404.html                 | HTML       |         25 |          0 |          0 |         25 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\alumni\data\list.json           | JSON       |          1 |          0 |          0 |          1 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\alumni\data\modifyInfo.json     | JSON       |          3 |          0 |          0 |          3 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\alumni\index.html               | HTML       |         16 |          0 |          3 |         19 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\jgfy\404.html                   | HTML       |         25 |          0 |          0 |         25 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\jgfy\data\list.json             | JSON       |          1 |          0 |          0 |          1 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\jgfy\data\modifyInfo.json       | JSON       |          3 |          0 |          0 |          3 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\jgfy\index.html                 | HTML       |         16 |          0 |          3 |         19 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\marxism\404.html                | HTML       |         25 |          0 |          0 |         25 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\marxism\data\list.json          | JSON       |         43 |          0 |          0 |         43 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\marxism\data\modifyInfo.json    | JSON       |          3 |          0 |          0 |          3 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\marxism\index.html              | HTML       |         20 |          0 |          0 |         20 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\zhaosheng\404.html              | HTML       |        188 |          0 |          3 |        191 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\zhaosheng\article.html          | HTML       |         44 |          0 |          2 |         46 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\zhaosheng\css\404.css           | CSS        |         35 |          0 |          7 |         42 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\zhaosheng\data\list.json        | JSON       |         92 |          0 |          0 |         92 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\zhaosheng\data\modifyInfo.json  | JSON       |          3 |          0 |          0 |          3 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\zhaosheng\index.html            | HTML       |         44 |          0 |          4 |         48 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\zhaosheng\js\404.js             | JavaScript |         65 |         13 |          7 |         85 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\zhaosheng\list.html             | HTML       |         16 |          0 |          2 |         18 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\zhaosheng\list.json             | JSON       |         79 |          0 |          0 |         79 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\zhaosheng\modifyInfo.json       | JSON       |          3 |          0 |          0 |          3 |
+| f:\Work\GitHub\finalCmsV2\finalCmsV2\src\Front\zhaosheng\test.json             | JSON       |          0 |          0 |          1 |          1 |
+| Total                                                                          |            |      3,393 |        405 |        487 |      4,285 |
++--------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
