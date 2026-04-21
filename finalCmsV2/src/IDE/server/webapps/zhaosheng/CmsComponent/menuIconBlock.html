@@ -1,0 +1,110 @@
+<style>
+    /* 电脑 */
+    @media screen and (min-width: 800px) {
+        .iconMainBlock {
+            margin-top: 20px;
+            display: flex;
+            width: 1200px;
+            margin-left: calc((100vw - 1200px)/2);
+        }
+
+        .iconMainBlock .icon {
+            width: 70px;
+            height: 70px;
+        }
+
+        .iconMainBlock .iconBlock {
+            border-right: 1px solid #772f91;
+            flex: 1;
+        }
+
+        .iconMainBlock .iconBlock:last-child {
+            border-right: 1px solid #ffffff;
+        }
+
+        .innerBlock {
+            cursor: pointer;
+            margin-left: 65px;
+            margin-top: 20px;
+        }
+
+        .iconName {
+            color: #666666;
+            margin-top: 4px;
+        }
+    }
+
+    /* 手机 */
+    @media screen and (max-width: 800px) {
+        .iconMainBlock {
+            display: flex;
+            width: 100vw;
+            flex-wrap: wrap;
+            margin-bottom: -35px;
+        }
+
+        .iconMainBlock .icon {
+            width: 70px;
+            height: 70px;
+            margin-left: calc(((100vw / 3) - 70px)/2);
+            margin-top: 15px;
+        }
+
+        .iconMainBlock .iconBlock {
+            width: calc(100vw / 3);
+            height: calc(100vw / 3);
+        }
+
+
+        .innerBlock {
+            width: calc(100vw / 3);
+            height: calc(100vw / 3);
+            cursor: pointer;
+        }
+
+        .iconName {
+            text-align: center;
+            color: #666666;
+        }
+    }
+</style>
+<cms-component>
+    <div class="iconMainBlock">
+        <cms-list data="l_ly8edsgj" class="iconBlock">
+            <list-template class="innerBlock">
+                <list-cover class="icon"></list-cover>
+                <list-name class="iconName"></list-name>
+            </list-template>
+        </cms-list>
+        <cms-list data="l_lxmky6ef" class="iconBlock">
+            <list-template class="innerBlock">
+                <list-cover class="icon"></list-cover>
+                <list-name class="iconName"></list-name>
+            </list-template>
+        </cms-list>
+        <cms-list data="l_lz6pvi0l" class="iconBlock">
+            <list-template class="innerBlock">
+                <list-cover class="icon"></list-cover>
+                <list-name class="iconName"></list-name>
+            </list-template>
+        </cms-list>
+        <cms-list data="l_ly8eeax8" class="iconBlock">
+            <list-template class="innerBlock">
+                <list-cover class="icon"></list-cover>
+                <list-name class="iconName"></list-name>
+            </list-template>
+        </cms-list>
+        <cms-list data="l_ly8dltvj" class="iconBlock">
+            <list-template class="innerBlock">
+                <list-cover class="icon"></list-cover>
+                <list-name class="iconName"></list-name>
+            </list-template>
+        </cms-list>
+        <cms-list data="l_ly8ee4iw" class="iconBlock">
+            <list-template class="innerBlock">
+                <list-cover class="icon"></list-cover>
+                <list-name class="iconName"></list-name>
+            </list-template>
+        </cms-list>
+    </div>
+</cms-component>

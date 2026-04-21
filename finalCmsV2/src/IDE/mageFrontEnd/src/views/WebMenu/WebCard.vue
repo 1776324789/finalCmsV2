@@ -39,18 +39,18 @@ document.addEventListener('wheel', (e) => {
     cardRef.value.style.opacity = 1 - (Math.abs(document.body.clientWidth / 2 - (rect.x + cardRef.value.clientWidth / 2)) / (document.body.clientWidth / 2))
 
     let scale = 1 - (Math.abs(document.body.clientWidth / 2 - (rect.x + cardRef.value.clientWidth / 2)) / (document.body.clientWidth / 2))
-    if (scale < 0.25) scale = 0.25
+    if (scale < 0.35) scale = 0.35
     cardRef.value.style.scale = scale * 1.1
-    cardRef.value.style.marginLeft = ((1 - scale) * -120) + 'px'
+    cardRef.value.style.marginLeft = ((1 - scale) * -20) + 'px'
 })
 
 onMounted(() => {
     const rect = cardRef.value.getBoundingClientRect()
     cardRef.value.style.opacity = 1 - (Math.abs(document.body.clientWidth / 2 - (rect.x + cardRef.value.clientWidth / 2)) / (document.body.clientWidth / 2))
     let scale = 1 - (Math.abs(document.body.clientWidth / 2 - (rect.x + cardRef.value.clientWidth / 2)) / (document.body.clientWidth / 2))
-    if (scale < 0.25) scale = 0.25
+    if (scale < 0.35) scale = 0.35
     cardRef.value.style.scale = scale * 1.1
-    cardRef.value.style.marginLeft = ((1 - scale) * -120) + 'px'
+    cardRef.value.style.marginLeft = ((1 - scale) * -20) + 'px'
 })
 
 function handleMouseMove(e) {

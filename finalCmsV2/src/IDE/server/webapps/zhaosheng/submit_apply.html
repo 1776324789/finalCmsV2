@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<!-- 禁止百度转码 -->
+	<meta http-equiv="Cache-Control" content="no-siteapp">
+	<!-- uc强制竖屏 -->
+	<meta name="screen-orientation" content="portrait">
+	<!-- QQ强制竖屏 -->
+	<meta name="x5-orientation" content="portrait">
+	<!-- {dreamer-cms:article field="title" /}_{dreamer-cms:global name="title"/} -->
+	<title>录取查询</title>
+	<meta name="Keywords" content="{dreamer-cms:global name=" keywords"/}" />
+	<meta name="Description" content="{dreamer-cms:global name=" describe"/}" />
+	<link rel="stylesheet" href="./css/iconfont/iconfont.css">
+	<link rel="stylesheet" href="./css/reset.css">
+	<link rel="stylesheet" href="./css/animate.css">
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="./css/share.min.css">
+	<link rel="stylesheet" href="./scripts/theme/default/layer.css">
+	<script src="./scripts/jquery-3.4.1.js"></script>
+	<script src="./scripts/js.js"></script>
+	<script src="./scripts/layer.js"></script>
+	<link rel="stylesheet" href="./css/aheadUI.css">
+	<style>
+		.info {
+			color: #8d8d8d;
+			text-align: left;
+			line-height: 30px;
+			flex: 1;
+		}
+
+		.search {
+			cursor: pointer;
+
+			border: 0;
+			background-color: #772f91;
+			color: #fff;
+			width: 150px;
+			height: 30px;
+		}
+
+		.search:hover {
+			opacity: 0.7;
+		}
+
+		.input {
+			float: left;
+			width: 200px;
+			font-size: 13px;
+			height: 27px;
+			text-indent: 15px;
+			border-radius: 2px;
+			border: 1px solid #bcbcbc;
+		}
+
+		.messgae {
+			background-color: #f7f7f7;
+			width: 100%;
+			height: 25px;
+			text-align: center;
+			color: #ff5255;
+			width: 90%;
+			margin-left: 5%;
+		}
+
+		@keyframes loader-animation {
+			0% {
+				transform: rotate(0deg);
+			}
+
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		.loader {
+
+			position: relative;
+			width: 40px;
+			height: 40px;
+			margin-left: -47px;
+		}
+
+		.loader::before {
+			content: "";
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 40px;
+			height: 40px;
+			border: 4px solid #cfa6da;
+			border-top-color: #772f91;
+			border-radius: 50%;
+			animation: loader-animation 1s infinite linear;
+		}
+
+		.load {
+			display: none;
+			margin-top: 50px;
+			width: 90%;
+			margin-left: 5%;
+			height: 100px;
+			text-align: center;
+		}
+
+		.empty {
+			display: none;
+			width: 90%;
+			margin-left: 5%;
+			height: 300px;
+			text-align: center;
+			line-height: 300px;
+		}
+
+		.card {
+			display: none;
+			padding: 15px;
+			margin: 0 auto;
+			width: 450px;
+			background-color: #772f91;
+		}
+
+		a:hover {
+			cursor: pointer;
+		}
+
+		.Lable {
+			border-right: 2px solid #ececec;
+			float: left;
+			width: 130px;
+			text-align: right;
+			margin-right: 10px;
+			line-height: 50px;
+		}
+
+		a-form-item .a-form-require {
+			line-height: 40px !important;
+		}
+
+		.Info {
+			float: left;
+			line-height: 50px;
+			text-align: left;
+		}
+
+		@media screen and (min-width: 800px) {
+			.container {
+				width: 1200px;
+				padding: 15px;
+				margin: 0 auto;
+				margin-bottom: 10px;
+				min-height: 500px;
+			}
+
+			.container .searchBar {
+				width: 90%;
+				margin-left: 5%;
+				background-color: #f7f7f7;
+				padding-top: 15px;
+				padding-bottom: 10px;
+				display: flex;
+				border-top: 5px solid #772f91;
+			}
+		}
+
+		@media screen and (max-width: 800px) {
+			.container {
+				width: 100vw;
+				padding: 15px;
+				margin: 0 auto;
+				margin-bottom: 10px;
+				min-height: 500px;
+			}
+
+			.container .searchBar {
+				width: 90%;
+				margin-left: 5%;
+				background-color: #f7f7f7;
+				padding-top: 15px;
+				padding-bottom: 10px;
+				border-top: 5px solid #772f91;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.container .searchBar>* {
+				margin-bottom: 20px;
+				text-align: left;
+				margin-left: 0;
+				padding-left: 40px;
+			}
+
+			input {
+				max-width: 60vw !important;
+			}
+
+			button {
+				max-width: 60vw !important;
+			}
+		}
+	</style>
+
+	<style>
+		body,
+		html {
+			padding: 0;
+			margin: 0;
+			overflow: auto;
+		}
+
+		.applyMainBlock {
+			width: 100vw;
+		}
+
+		.applyBlock {
+			margin-top: 30px;
+			width: calc(750px - 40px);
+			margin-left: calc((100% - 750px)/2);
+			padding: 20px;
+			border-radius: 7px;
+			background-color: #fff;
+			box-shadow: 0 0 3px #d4d4d4;
+			margin-bottom: 100px;
+		}
+
+		.topImg {
+			width: calc(100% + 40px);
+			margin-left: -20px;
+			margin-top: -20px;
+		}
+
+		.topImg img {
+			border-radius: 7px 7px 0 0;
+			width: 100%;
+		}
+
+		.submitButton {
+			width: 250px;
+			height: 40px;
+			border: 0;
+			background-color: #772f91;
+			border-radius: 7px;
+			color: #fff;
+			font-size: 16px;
+			margin-left: calc((100% - 250px)/2);
+			margin-top: 50px;
+		}
+
+		.mainBgc {
+			width: 100vw;
+			height: 100vh;
+			position: fixed;
+			top: 0;
+			z-index: -1;
+			filter: blur(5px);
+
+		}
+	</style>
+</head>
+
+<body>
+	<cms-component data="l_lxlhqx1y">head</cms-component>
+	<div class="applyMainBlock">
+		<div class="applyBlock">
+			<div class="topImg">
+				<img src="./img/compatible.jpg" alt="">
+			</div>
+			<h1
+				style="text-align: center;margin-bottom: 50px;margin-top: 50px;font-size:30px;color:#000;font-weight:bold;">
+				江西软件职业技术大学意向预报名</h1>
+			<a-form direction="column" col="2" id="form">
+				<a-form-item require="请输入姓名" label="1.姓名" name="name">
+					<a-input limit="20"></a-input>
+				</a-form-item>
+				<a-form-item require="请选择性别" label="2.性别" name="sex">
+					<a-input-radio>
+						<a-radio label="男" name="man" style="margin-right: 50px;"></a-radio>
+						<a-radio label="女" name="woman"></a-radio>
+					</a-input-radio>
+				</a-form-item>
+				<a-form-item require="请输入考生号" label="3.考生号" name="stuCode" line col="2">
+					<a-input limit="100"></a-input>
+				</a-form-item>
+
+				<a-form-item require="请输入手机号" label="4.手机号" name="phone">
+					<a-input limit="20"></a-input>
+				</a-form-item>
+				<a-form-item require="请输入qq" label="5.qq" name="qq">
+					<a-input limit="20"></a-input>
+				</a-form-item>
+				<a-form-item require="请输入地址" label="6.地址" name="location" line>
+					<a-input limit="200"></a-input>
+				</a-form-item>
+				<a-form-item require="请输入毕业中学" label="7.毕业中学" name="highSchool">
+					<a-input limit="20"></a-input>
+				</a-form-item>
+				<a-form-item require="请输入高考分数" label="8.高考分数" name="score">
+					<a-input-num min="0"></a-input-num>
+				</a-form-item>
+				<a-form-item require="请选择层次" label="9.层次" name="level" line col="2">
+					<a-input-radio name="level" id="level">
+						<a-radio label="本科" name="un" style="margin-right: 50px;"></a-radio>
+						<a-radio label="专科" name="sp"></a-radio>
+					</a-input-radio>
+				</a-form-item>
+				<a-form-item require="请选择意向专业" label="10.意向专业" name="major" line col="2">
+					<a-select id="major" search window placeholder="请选择层次后再选择专业"></a-select>
+				</a-form-item>
+			</a-form>
+			<button class="submitButton" id="submit">提交</button>
+		</div>
+	</div>
+	<img class="mainBgc" src="./img/compatible.jpg" />
+
+	<img class="mainBgc" src="./img/2022-11-01 10_55_075eab900dacea4b0388a361f65a7fd0e.png" />
+	<cms-component>foot</cms-component>
+</body>
+
+</html>
+<script src="./js/aheadUI.js"></script>
+<script src="./js/axios.min.js"></script>
+
+<script>
+	const url = 'https://template.jxuspt.com/apply/submitApply'
+	document.getElementById('submit').onclick = () => {
+
+		document.getElementById('form').submit(async (e) => {
+			if (e.sex.man) e.sex = "男"
+			if (e.sex.woman) e.sex = "女"
+			if (e.level.un) e.level = "本科"
+			if (e.level.sp) e.level = "专科"
+			let result = await axios.post(url, e)
+			if (result.data == 200) {
+				document.tip.success("      提交成功      ", 2500)
+				document.getElementById('form').clear()
+			}
+		})
+	}
+	const spMajor = [{ label: "大数据技术", value: "大数据技术" },
+	{ label: "云计算技术应用", value: "云计算技术应用" },
+	{ label: "计算机网络技术", value: "计算机网络技术" },
+	{ label: "信息安全技术应用", value: "信息安全技术应用" },
+	{ label: "大数据与会计", value: "大数据与会计" },
+	{ label: "电子商务", value: "电子商务" },
+	{ label: "学前教育", value: "学前教育" },
+	{ label: "虚拟现实技术应用", value: "虚拟现实技术应用" },
+	{ label: "动漫制作技术", value: "动漫制作技术" },
+	{ label: "环境艺术设计", value: "环境艺术设计" },
+	{ label: "广告艺术设计", value: "广告艺术设计" },
+	{ label: "电子竞技运动与管理", value: "电子竞技运动与管理" },
+	{ label: "区块链技术应用", value: "区块链技术应用" },
+	{ label: "数字媒体技术", value: "数字媒体技术" },
+	{ label: "影视编导", value: "影视编导" },
+	{ label: "人工智能技术应用", value: "人工智能技术应用" },
+	{ label: "无人机应用技术", value: "", value: "无人机应用技术" },
+	{ label: "工业机器人技术", value: "工业机器人技术" },
+	{ label: "软件技术", value: "软件技术" },
+	{ label: "跨境电子商务", value: "跨境电子商务" }]
+	const unMajor = [{ label: "软件工程技术", value: "软件工程技术" },
+	{ label: "大数据工程技术", value: "大数据工程技术" },
+	{ label: "云计算技术", value: "云计算技术" },
+	{ label: "导航工程技术", value: "导航工程技术" },
+	{ label: "智能控制技术", value: "智能控制技术" },
+	{ label: "人工智能工程技术", value: "人工智能工程技术" },
+	{ label: "物联网工程技术", value: "物联网工程技术" },
+	{ label: "网络工程技术", value: "网络工程技术" },
+	{ label: "信息安全与管理", value: "信息安全与管理" },
+	{ label: "现代通信工程", value: "现代通信工程" },
+	{ label: "大数据与会计", value: "大数据与会计" },
+	{ label: "大数据与审计", value: "大数据与审计" },
+	{ label: "电子商务", value: "电子商务" },
+	{ label: "应用英语", value: "应用英语" },
+	{ label: "虚拟现实技术", value: "虚拟现实技术" },
+	{ label: "数字媒体艺术", value: "数字媒体艺术" },
+	{ label: "环境艺术设计", value: "环境艺术设计" },
+	{ label: "区块链技术", value: "区块链技术" },
+	{ label: "金融科技应用", value: "金融科技应用" },
+	{ label: "网络与新媒体", value: "网络与新媒体" },
+	{ label: "影视编导", value: "影视编导" }]
+	document.getElementById('level').onchange = (e) => {
+		document.getElementById('major').value = null
+		if (e.sp) {
+			document.getElementById('major').option = spMajor
+		} else {
+			document.getElementById('major').option = unMajor
+		}
+	}
+</script>

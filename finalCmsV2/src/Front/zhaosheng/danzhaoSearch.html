@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>2026年江西省单独招生考试校考成绩查询</title>
+
+    <style>
+        .main {
+
+            width: calc(100% - 20px);
+            max-width: 500px;
+            margin: auto;
+            margin-top: 150px;
+            transition: 0.3s margin-top;
+            padding: 10px;
+            height: calc(100vh - 35px);
+            overflow: auto;
+        }
+
+        .bgi {
+
+            width: 100%;
+            height: 500px;
+            margin-bottom: -500px;
+            background: linear-gradient(to bottom, #762796, #fff);
+        }
+
+        body,
+        html {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        .line {
+            margin-bottom: 15px;
+            background-color: #762796;
+            display: flex;
+            padding: 1px;
+        }
+
+        .label {
+            text-align: right;
+            width: 110px;
+            height: 30px;
+            line-height: 32px;
+            font-size: 14px;
+            color: #ffffff;
+            font-weight: bold;
+            text-indent: 10px;
+        }
+
+        .input {
+            border-radius: 3px;
+            font-size: 16px;
+            outline: none;
+            text-indent: 10px;
+            border: 0;
+            height: 30px;
+            flex: 1;
+        }
+
+        .title {
+            color: #fff;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .button {
+            height: 40px;
+            font-size: 16px;
+            width: 50%;
+            margin-left: 25%;
+            border: 0;
+            border-radius: 20px;
+            color: #fff;
+            margin-top: 10px;
+            background-color: #762796;
+        }
+
+        .bgb {
+            z-index: -1;
+            position: absolute;
+            bottom: 0;
+            max-width: 500px;
+        }
+
+        .infoMain {
+            display: none;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-left: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            margin-top: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 5px #c9c9c9;
+            width: calc(100% - 40px);
+            border: 1px solid #c9c9c9;
+        }
+
+        .infoBlock {
+            padding-left: 20px;
+            padding-right: 20px;
+            display: flex;
+            height: 35px;
+            line-height: 35px;
+        }
+
+        .infoLabel::after {
+            content: "：";
+
+        }
+
+        .infoLabel {
+            text-align: right;
+            font-size: 15px;
+            color: #333333;
+            font-weight: bold;
+            min-width: 120px;
+        }
+
+        .info {
+            flex: 1;
+            line-height: 38px;
+            font-size: 14px;
+            color: #444444;
+        }
+
+        .warn {
+            display: none;
+            padding: 10px;
+            margin-left: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            margin-top: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 5px #c9c9c9;
+            width: calc(100% - 60px);
+            border: 1px solid #c9c9c9;
+        }
+
+        p {
+            text-indent: 30px;
+            font-size: 14px;
+            line-height: 20px;
+        }
+
+        .warnTitle {
+            text-align: center;
+            font-size: 16px;
+            line-height: 30px;
+            height: 30px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .empty {
+            margin-top: 15px;
+            text-align: center;
+            color: #444444;
+            opacity: 0;
+        }
+    </style>
+    <link href="css/MoonIcon/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <cms-component data="l_lxlhqx1y"><style>
+    html,
+    body {
+        padding: 0;
+        margin: 0;
+    }
+
+    .WEBHEAD .list {
+        display: flex;
+    }
+
+    .WEBHEAD .contentName {
+        color: #fff;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        min-width: 70px;
+        padding-left: 20px;
+        padding-right: 20px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+
+    .WEBHEAD .contentName:hover {
+        color: #55aaff;
+    }
+
+    .WEBHEAD .floatWindow {
+        z-index: 10;
+        background-color: #fff;
+        position: absolute;
+        display: none;
+        box-shadow: 0 0 3px #b9b9b9;
+        flex-direction: column;
+    }
+
+    .WEBHEAD .row:hover .floatWindow {
+        animation: slideIn 0.25s ease forwards;
+        display: flex;
+
+    }
+
+    @keyframes slideIn {
+        0% {
+            transform: translateY(50px);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .WEBHEAD .menuOption {
+        height: 45px;
+        text-align: center;
+        line-height: 45px;
+        width: 100px;
+        cursor: pointer;
+        font-size: 14px;
+    }
+
+    .WEBHEAD .menuOption:hover {
+        background-color: #e9e9e9;
+    }
+
+    .WEBHEAD .menuBlock {
+        width: 100vw;
+        display: flex;
+        background-color: #393c41;
+    }
+
+    .WEBHEAD .pageTopBlock {
+        width: 100vw;
+        height: 70px;
+        background-color: #772f91 !important;
+        display: flex;
+    }
+
+    .WEBHEAD .topBlockTitle {
+        font-size: 30px;
+        line-height: 70px;
+        margin-left: 30px;
+        color: #fff;
+    }
+
+    .WEBHEAD .searchBlock {
+        margin-right: 100px;
+    }
+
+    .WEBHEAD .inputBlock {
+        display: flex;
+        margin-top: 17px;
+        overflow: hidden;
+        width: 250px;
+        border-radius: 18px;
+        height: 36px;
+        background-color: #fff;
+        border: 1px solid #bfbfbf;
+    }
+
+    .WEBHEAD .inputBlock input {
+        height: 30px;
+        flex: 1;
+        text-indent: 15px;
+        border: 0;
+        margin-top: 2px;
+        outline: none;
+    }
+
+    .WEBHEAD .row {
+        position: relative;
+    }
+
+    .WEBHEAD .searchButton {
+        margin-top: 3px;
+        border: 0;
+        margin-right: 3px;
+        cursor: pointer;
+        border-radius: 15px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .WEBHEAD .searchButton:hover {
+        color: #55aaff;
+        background-color: #eeeeee;
+    }
+
+
+    @media screen and (min-width: 800px) {
+        .WEBHEAD {
+            display: block;
+        }
+
+        .PHONEHEAD {
+            display: none;
+        }
+
+        .setUp {
+            display: none;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        .WEBHEAD {
+            display: none;
+        }
+
+        .PHONEHEAD {
+            z-index: 10000000;
+            display: block;
+            position: fixed;
+            width: 100vw;
+        }
+
+        .setUp {
+            display: block;
+        }
+    }
+
+    .PHONEHEAD .topBlockTitle {
+        color: #fff;
+        margin-top: -1px;
+        height: 35px;
+        font-size: 20px;
+        line-height: 35px;
+        text-indent: 25px;
+    }
+
+    .PHONEHEAD .fatherBlock {
+        height: 35px;
+        text-indent: 15px;
+        color: #fff;
+        line-height: 35px;
+        font-weight: bold;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .PHONEHEAD .childBlock {
+        height: 35px;
+        text-indent: 35px;
+        color: #fff;
+        line-height: 35px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+</style>
+
+<style>
+    body,
+    html {
+        width: 100vw;
+        height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+        font-size: 16px;
+    }
+</style>
+
+<script id="eda_bar_script" src="./js/school1407.js"></script>
+<script language="javascript" src="https://pct.zoosnet.net/JS/LsJS.aspx?siteid=PCT18224980&float=1&lng=cn"></script>
+</cms-component>
+<link rel="stylesheet" href="./css/moonIcon.css">
+<cms-component data="l_lxlhqx1y">
+    <div class="PHONEHEAD">
+        <div style="display: flex;background-color: #772f91;">
+            <div style="flex: 1;">
+                <div class="topBlockTitle" style="font-weight: bold;">江西软件职业技术大学</div>
+                <div class="topBlockTitle">招生信息网</div>
+            </div>
+            <div style="width: 75px;color: #fff;line-height: 60px;text-align: center;" id="phoneMenuButton">
+                <i class="icon-menu-fill" style="font-size: 35px;"></i>
+            </div>
+        </div>
+        <div id="phoneMenu"
+            style="width: 175px;transition: left 0.3s; z-index: 1000; height:100vh; position: fixed;left: -175px;background-color: #772f91;overflow: auto;">
+            <cms-list>
+                <list-list>
+                    <list-template class="fatherBlock">
+                        <list-name></list-name>
+                    </list-template>
+                    <list-list>
+                        <list-template class="childBlock">
+                            <list-name></list-name>
+                        </list-template>
+                    </list-list>
+                </list-list>
+            </cms-list>
+        </div>
+    </div>
+    <div style="width: 100vw;height: 80px;" class="setUp"></div>
+    <div class="WEBHEAD">
+        <div class="pageTopBlock">
+            <cms-node data="n_lz6pzgj5" style="display: flex;">
+                <node-cover class="hello hello2" style="height: 70px;margin-left: 100px;"></node-cover>
+                <div class="topBlockTitle">招生信息网</div>
+            </cms-node>
+            <div style="flex: 1;"></div>
+            <div class="searchBlock">
+                <form action="searchResult.html" method="get" onsubmit="return validateForm()">
+                    <div class="inputBlock">
+                        <input id="searchContent" name="search" type="text" minlength="5" placeholder="请输入搜索内容">
+                        <button type="submit" class="searchButton">
+                            <span class="icon-search-2-line "></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <cms-list class="menuBlock">
+            <div style="flex: 1;"></div>
+            <list-list class="list">
+                <div class="row">
+                    <list-template>
+                        <list-name class="contentName"></list-name>
+                    </list-template>
+                    <div class="floatWindow">
+                        <list-list>
+                            <list-template>
+                                <list-name class="menuOption"></list-name>
+                            </list-template>
+                        </list-list>
+                    </div>
+                </div>
+            </list-list>
+            <div style="flex: 1;"></div>
+        </cms-list>
+    </div>
+</cms-component>
+<script>
+    const phoneMenu = document.getElementById('phoneMenu')
+    const phoneMenuButton = document.getElementById("phoneMenuButton")
+    let show = false
+    phoneMenuButton.onclick = () => {
+        if (show) {
+            phoneMenu.style.left = "-175px"
+        } else {
+            phoneMenu.style.left = "0"
+        }
+        show = !show
+    }
+</script></cms-component>
+    <div class="bgi"></div>
+    <div class="main" id="main">
+        <div class="title">2026年江西省单独招生考试校考成绩查询</div>
+        <div class="line">
+            <div class="label">准考证号：</div>
+            <input value="" type="text" class="input" placeholder="请输入准考证号" id="id">
+        </div>
+        <div class="line">
+            <div class="label">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</div>
+            <input value="" type="text" class="input" placeholder="请输入姓名" id="name">
+        </div>
+
+        <div>
+            <button class="button" onclick="search()" id="searchButton">查询</button>
+        </div>
+        <div class="infoMain" id="infoBlock">
+            <div class="infoBlock">
+                <div class="infoLabel">准考证号</div>
+                <div class="info" id="stuCode"></div>
+            </div>
+            <div class="infoBlock" style="background-color: rgba(236, 236, 236, 0.616);">
+                <div class="infoLabel">
+                    姓名
+                </div>
+                <div class="info" id="name1"></div>
+            </div>
+
+            <div class="infoBlock">
+                <div class="infoLabel">信息技术应用</div>
+                <div class="info" id="score1"></div>
+            </div>
+            <div class="infoBlock"style="background-color: rgba(236, 236, 236, 0.616);">
+                <div class="infoLabel">思想政治素质</div>
+                <div class="info" id="score2"></div>
+            </div>
+             <div class="infoBlock">
+                <div class="infoLabel">职业适应性</div>
+                <div class="info" id="score3"></div>
+            </div>
+            <div class="infoBlock"style="background-color: rgba(236, 236, 236, 0.616);">
+                <div class="infoLabel">总分</div>
+                <div class="info" id="total"></div>
+            </div>
+            <div class="infoBlock" id="attendBlock">
+                <div class="infoLabel">备注</div>
+                <div class="info" >缺考</div>
+            </div>
+          <div class="infoBlock">
+                <div class="info">如对成绩有疑义，请联系学校招生办</div>
+            </div>
+        </div>
+  		
+            <div  style="text-align:center;width:100%;font-size:14px;color:#666;margin-top:20px;">招生办电话：0791-83792888，0791-83792998 </div>
+        <div class="warn empty" style="display: block;" id="empty">未查询到结果</div>
+        <img src="./img/bgi.png" class="bgb">
+    </div>
+    <cms-component><style>
+    .min_wrapper {
+        padding-top: 20px;
+        padding-bottom: 30px;
+        background-color: #555555;
+    }
+
+    @media screen and (min-width: 800px) {
+
+        #footer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            min-width: 1200px;
+        }
+
+        #footer .wrapper_1200 {
+            width: 100%;
+            display: flex;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .wrapper_1200>.link {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            width: 38%;
+            border-right: 1px solid #6b717a;
+            padding-right: 50px;
+        }
+
+        .wrapper_1200>.info {
+            display: flex;
+            flex-direction: column;
+            width: 24%;
+            border-right: 1px solid #6b717a;
+            text-align: center;
+        }
+
+        .wrapper_1200>.QRcode {
+            padding-left: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            width: 38%;
+            color: #fff;
+        }
+
+        .wrapper_1200>.QRcode>div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-right: 20px;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        #footer {
+            max-width: 100px !important;
+        }
+
+        .min_wrapper {
+            width: 100vw !important;
+            min-width: 100vw;
+        }
+
+        .wrapper_1200 {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            text-indent: 25px;
+        }
+
+        .wrapper_1200>.link {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #6b717a;
+        }
+
+        .wrapper_1200>.info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 1px solid #6b717a;
+        }
+
+        .wrapper_1200>.QRcode {
+            display: flex;
+            flex-wrap: wrap;
+            padding-top: 20px;
+        }
+
+        .wrapper_1200>.QRcode>div {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 20px;
+            color: #fff;
+        }
+    }
+
+    .name {
+        text-align: center;
+        margin-top: 15px;
+        color: #fff;
+    }
+
+    .official {
+        margin-right: 20px;
+    }
+</style>
+<cms-component>
+    <div id="footer" class="min_wrapper ">
+        <div class="wrapper_1200">
+            <div class="link">
+                <a style="color: #fff !important;margin: 10px;float: left;font-size: 16px;">
+                    友情链接
+                </a>
+            </div>
+            <div class="info">
+                <div style="margin: 10px;color: #fff;">
+                    <cms-node data="n_lz7qf5vu">
+                        <node-title></node-title>
+                    </cms-node>
+                </div>
+                <div style="margin: 10px;">
+                    <cms-node data="n_lz7qffmy">
+                        <node-link newpage><node-title
+                                style="color: #fff !important;font-size: 14px;"></node-title></node-link>
+                    </cms-node>
+                </div>
+                <cms-node data="n_lz7qfly5" style="margin: 10px;color: #fff;">
+                    <node-title></node-title>
+                </cms-node>
+            </div>
+            <div class="QRcode">
+                <cms-node data="n_lz7qh2q4" class="official">
+                    <node-cover style="width: 100px;"></node-cover>
+                    <node-title class="name"></node-title>
+                </cms-node>
+                <cms-node class="official" data="n_lz7qhkug">
+                    <node-cover style="width: 100px;"></node-cover>
+                    <node-title class="name"></node-title>
+                </cms-node>
+            </div>
+        </div>
+    </div></cms-component>
+<script>
+            const Cms=document.createElement("script")
+            Cms.src=window.location.origin+"/cmsScripts/FinalCms.js?web=zhaosheng"
+            document.body.appendChild(Cms)
+        </script>
+</body>
+
+</html>
+<script>
+ 
+
+async function search() {
+    const id = document.getElementById("id").value;
+    const name = document.getElementById("name").value;
+
+    const fileName = await hashSHA256(id + name);
+document.getElementById("searchButton").innerText="正在查询..."
+    const res = await fetch(`https://zhaosheng.jxuspt.com/data/upload/file/danzhao/${fileName}`);
+document.getElementById("searchButton").innerText="查询"
+    if (!res.ok) {
+alert("未查询到相关信息，请确认输入内容后重新查询。")
+        console.error("请求失败");
+        return;
+    }
+
+    const text = await res.text();  // ⭐ 关键
+
+    const deText=await decrypt(text,id)
+const data=JSON.parse(deText)
+showResult(data)
+
+}
+function showResult(data){
+    
+document.getElementById("infoBlock").style.display="block"
+document.getElementById("name1").innerText=data.name
+document.getElementById("stuCode").innerText=data.id
+document.getElementById("score1").innerText=data.score_1
+document.getElementById("score2").innerText=data.score_2
+document.getElementById("score3").innerText=data.score_3
+document.getElementById("total").innerText=data.total
+if(data.total==0)
+    document.getElementById("attendBlock").style.display="flex"
+else 
+document.getElementById("attendBlock").style.display="none"
+}
+// 工具函数：把字符串转为 Uint8Array
+function strToUint8(str) {
+    return new TextEncoder().encode(str);
+}
+
+// 工具函数：转回字符串
+function uint8ToStr(buf) {
+    return new TextDecoder().decode(buf);
+}
+
+// 从密码生成 key
+async function getKey(password) {
+    const keyMaterial = await crypto.subtle.importKey(
+        "raw",
+        strToUint8(password),
+        { name: "PBKDF2" },
+        false,
+        ["deriveKey"]
+    );
+
+    return crypto.subtle.deriveKey(
+        {
+            name: "PBKDF2",
+            salt: strToUint8("salt123"), // 可以自定义
+            iterations: 100000,
+            hash: "SHA-256",
+        },
+        keyMaterial,
+        { name: "AES-GCM", length: 256 },
+        false,
+        ["encrypt", "decrypt"]
+    );
+}
+
+// 加密
+async function encrypt(text, password) {
+    const iv = crypto.getRandomValues(new Uint8Array(12)); // 随机IV
+    const key = await getKey(password);
+
+    const encrypted = await crypto.subtle.encrypt(
+        { name: "AES-GCM", iv },
+        key,
+        strToUint8(text)
+    );
+
+    // 拼接 iv + 密文
+    const result = new Uint8Array(iv.length + encrypted.byteLength);
+    result.set(iv, 0);
+    result.set(new Uint8Array(encrypted), iv.length);
+
+    return btoa(String.fromCharCode(...result)); // Base64
+}
+
+// 解密
+async function decrypt(base64, password) {
+    const data = Uint8Array.from(atob(base64), c => c.charCodeAt(0));
+
+    const iv = data.slice(0, 12);
+    const encrypted = data.slice(12);
+
+    const key = await getKey(password);
+
+    const decrypted = await crypto.subtle.decrypt(
+        { name: "AES-GCM", iv },
+        key,
+        encrypted
+    );
+
+    return uint8ToStr(decrypted);
+}
+
+
+
+async function hashSHA256(text) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(text);
+
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+
+    // 转成 hex 字符串
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray
+        .map(b => b.toString(16).padStart(2, "0"))
+        .join("");
+
+    return hashHex;
+}
+
+
+</script>

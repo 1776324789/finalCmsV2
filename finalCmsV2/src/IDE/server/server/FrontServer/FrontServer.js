@@ -6,7 +6,7 @@ import express from 'express'
 import http from 'http'
 import path from 'path'
 import fs from 'fs'
-import SystemConfig from '../../DataBase/SystemConfig.js'
+import SystemConfig from '../SystemConfig.js'
 
 const websiteConfigMap = {}
 const FrontServer = () => {
@@ -55,9 +55,6 @@ const FrontServer = () => {
 
     // 上传目录（解决你访问不了图片的问题）
     app.use('/upload', express.static(path.join(FRONT_ROOT, 'upload')))
-
-    // 可选资源目录
-    app.use('/assets', express.static(path.join(FRONT_ROOT, 'assets')))
 
     // =============================
     // ✅ 2. 读取站点目录
@@ -149,8 +146,10 @@ const FrontServer = () => {
 
         let last = parts[parts.length - 1]
 
+
+
         // 没扩展名 → 自动补 .html
-        if (!last.includes('.')) {
+        if (!last.includes('.') && !fs.existsSync(path.join('Front', site, ...parts))) {
             last += '.html'
             parts[parts.length - 1] = last
         }

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- 禁止百度转码 -->
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+    <!-- uc强制竖屏 -->
+    <meta name="screen-orientation" content="portrait">
+    <!-- QQ强制竖屏 -->
+    <meta name="x5-orientation" content="portrait">
+    <title>单招准考证下载</title>
+
+
+    <style>
+        @media screen and (min-width: 800px) {
+            .container {
+                width: 1200px;
+                padding: 15px;
+                margin: 0 auto;
+                margin-bottom: 10px;
+                min-height: 500px;
+            }
+
+            .container .searchBar {
+                width: 90%;
+                margin-left: 5%;
+                background-color: #f7f7f7;
+                padding-top: 15px;
+                padding-bottom: 10px;
+                display: flex;
+                border-top: 5px solid #772f91;
+            }
+
+            .label {
+                width: 150px;
+                color: #000;
+                font-size: 14px;
+                text-align: right;
+                margin-left: 40px;
+                padding-left: 10px;
+                padding-right: 10px;
+                line-height: 30px;
+            }
+
+            .info {
+                color: #8d8d8d;
+                text-align: left;
+                line-height: 30px;
+                flex: 1;
+            }
+
+            .search {
+                cursor: pointer;
+
+                border: 0;
+                background-color: #772f91;
+                color: #fff;
+                width: 150px;
+                height: 30px;
+            }
+
+            .search:hover {
+                opacity: 0.7;
+            }
+
+            .input {
+                float: left;
+                width: 200px;
+                font-size: 13px;
+                height: 27px;
+                text-indent: 15px;
+                border-radius: 2px;
+                border: 1px solid #bcbcbc;
+            }
+
+            .messgae {
+                background-color: #f7f7f7;
+                width: 100%;
+                height: 25px;
+                text-align: center;
+                color: #ff5255;
+                width: 90%;
+                margin-left: 5%;
+            }
+
+            @keyframes loader-animation {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .loader {
+
+                position: relative;
+                width: 40px;
+                height: 40px;
+                margin-left: -47px;
+            }
+
+            .loader::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 40px;
+                height: 40px;
+                border: 4px solid #cfa6da;
+                border-top-color: #772f91;
+                border-radius: 50%;
+                animation: loader-animation 1s infinite linear;
+            }
+
+            .load {
+                display: none;
+                margin-top: 50px;
+                width: 90%;
+                margin-left: 5%;
+                height: 100px;
+                text-align: center;
+            }
+
+            .empty {
+                display: none;
+                width: 90%;
+                margin-left: 5%;
+                height: 300px;
+                text-align: center;
+                line-height: 300px;
+            }
+
+            .card {
+                display: none;
+                padding: 15px;
+                margin: 0 auto;
+                width: 450px;
+                background-color: #772f91;
+            }
+
+            a:hover {
+                cursor: pointer;
+            }
+
+            .Lable {
+                border-right: 2px solid #ececec;
+                float: left;
+                width: 130px;
+                text-align: right;
+                margin-right: 10px;
+                line-height: 50px;
+            }
+
+            .Info {
+                float: left;
+                line-height: 50px;
+                text-align: left;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            .container {
+                width: calc(100vw - 40px);
+                margin-left: 20px;
+                margin-bottom: 10px;
+                min-height: 500px;
+            }
+
+            .container .searchBar {
+                background-color: #f7f7f7;
+                padding-top: 15px;
+                padding-bottom: 10px;
+                display: flex;
+                border-top: 5px solid #772f91;
+                flex-direction: column;
+            }
+
+            .label {
+                font-size: 14px;
+                text-align: left;
+                padding-left: 20px;
+                line-height: 30px;
+                height: 30px;
+                line-height: 30px;
+                font-weight: bold;
+                color: #777777;
+            }
+
+            .info {
+                color: #8d8d8d;
+                text-align: left;
+                line-height: 30px;
+                flex: 1;
+            }
+
+            .search {
+                cursor: pointer;
+
+                border: 0;
+                background-color: #772f91;
+                color: #fff;
+                width: calc(100% - 40px);
+                margin-left: 20px;
+                height: 40px;
+                font-size: 16px;
+                margin-top: 20px;
+            }
+
+            .search:hover {
+                opacity: 0.7;
+            }
+
+            .input {
+                float: left;
+                width: calc(100% - 40px);
+                margin-left: 20px;
+                font-size: 13px;
+                height: 27px;
+                text-indent: 15px;
+                border-radius: 2px;
+                border: 1px solid #bcbcbc;
+            }
+
+            .messgae {
+                background-color: #f7f7f7;
+                width: 100%;
+                height: 25px;
+                text-align: center;
+                color: #ff5255;
+            }
+
+            @keyframes loader-animation {
+                0% {
+                    transform: rotate(0deg);
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+
+            .loader {
+
+                position: relative;
+                width: 40px;
+                height: 40px;
+                margin-left: -47px;
+            }
+
+            .loader::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 40px;
+                height: 40px;
+                border: 4px solid #cfa6da;
+                border-top-color: #772f91;
+                border-radius: 50%;
+                animation: loader-animation 1s infinite linear;
+            }
+
+            .load {
+                display: none;
+                margin-top: 50px;
+                width: 90%;
+                margin-left: 5%;
+                height: 100px;
+                text-align: center;
+            }
+
+            .empty {
+                display: none;
+                width: 90%;
+                margin-left: 5%;
+                height: 300px;
+                text-align: center;
+                line-height: 300px;
+            }
+
+            .card {
+                display: none;
+                padding: 15px;
+                margin: 0 auto;
+                width: calc(100% - 30px);
+                background-color: #772f91;
+            }
+
+            a:hover {
+                cursor: pointer;
+            }
+
+            .Lable {
+                border-right: 2px solid #ececec;
+                float: left;
+                width: 130px;
+                text-align: right;
+                margin-right: 10px;
+                line-height: 50px;
+            }
+
+            .Info {
+                float: left;
+                line-height: 50px;
+                text-align: left;
+                font-size: 15px;
+            }
+
+            .stuName {
+                font-size: 15px;
+            }
+
+            .stuLabel {
+                width: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <cms-component data="l_lxlhqx1y">head</cms-component>
+    <div class="container" style="min-height: 700px;">
+        <div style="width: 100%;height: 20px;margin-bottom: 20px;">
+            <div style="float: left;">
+                <a href="/" title="首页">首页</a>&nbsp;&nbsp;>&nbsp;&nbsp;
+            </div>
+            <div style="float: left;">
+                单招准考证下载
+            </div>
+        </div>
+        <div class="searchBar">
+            <div class="label">考生号:</div>
+            <div class="info">
+                <input id="stuId" value="" class="input" placeholder="请输入考生号" />
+            </div>
+            <div class="label">身份证后六位:</div>
+            <div class="info">
+                <input id="stuIdNo" value="" class="input" placeholder="请输入身份证后六位" />
+            </div>
+            <div class="info">
+                <button class="search" onclick="search()">下载</button>
+            </div>
+        </div>
+
+        <div class="messgae" style="padding-bottom: 30px;line-height: 50px;" id="message"></div>
+        <div
+            style="width: 70%;margin-left: 15%; line-height:23px;background-color: #f7f7f7;font-size:13px;color:#777777;padding-top:30px;background-color:#fff;">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请按提示要求准确输入您的信息进行查询。
+            <br><br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;校咨询电话0791-83792888/83792998。
+        </div>
+    </div>
+    <cms-component>foot</cms-component>
+</body>
+
+</html>
+
+<script>
+    let data = []
+    fetch(`https://zhaosheng.jxuspt.com/data/someInfo.json?` + Date.now())
+        .then(response => response.json())
+        .then(res => {
+            data = res
+            console.log(res);
+
+        }).catch(error => {
+            console.error(error)
+        });
+
+
+    function search() {
+        const examId = document.getElementById("stuId").value
+        const id = document.getElementById("stuIdNo").value
+
+        const res = data.find(item => item.id == id && item.examId == examId)
+        if (res == null) {
+            message("未查询到学生信息")
+        } else {
+            message("正在下载...")
+            downloadPDF(res.url, res.name + " " + res.examId + ".pdf")
+
+        }
+    }
+
+    function message(str) {
+        document.getElementById("message").innerText = str;
+        setTimeout(() => {
+            document.getElementById("message").innerText = "";
+        }, 2500)
+    }
+    function downloadPDF(url, filename = "file.pdf") {
+        fetch(url)
+            .then(res => res.blob())
+            .then(blob => {
+                const blobUrl = window.URL.createObjectURL(blob);
+
+                const a = document.createElement("a");
+                a.href = blobUrl;
+                a.download = filename;
+                document.body.appendChild(a);
+
+                a.click();
+
+                document.body.removeChild(a);
+                window.URL.revokeObjectURL(blobUrl);
+            })
+            .catch(err => {
+                console.error("下载失败:", err);
+            });
+    }
+</script>
+<script src="./js/FinalCms.js"></script>

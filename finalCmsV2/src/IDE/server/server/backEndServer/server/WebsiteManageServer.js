@@ -479,6 +479,122 @@ const WebsiteManageServer = (app) => {
         }
     })
 
+
+    app.tokenPost("/getWebsiteRole", async (req, res, user) => {
+        const { websiteId } = req.body
+
+        if (!websiteId) {
+            return res.json({ code: 400, message: "站点 ID 不能为空" })
+        }
+
+        const DB = await SystemController.getDB()
+        const website = DB.website.find(w => w.id === websiteId)
+
+        if (!website) {
+            return res.json({ code: 404, message: "站点不存在" })
+        }
+        const result = {}
+        result.websiteMenu = DB.websiteMenu.filter(w => w.status)
+        result.websiteRole = DB.websiteRole.filter(w => w.websiteId === websiteId)
+        return res.json({ code: 200, data: result })
+    })
+
+    app.tokenPost("/updateWebsiteRole", async (req, res, user) => {
+        const { id, name, description, status } = req.body
+
+        if (!id) {
+            return res.json({ code: 400, message: "角色 ID 不能为空" })
+        }
+
+        const result = await SystemController.updateWebsiteRole(
+            { id, name, description, status },
+            user
+        )
+        return res.json(result)
+    })
+    app.tokenPost("/createWebsiteRole", async (req, res, user) => {
+        const { name, description, status, websiteId } = req.body
+
+        if (!websiteId) {
+            return res.json({ code: 400, message: "站点 ID 不能为空" })
+        }
+
+        const result = await SystemController.createWebsiteRole(
+            { name, description, status, websiteId },
+            user
+        )
+        return res.json(result)
+    })
+
+    app.tokenPost("/deleteWebsiteRole", async (req, res, user) => {
+        const { id } = req.body
+
+        if (!id) {
+            return res.json({ code: 400, message: "角色 ID 不能为空" })
+        }
+
+        const result = await SystemController.deleteWebsiteRole(id)
+        return res.json(result)
+    })
+    app.tokenPost("/updateWebsiteRoleMenu", async (req, res, user) => {
+        const { roleId, menuIds } = req.body
+
+        if (!roleId || !menuIds) {
+            return res.json({ code: 400, message: "参数不能为空" })
+        }
+
+        const result = await SystemController.saveWebsiteRoleMenu(roleId, menuIds, user)
+        return res.json(result)
+    })
+
+    app.tokenPost("/getWebsiteRoleList", async (req, res, user) => {
+        const { websiteId } = req.body
+
+        if (!websiteId) {
+            return res.json({ code: 400, message: "站点 ID 不能为空" })
+        }
+
+        const result = await SystemController.getWebsiteRoleList(websiteId)
+        return res.json(result)
+    })
+
+
+    app.tokenPost("/getUserWebsiteRoles", async (req, res, user) => {
+        const { userId, websiteId } = req.body
+
+        if (!websiteId) {
+            return res.json({ code: 400, message: "站点 ID 不能为空" })
+        }
+
+        if (!userId) {
+            return res.json({ code: 400, message: "用户 ID 不能为空" })
+        }
+
+        const result = await SystemController.getUserWebsiteRoles(userId, websiteId)
+        return res.json(result)
+    })
+
+
+    app.tokenPost("/saveUserWebsiteRoles", async (req, res, user) => {
+        const { userId, websiteId, roleIds } = req.body
+
+        if (!roleIds || roleIds.length === 0) {
+            return res.json({ code: 400, message: "角色 ID 不能为空" })
+        }
+
+        if (!websiteId) {
+            return res.json({ code: 400, message: "站点 ID 不能为空" })
+        }
+
+        if (!userId) {
+            return res.json({ code: 400, message: "用户 ID 不能为空" })
+        }
+
+        const result = await SystemController.saveUserWebsiteRoles(userId, websiteId, roleIds)
+        return res.json(result)
+    })
+
+
     function readDirTreeSync(dirPath) {
         const stats = fs.statSync(dirPath);
 

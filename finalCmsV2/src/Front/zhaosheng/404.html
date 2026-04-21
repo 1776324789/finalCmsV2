@@ -183,7 +183,11 @@
                   <a onclick="history.back()">返回首页</a>
             </div>
       </div>
-<script src="cmsScripts/FinalCms.js?web=zhaosheng"></script>
+<script>
+            const Cms=document.createElement("script")
+            Cms.src=window.location.origin+"/cmsScripts/FinalCms.js?web=zhaosheng"
+            document.body.appendChild(Cms)
+        </script>
 </body>
 
 </html>

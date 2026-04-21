@@ -1,0 +1,210 @@
+<style>
+    @media screen and (min-width: 800px) {
+
+        .newsListBlock {
+            width: 1000px;
+            margin: auto;
+            margin-top: 10px;
+            display: flex;
+            min-height: 250px;
+        }
+
+        .newsListBlock .block {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .newsListBlock .placeholder {
+            width: 30px;
+        }
+
+        .newsListBlock .blockTitle {
+            height: 35px;
+            display: flex;
+            width: 100%;
+            border-bottom: 2px solid #9522A5;
+        }
+
+        .newsListBlock .blockTitle .title {
+            line-height: 35px;
+            height: 35px;
+            flex: 1;
+            color: #666666;
+            font-weight: bold;
+        }
+
+        .newsListBlock .blockTitle .more {
+            cursor: pointer;
+            color: #9522A5;
+            line-height: 35px;
+            height: 35px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .newsListBlock .contentBlock {
+            height: 30px;
+            display: flex;
+        }
+
+        .newsListBlock .contentBlock:hover {
+            font-weight: bold;
+        }
+
+        .newsListBlock .contentBlock .title {
+            cursor: pointer;
+            text-indent: 10px;
+            line-height: 30px;
+            font-size: 14px;
+            color: #666666;
+            flex: 1;
+            display: -webkit-box;
+
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            /*行数*/
+            /*控制行数 超出后出现省略号*/
+            -o-text-overflow: ellipsis;
+            -webkit-text-overflow: ellipsis;
+            -moz-text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .newsListBlock .contentBlock .date {
+            cursor: pointer;
+            line-height: 30px;
+            font-size: 13px;
+            color: #666666;
+        }
+
+        .newsListBlock .contentBlock .contentIcon {
+            width: 8px;
+            margin-top: 12px;
+            height: 8px;
+            border-radius: 10px;
+            background-color: #9522A5;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+
+        .newsListBlock {
+            width: 90vw;
+            margin: auto;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            min-height: 250px;
+
+        }
+
+        .newsListBlock .block {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .newsListBlock .blockTitle {
+            height: 35px;
+            display: flex;
+            width: 100%;
+            border-bottom: 2px solid #9522A5;
+        }
+
+        .newsListBlock .blockTitle .title {
+            line-height: 35px;
+            height: 35px;
+            flex: 1;
+            color: #666666;
+            font-weight: bold;
+        }
+
+        .newsListBlock .blockTitle .more {
+            cursor: pointer;
+            color: #9522A5;
+            line-height: 35px;
+            height: 35px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .newsListBlock .contentBlock {
+            height: 30px;
+            display: flex;
+        }
+
+        .newsListBlock .contentBlock:hover {
+            font-weight: bold;
+        }
+
+        .newsListBlock .contentBlock .title {
+            cursor: pointer;
+            text-indent: 10px;
+            line-height: 30px;
+            font-size: 14px;
+            color: #666666;
+            flex: 1;
+            display: -webkit-box;
+
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            /*行数*/
+            /*控制行数 超出后出现省略号*/
+            -o-text-overflow: ellipsis;
+            -webkit-text-overflow: ellipsis;
+            -moz-text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .newsListBlock .contentBlock .date {
+            cursor: pointer;
+            line-height: 30px;
+            font-size: 13px;
+            color: #666666;
+        }
+
+        .newsListBlock .contentBlock .contentIcon {
+            width: 8px;
+            margin-top: 12px;
+            height: 8px;
+            border-radius: 10px;
+            background-color: #9522A5;
+        }
+    }
+</style>
+
+
+<cms-component>
+
+    <div class="newsListBlock">
+        <cms-list class="block" data="l_lysatknz">
+            <div class="blockTitle">
+                <list-name class="title"></list-name>
+                <list-template class="more">更多>></list-template>
+            </div>
+            <list-node order="desc" page="1" limit="8">
+                <node-template class="contentBlock">
+                    <div class="contentIcon"></div>
+                    <node-title class="title"></node-title>
+                    <node-date class="date" format="YYYY-MM-DD"></node-date>
+                </node-template>
+            </list-node>
+        </cms-list>
+        <div class="placeholder"></div>
+        <cms-list class="block" data="l_lysauky7">
+            <div class="blockTitle">
+                <list-name class="title"></list-name>
+                <list-template class="more">更多>></list-template>
+            </div>
+            <list-node order="desc" page="1" limit="8">
+                <node-template class="contentBlock">
+                    <div class="contentIcon"></div>
+                    <node-title class="title"></node-title>
+                    <node-date class="date" format="YYYY-MM-DD"></node-date>
+                </node-template>
+            </list-node>
+        </cms-list>
+    </div>
+</cms-component>

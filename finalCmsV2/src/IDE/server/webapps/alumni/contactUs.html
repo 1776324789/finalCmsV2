@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .joinUs .topBlock {
+        display: none;
+        height: 150px;
+        width: 150px;
+        border-radius: 100px;
+        background-image: url("{dreamer-cms:template /}/img/b2c436f885e69123eabb86ba9b8e36e2.png");
+        background-size: 200%;
+        overflow: hidden;
+    }
+
+    .joinUs .topBlock img {
+        height: 230px;
+        margin-top: -35px;
+        margin-left: -7px;
+    }
+
+    .joinUs .title {
+        margin-top: 30px;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        color: #484848;
+        border-bottom: 1px solid #868686;
+    }
+
+
+    .joinUsContent {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        flex-wrap: wrap;
+    }
+
+    .joinUsImg {
+        width: 160px;
+        display: flex;
+        flex-direction: column;
+        margin-right: 20px;
+    }
+
+    .joinUsImg div {
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    @media screen and (min-width: 800px) {
+        .joinUs {
+            background-color: #fff;
+            width: 1000px;
+            margin: auto;
+            padding: 15px;
+            min-height: 600px;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+
+    }
+
+    @media screen and (max-width: 800px) {
+        .joinUs {
+            background-color: #fff;
+            width: calc(100% - 30px);
+            margin: auto;
+            padding: 15px;
+            min-height: 600px;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+        }
+
+    }
+</style>
+
+<body>
+    <cms-component>head</cms-component>
+    <div class="joinUs">
+
+        <div class="title">加入我们</div>
+
+        <div class="joinUsContent">
+            <div class="joinUsImg">
+                <img src="/img/image copy.png" />
+                <div>学校官徽</div>
+            </div>
+            <div class="joinUsImg">
+                <img src="/img/image.png" />
+                <div>校友之家公众号</div>
+            </div>
+        </div>
+    </div>
+    <cms-component>foot</cms-component>
+</body>
+
+</html>

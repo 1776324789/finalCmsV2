@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>2024年专升本普通批次录取查询</title>
+
+	<link href="css/style.css" rel="stylesheet" />
+	<link href="css/MoonIcon/style.css" rel="stylesheet" />
+</head>
+
+<body>
+	<cms-component data="l_lxlhqx1y">head</cms-component>
+	<div class="bgi"></div>
+	<div class="main" id="main">
+		<div class="title">2024年专升本普通批次录取查询</div>
+		<div class="line">
+			<div class="label">请输入姓名：</div>
+			<input type="text" class="input" placeholder="请输入姓名" id="name">
+		</div>
+		<div class="line">
+			<div class="label">身份证后六位：</div>
+			<input type="text" class="input" placeholder="请输入身份证后六位" id="id">
+		</div>
+		<div>
+			<button class="button" onclick="search()" id="searchButton">查询</button>
+		</div>
+		<div class="infoMain" id="infoBlock">
+			<div class="infoBlock" style="background-color: rgba(236, 236, 236, 0.616);">
+				<div class="infoLabel">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</div>
+				<div class="info" id="name1"></div>
+			</div>
+			<div class="infoBlock">
+				<div class="infoLabel">录取专业</div>
+				<div class="info" id="major"></div>
+			</div>
+			<div class="infoBlock" style="background-color: rgba(236, 236, 236, 0.616);">
+				<div class="infoLabel">录取状态</div>
+				<div class="info" id="stuCode"></div>
+			</div>
+			<!-- <div class="infoBlock">
+				<div class="infoLabel">考生号</div>
+				<div class="info" id="stuCode"></div>
+			</div>
+
+			<div class="infoBlock" style="background-color: rgba(236, 236, 236, 0.616);">
+				<div class="infoLabel">所属学院</div>
+				<div class="info" id="school"></div>
+			</div> -->
+
+
+			<div class="infoBlock">
+				<div class="info">考生如对拟录取结果有疑义，请致电我校招生办咨询，</div>
+			</div>
+			<div class="infoBlock" style="background-color: rgba(236, 236, 236, 0.616);">
+				<div class="info">联系电话：0791-83792888</div>
+			</div>
+			<div class="infoBlock" style="background-color: rgba(236, 236, 236, 0.616);">
+				<div class="info">咨询时间：9:00-12:00，14:00-16:30</div>
+			</div>
+		</div>
+		<div class="warn empty" style="display: block;" id="empty">未查询到结果</div>
+		<img src="./img/bgi.png" class="bgb">
+	</div>
+	<cms-component>foot</cms-component>
+</body>
+
+</html>
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+	const baseUrl = "https://template.jxuspt.com"
+
+	// const baseUrl = "http://localhost:8088"
+	const main = document.getElementById("main")
+	const name = document.getElementById("name")
+	const id = document.getElementById("id")
+	const empty = document.getElementById("empty")
+	const infoBlock = dg("infoBlock")
+	let searching = false
+	const name1 = document.getElementById("name1")
+	const sex = document.getElementById("sex")
+	const school = document.getElementById("school")
+	const major = document.getElementById("major")
+	async function search() {
+		if (name.value == "" || id.value == "") {
+			empty.innerText = "请输入完整内容再查询"
+			showEmpty()
+			return
+		}
+
+		if (searching) {
+			return
+		}
+		searching = true
+		document.getElementById("searchButton").innerText = "正在查询..."
+		infoBlock.style.display = "none"
+		const result = await axios.post(baseUrl + "/searchAd", {
+			name: name.value,
+			idNo: id.value
+		});
+		searching = false
+		document.getElementById("searchButton").innerText = "查询"
+		console.log(result)
+		if (result.data.data == null) {
+			empty.innerText = "未查询到结果"
+			showEmpty()
+		} else if (result.data.data != null) {
+			infoBlock.style.display = "block"
+			main.style.marginTop = "10px"
+			let data = result.data.data
+
+			name1.innerText = data.name
+			stuCode.innerText = data.state
+			major.innerText = data.major
+
+		} else if (result.data.code == 400) {
+			empty.innerText = "内部异常，请稍后再试"
+			showEmpty()
+		}
+
+		// main.style.marginTop = "10px"
+	}
+
+	function showEmpty() {
+
+		for (let a = 0; a < 10; a++) {
+			setTimeout(() => {
+				document.getElementById("empty").style.display = "block"
+				document.getElementById("empty").style.marginTop = (9 - a + 2) * 10 + "px"
+				document.getElementById("empty").style.opacity = a * 0.1
+			}, 17 * a);
+		}
+		setTimeout(() => {
+			document.getElementById("empty").style.display = "none"
+		}, 2000);
+	}
+
+	function dg(id) {
+		return document.getElementById(id)
+	}
+</script>

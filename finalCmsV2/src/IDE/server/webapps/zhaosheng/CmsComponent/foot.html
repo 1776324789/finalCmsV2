@@ -1,0 +1,152 @@
+<style>
+    .min_wrapper {
+        padding-top: 20px;
+        padding-bottom: 30px;
+        background-color: #555555;
+    }
+
+    @media screen and (min-width: 800px) {
+
+        #footer {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            min-width: 1200px;
+        }
+
+        #footer .wrapper_1200 {
+            width: 100%;
+            display: flex;
+            padding-top: 20px;
+            padding-bottom: 20px;
+        }
+
+        .wrapper_1200>.link {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+            width: 38%;
+            border-right: 1px solid #6b717a;
+            padding-right: 50px;
+        }
+
+        .wrapper_1200>.info {
+            display: flex;
+            flex-direction: column;
+            width: 24%;
+            border-right: 1px solid #6b717a;
+            text-align: center;
+        }
+
+        .wrapper_1200>.QRcode {
+            padding-left: 50px;
+            display: flex;
+            flex-wrap: wrap;
+            width: 38%;
+            color: #fff;
+        }
+
+        .wrapper_1200>.QRcode>div {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-right: 20px;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        #footer {
+            max-width: 100px !important;
+        }
+
+        .min_wrapper {
+            width: 100vw !important;
+            min-width: 100vw;
+        }
+
+        .wrapper_1200 {
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            text-indent: 25px;
+        }
+
+        .wrapper_1200>.link {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            border-bottom: 1px solid #6b717a;
+        }
+
+        .wrapper_1200>.info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 1px solid #6b717a;
+        }
+
+        .wrapper_1200>.QRcode {
+            display: flex;
+            flex-wrap: wrap;
+            padding-top: 20px;
+        }
+
+        .wrapper_1200>.QRcode>div {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 20px;
+            color: #fff;
+        }
+    }
+
+    .name {
+        text-align: center;
+        margin-top: 15px;
+        color: #fff;
+    }
+
+    .official {
+        margin-right: 20px;
+    }
+</style>
+<cms-component>
+    <div id="footer" class="min_wrapper ">
+        <div class="wrapper_1200">
+            <div class="link">
+                <a style="color: #fff !important;margin: 10px;float: left;font-size: 16px;">
+                    友情链接
+                </a>
+            </div>
+            <div class="info">
+                <div style="margin: 10px;color: #fff;">
+                    <cms-node data="n_lz7qf5vu">
+                        <node-title></node-title>
+                    </cms-node>
+                </div>
+                <div style="margin: 10px;">
+                    <cms-node data="n_lz7qffmy">
+                        <node-link newpage><node-title
+                                style="color: #fff !important;font-size: 14px;"></node-title></node-link>
+                    </cms-node>
+                </div>
+                <cms-node data="n_lz7qfly5" style="margin: 10px;color: #fff;">
+                    <node-title></node-title>
+                </cms-node>
+            </div>
+            <div class="QRcode">
+                <cms-node data="n_lz7qh2q4" class="official">
+                    <node-cover style="width: 100px;"></node-cover>
+                    <node-title class="name"></node-title>
+                </cms-node>
+                <cms-node class="official" data="n_lz7qhkug">
+                    <node-cover style="width: 100px;"></node-cover>
+                    <node-title class="name"></node-title>
+                </cms-node>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,26 @@
+.article-list-block {
+    display: flex;
+    flex-direction: column;
+}
+
+.article-list-title-block {
+    display: flex;
+}
+
+.article-list-title {
+    flex: 1;
+    background-color: red;
+}
+
+.article-list-list-block {
+    display: flex;
+}
+
+.article-list-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.article-list-list-title {
+    flex: 1;
+}

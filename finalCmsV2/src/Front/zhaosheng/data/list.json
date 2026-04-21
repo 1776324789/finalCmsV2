@@ -1,60 +1,2889 @@
 [
   {
     "delFlag": 0,
-    "id": "l_37eogl7x",
-    "name": "顶部导航栏",
-    "cover": {
-      "url": "http://localhost:20829/upload/2026-04-03/1775198516794-wgbhiue6s2.png",
-      "filename": "5097c2e0032d38a2d90be5b83451d00a.png",
-      "cover": "http://localhost:20829/upload/2026-04-03/1775198516798-t2k0y281zjr.png"
-    },
-    "template": "listIndex",
-    "nodeTemplate": "nodeIndex",
-    "info": "这是一个测试介绍,父栏目",
+    "id": "l_lxlhqx1y",
+    "name": "主栏目",
+    "template": "",
+    "nodeTemplate": "",
+    "info": "",
     "children": [
       {
-        "parentId": "l_37eogl7x",
+        "delFlag": 0,
+        "id": "l_lxlhr3n8",
         "name": "首页",
-        "id": "l_i4ozhsj6",
+        "template": "index",
+        "nodeTemplate": "",
+        "info": "",
         "children": [],
         "nodes": [],
         "publish": true
       },
       {
-        "parentId": "l_37eogl7x",
-        "name": "学院概况",
-        "publish": true,
-        "id": "l_7rp2cdkm",
-        "children": [],
-        "nodes": []
+        "delFlag": 0,
+        "id": "l_lxli71ar",
+        "name": "走进江软",
+        "template": "",
+        "nodeTemplate": "",
+        "info": "",
+        "children": [
+          {
+            "delFlag": 0,
+            "id": "l_ly8dlnsw",
+            "name": "学校简介",
+            "template": "schoolIntroduce",
+            "nodeTemplate": "schoolIntroduce",
+            "info": "",
+            "children": [],
+            "nodes": [
+              {
+                "publish": true,
+                "clicks": 1191,
+                "date": "2023-07-24 14:43:53",
+                "title": "江西软件职业技术大学招生简介",
+                "id": "n_lytpcf1v",
+                "createData": 1690181033000
+              }
+            ],
+            "publish": true
+          },
+          {
+            "delFlag": 0,
+            "id": "l_ly8dltvj",
+            "name": "校园风光",
+            "cover": {
+              "url": "http://localhost:20829/upload/img/1720166250524.png",
+              "filename": "1720166250524.png",
+              "cover": "http://localhost:20829/upload/img/1720166250524.png"
+            },
+            "template": "schoolViewList",
+            "nodeTemplate": "baseArticle",
+            "info": "",
+            "children": [],
+            "nodes": [
+              {
+                "publish": true,
+                "clicks": 461,
+                "date": "2025-10-31 11:06:32",
+                "title": "一起燃爆嘉年华",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/imgQuality_1/1761881578895.jpg",
+                  "filename": "1761881578895.jpg",
+                  "cover": "http://localhost:20829/upload/img/imgQuality_1/1761881578895.jpg"
+                },
+                "id": "n_mhea3rxw",
+                "createData": 1761879992000
+              },
+              {
+                "publish": true,
+                "clicks": 523,
+                "date": "2025-10-31 11:01:24",
+                "title": "2025年运动会开幕式",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/imgQuality_1/1761881485603",
+                  "filename": "1761881485603",
+                  "cover": "http://localhost:20829/upload/img/imgQuality_1/1761881485603"
+                },
+                "id": "n_mhe9s5pc",
+                "createData": 1761879684000
+              },
+              {
+                "publish": true,
+                "clicks": 1195,
+                "date": "2024-06-25 17:24:49",
+                "title": "学校优秀宿舍",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20240625/1805532556019105792.jpg",
+                  "filename": "1805532556019105792.jpg",
+                  "cover": "http://localhost:20829/upload/img/20240625/1805532556019105792.jpg"
+                },
+                "id": "n_lytpcp8j",
+                "createData": 1719307489000
+              },
+              {
+                "publish": true,
+                "clicks": 626,
+                "date": "2024-06-23 19:53:00",
+                "title": "实训中的同学们",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20240624/1805174444640698368.png",
+                  "filename": "1805174444640698368.png",
+                  "cover": "http://localhost:20829/upload/img/20240624/1805174444640698368.png"
+                },
+                "id": "n_lytpcp2z",
+                "createData": 1719143580000
+              },
+              {
+                "publish": true,
+                "clicks": 493,
+                "date": "2024-06-23 14:37:24",
+                "title": "2024届本科学士学位授予仪式合影",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20240624/1805174887928299520.png",
+                  "filename": "1805174887928299520.png",
+                  "cover": "http://localhost:20829/upload/img/20240624/1805174887928299520.png"
+                },
+                "id": "n_lytpco8f",
+                "createData": 1719124644000
+              },
+              {
+                "publish": true,
+                "clicks": 652,
+                "date": "2024-05-12 14:38:00",
+                "title": "校园一角",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20240624/1805175082430758912.png",
+                  "filename": "1805175082430758912.png",
+                  "cover": "http://localhost:20829/upload/img/20240624/1805175082430758912.png"
+                },
+                "id": "n_lytpcob7",
+                "createData": 1715495880000
+              },
+              {
+                "publish": true,
+                "clicks": 2208,
+                "date": "2023-07-24 14:58:27",
+                "title": "嘉年华活动",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230724/1683371175132979200.jpg",
+                  "filename": "1683371175132979200.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230724/1683371175132979200.jpg"
+                },
+                "id": "n_lytpcf4n",
+                "createData": 1690181907000
+              }
+            ],
+            "publish": true
+          },
+          {
+            "delFlag": 0,
+            "id": "l_ly8dm0js",
+            "name": "媒体江软",
+            "template": "listSchool",
+            "nodeTemplate": "baseArticle",
+            "info": "",
+            "children": [],
+            "nodes": [
+              {
+                "publish": true,
+                "clicks": 360,
+                "date": "2024-06-29 14:13:17",
+                "title": "致全力以赴的我们",
+                "id": "n_lytpcqbf",
+                "createData": 1719641597000
+              },
+              {
+                "publish": true,
+                "clicks": 367,
+                "date": "2024-06-29 14:12:28",
+                "title": "属于我们的大学故事",
+                "id": "n_lytpcq8n",
+                "createData": 1719641548000
+              },
+              {
+                "publish": true,
+                "clicks": 1160,
+                "date": "2024-06-29 14:12:00",
+                "title": "宿舍环境之一",
+                "id": "n_lytpcq33",
+                "createData": 1719641520000
+              },
+              {
+                "publish": true,
+                "clicks": 473,
+                "date": "2024-06-29 14:11:09",
+                "title": " 宿舍环境之二",
+                "id": "n_lytpcq5v",
+                "createData": 1719641469000
+              },
+              {
+                "publish": true,
+                "clicks": 638,
+                "date": "2024-06-29 14:09:08",
+                "title": "选择困难症的我该吃点啥？",
+                "id": "n_lytpcq0b",
+                "createData": 1719641348000
+              },
+              {
+                "publish": true,
+                "clicks": 349,
+                "date": "2024-06-29 14:06:45",
+                "title": "加油吧，篮球宝贝们！",
+                "id": "n_lytpcpxj",
+                "createData": 1719641205000
+              },
+              {
+                "publish": true,
+                "clicks": 363,
+                "date": "2024-06-29 14:05:04",
+                "title": "江西软件职业技术大学健身房",
+                "id": "n_lytpcpur",
+                "createData": 1719641104000
+              },
+              {
+                "publish": true,
+                "clicks": 364,
+                "date": "2024-06-29 14:02:21",
+                "title": "软件工程技术(本科)专业宣传视频",
+                "id": "n_lytpcprz",
+                "createData": 1719640941000
+              },
+              {
+                "publish": true,
+                "clicks": 342,
+                "date": "2024-06-29 14:01:37",
+                "title": "网络与新媒体（本科）专业宣传视频",
+                "id": "n_lytpcpp7",
+                "createData": 1719640897000
+              },
+              {
+                "publish": true,
+                "clicks": 349,
+                "date": "2024-06-29 14:00:38",
+                "title": "电子商务（本科）专业宣传视频",
+                "id": "n_lytpcpmf",
+                "createData": 1719640838000
+              },
+              {
+                "publish": true,
+                "clicks": 240,
+                "date": "2024-06-29 13:59:45",
+                "title": "环境艺术设计(本科)专业宣传视频",
+                "id": "n_lytpcpjn",
+                "createData": 1719640785000
+              },
+              {
+                "publish": true,
+                "clicks": 235,
+                "date": "2024-06-29 13:58:00",
+                "title": "导航工程技术专业宣传片",
+                "id": "n_lytpcpgv",
+                "createData": 1719640680000
+              },
+              {
+                "publish": true,
+                "clicks": 238,
+                "date": "2024-06-29 13:57:20",
+                "title": "大数据工程技术专业宣传片",
+                "id": "n_lytpcpe3",
+                "createData": 1719640640000
+              },
+              {
+                "publish": true,
+                "clicks": 242,
+                "date": "2024-06-29 13:47:46",
+                "title": "信息安全与管理（本科）专业宣传片",
+                "id": "n_lytpcpbb",
+                "createData": 1719640066000
+              }
+            ],
+            "publish": true
+          }
+        ],
+        "nodes": [],
+        "publish": true
       },
       {
-        "parentId": "l_37eogl7x",
-        "name": "学院公告",
-        "publish": true,
-        "id": "l_kbernco6",
-        "children": [],
-        "nodes": []
+        "delFlag": 0,
+        "id": "l_lxli79fm",
+        "name": "学院专业",
+        "template": "",
+        "nodeTemplate": "",
+        "info": "",
+        "children": [
+          {
+            "delFlag": 0,
+            "id": "l_lxli7k7x",
+            "name": "招生专业",
+            "template": "mutuleListPage",
+            "nodeTemplate": "baseArticle",
+            "info": "",
+            "children": [],
+            "nodes": [
+              {
+                "publish": true,
+                "clicks": 2414,
+                "date": "2025-06-06 15:06:02",
+                "title": "2025年专科招生专业及学费标准",
+                "id": "n_mbkgp3s9",
+                "createData": 1749193562000
+              },
+              {
+                "publish": true,
+                "clicks": 1820,
+                "date": "2025-06-06 14:52:50",
+                "title": "2025年本科招生专业及学费标准",
+                "id": "n_mbkgnoxr",
+                "createData": 1749192770000
+              },
+              {
+                "publish": true,
+                "clicks": 1528,
+                "date": "2024-06-14 16:46:14",
+                "title": "2024 年专科招生专业及学费标准",
+                "id": "n_lytpcnoz",
+                "createData": 1718354774000
+              },
+              {
+                "publish": true,
+                "clicks": 1771,
+                "date": "2024-06-14 16:45:07",
+                "title": "2024 年本科招生专业及学费标准",
+                "id": "n_lytpcnm7",
+                "createData": 1718354707000
+              },
+              {
+                "publish": true,
+                "clicks": 3216,
+                "date": "2023-06-15 17:33:08",
+                "title": "2023年专科招生专业及学费标准",
+                "id": "n_mhn8bkp3",
+                "createData": 1686821588000
+              },
+              {
+                "publish": true,
+                "clicks": 3246,
+                "date": "2023-06-15 17:32:33",
+                "title": "2023年本科招生专业及学费标准",
+                "id": "n_mhn8awo9",
+                "createData": 1686821553000
+              },
+              {
+                "publish": true,
+                "clicks": 2978,
+                "date": "2022-06-13 17:33:59",
+                "title": "2022年专科招生专业及学费标准",
+                "id": "n_mhn8cnrj",
+                "createData": 1655112839000
+              },
+              {
+                "publish": true,
+                "clicks": 3278,
+                "date": "2022-06-13 17:33:36",
+                "title": "2022年本科招生专业及学费标准",
+                "id": "n_mhn8c373",
+                "createData": 1655112816000
+              },
+              {
+                "publish": true,
+                "clicks": 3666,
+                "date": "2021-06-10 17:34:26",
+                "title": "2021年本科招生专业及学费标准",
+                "id": "n_mhn8d3uf",
+                "createData": 1623317666000
+              },
+              {
+                "publish": true,
+                "clicks": 2658,
+                "date": "2021-06-06 17:34:46",
+                "title": "2021年专科招生专业及学费标准",
+                "id": "n_mhn8dj1k",
+                "createData": 1622972086000
+              },
+              {
+                "publish": true,
+                "clicks": 3456,
+                "date": "2020-06-06 17:35:09",
+                "title": "2020年本科招生专业及学费标准",
+                "id": "n_mhn8e2qf",
+                "createData": 1591436109000
+              },
+              {
+                "publish": true,
+                "clicks": 2456,
+                "date": "2020-05-06 17:35:34",
+                "title": "2020年专科招生专业及学费标准",
+                "id": "n_mhn8ej3k",
+                "createData": 1588757734000
+              }
+            ],
+            "publish": true
+          },
+          {
+            "delFlag": 0,
+            "id": "l_lxmky6ef",
+            "name": "专业介绍",
+            "cover": {
+              "url": "http://localhost:20829/upload/img/1720166218342.png",
+              "filename": "1720166218342.png",
+              "cover": "http://localhost:20829/upload/img/1720166218342.png"
+            },
+            "template": "mutuleListPageIntroduce",
+            "nodeTemplate": "baseArticle",
+            "info": "",
+            "children": [],
+            "nodes": [
+              {
+                "publish": true,
+                "clicks": 820,
+                "date": "2023-07-24 15:22:34",
+                "title": "2023年专业介绍",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230724/1683377037041917952.png",
+                  "filename": "1683377037041917952.png",
+                  "cover": "http://localhost:20829/upload/img/20230724/1683377037041917952.png"
+                },
+                "id": "n_lytpcf7f",
+                "createData": 1690183354000
+              }
+            ],
+            "publish": true
+          }
+        ],
+        "nodes": [
+          {
+            "publish": true,
+            "clicks": 617,
+            "date": "2019-08-16 09:49:55",
+            "title": "初学JAVA的同学可以下载源代码来进行学习交流",
+            "cover": {
+              "url": "http://localhost:20829/upload/img/2190816/da8377d716dc473a8f35d7a1b1a078c4.jpg",
+              "filename": "da8377d716dc473a8f35d7a1b1a078c4.jpg",
+              "cover": "http://localhost:20829/upload/img/2190816/da8377d716dc473a8f35d7a1b1a078c4.jpg"
+            },
+            "id": "n_lytpcreb",
+            "createData": 1565920195000
+          },
+          {
+            "publish": true,
+            "clicks": 641,
+            "date": "2019-08-16 09:47:51",
+            "title": "个人开发者也可以使用Dreamer CMS承接外包项目",
+            "cover": {
+              "url": "http://localhost:20829/upload/img/2190816/3f3f65a75df74027b3755d155b0f29b2.png",
+              "filename": "3f3f65a75df74027b3755d155b0f29b2.png",
+              "cover": "http://localhost:20829/upload/img/2190816/3f3f65a75df74027b3755d155b0f29b2.png"
+            },
+            "id": "n_lytpcrbj",
+            "createData": 1565920071000
+          },
+          {
+            "publish": true,
+            "clicks": 678,
+            "date": "2019-08-16 09:21:14",
+            "title": "Dreamer CMS是企业在创立初期很好的技术基础框架",
+            "cover": {
+              "url": "http://localhost:20829/upload/img/2190816/ecb040a2c77348958e6fd39b1afebe18.jpg",
+              "filename": "ecb040a2c77348958e6fd39b1afebe18.jpg",
+              "cover": "http://localhost:20829/upload/img/2190816/ecb040a2c77348958e6fd39b1afebe18.jpg"
+            },
+            "id": "n_lytpcr8r",
+            "createData": 1565918474000
+          }
+        ],
+        "publish": true
       },
       {
-        "parentId": "l_37eogl7x",
-        "name": "专业介绍",
-        "publish": true,
-        "id": "l_89wi49x7",
-        "children": [],
-        "nodes": []
+        "delFlag": 0,
+        "id": "l_lxml9oyh",
+        "name": "信息咨询",
+        "template": "",
+        "nodeTemplate": "",
+        "info": "",
+        "children": [
+          {
+            "delFlag": 0,
+            "id": "l_ly8ed4q5",
+            "name": "通知公告",
+            "template": "mutuleListPage",
+            "nodeTemplate": "baseArticle",
+            "info": "",
+            "children": [],
+            "nodes": [
+              {
+                "publish": true,
+                "clicks": 211,
+                "date": "2026-04-18 16:08:48",
+                "title": "权威发布！江西省2026年普通高校专升本录取控制分数线及网上录取安排",
+                "id": "n_mo424h8i",
+                "createData": 1776499728000
+              },
+              {
+                "publish": true,
+                "clicks": 234,
+                "date": "2026-04-18 13:43:44",
+                "title": "江西软件职业技术大学2026年单独招生拟录取结果查询及相关事项公告",
+                "id": "n_mo3x1mtz",
+                "createData": 1776491024000
+              },
+              {
+                "publish": true,
+                "clicks": 212,
+                "date": "2026-03-23 14:37:33",
+                "title": "江西软件职业技术大学2026年单招技能校考成绩查询",
+                "id": "n_mn48ythk",
+                "createData": 1774247853000
+              },
+              {
+                "publish": true,
+                "clicks": 263,
+                "date": "2026-03-17 10:55:46",
+                "title": "江西软件职业技术大学2026年退役大学生士兵专升本征集综合考查合格名单公告",
+                "id": "n_mmu1snhc",
+                "createData": 1773716146000
+              },
+              {
+                "publish": true,
+                "clicks": 213,
+                "date": "2026-03-16 17:03:02",
+                "title": "2026年江西软件职业技术大学单招考试温馨提示",
+                "id": "n_mmsyjlwg",
+                "createData": 1773651782000
+              },
+              {
+                "publish": true,
+                "clicks": 236,
+                "date": "2026-03-15 15:30:01",
+                "title": "江西软件职业技术大学2026年退役大学生士兵专升本征集志愿填报及考查办法 ",
+                "id": "n_mmrfsm3n",
+                "createData": 1773559801000
+              },
+              {
+                "publish": true,
+                "clicks": 265,
+                "date": "2026-03-13 15:40:45",
+                "title": "江西软件职业技术大学2026年高职单独招生考试大纲",
+                "id": "n_mmolah0u",
+                "createData": 1773387645000
+              },
+              {
+                "publish": true,
+                "clicks": 265,
+                "date": "2026-03-11 11:19:54",
+                "title": "江西软件职业技术大学2026年退役大学生士兵专升本综合考查合格名单公告",
+                "id": "n_mmlh8pwv",
+                "createData": 1773199194000
+              },
+              {
+                "publish": true,
+                "clicks": 211,
+                "date": "2025-08-22 18:45:42",
+                "title": "江西软件职业技术大学井冈山校区四人间学生公寓住宿费标准的公示",
+                "id": "n_mempgneg",
+                "createData": 1755859542000
+              },
+              {
+                "publish": true,
+                "clicks": 200,
+                "date": "2025-08-22 16:36:01",
+                "title": "致新生｜注意‼️学费这样查询、缴纳",
+                "id": "n_memkt97e",
+                "createData": 1755851761000
+              },
+              {
+                "publish": true,
+                "clicks": 200,
+                "date": "2025-08-21 16:04:51",
+                "title": "2025 级新生看过来！各专业联系老师信息汇总",
+                "id": "n_mel4liik",
+                "createData": 1755763491000
+              },
+              {
+                "publish": true,
+                "clicks": 202,
+                "date": "2025-08-14 15:14:19",
+                "title": "2025级录取通知书“揭秘”！内含重要指南，请查收！",
+                "id": "n_meb3ujp8",
+                "createData": 1755155659000
+              },
+              {
+                "publish": true,
+                "clicks": 142,
+                "date": "2025-06-29 15:59:32",
+                "title": "报考指南 | 2025年高考志愿填报-湖北篇",
+                "id": "n_mcit896o",
+                "createData": 1751183972000
+              },
+              {
+                "publish": true,
+                "clicks": 57,
+                "date": "2025-06-28 15:23:38",
+                "title": "报考指南 | 2025年高考志愿填报-广东篇",
+                "id": "n_mcit12ru",
+                "createData": 1751095418000
+              },
+              {
+                "publish": true,
+                "clicks": 176,
+                "date": "2025-06-27 15:06:50",
+                "title": "报考指南 | 2025年高考志愿填报-福建篇",
+                "id": "n_mcirt7yq",
+                "createData": 1751008010000
+              },
+              {
+                "publish": true,
+                "clicks": 19,
+                "date": "2025-06-27 15:06:07",
+                "title": "报考指南|2025年高考志愿填报-云南篇",
+                "id": "n_mciredhm",
+                "createData": 1751007967000
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2025-06-26 14:34:30",
+                "title": "报考指南|2025年高考志愿填报-安徽篇",
+                "id": "n_mcir103d",
+                "createData": 1750919670000
+              },
+              {
+                "publish": true,
+                "clicks": 33,
+                "date": "2025-06-25 14:33:55",
+                "title": "报考指南|2025年高考志愿填报-四川篇",
+                "id": "n_mciqjm8r",
+                "createData": 1750833235000
+              },
+              {
+                "publish": true,
+                "clicks": 54,
+                "date": "2025-06-25 13:55:48",
+                "title": "报考指南 | 2025年高考志愿填报-河南篇",
+                "id": "n_mcitu3cy",
+                "createData": 1750830948000
+              },
+              {
+                "publish": true,
+                "clicks": 405,
+                "date": "2025-06-24 16:29:21",
+                "title": "报考指南 | 2025年高考志愿填报-江西篇",
+                "id": "n_mciujf7z",
+                "createData": 1750753761000
+              },
+              {
+                "publish": true,
+                "clicks": 383,
+                "date": "2025-06-10 16:23:13",
+                "title": "《2025年普通高考志愿填报及投档规则》发布",
+                "id": "n_mbronkn4",
+                "createData": 1749543793000
+              },
+              {
+                "publish": true,
+                "clicks": 231,
+                "date": "2025-06-08 16:31:45",
+                "title": "注意！江西高考成绩放榜日期公布！",
+                "id": "n_mbrp0u7g",
+                "createData": 1749371505000
+              },
+              {
+                "publish": true,
+                "clicks": 1266,
+                "date": "2025-06-03 17:10:20",
+                "title": "关于2025级专升本新生档案转接事宜的正式通知",
+                "id": "n_mbgb5lfm",
+                "createData": 1748941820000
+              },
+              {
+                "publish": true,
+                "clicks": 398,
+                "date": "2025-06-01 16:17:04",
+                "title": "江西软件职业技术大学2025年招生简章",
+                "id": "n_mbroj4ps",
+                "createData": 1748765824000
+              },
+              {
+                "publish": true,
+                "clicks": 207,
+                "date": "2025-05-30 16:34:57",
+                "title": "1335万人报名！2025年高考最新安全部署来了→",
+                "id": "n_mbrp7wi5",
+                "createData": 1748594097000
+              },
+              {
+                "publish": true,
+                "clicks": 322,
+                "date": "2025-04-29 15:51:31",
+                "title": "江西软件职业技术大学2025年单招录取通知书发放公告",
+                "id": "n_ma27mvca",
+                "createData": 1745913091000
+              },
+              {
+                "publish": true,
+                "clicks": 822,
+                "date": "2025-04-08 16:04:45",
+                "title": "@专升本考生，成绩今日可查！",
+                "id": "n_m987vfib",
+                "createData": 1744099485000
+              },
+              {
+                "publish": true,
+                "clicks": 574,
+                "date": "2025-04-03 15:35:56",
+                "title": "高职单招考试成绩今日可查！成绩复核请关注→",
+                "id": "n_m96rcvbg",
+                "createData": 1743665756000
+              },
+              {
+                "publish": true,
+                "clicks": 292,
+                "date": "2025-03-18 10:28:17",
+                "title": "江西软件职业技术大学2025年单招技能校考成绩查询",
+                "id": "n_m8dvnnu2",
+                "createData": 1742264897000
+              },
+              {
+                "publish": true,
+                "clicks": 223,
+                "date": "2025-03-12 16:56:21",
+                "title": "江西软件职业技术大学关于2025年专升本退役大学生士兵征集志愿填报及考查办法的通知",
+                "id": "n_m85p0z51",
+                "createData": 1741769781000
+              },
+              {
+                "publish": true,
+                "clicks": 229,
+                "date": "2025-03-09 17:54:24",
+                "title": "2025年江西软件职业技术大学单招考试温馨提示",
+                "id": "n_m81h1f0x",
+                "createData": 1741514064000
+              },
+              {
+                "publish": true,
+                "clicks": 209,
+                "date": "2025-03-07 18:20:16",
+                "title": "江西软件职业技术大学2025年专升本退役大学生士兵面试成绩公示",
+                "id": "n_m81hg3gr",
+                "createData": 1741342816000
+              },
+              {
+                "publish": true,
+                "clicks": 226,
+                "date": "2025-03-05 10:07:23",
+                "title": "江西软件职业技术大学 2025年高职单独招生考试大纲",
+                "id": "n_m7va46e7",
+                "createData": 1741140443000
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2024-10-30 15:05:06",
+                "title": "江西软件职业技术大学2023年本科招生专业学费",
+                "id": "n_m2vj6y2o",
+                "createData": 1730271906000
+              },
+              {
+                "publish": true,
+                "clicks": 4,
+                "date": "2024-07-30 15:50:36",
+                "title": "测试内容",
+                "id": "n_lz84c45q",
+                "createData": 1722325836000
+              },
+              {
+                "publish": true,
+                "clicks": 867,
+                "date": "2024-07-25 15:27:26",
+                "title": "关于我校在湖北省普通本科批的缺额征集公告的通知",
+                "id": "n_lytpcqs3",
+                "createData": 1721892446000
+              },
+              {
+                "publish": true,
+                "clicks": 683,
+                "date": "2024-07-25 14:25:12",
+                "title": "关于我校在福建普通本科批的缺额征集公告的通知",
+                "id": "n_lytpcr5z",
+                "createData": 1721888712000
+              },
+              {
+                "publish": true,
+                "clicks": 1409,
+                "date": "2024-07-09 10:37:07",
+                "title": "各市、县（市、区）学生资助热线",
+                "id": "n_lytpcqpb",
+                "createData": 1720492627000
+              },
+              {
+                "publish": true,
+                "clicks": 1368,
+                "date": "2024-07-09 10:31:23",
+                "title": "@全体考生 高考后，一定警惕别踩“坑”！",
+                "id": "n_lytpcqmj",
+                "createData": 1720492283000
+              },
+              {
+                "publish": true,
+                "clicks": 2263,
+                "date": "2024-06-25 14:54:14",
+                "title": "2024年江西软件职业技术大学招生宣传册",
+                "id": "n_lytpcp5r",
+                "createData": 1719298454000
+              },
+              {
+                "publish": true,
+                "clicks": 1498,
+                "date": "2024-06-20 11:07:35",
+                "title": "2024年各省招生报考代码，请查收！",
+                "id": "n_lytpcnuj",
+                "createData": 1718852855000
+              },
+              {
+                "publish": true,
+                "clicks": 1874,
+                "date": "2024-06-06 10:52:52",
+                "title": "关于2024级专升本新生档案转接事宜的正式通知",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20240613/1801069366086569984.png",
+                  "filename": "1801069366086569984.png",
+                  "cover": "http://localhost:20829/upload/img/20240613/1801069366086569984.png"
+                },
+                "id": "n_lytpcn8b",
+                "createData": 1717642372000
+              },
+              {
+                "publish": true,
+                "clicks": 1237,
+                "date": "2024-05-25 14:13:00",
+                "title": "江西省2024年普通高考考生考试须知",
+                "id": "n_lytpcmrn",
+                "createData": 1716617580000
+              },
+              {
+                "publish": true,
+                "clicks": 1252,
+                "date": "2024-05-24 16:09:00",
+                "title": "致全省2024年普通高考考生的公开信",
+                "id": "n_lytpcmov",
+                "createData": 1716538140000
+              },
+              {
+                "publish": true,
+                "clicks": 645,
+                "date": "2024-05-17 14:54:59",
+                "title": "关于江西软件职业技术大学2024年学费等收费标准的公示",
+                "id": "n_m2vjhe4b",
+                "createData": 1715928899000
+              },
+              {
+                "publish": true,
+                "clicks": 1025,
+                "date": "2024-05-13 16:25:00",
+                "title": "江西：新高考“新”在哪？一起来看变化",
+                "id": "n_lytpcmx7",
+                "createData": 1715588700000
+              },
+              {
+                "publish": true,
+                "clicks": 1404,
+                "date": "2024-05-09 14:50:05",
+                "title": "2024年单招考试录取通知书发放告知书",
+                "id": "n_lytpcmjb",
+                "createData": 1715237405000
+              },
+              {
+                "publish": true,
+                "clicks": 1950,
+                "date": "2024-03-13 18:20:00",
+                "title": "江西软件职业技术大学2024年专升本退役大学生士兵面试成绩公示",
+                "id": "n_lytpcm87",
+                "createData": 1710325200000
+              },
+              {
+                "publish": true,
+                "clicks": 4252,
+                "date": "2023-08-20 17:15:00",
+                "title": "关于江西软件职业技术大学2023年学费等收费标准的公示",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20240613/1801069618931798016.png",
+                  "filename": "1801069618931798016.png",
+                  "cover": "http://localhost:20829/upload/img/20240613/1801069618931798016.png"
+                },
+                "id": "n_lytpci7r",
+                "createData": 1692522900000
+              },
+              {
+                "publish": true,
+                "clicks": 4208,
+                "date": "2023-08-08 14:35:00",
+                "title": "江西软件职业技术大学2023年本科分科类录取情况表",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20240613/1801069885605646336.png",
+                  "filename": "1801069885605646336.png",
+                  "cover": "http://localhost:20829/upload/img/20240613/1801069885605646336.png"
+                },
+                "id": "n_lytpclx3",
+                "createData": 1691476500000
+              },
+              {
+                "publish": true,
+                "clicks": 1769,
+                "date": "2023-08-01 23:25:00",
+                "title": "全国学生资助管理中心致高中毕业生的一封信",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230805/1687845635898691584.jpg",
+                  "filename": "1687845635898691584.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230805/1687845635898691584.jpg"
+                },
+                "id": "n_lytpchtv",
+                "createData": 1690903500000
+              },
+              {
+                "publish": true,
+                "clicks": 1781,
+                "date": "2023-08-01 23:23:00",
+                "title": "江西省学生资助政策简介（2023年度）",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230805/1687846882676527104.jpg",
+                  "filename": "1687846882676527104.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230805/1687846882676527104.jpg"
+                },
+                "id": "n_lytpci27",
+                "createData": 1690903380000
+              },
+              {
+                "publish": true,
+                "clicks": 3465,
+                "date": "2023-08-01 23:12:00",
+                "title": "江西省生源地信用助学贷款政策问答（2023年度）",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230805/1687844529911058432.jpg",
+                  "filename": "1687844529911058432.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230805/1687844529911058432.jpg"
+                },
+                "id": "n_lytpchr3",
+                "createData": 1690902720000
+              },
+              {
+                "publish": true,
+                "clicks": 2033,
+                "date": "2023-07-30 20:12:00",
+                "title": "2023级新生团员团组织关系转接指南来啦!",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230803/1687075022997245952.jpg",
+                  "filename": "1687075022997245952.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230803/1687075022997245952.jpg"
+                },
+                "id": "n_lytpch4v",
+                "createData": 1690719120000
+              },
+              {
+                "publish": true,
+                "clicks": 2495,
+                "date": "2023-07-29 19:21:39",
+                "title": "专升本的同学们，你的录取通知书出发了！",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230729/1685249516312145920.png",
+                  "filename": "1685249516312145920.png",
+                  "cover": "http://localhost:20829/upload/img/20230729/1685249516312145920.png"
+                },
+                "id": "n_lytpcgwj",
+                "createData": 1690629699000
+              },
+              {
+                "publish": true,
+                "clicks": 1698,
+                "date": "2023-07-20 17:11:00",
+                "title": "关于延期发放2023年专升本录取通知书的通知",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230727/1684491785099800576.jpg",
+                  "filename": "1684491785099800576.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230727/1684491785099800576.jpg"
+                },
+                "id": "n_lytpcglf",
+                "createData": 1689844260000
+              },
+              {
+                "publish": true,
+                "clicks": 1738,
+                "date": "2023-06-25 17:14:00",
+                "title": "2023年江西软件职业技术大学 本科分省分专业计划信息一览表",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230727/1684492278106681344.png",
+                  "filename": "1684492278106681344.png",
+                  "cover": "http://localhost:20829/upload/img/20230727/1684492278106681344.png"
+                },
+                "id": "n_lytpcgo7",
+                "createData": 1687684440000
+              },
+              {
+                "publish": true,
+                "clicks": 2205,
+                "date": "2023-06-12 17:06:00",
+                "title": "关于接收我校各学院2023届新生档案的通知",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230727/1684490448031182848.jpg",
+                  "filename": "1684490448031182848.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230727/1684490448031182848.jpg"
+                },
+                "id": "n_lytpcgfv",
+                "createData": 1686560760000
+              },
+              {
+                "publish": true,
+                "clicks": 1917,
+                "date": "2023-06-06 17:04:00",
+                "title": "2023年招生简章",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230727/1684489846932893696.png",
+                  "filename": "1684489846932893696.png",
+                  "cover": "http://localhost:20829/upload/img/20230727/1684489846932893696.png"
+                },
+                "id": "n_lytpcgab",
+                "createData": 1686042240000
+              },
+              {
+                "publish": true,
+                "clicks": 2215,
+                "date": "2023-06-06 09:21:00",
+                "title": "江西软件职业技术大学2023年专升本分科类录取情况",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20231101/1719612908133879808.jpg",
+                  "filename": "1719612908133879808.jpg",
+                  "cover": "http://localhost:20829/upload/img/20231101/1719612908133879808.jpg"
+                },
+                "id": "n_lytpclzv",
+                "createData": 1686014460000
+              },
+              {
+                "publish": true,
+                "clicks": 1422,
+                "date": "2023-06-01 17:01:00",
+                "title": "关于2023级专升本新生调档函开具相关事宜的通知",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230727/1684489365309353984.jpg",
+                  "filename": "1684489365309353984.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230727/1684489365309353984.jpg"
+                },
+                "id": "n_lytpcg7j",
+                "createData": 1685610060000
+              },
+              {
+                "publish": true,
+                "clicks": 1958,
+                "date": "2023-06-01 16:55:00",
+                "title": "江西软件职业技术大学2023年专升本普通批次专业投档线",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230727/1684489320740679680.jpg",
+                  "filename": "1684489320740679680.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230727/1684489320740679680.jpg"
+                },
+                "id": "n_lytpcg4r",
+                "createData": 1685609700000
+              },
+              {
+                "publish": true,
+                "clicks": 1868,
+                "date": "2023-05-29 16:52:00",
+                "title": "江西软件职业技术大学2023年专升本普通计划批次征集志愿公告",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230727/1684486917920387072.jpg",
+                  "filename": "1684486917920387072.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230727/1684486917920387072.jpg"
+                },
+                "id": "n_lytpcfz7",
+                "createData": 1685350320000
+              },
+              {
+                "publish": true,
+                "clicks": 1466,
+                "date": "2023-03-27 00:00:00",
+                "title": "2023年江西软件职业技术大学单招考试成绩公布",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230727/1684484900481134592.jpg",
+                  "filename": "1684484900481134592.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230727/1684484900481134592.jpg"
+                },
+                "id": "n_lytpcfwf",
+                "createData": 1679846400000
+              },
+              {
+                "publish": true,
+                "clicks": 1423,
+                "date": "2023-03-15 16:17:00",
+                "title": "关于我校2023年单招考试准考证发放的通知",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230727/1684479605201694720.jpg",
+                  "filename": "1684479605201694720.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230727/1684479605201694720.jpg"
+                },
+                "id": "n_lytpcfqv",
+                "createData": 1678868220000
+              },
+              {
+                "publish": true,
+                "clicks": 1380,
+                "date": "2023-03-14 16:07:00",
+                "title": "关于公布2023年退役大学生士兵专升本职业技能测试成绩及成绩复核的通知",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230727/1684479697816121344.jpg",
+                  "filename": "1684479697816121344.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230727/1684479697816121344.jpg"
+                },
+                "id": "n_lytpcfo3",
+                "createData": 1678781220000
+              },
+              {
+                "publish": true,
+                "clicks": 654,
+                "date": "2022-09-20 22:08:00",
+                "title": "关于录取新生参军入伍保留入学资格办理流程",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230921/1704856066962964480.jpg",
+                  "filename": "1704856066962964480.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230921/1704856066962964480.jpg"
+                },
+                "id": "n_lytpcj53",
+                "createData": 1663682880000
+              },
+              {
+                "publish": true,
+                "clicks": 1216,
+                "date": "2022-09-09 21:58:00",
+                "title": "关于专升本学生开具调档函的和井冈山校区快递收件地址的说明",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230921/1704857559879335936.jpg",
+                  "filename": "1704857559879335936.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230921/1704857559879335936.jpg"
+                },
+                "id": "n_lytpcjg7",
+                "createData": 1662731880000
+              },
+              {
+                "publish": true,
+                "clicks": 1039,
+                "date": "2022-08-19 22:00:00",
+                "title": "关于做好 2022 级新生报到工作的通知",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230921/1704858081260683264.jpg",
+                  "filename": "1704858081260683264.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230921/1704858081260683264.jpg"
+                },
+                "id": "n_lytpcjlr",
+                "createData": 1660917600000
+              },
+              {
+                "publish": true,
+                "clicks": 866,
+                "date": "2022-08-18 19:23:00",
+                "title": "本科计划各省计划执行及投档线",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230921/1704856622003601408.jpg",
+                  "filename": "1704856622003601408.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230921/1704856622003601408.jpg"
+                },
+                "id": "n_lytpcidb",
+                "createData": 1660821780000
+              },
+              {
+                "publish": true,
+                "clicks": 706,
+                "date": "2022-08-15 19:28:00",
+                "title": "2022年专升本各专业录取投档线公布",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230921/1704856520056848384.jpg",
+                  "filename": "1704856520056848384.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230921/1704856520056848384.jpg"
+                },
+                "id": "n_lytpcig3",
+                "createData": 1660562880000
+              },
+              {
+                "publish": true,
+                "clicks": 854,
+                "date": "2022-07-18 22:04:00",
+                "title": "2022年招生简章",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230921/1704859085901348864.jpg",
+                  "filename": "1704859085901348864.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230921/1704859085901348864.jpg"
+                },
+                "id": "n_lytpcju3",
+                "createData": 1658153040000
+              },
+              {
+                "publish": true,
+                "clicks": 1074,
+                "date": "2022-07-11 22:01:00",
+                "title": "2022年普通本科招生录取咨询及监督举报电话",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230921/1704858337977253888.jpg",
+                  "filename": "1704858337977253888.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230921/1704858337977253888.jpg"
+                },
+                "id": "n_lytpcjoj",
+                "createData": 1657548060000
+              },
+              {
+                "publish": true,
+                "clicks": 1200,
+                "date": "2022-06-29 22:07:00",
+                "title": "江西软件职业技术大学2022年专升本招生计划调整公告",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230921/1704859773029007360.jpg",
+                  "filename": "1704859773029007360.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230921/1704859773029007360.jpg"
+                },
+                "id": "n_lytpck2f",
+                "createData": 1656511620000
+              },
+              {
+                "publish": true,
+                "clicks": 523,
+                "date": "2022-06-21 21:43:00",
+                "title": "2022年专科分省分专业计划表",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230921/1704856415169888256.jpg",
+                  "filename": "1704856415169888256.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230921/1704856415169888256.jpg"
+                },
+                "id": "n_lytpcitz",
+                "createData": 1655818980000
+              },
+              {
+                "publish": true,
+                "clicks": 650,
+                "date": "2022-06-20 21:40:00",
+                "title": "2022年本科分省分专业计划表",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230921/1704856226120024064.jpg",
+                  "filename": "1704856226120024064.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230921/1704856226120024064.jpg"
+                },
+                "id": "n_lytpciiv",
+                "createData": 1655732400000
+              },
+              {
+                "publish": true,
+                "clicks": 1379,
+                "date": "2022-03-17 22:16:00",
+                "title": "江西软件职业技术大学2022年高职单招线上考试的通知",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230921/1704862190168653824.jpg",
+                  "filename": "1704862190168653824.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230921/1704862190168653824.jpg"
+                },
+                "id": "n_lytpckdj",
+                "createData": 1647526560000
+              },
+              {
+                "publish": true,
+                "clicks": 1236,
+                "date": "2022-03-17 22:15:00",
+                "title": "江西软件职业技术大学2022年退役大学生士兵免试专升本征集志愿公告",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230921/1704861623358799872.jpg",
+                  "filename": "1704861623358799872.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230921/1704861623358799872.jpg"
+                },
+                "id": "n_lytpckar",
+                "createData": 1647526500000
+              },
+              {
+                "publish": true,
+                "clicks": 1222,
+                "date": "2022-02-26 22:21:00",
+                "title": "2022年江西软件职业技术大学专升本退役大学生士兵面试成绩公布",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230921/1704863409675124736.jpg",
+                  "filename": "1704863409675124736.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230921/1704863409675124736.jpg"
+                },
+                "id": "n_lytpckrf",
+                "createData": 1645885260000
+              },
+              {
+                "publish": true,
+                "clicks": 619,
+                "date": "2021-11-23 21:46:00",
+                "title": "教育部印发通知部署做好2022年普通高校部分特殊类型招生工作",
+                "cover": {
+                  "url": "http://localhost:20829/upload/img/20230921/1704856144742137856.jpg",
+                  "filename": "1704856144742137856.jpg",
+                  "cover": "http://localhost:20829/upload/img/20230921/1704856144742137856.jpg"
+                },
+                "id": "n_lytpcizj",
+                "createData": 1637675160000
+              }
+            ],
+            "publish": true
+          },
+          {
+            "delFlag": 0,
+            "id": "l_ly8edbt0",
+            "name": "新闻动态",
+            "template": "mutuleListPage",
+            "nodeTemplate": "baseArticle",
+            "info": "",
+            "children": [],
+            "nodes": [
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2026-03-25 11:27:54",
+                "title": "3月29日开考！请看考前提示～",
+                "id": "n_mn5hitfe",
+                "createData": 1774409274000
+              },
+              {
+                "publish": true,
+                "clicks": 213,
+                "date": "2026-03-24 15:05:37",
+                "title": "CCTV-2深度报道我校产教融合新亮点！",
+                "id": "n_mn4a71jn",
+                "createData": 1774335937000
+              },
+              {
+                "publish": true,
+                "clicks": 216,
+                "date": "2026-03-24 14:43:32",
+                "title": "我校2026年高职单招考试工作圆满结束",
+                "id": "n_mn49336q",
+                "createData": 1774334612000
+              },
+              {
+                "publish": true,
+                "clicks": 356,
+                "date": "2025-11-07 11:18:51",
+                "title": "点ྉ赞ྉ！喜ྉ讯ྉ连ྉ连ྉ！",
+                "id": "n_mhoai6ym",
+                "createData": 1762485531000
+              },
+              {
+                "publish": true,
+                "clicks": 425,
+                "date": "2025-11-06 11:22:40",
+                "title": "2026年各省市艺术类专业政策汇总",
+                "id": "n_mhoakoji",
+                "createData": 1762399360000
+              },
+              {
+                "publish": true,
+                "clicks": 158,
+                "date": "2025-11-04 11:26:02",
+                "title": "高校特殊类型招生有哪些新要求？教育部解读来了",
+                "id": "n_mhoaxdxv",
+                "createData": 1762226762000
+              },
+              {
+                "publish": true,
+                "clicks": 245,
+                "date": "2025-11-04 11:24:33",
+                "title": "教育部发通知，部署做好2026年普通高校部分特殊类型招生工作",
+                "id": "n_mhoamtue",
+                "createData": 1762226673000
+              },
+              {
+                "publish": true,
+                "clicks": 202,
+                "date": "2025-07-23 18:12:25",
+                "title": "省教育厅发展规划处督导组莅临我校检查指导招生录取工作",
+                "id": "n_mdft94f9",
+                "createData": 1753265545000
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2025-07-01 10:56:56",
+                "title": "高考结束别乱晒，这些“喜报”可能变成“危险信号”",
+                "id": "n_mcjxxtt3",
+                "createData": 1751338616000
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2025-07-01 10:29:38",
+                "title": "给高考考生父母的10条科学行动指南，把爱转化为“神助攻”",
+                "id": "n_mcjwx6yq",
+                "createData": 1751336978000
+              },
+              {
+                "publish": true,
+                "clicks": 60,
+                "date": "2025-06-30 17:04:34",
+                "title": "江西软件职业技术大学井冈山校区举行2025届毕业典礼",
+                "id": "n_mcivr8qd",
+                "createData": 1751274274000
+              },
+              {
+                "publish": true,
+                "clicks": 2,
+                "date": "2025-06-27 09:01:04",
+                "title": "江西软件职业技术大学：本科招生计划4000人 聚焦“三维融合”培养高端技能人",
+                "id": "n_mcjttrnf",
+                "createData": 1750986064000
+              },
+              {
+                "publish": true,
+                "clicks": 242,
+                "date": "2025-06-16 16:39:11",
+                "title": "转存！12张思维导图理清大学专业",
+                "id": "n_mbyuuhov",
+                "createData": 1750063151000
+              },
+              {
+                "publish": true,
+                "clicks": 219,
+                "date": "2025-06-12 17:50:22",
+                "title": "喜报！祝贺第一！",
+                "id": "n_mbt78iua",
+                "createData": 1749721822000
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2025-06-10 09:54:29",
+                "title": "+1+1🥳再创佳绩‼️",
+                "id": "n_mcjw53yu",
+                "createData": 1749520469000
+              },
+              {
+                "publish": true,
+                "clicks": 208,
+                "date": "2025-06-08 15:23:16",
+                "title": "注意！江西高考成绩放榜日期公布！",
+                "id": "n_mbq73clm",
+                "createData": 1749367396000
+              },
+              {
+                "publish": true,
+                "clicks": 61,
+                "date": "2025-06-05 15:26:24",
+                "title": "高考倒计时！4大必做事项，涉及准考证、看考场……",
+                "id": "n_mbq78vkj",
+                "createData": 1749108384000
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2025-06-05 09:08:34",
+                "title": "嘘！今天起，江西人请开启“静音模式”！",
+                "id": "n_mcjuhiu2",
+                "createData": 1749085714000
+              },
+              {
+                "publish": true,
+                "clicks": 204,
+                "date": "2025-06-03 16:36:10",
+                "title": "喜报🥳🥳我校获全球奖‼️",
+                "id": "n_mbj4jz2p",
+                "createData": 1748939770000
+              },
+              {
+                "publish": true,
+                "clicks": 18,
+                "date": "2025-06-03 15:37:03",
+                "title": "教育部和各省（区、市）开通2025年高考举报电话",
+                "id": "n_mbq7klly",
+                "createData": 1748936223000
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2025-06-03 09:29:12",
+                "title": "喜报🥳🥳我校获全球奖‼️",
+                "id": "n_mcjuu9h5",
+                "createData": 1748914152000
+              },
+              {
+                "publish": true,
+                "clicks": 92,
+                "date": "2025-05-30 15:39:48",
+                "title": "我校学子勇夺华为ICT全球总决赛三等奖",
+                "id": "n_mbq7r6i9",
+                "createData": 1748590788000
+              },
+              {
+                "publish": true,
+                "clicks": 211,
+                "date": "2025-05-29 11:39:55",
+                "title": "喜报！25届考研上岸名单！",
+                "id": "n_mbpz44lb",
+                "createData": 1748489995000
+              },
+              {
+                "publish": true,
+                "clicks": 30,
+                "date": "2025-05-28 16:08:52",
+                "title": "5月高考热点：关注高考政策、了解招生章程、志愿填报早准备",
+                "id": "n_mbq8rv5a",
+                "createData": 1748419732000
+              },
+              {
+                "publish": true,
+                "clicks": 44,
+                "date": "2025-05-26 15:51:10",
+                "title": "两校飞盘友谊赛在江软大圆满落幕",
+                "id": "n_mbq87e5q",
+                "createData": 1748245870000
+              },
+              {
+                "publish": true,
+                "clicks": 22,
+                "date": "2025-05-24 15:45:48",
+                "title": "我校学生在第十六届蓝桥杯大赛中喜创佳绩",
+                "id": "n_mbq7woll",
+                "createData": 1748072748000
+              },
+              {
+                "publish": true,
+                "clicks": 120,
+                "date": "2025-05-22 14:53:58",
+                "title": "南昌新增一条定制公交！",
+                "id": "n_mbq64lty",
+                "createData": 1747896838000
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2025-05-19 09:36:26",
+                "title": "南昌新增一条定制公交！",
+                "id": "n_mcjv9gpl",
+                "createData": 1747618586000
+              },
+              {
+                "publish": true,
+                "clicks": 10,
+                "date": "2025-05-15 15:58:59",
+                "title": "@高中生，省教育考试院来信啦～",
+                "id": "n_mbq8g2gr",
+                "createData": 1747295939000
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2025-05-07 10:26:25",
+                "title": "@高中毕业生，一封信带你看国家资助好政策",
+                "id": "n_mcjwrszs",
+                "createData": 1746584785000
+              },
+              {
+                "publish": true,
+                "clicks": 201,
+                "date": "2025-04-24 10:58:38",
+                "title": "如何推动高校本科专业设置调整优化？教育部解读→",
+                "id": "n_m9us0q8i",
+                "createData": 1745463518000
+              },
+              {
+                "publish": true,
+                "clicks": 201,
+                "date": "2025-04-24 10:47:24",
+                "title": "150+单位、2000+岗位，“职”等你！🫵",
+                "id": "n_m9urv2hv",
+                "createData": 1745462844000
+              },
+              {
+                "publish": true,
+                "clicks": 200,
+                "date": "2025-04-09 16:38:32",
+                "title": "@考研er，研招复试调剂今天开始啦！",
+                "id": "n_m99on7sq",
+                "createData": 1744187912000
+              },
+              {
+                "publish": true,
+                "clicks": 201,
+                "date": "2025-04-09 16:29:05",
+                "title": "职业探索——测绘和地理信息工程技术人员",
+                "id": "n_m99ofvk9",
+                "createData": 1744187345000
+              },
+              {
+                "publish": true,
+                "clicks": 203,
+                "date": "2025-04-08 16:07:44",
+                "title": "职业探索——软件工程师",
+                "id": "n_m9884miv",
+                "createData": 1744099664000
+              },
+              {
+                "publish": true,
+                "clicks": 200,
+                "date": "2025-04-03 15:37:29",
+                "title": "职业探索——大数据工程师",
+                "id": "n_m96rpouv",
+                "createData": 1743665849000
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2025-04-02 10:18:20",
+                "title": "免息，延期！惠及600万高校毕业生",
+                "id": "n_mcjwl66v",
+                "createData": 1743560300000
+              },
+              {
+                "publish": true,
+                "clicks": 1338,
+                "date": "2025-03-18 10:19:29",
+                "title": "江西软件职业技术大学2025年单招考试顺利完成",
+                "id": "n_m8dvfxfn",
+                "createData": 1742264369000
+              },
+              {
+                "publish": true,
+                "clicks": 201,
+                "date": "2025-03-06 10:36:33",
+                "title": "捷报频传 再创佳绩～",
+                "id": "n_m83vstzd",
+                "createData": 1741228593000
+              },
+              {
+                "publish": true,
+                "clicks": 201,
+                "date": "2025-02-26 10:31:40",
+                "title": "叮咚！喜报来了！",
+                "id": "n_m83vp5lk",
+                "createData": 1740537100000
+              },
+              {
+                "publish": true,
+                "clicks": 202,
+                "date": "2025-01-18 16:10:35",
+                "title": "学校招就处召开2025年招生工作筹备会，全力规划招生蓝图",
+                "id": "n_m7ss74b3",
+                "createData": 1737187835000
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2025-01-13 10:49:59",
+                "title": "划重点！一图读懂2025年全国教育工作会议→",
+                "id": "n_mcjxqak9",
+                "createData": 1736736599000
+              },
+              {
+                "publish": true,
+                "clicks": 200,
+                "date": "2025-01-13 10:28:18",
+                "title": "划重点！一图读懂2025年全国教育工作会议→",
+                "id": "n_m83vhbra",
+                "createData": 1736735298000
+              },
+              {
+                "publish": true,
+                "clicks": 200,
+                "date": "2025-01-09 10:26:32",
+                "title": "紧急通知‼️",
+                "id": "n_m83vfx4k",
+                "createData": 1736389592000
+              },
+              {
+                "publish": true,
+                "clicks": 200,
+                "date": "2025-01-07 10:23:00",
+                "title": "速递！2025年1月江西考试招生月历",
+                "id": "n_m83vc97o",
+                "createData": 1736216580000
+              },
+              {
+                "publish": true,
+                "clicks": 201,
+                "date": "2025-01-05 10:21:41",
+                "title": "关于2025年高等职业教育单独招生统考科目考试题型的说明",
+                "id": "n_m83v8w3r",
+                "createData": 1736043701000
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2024-10-30 15:39:17",
+                "title": "来欣赏一下昨天的梦幻火烧云吧！",
+                "id": "n_m2vkfehe",
+                "createData": 1730273957000
+              },
+              {
+                "publish": true,
+                "clicks": 1403,
+                "date": "2024-07-09 10:24:05",
+                "title": "教育部正式批复同意成立江西软件职业技术大学井冈山校区",
+                "id": "n_lytpcqjr",
+                "createData": 1720491845000
+              },
+              {
+                "publish": true,
+                "clicks": 1101,
+                "date": "2024-07-09 10:00:08",
+                "title": "特殊的毕业典礼",
+                "id": "n_lytpcqgz",
+                "createData": 1720490408000
+              },
+              {
+                "publish": true,
+                "clicks": 1131,
+                "date": "2024-07-08 11:02:00",
+                "title": "学生资助热线已开通！详情戳→",
+                "id": "n_lytpcqe7",
+                "createData": 1720407720000
+              },
+              {
+                "publish": true,
+                "clicks": 1499,
+                "date": "2024-06-23 19:02:00",
+                "title": "2024届毕业典礼暨学士学位授予仪式你我共同永久的记忆",
+                "id": "n_lytpcodz",
+                "createData": 1719140520000
+              },
+              {
+                "publish": true,
+                "clicks": 1543,
+                "date": "2024-06-10 14:13:54",
+                "title": "江软职大，仅一个区块链学院，蓝桥杯获25项省奖，6项全国大奖，他们如何做到的？",
+                "id": "n_lytpco5n",
+                "createData": 1718000034000
+              },
+              {
+                "publish": true,
+                "clicks": 1465,
+                "date": "2024-06-08 13:41:00",
+                "title": "校内实训项目体验之成长与蜕变",
+                "id": "n_lytpco2v",
+                "createData": 1717825260000
+              },
+              {
+                "publish": true,
+                "clicks": 1457,
+                "date": "2024-04-28 19:07:00",
+                "title": "共筑人才培养新高地——江西软件大学与麒麟软件共同深化产教融合",
+                "id": "n_lytpcojj",
+                "createData": 1714302420000
+              },
+              {
+                "publish": true,
+                "clicks": 1323,
+                "date": "2024-04-26 19:06:00",
+                "title": "携手头部企业360集团，共谋产教融合新篇章",
+                "id": "n_lytpcogr",
+                "createData": 1714129560000
+              },
+              {
+                "publish": true,
+                "clicks": 2100,
+                "date": "2024-04-23 11:10:50",
+                "title": "喜报｜新媒体学院首届本科毕业生考研荣获三项全校第一",
+                "id": "n_lytpcmgj",
+                "createData": 1713841850000
+              },
+              {
+                "publish": true,
+                "clicks": 1349,
+                "date": "2024-04-13 15:28:00",
+                "title": "校友风采 | 袁国富：江软骄子蜕变博商精英，荣誉之路铸就卓越篇章",
+                "id": "n_lytpcmzz",
+                "createData": 1712993280000
+              },
+              {
+                "publish": true,
+                "clicks": 1223,
+                "date": "2024-04-10 15:46:00",
+                "title": "校友风采 | 钟梅：跨界创业与行业贡献的典范",
+                "id": "n_lytpcn5j",
+                "createData": 1712735160000
+              },
+              {
+                "publish": true,
+                "clicks": 572,
+                "date": "2024-04-10 15:45:40",
+                "title": "校友风采 | 钟梅：跨界创业与行业贡献的典范",
+                "id": "n_lytpcn2r",
+                "createData": 1712735140000
+              },
+              {
+                "publish": true,
+                "clicks": 2301,
+                "date": "2023-09-20 22:31:00",
+                "title": "江西省第二届校园无偿献血联盟启动仪式在江西软件职业技术大学举行",
+                "id": "n_lytpclav",
+                "createData": 1695220260000
+              },
+              {
+                "publish": true,
+                "clicks": 2051,
+                "date": "2023-09-19 22:31:00",
+                "title": "退役军人事务部培训中心周雷副主任一行莅临我校调研",
+                "id": "n_lytpcl83",
+                "createData": 1695133860000
+              },
+              {
+                "publish": true,
+                "clicks": 1883,
+                "date": "2023-09-19 22:30:00",
+                "title": "江西软件职业技术大学将承办江西省虚拟现实（VR）产业技术创新战略联盟第十三期主题沙龙",
+                "id": "n_lytpcl5b",
+                "createData": 1695133800000
+              },
+              {
+                "publish": true,
+                "clicks": 2072,
+                "date": "2023-09-18 22:32:00",
+                "title": "首页 上一条 下一条 返回 勿忘国耻 砥砺奋进 ——江西软件职业技术大学举行纪念“九一八”事变主题升旗仪式暨新学年开学第一课",
+                "id": "n_lytpcldn",
+                "createData": 1695047520000
+              },
+              {
+                "publish": true,
+                "clicks": 1976,
+                "date": "2023-09-17 22:33:00",
+                "title": "怦然“新”动，焕然一“新”||江西软件职业技术大学迎新圆满结束",
+                "id": "n_lytpclgf",
+                "createData": 1694961180000
+              },
+              {
+                "publish": true,
+                "clicks": 2146,
+                "date": "2023-09-14 22:34:00",
+                "title": "我校与省邮电规划设计院共建产教融合基地",
+                "id": "n_lytpclj7",
+                "createData": 1694702040000
+              },
+              {
+                "publish": true,
+                "clicks": 1789,
+                "date": "2023-09-12 22:46:00",
+                "title": "喜报：我校学子在第15届全国大学生广告艺术大赛中荣获两项全国一等奖",
+                "id": "n_lytpcllz",
+                "createData": 1694529960000
+              },
+              {
+                "publish": true,
+                "clicks": 1473,
+                "date": "2023-09-08 22:52:00",
+                "title": "学铮铮铁骨精神 展青春之风采 ——江西软件职业技术大学举行2023级新新生军训动员大会",
+                "id": "n_lytpclor",
+                "createData": 1694184720000
+              },
+              {
+                "publish": true,
+                "clicks": 1370,
+                "date": "2023-09-06 22:52:00",
+                "title": "江西软件职业技术大学迎新现场满“新”欢喜",
+                "id": "n_lytpclrj",
+                "createData": 1694011920000
+              },
+              {
+                "publish": true,
+                "clicks": 1611,
+                "date": "2023-09-04 22:53:00",
+                "title": "校领导带队深入一线听课督导 开学首日教学秩序井然",
+                "id": "n_lytpclub",
+                "createData": 1693839180000
+              },
+              {
+                "publish": true,
+                "clicks": 1221,
+                "date": "2023-08-14 09:54:19",
+                "title": "喜报！我校学子在全国大学生信息安全与对抗技术竞赛(ISCC 2023)中喜获佳绩创新高",
+                "id": "n_lytpci4z",
+                "createData": 1691978059000
+              },
+              {
+                "publish": true,
+                "clicks": 1121,
+                "date": "2023-07-25 17:16:00",
+                "title": "省教育厅“一站式”学生社区建设调研组莅临我校调研指导",
+                "id": "n_lytpcgqz",
+                "createData": 1690276560000
+              },
+              {
+                "publish": true,
+                "clicks": 1108,
+                "date": "2023-07-19 17:18:00",
+                "title": "江西软件职业技术大学：行走赣鄱乡村 贡献青春力量",
+                "cover": {
+                  "url": "http://localhost:20829/template",
+                  "filename": "template",
+                  "cover": "http://localhost:20829template"
+                },
+                "id": "n_lytpcgtr",
+                "createData": 1689758280000
+              },
+              {
+                "publish": true,
+                "clicks": 1077,
+                "date": "2023-07-01 21:56:00",
+                "title": "喜报！学校师生在“2023米兰设计周——中国⾼校设计学科师生优秀作品展”大赛获佳绩",
+                "id": "n_lytpchaf",
+                "createData": 1688219760000
+              },
+              {
+                "publish": true,
+                "clicks": 1150,
+                "date": "2023-06-09 21:59:00",
+                "title": "喜报！我校学子获第二十届信息安全与对抗技术竞赛全国赛区一等奖",
+                "id": "n_lytpchd7",
+                "createData": 1686319140000
+              },
+              {
+                "publish": true,
+                "clicks": 1146,
+                "date": "2023-05-29 22:01:00",
+                "title": "沾喜气！学校2023届毕业生考研喜报来了！",
+                "id": "n_lytpchfz",
+                "createData": 1685368860000
+              },
+              {
+                "publish": true,
+                "clicks": 823,
+                "date": "2023-04-28 22:14:00",
+                "title": "喜报！我校学子在第十四届蓝桥杯大赛中喜获佳绩",
+                "id": "n_lytpchir",
+                "createData": 1682691240000
+              },
+              {
+                "publish": true,
+                "clicks": 778,
+                "date": "2023-04-27 22:16:00",
+                "title": "我校师生在“第四届江西高校空间设计大赛（美华杯）”中创下佳绩",
+                "id": "n_lytpchlj",
+                "createData": 1682604960000
+              },
+              {
+                "publish": true,
+                "clicks": 1095,
+                "date": "2023-04-14 22:17:00",
+                "title": "百舸争流千帆竞 勇夺桂冠拔头筹——江西软件职业技术大学学子在全国华为ICT大赛中荣获一等奖",
+                "id": "n_lytpchob",
+                "createData": 1681481820000
+              }
+            ],
+            "publish": true
+          }
+        ],
+        "nodes": [],
+        "publish": true
       },
       {
-        "parentId": "l_37eogl7x",
-        "name": "党团工作",
-        "publish": true,
-        "id": "l_a0jkt621",
+        "delFlag": 0,
+        "id": "l_lxml9vyn",
+        "name": "报考天地",
+        "template": "",
+        "nodeTemplate": "",
+        "info": "",
+        "children": [
+          {
+            "delFlag": 0,
+            "id": "l_ly8ednay",
+            "name": "招生政策",
+            "template": "mutuleListPage",
+            "nodeTemplate": "baseArticle",
+            "info": "",
+            "children": [],
+            "nodes": [
+              {
+                "publish": true,
+                "clicks": 256,
+                "date": "2026-03-03 09:19:31",
+                "title": "江西软件职业技术大学2026年单独招生章程",
+                "id": "n_mm9ysyzm",
+                "createData": 1772500771000
+              },
+              {
+                "publish": true,
+                "clicks": 310,
+                "date": "2026-02-28 21:08:49",
+                "title": "江西软件职业技术大学 2026年专升本招生章程",
+                "id": "n_mm6cyiz2",
+                "createData": 1772284129000
+              },
+              {
+                "publish": true,
+                "clicks": 213,
+                "date": "2026-02-11 14:03:35",
+                "title": "2026年江西软件职业技术大学退役大学生士兵专升本免试录取考察实施方案",
+                "id": "n_mm07as1b",
+                "createData": 1770789815000
+              },
+              {
+                "publish": true,
+                "clicks": 4811,
+                "date": "2025-06-18 15:07:15",
+                "title": "江西软件职业技术大学2025年招生宣传册",
+                "id": "n_mc1o8bbt",
+                "createData": 1750230435000
+              },
+              {
+                "publish": true,
+                "clicks": 918,
+                "date": "2025-06-11 18:28:29",
+                "title": "2025年高考20个重要概念——考生最关心问题集锦",
+                "id": "n_mbrth6qh",
+                "createData": 1749637709000
+              },
+              {
+                "publish": true,
+                "clicks": 697,
+                "date": "2025-06-03 18:24:20",
+                "title": "2025年高考20个填报策略问答——考生最关心问题集锦",
+                "id": "n_mbrt3q43",
+                "createData": 1748946260000
+              },
+              {
+                "publish": true,
+                "clicks": 3665,
+                "date": "2025-05-14 16:23:21",
+                "title": "江西软件职业技术大学2025年普通招生章程",
+                "id": "n_mautr7sc",
+                "createData": 1747211001000
+              },
+              {
+                "publish": true,
+                "clicks": 3115,
+                "date": "2025-02-26 10:11:55",
+                "title": "江西软件职业技术大学2025年单独招生章程",
+                "id": "n_m7la60xf",
+                "createData": 1740535915000
+              },
+              {
+                "publish": true,
+                "clicks": 4145,
+                "date": "2025-02-16 15:27:33",
+                "title": "江西软件职业技术大学 2025年专升本招生章程",
+                "id": "n_m77bl2xd",
+                "createData": 1739690853000
+              },
+              {
+                "publish": true,
+                "clicks": 2413,
+                "date": "2025-02-06 00:01:48",
+                "title": "江西软件职业技术大学2025年退役大学生士兵专升本免试录取招生简章",
+                "id": "n_m6s3z14y",
+                "createData": 1738771308000
+              },
+              {
+                "publish": true,
+                "clicks": 2437,
+                "date": "2024-06-20 19:38:00",
+                "title": "教育部公布2024年高考“云咨询周”时间安排",
+                "id": "n_lytpcoxf",
+                "createData": 1718883480000
+              },
+              {
+                "publish": true,
+                "clicks": 2596,
+                "date": "2024-06-19 19:44:00",
+                "title": "2024年高考志愿填报十问十答",
+                "id": "n_lytpcp07",
+                "createData": 1718797440000
+              },
+              {
+                "publish": true,
+                "clicks": 2195,
+                "date": "2024-06-04 19:27:00",
+                "title": "江西省2024年普通高考考生考试须知",
+                "id": "n_lytpcoun",
+                "createData": 1717500420000
+              },
+              {
+                "publish": true,
+                "clicks": 2354,
+                "date": "2024-06-03 19:16:00",
+                "title": "2024年高考十问十答",
+                "id": "n_lytpcomb",
+                "createData": 1717413360000
+              },
+              {
+                "publish": true,
+                "clicks": 4722,
+                "date": "2024-05-17 14:19:00",
+                "title": "江西软件职业技术大学2024年普通招生录取章程",
+                "id": "n_lytpcmuf",
+                "createData": 1715926740000
+              },
+              {
+                "publish": true,
+                "clicks": 2111,
+                "date": "2024-05-16 19:20:00",
+                "title": "@高中毕业生，一封信带你看国家资助好政策",
+                "id": "n_lytpcop3",
+                "createData": 1715858400000
+              },
+              {
+                "publish": true,
+                "clicks": 2141,
+                "date": "2024-05-08 19:24:00",
+                "title": "@同学 “国家助学贷款”官方APP上线，这些一键办！",
+                "id": "n_lytpcorv",
+                "createData": 1715167440000
+              },
+              {
+                "publish": true,
+                "clicks": 2408,
+                "date": "2024-03-25 20:10:00",
+                "title": "江西软件职业技术大学2024年退役大学生士兵专升本免试征集公告",
+                "id": "n_lytpcmdr",
+                "createData": 1711368600000
+              },
+              {
+                "publish": true,
+                "clicks": 5275,
+                "date": "2024-03-17 15:34:24",
+                "title": "江西软件职业技术大学2024年专升本招生章程",
+                "id": "n_lytpcmaz",
+                "createData": 1710660864000
+              },
+              {
+                "publish": true,
+                "clicks": 3067,
+                "date": "2024-02-29 10:52:32",
+                "title": "江西软件职业技术大学2024年退役大学生士兵专升本免试招生章程",
+                "id": "n_lytpcm5f",
+                "createData": 1709175152000
+              },
+              {
+                "publish": true,
+                "clicks": 7074,
+                "date": "2024-02-25 17:49:23",
+                "title": "江西软件职业技术大学 2024年单独招生实施方案",
+                "id": "n_lytpcm2n",
+                "createData": 1708854563000
+              },
+              {
+                "publish": true,
+                "clicks": 5915,
+                "date": "2023-06-06 17:04:00",
+                "title": "2023年招生简章",
+                "id": "n_lytpcgd3",
+                "createData": 1686042240000
+              },
+              {
+                "publish": true,
+                "clicks": 3567,
+                "date": "2023-03-04 16:05:00",
+                "title": "江西软件职业技术大学 2023年高职单独招生考试工作实施方案",
+                "id": "n_lytpcflb",
+                "createData": 1677917100000
+              },
+              {
+                "publish": true,
+                "clicks": 2234,
+                "date": "2023-03-01 16:03:00",
+                "title": "江西软件职业技术大学2023年退役大学生士兵专升本免试招生简章",
+                "id": "n_lytpcfij",
+                "createData": 1677657780000
+              },
+              {
+                "publish": true,
+                "clicks": 2244,
+                "date": "2023-02-01 15:45:00",
+                "title": "关于印发《江西省2023年高等职业教育单独招生实施办法》的通知",
+                "id": "n_lytpcfcz",
+                "createData": 1675237500000
+              },
+              {
+                "publish": true,
+                "clicks": 2030,
+                "date": "2022-07-18 22:03:00",
+                "title": "2022年招生简章",
+                "id": "n_lytpcjrb",
+                "createData": 1658152980000
+              },
+              {
+                "publish": true,
+                "clicks": 2646,
+                "date": "2022-07-10 22:05:00",
+                "title": "2022年成人高等教育招生简章",
+                "id": "n_lytpcjwv",
+                "createData": 1657461900000
+              },
+              {
+                "publish": true,
+                "clicks": 1800,
+                "date": "2022-06-25 22:13:00",
+                "title": "江西软件职业技术大学2022年招生简章",
+                "id": "n_lytpck7z",
+                "createData": 1656166380000
+              },
+              {
+                "publish": true,
+                "clicks": 1453,
+                "date": "2022-02-01 22:23:00",
+                "title": "2022年江西软件职业技术大学单独招生简章",
+                "id": "n_lytpckwz",
+                "createData": 1643725380000
+              },
+              {
+                "publish": true,
+                "clicks": 890,
+                "date": "2021-11-23 21:44:00",
+                "title": "教育部印发通知部署做好2022年普通高校部分特殊类型招生工作",
+                "id": "n_lytpciwr",
+                "createData": 1637675040000
+              },
+              {
+                "publish": true,
+                "clicks": 1529,
+                "date": "2021-02-22 22:24:00",
+                "title": "2021年招生简章",
+                "id": "n_lytpckzr",
+                "createData": 1614003840000
+              },
+              {
+                "publish": true,
+                "clicks": 1235,
+                "date": "2020-01-05 22:19:00",
+                "title": "2020年招生简章",
+                "id": "n_lytpcklv",
+                "createData": 1578233940000
+              }
+            ],
+            "publish": true
+          },
+          {
+            "delFlag": 0,
+            "id": "l_ly8edsgj",
+            "name": "招生计划",
+            "cover": {
+              "url": "http://localhost:20829/upload/img/1720166202653.png",
+              "filename": "1720166202653.png",
+              "cover": "http://localhost:20829/upload/img/1720166202653.png"
+            },
+            "template": "mutuleListPage",
+            "nodeTemplate": "baseArticle",
+            "info": "",
+            "children": [],
+            "nodes": [
+              {
+                "publish": true,
+                "clicks": 3734,
+                "date": "2025-06-11 18:13:26",
+                "title": "2025年江西省本科各专业分组及选考要求",
+                "id": "n_mbrsm961",
+                "createData": 1749636806000
+              },
+              {
+                "publish": true,
+                "clicks": 2729,
+                "date": "2025-06-11 17:46:38",
+                "title": "2025年江西软件职业技术大学专科分省分专业招生计划",
+                "id": "n_mbrrn0qu",
+                "createData": 1749635198000
+              },
+              {
+                "publish": true,
+                "clicks": 2625,
+                "date": "2025-06-11 17:42:43",
+                "title": "2025年江西软件职业技术大学本科分省分专业招生计划",
+                "id": "n_mbrrl87g",
+                "createData": 1749634963000
+              },
+              {
+                "publish": true,
+                "clicks": 929,
+                "date": "2025-02-16 15:51:43",
+                "title": "2025年江西软件职业技术大学专升本招生计划",
+                "id": "n_m77bzh4k",
+                "createData": 1739692303000
+              },
+              {
+                "publish": true,
+                "clicks": 4954,
+                "date": "2024-06-20 11:05:37",
+                "title": "2024年普通高考招生计划及招生代码一览表",
+                "id": "n_lytpcnrr",
+                "createData": 1718852737000
+              },
+              {
+                "publish": true,
+                "clicks": 2932,
+                "date": "2024-06-14 11:29:15",
+                "title": "2024年江西省本科各专业分组及选考要求",
+                "id": "n_lytpcngn",
+                "createData": 1718335755000
+              },
+              {
+                "publish": true,
+                "clicks": 2806,
+                "date": "2024-06-13 10:44:34",
+                "title": "2024年江西软件职业技术大学专科分省分专业招生计划",
+                "id": "n_lytpcndv",
+                "createData": 1718246674000
+              },
+              {
+                "publish": true,
+                "clicks": 2751,
+                "date": "2024-06-13 09:28:50",
+                "title": "2024年江西软件职业技术大学本科分省分科类招生计划",
+                "id": "n_lytpcnb3",
+                "createData": 1718242130000
+              },
+              {
+                "publish": true,
+                "clicks": 1234,
+                "date": "2023-09-21 21:42:14",
+                "title": "2022年专科分省分专业计划表",
+                "id": "n_lytpcir7",
+                "createData": 1695303734000
+              },
+              {
+                "publish": true,
+                "clicks": 3825,
+                "date": "2023-06-25 17:10:00",
+                "title": "2023年江西软件职业技术大学 本科分省分专业计划信息一览表",
+                "id": "n_lytpcgin",
+                "createData": 1687684200000
+              },
+              {
+                "publish": true,
+                "clicks": 3334,
+                "date": "2023-02-09 15:49:00",
+                "title": "关于公布我校2023年江西省单独招生各专业招生计划",
+                "id": "n_lytpcffr",
+                "createData": 1675928940000
+              },
+              {
+                "publish": true,
+                "clicks": 1452,
+                "date": "2022-08-18 19:21:00",
+                "title": "本科计划各省计划执行及投档线",
+                "id": "n_lytpciaj",
+                "createData": 1660821660000
+              },
+              {
+                "publish": true,
+                "clicks": 1608,
+                "date": "2022-06-29 22:06:00",
+                "title": "江西软件职业技术大学2022年专升本招生计划调整公告",
+                "id": "n_lytpcjzn",
+                "createData": 1656511560000
+              },
+              {
+                "publish": true,
+                "clicks": 1004,
+                "date": "2022-06-21 21:42:14",
+                "title": "2022年专科分省分专业计划表",
+                "id": "n_lytpciof",
+                "createData": 1655818934000
+              },
+              {
+                "publish": true,
+                "clicks": 1263,
+                "date": "2022-06-20 21:41:00",
+                "title": "2022年本科分省分专业计划表",
+                "id": "n_lytpciln",
+                "createData": 1655732460000
+              }
+            ],
+            "publish": true
+          },
+          {
+            "delFlag": 0,
+            "id": "l_ly8ee4iw",
+            "name": "入学须知",
+            "cover": {
+              "url": "http://localhost:20829/upload/img/1720166258701.png",
+              "filename": "1720166258701.png",
+              "cover": "http://localhost:20829/upload/img/1720166258701.png"
+            },
+            "template": "mutuleListPage",
+            "nodeTemplate": "baseArticle",
+            "info": "",
+            "children": [],
+            "nodes": [
+              {
+                "publish": true,
+                "clicks": 1157,
+                "date": "2025-10-20 15:53:22",
+                "title": "2025年入学须知",
+                "id": "n_mgyuaqw5",
+                "createData": 1760946802000
+              },
+              {
+                "publish": true,
+                "clicks": 375,
+                "date": "2025-08-22 16:25:36",
+                "title": "致新生｜注意‼️学费这样查询、缴纳",
+                "id": "n_memkn89p",
+                "createData": 1755851136000
+              },
+              {
+                "publish": true,
+                "clicks": 1167,
+                "date": "2024-07-20 15:51:17",
+                "title": "2024年入学须知",
+                "id": "n_mgyu9a10",
+                "createData": 1721461877000
+              },
+              {
+                "publish": true,
+                "clicks": 1987,
+                "date": "2023-08-05 21:54:33",
+                "title": "2023级新生团员团组织关系转接指南来啦!",
+                "id": "n_lytpch7n",
+                "createData": 1691243673000
+              },
+              {
+                "publish": true,
+                "clicks": 1303,
+                "date": "2023-07-22 11:36:33",
+                "title": "2023年入学须知",
+                "id": "n_mh1g1j0h",
+                "createData": 1689996993000
+              },
+              {
+                "publish": true,
+                "clicks": 4055,
+                "date": "2023-07-01 11:27:00",
+                "title": "2023新生入学须知",
+                "id": "n_lytpch23",
+                "createData": 1688182020000
+              },
+              {
+                "publish": true,
+                "clicks": 1615,
+                "date": "2023-06-01 23:22:00",
+                "title": "全国学生资助管理中心致高中毕业生的一封信",
+                "id": "n_lytpchwn",
+                "createData": 1685632920000
+              },
+              {
+                "publish": true,
+                "clicks": 1666,
+                "date": "2023-06-01 23:21:00",
+                "title": "江西省学生资助政策简介（2023年度）",
+                "id": "n_lytpchzf",
+                "createData": 1685632860000
+              },
+              {
+                "publish": true,
+                "clicks": 1760,
+                "date": "2023-06-01 10:28:00",
+                "title": "江西省生源地信用助学贷款政策问答（2023年度）",
+                "id": "n_lytpcgzb",
+                "createData": 1685586480000
+              },
+              {
+                "publish": true,
+                "clicks": 1136,
+                "date": "2022-09-20 21:51:00",
+                "title": "关于录取新生参军入伍保留入学资格办理流程",
+                "id": "n_lytpcj2b",
+                "createData": 1663681860000
+              },
+              {
+                "publish": true,
+                "clicks": 1343,
+                "date": "2022-09-09 21:58:00",
+                "title": "关于专升本学生开具调档函的和井冈山校区快递收件地址的说明",
+                "id": "n_lytpcjdf",
+                "createData": 1662731880000
+              },
+              {
+                "publish": true,
+                "clicks": 1463,
+                "date": "2022-08-19 21:59:00",
+                "title": "关于做好 2022 级新生报到工作的通知",
+                "id": "n_lytpcjiz",
+                "createData": 1660917540000
+              },
+              {
+                "publish": true,
+                "clicks": 1541,
+                "date": "2022-07-22 11:38:43",
+                "title": "2022年入学须知",
+                "id": "n_mh1g46yt",
+                "createData": 1658461123000
+              },
+              {
+                "publish": true,
+                "clicks": 1709,
+                "date": "2021-04-20 22:18:00",
+                "title": "2021年入学须知",
+                "id": "n_lytpckj3",
+                "createData": 1618928280000
+              },
+              {
+                "publish": true,
+                "clicks": 1512,
+                "date": "2020-03-31 22:17:00",
+                "title": "2020年入学须知",
+                "id": "n_lytpckgb",
+                "createData": 1585664220000
+              }
+            ],
+            "publish": true
+          },
+          {
+            "delFlag": 0,
+            "id": "l_ly8eeax8",
+            "name": "录取动态",
+            "cover": {
+              "url": "http://localhost:20829/upload/img/1720166242646.png",
+              "filename": "1720166242646.png",
+              "cover": "http://localhost:20829/upload/img/1720166242646.png"
+            },
+            "template": "mutuleListPage",
+            "nodeTemplate": "baseArticle",
+            "info": "",
+            "children": [],
+            "nodes": [
+              {
+                "publish": true,
+                "clicks": 516,
+                "date": "2025-07-23 18:09:22",
+                "title": "江西软件职业技术大学在云南省本科录取情况公式",
+                "id": "n_mdfsy0kh",
+                "createData": 1753265362000
+              },
+              {
+                "publish": true,
+                "clicks": 407,
+                "date": "2025-07-23 18:08:56",
+                "title": "江西软件职业技术大学在四川省本科录取情况公式",
+                "id": "n_mdfsxdco",
+                "createData": 1753265336000
+              },
+              {
+                "publish": true,
+                "clicks": 474,
+                "date": "2025-07-23 18:08:30",
+                "title": "江西软件职业技术大学在江西省本科录取情况公式",
+                "id": "n_mdfswu1l",
+                "createData": 1753265310000
+              },
+              {
+                "publish": true,
+                "clicks": 402,
+                "date": "2025-07-23 18:07:58",
+                "title": "江西软件职业技术大学在湖北本科录取情况公式",
+                "id": "n_mdfsw8mh",
+                "createData": 1753265278000
+              },
+              {
+                "publish": true,
+                "clicks": 412,
+                "date": "2025-07-23 18:07:27",
+                "title": "江西软件职业技术大学在河南省本科录取情况公式",
+                "id": "n_mdfsvl55",
+                "createData": 1753265247000
+              },
+              {
+                "publish": true,
+                "clicks": 391,
+                "date": "2025-07-23 18:06:57",
+                "title": "江西软件职业技术大学在广东省本科录取情况公式",
+                "id": "n_mdfsuz28",
+                "createData": 1753265217000
+              },
+              {
+                "publish": true,
+                "clicks": 408,
+                "date": "2025-07-23 18:05:22",
+                "title": "江西软件职业技术大学在福建省本科录取情况公式",
+                "id": "n_mdfsu4pi",
+                "createData": 1753265122000
+              },
+              {
+                "publish": true,
+                "clicks": 203,
+                "date": "2025-07-23 18:02:45",
+                "title": "江西软件职业技术大学在安徽省本科录取情况公示",
+                "id": "n_mdfsrwuk",
+                "createData": 1753264965000
+              },
+              {
+                "publish": true,
+                "clicks": 904,
+                "date": "2025-06-12 17:52:18",
+                "title": "10余省市公布2025年高考填报志愿时间",
+                "id": "n_mbt7cbsf",
+                "createData": 1749721938000
+              },
+              {
+                "publish": true,
+                "clicks": 3169,
+                "date": "2024-07-25 17:04:03",
+                "title": "江西软件职业技术大学在江西省本科录取情况公示",
+                "id": "n_lytpcr37",
+                "createData": 1721898243000
+              },
+              {
+                "publish": true,
+                "clicks": 1289,
+                "date": "2024-07-24 16:40:40",
+                "title": "江西软件职业技术大学在福建省本科录取情况公示",
+                "id": "n_lytpcr0f",
+                "createData": 1721810440000
+              },
+              {
+                "publish": true,
+                "clicks": 789,
+                "date": "2024-07-22 15:36:27",
+                "title": "江西软件职业技术大学在广东省本科录取情况公示",
+                "id": "n_lytpcquv",
+                "createData": 1721633787000
+              },
+              {
+                "publish": true,
+                "clicks": 738,
+                "date": "2024-07-21 16:35:00",
+                "title": "江西软件职业技术大学在湖北省本科录取情况公示",
+                "id": "n_lytpcqxn",
+                "createData": 1721550900000
+              },
+              {
+                "publish": true,
+                "clicks": 1675,
+                "date": "2023-09-14 15:34:00",
+                "title": "2023年各省本科普通类录取分数线及录取人数",
+                "id": "n_lytpcnjf",
+                "createData": 1694676840000
+              },
+              {
+                "publish": true,
+                "clicks": 3669,
+                "date": "2023-04-04 12:23:07",
+                "title": "关于我校2023年单独招生拟录取名单及专业的公示",
+                "id": "n_lytpcez3",
+                "createData": 1680582187000
+              },
+              {
+                "publish": true,
+                "clicks": 1335,
+                "date": "2022-08-18 21:56:00",
+                "title": "2022年各省本科普通类录取分数线及录取人数",
+                "id": "n_lytpcj7v",
+                "createData": 1660830960000
+              },
+              {
+                "publish": true,
+                "clicks": 1648,
+                "date": "2022-08-15 21:56:00",
+                "title": "2022年专升本各专业录取投档线公布",
+                "id": "n_lytpcjan",
+                "createData": 1660571760000
+              }
+            ],
+            "publish": true
+          },
+          {
+            "delFlag": 0,
+            "id": "l_ly8een2i",
+            "name": "招生章程",
+            "template": "mutuleListPage",
+            "nodeTemplate": "baseArticle",
+            "info": "",
+            "children": [],
+            "nodes": [
+              {
+                "publish": true,
+                "clicks": 215,
+                "date": "2026-03-05 15:38:25",
+                "title": "江西软件职业技术大学 2026年专升本招生章程",
+                "id": "n_mmd5o8eg",
+                "createData": 1772696305000
+              },
+              {
+                "publish": true,
+                "clicks": 266,
+                "date": "2026-02-25 15:42:10",
+                "title": "江西软件职业技术大学2026年单独招生章程",
+                "id": "n_mmd5save",
+                "createData": 1772005330000
+              },
+              {
+                "publish": true,
+                "clicks": 210,
+                "date": "2026-02-10 15:39:06",
+                "title": "2026年江西软件职业技术大学退役大学生士兵专升本免试录取考察实施方案",
+                "id": "n_mlgaqsgx",
+                "createData": 1770709146000
+              },
+              {
+                "publish": true,
+                "clicks": 1068,
+                "date": "2025-06-18 16:47:20",
+                "title": "江西软件职业技术大学 2025年招生章程",
+                "id": "n_mc1pwzb9",
+                "createData": 1750236440000
+              },
+              {
+                "publish": true,
+                "clicks": 529,
+                "date": "2025-02-18 16:56:38",
+                "title": "江西软件职业技术大学 2025年专升本招生章程",
+                "id": "n_mc1qcjhh",
+                "createData": 1739868998000
+              },
+              {
+                "publish": true,
+                "clicks": 1472,
+                "date": "2024-06-20 12:20:52",
+                "title": "2024年江西软件职业技术大学招生简章",
+                "id": "n_lytpco03",
+                "createData": 1718857252000
+              },
+              {
+                "publish": true,
+                "clicks": 1116,
+                "date": "2024-05-21 15:25:00",
+                "title": "江西软件职业技术大学 2024年普通招生录取章程",
+                "id": "n_lytpcmm3",
+                "createData": 1716276300000
+              },
+              {
+                "publish": true,
+                "clicks": 2285,
+                "date": "2023-06-01 16:53:00",
+                "title": "江西软件职业技术大学2023年招生章程",
+                "id": "n_lytpcg1z",
+                "createData": 1685609580000
+              },
+              {
+                "publish": true,
+                "clicks": 2045,
+                "date": "2023-03-16 16:19:00",
+                "title": "江西软件职业技术大学2023年普通专升本招生章程",
+                "id": "n_lytpcftn",
+                "createData": 1678954740000
+              },
+              {
+                "publish": true,
+                "clicks": 1581,
+                "date": "2022-05-23 22:11:00",
+                "title": "江西软件职业技术大学2022年普通招生录取章程",
+                "id": "n_lytpck57",
+                "createData": 1653315060000
+              },
+              {
+                "publish": true,
+                "clicks": 1791,
+                "date": "2022-02-28 22:20:00",
+                "title": "江西软件职业技术大学2022年普通专升本招生章程",
+                "id": "n_lytpckon",
+                "createData": 1646058000000
+              },
+              {
+                "publish": true,
+                "clicks": 1637,
+                "date": "2022-02-17 22:26:00",
+                "title": "江西软件职业技术大学2022年退役大学生士兵免试专升本招生章程",
+                "id": "n_lytpcl2j",
+                "createData": 1645107960000
+              },
+              {
+                "publish": true,
+                "clicks": 1691,
+                "date": "2021-04-13 22:22:00",
+                "title": "江西软件职业技术大学2021年普通专升本招生章程",
+                "id": "n_lytpcku7",
+                "createData": 1618323720000
+              }
+            ],
+            "publish": true
+          }
+        ],
+        "nodes": [
+          {
+            "publish": true,
+            "clicks": 204,
+            "date": "2024-06-23 12:12:40",
+            "title": "2024年江西软件职业技术大学招生简章",
+            "id": "n_lytpcnxb",
+            "createData": 1719115960000
+          }
+        ],
+        "publish": true
+      },
+      {
+        "delFlag": 0,
+        "id": "l_lxmla23x",
+        "name": "学校官网",
+        "template": "https://www.jxuspt.com",
+        "nodeTemplate": "",
+        "info": "",
         "children": [],
         "nodes": [],
+        "publish": true
+      },
+      {
+        "delFlag": 0,
+        "id": "l_lxmlafnc",
+        "name": "联系我们",
+        "template": "contactUs",
+        "nodeTemplate": "",
+        "info": "",
+        "children": [],
+        "nodes": [
+          {
+            "publish": true,
+            "clicks": 1536,
+            "date": "2018-01-01 00:00:00",
+            "title": "联系我们",
+            "id": "n_lytpcfa7",
+            "createData": 1514736000000
+          }
+        ],
+        "publish": true
+      },
+      {
+        "delFlag": 0,
+        "id": "l_lxmlans4",
+        "name": "网上报名",
+        "template": "submit_apply",
+        "nodeTemplate": "",
+        "info": "",
+        "children": [],
+        "nodes": [],
+        "publish": true
+      },
+      {
+        "delFlag": 0,
+        "id": "l_lz6pvi0l",
+        "name": "录取查询",
+        "template": "Admission_inquiry",
+        "nodeTemplate": "",
+        "info": "",
+        "children": [
+          {
+            "delFlag": 0,
+            "id": "l_lz6pvqxm",
+            "name": "单招录取查询",
+            "template": "searchAd",
+            "nodeTemplate": "",
+            "info": "",
+            "children": [],
+            "nodes": [
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2025-02-06 10:53:43",
+                "title": "1",
+                "id": "n_m6squ1az",
+                "createData": 1738810423000
+              }
+            ],
+            "publish": true
+          },
+          {
+            "delFlag": 0,
+            "id": "l_lz6pw5ln",
+            "name": "普通高考",
+            "template": "Admission_inquiry",
+            "nodeTemplate": "",
+            "info": "",
+            "children": [],
+            "nodes": [],
+            "publish": true
+          },
+          {
+            "delFlag": 0,
+            "id": "l_m8dtqq6u",
+            "name": "单招职能校考",
+            "template": "search",
+            "nodeTemplate": "",
+            "info": "",
+            "children": [],
+            "nodes": [],
+            "publish": true
+          },
+          {
+            "delFlag": 0,
+            "id": "l_mn2p9rl2",
+            "name": "单招成绩查询",
+            "template": "danzhaoSearch",
+            "nodeTemplate": "",
+            "info": "",
+            "children": [],
+            "nodes": [],
+            "publish": true
+          }
+        ],
+        "nodes": [],
+        "publish": true,
         "cover": {
-          "url": "http://localhost:20829/upload/2026-04-15/1776219435635-ubtrj3w8o8c.jpg",
-          "filename": "下载.jpg",
-          "cover": "http://localhost:20829/upload/2026-04-15/1776219435635-r6koc0nrlon.jpg"
+          "url": "http://localhost:20829/upload/2026-04-20/1776655884779-rl93y73ofhc.png",
+          "filename": "1720166230562.png",
+          "cover": "http://localhost:20829/upload/2026-04-20/1776655884779-8f640z64oys.png"
         }
       }
     ],
@@ -62,31 +2891,1192 @@
       {
         "publish": true,
         "clicks": 0,
-        "date": "2026-04-16 15:40",
-        "title": "我真的不想上厕所",
-        "cover": {
-          "url": "http://localhost:20829/upload/2026-04-16/1776325245591-9llcc793sun.jpg",
-          "filename": "微信图片_20251031113153_66_118.jpg",
-          "cover": "http://localhost:20829/upload/2026-04-16/1776325245592-sjowzv90r5.jpg"
-        },
-        "id": "n_i6jjlizy",
-        "createData": 1776325246972
+        "date": "2026-03-03 09:51:22",
+        "title": "jhbhjbjhbj",
+        "id": "n_mm9ycogu",
+        "createData": 1772502682000
       },
       {
         "publish": true,
         "clicks": 0,
-        "date": "2026-04-07 16:58",
-        "title": "测试asd",
-        "id": "n_hb07ey0h",
-        "createData": 1775552288615,
+        "date": "2026-03-03 09:48:20",
+        "title": "sdasd",
+        "id": "n_mm9y87db",
+        "createData": 1772502500000
+      },
+      {
+        "publish": true,
+        "clicks": 0,
+        "date": "2024-07-31 11:11:51",
+        "title": "hello",
+        "id": "n_lz99tk5b",
+        "createData": 1722395511000
+      },
+      {
+        "publish": true,
+        "clicks": 0,
+        "date": "2024-07-30 15:59:12",
+        "title": "测试",
+        "id": "n_lz84n7l2",
+        "createData": 1722326352000
+      },
+      {
+        "publish": true,
+        "clicks": 0,
+        "date": "2024-07-30 15:07:12",
+        "title": "2312sd",
         "cover": {
-          "url": "http://localhost:20829/upload/2026-04-15/1776219453364-fmks1348cue.png",
-          "filename": "wechat_2025-10-11_143143_406.png",
-          "cover": "http://localhost:20829/upload/2026-04-15/1776219453403-6mi0bnj1blt.png"
+          "url": "http://localhost:20829/upload/img/1722406353786",
+          "filename": "1722406353786",
+          "cover": "http://localhost:20829/upload/img/1722406353786"
         },
-        "top": false
+        "id": "n_lz82smax",
+        "createData": 1722323232000
       }
     ],
+    "publish": true
+  },
+  {
+    "delFlag": 0,
+    "id": "l_lxlhrc1o",
+    "name": "首页轮播图",
+    "template": "",
+    "nodeTemplate": "",
+    "info": "",
+    "children": [],
+    "nodes": [
+      {
+        "publish": true,
+        "clicks": 0,
+        "date": "2024-07-29 16:02:13",
+        "title": "5",
+        "cover": {
+          "url": "http://localhost:20829/upload/img/5.jpg",
+          "filename": "5.jpg",
+          "cover": "http://localhost:20829/upload/img/5.jpg"
+        },
+        "id": "n_lz6pb81u",
+        "createData": 1722240133000
+      },
+      {
+        "publish": true,
+        "clicks": 0,
+        "date": "2024-07-29 16:01:57",
+        "title": "4",
+        "cover": {
+          "url": "http://localhost:20829/upload/img/4.jpg",
+          "filename": "4.jpg",
+          "cover": "http://localhost:20829/upload/img/4.jpg"
+        },
+        "id": "n_lz6paxqp",
+        "createData": 1722240117000
+      },
+      {
+        "publish": true,
+        "clicks": 0,
+        "date": "2024-07-29 16:01:40",
+        "title": "3",
+        "cover": {
+          "url": "http://localhost:20829/upload/img/3.jpg",
+          "filename": "3.jpg",
+          "cover": "http://localhost:20829/upload/img/3.jpg"
+        },
+        "id": "n_lz6paigv",
+        "createData": 1722240100000
+      },
+      {
+        "publish": true,
+        "clicks": 0,
+        "date": "2024-07-29 16:00:00",
+        "title": "2",
+        "cover": {
+          "url": "http://localhost:20829/upload/img/2.jpg",
+          "filename": "2.jpg",
+          "cover": "http://localhost:20829/upload/img/2.jpg"
+        },
+        "id": "n_lz6p8cd9",
+        "createData": 1722240000000
+      },
+      {
+        "publish": true,
+        "clicks": 0,
+        "date": "2024-07-29 15:59:07",
+        "title": "1",
+        "cover": {
+          "url": "http://localhost:20829/upload/img/1.jpg",
+          "filename": "1.jpg",
+          "cover": "http://localhost:20829/upload/img/1.jpg"
+        },
+        "id": "n_lz6p79jz",
+        "createData": 1722239947000
+      }
+    ],
+    "publish": true
+  },
+  {
+    "delFlag": 0,
+    "id": "l_lxmlgvqj",
+    "name": "页面元素",
+    "template": "",
+    "nodeTemplate": "",
+    "info": "",
+    "children": [],
+    "nodes": [
+      {
+        "publish": true,
+        "clicks": 0,
+        "date": "2024-07-30 09:22:48",
+        "title": "招就处公众号",
+        "cover": {
+          "url": "http://localhost:20829/upload/img/1722302580048.jpg",
+          "filename": "1722302580048.jpg",
+          "cover": "http://localhost:20829/upload/img/1722302580048.jpg"
+        },
+        "id": "n_lz7qhkug",
+        "createData": 1722302568000
+      },
+      {
+        "publish": true,
+        "clicks": 0,
+        "date": "2024-07-30 09:22:18",
+        "title": "学校官徽",
+        "cover": {
+          "url": "http://localhost:20829/upload/img/1722302556517.png",
+          "filename": "1722302556517.png",
+          "cover": "http://localhost:20829/upload/img/1722302556517.png"
+        },
+        "id": "n_lz7qh2q4",
+        "createData": 1722302538000
+      },
+      {
+        "publish": true,
+        "clicks": 0,
+        "date": "2024-07-30 09:21:27",
+        "title": "联系电话 ：0791-83792888",
+        "id": "n_lz7qfly5",
+        "createData": 1722302487000
+      },
+      {
+        "publish": true,
+        "clicks": 0,
+        "date": "2024-07-30 09:21:09",
+        "title": "赣公网安备 36010502000014号",
+        "id": "n_lz7qffmy",
+        "createData": 1722302469000
+      },
+      {
+        "publish": true,
+        "clicks": 0,
+        "date": "2024-07-30 09:20:58",
+        "title": "©2020 江西软件职业技术大学版权所有",
+        "id": "n_lz7qf5vu",
+        "createData": 1722302458000
+      },
+      {
+        "publish": true,
+        "clicks": 0,
+        "date": "2024-07-29 16:20:36",
+        "title": "头部logo",
+        "cover": {
+          "url": "http://localhost:20829/upload/img/1722241265992.jpg",
+          "filename": "1722241265992.jpg",
+          "cover": "http://localhost:20829/upload/img/1722241265992.jpg"
+        },
+        "id": "n_lz6pzgj5",
+        "createData": 1722241236000
+      }
+    ],
+    "publish": true
+  },
+  {
+    "delFlag": 0,
+    "id": "l_m18sd4ya",
+    "name": "专业介绍2",
+    "template": "",
+    "nodeTemplate": "",
+    "info": "",
+    "children": [
+      {
+        "delFlag": 0,
+        "id": "l_m18sdqab",
+        "name": "区块链学院",
+        "template": "",
+        "nodeTemplate": "baseArticle",
+        "info": "test",
+        "children": [],
+        "nodes": [
+          {
+            "publish": true,
+            "clicks": 20,
+            "date": "2024-09-19 12:40:07",
+            "title": "本科：金融科技应用",
+            "id": "n_m18sya3s",
+            "createData": 1726720807000
+          },
+          {
+            "publish": true,
+            "clicks": 9,
+            "date": "2024-09-19 12:40:00",
+            "title": "专科：区块链应用技术",
+            "id": "n_m18sy6hr",
+            "createData": 1726720800000
+          },
+          {
+            "publish": true,
+            "clicks": 151,
+            "date": "2024-09-19 12:39:55",
+            "title": "本科：区块链技术",
+            "id": "n_m18sy26p",
+            "createData": 1726720795000
+          }
+        ],
+        "publish": true
+      },
+      {
+        "delFlag": 0,
+        "id": "l_m18sdwad",
+        "name": "井冈山数字经济产业学院",
+        "template": "",
+        "nodeTemplate": "baseArticle",
+        "info": "",
+        "children": [],
+        "nodes": [],
+        "publish": true
+      },
+      {
+        "delFlag": 0,
+        "id": "l_m18se239",
+        "name": "新媒体学院",
+        "template": "",
+        "nodeTemplate": "baseArticle",
+        "info": "",
+        "children": [],
+        "nodes": [
+          {
+            "publish": true,
+            "clicks": 0,
+            "date": "2024-09-19 14:18:37",
+            "title": "专科：影视编导",
+            "id": "n_m18wi7mc",
+            "createData": 1726726717000
+          },
+          {
+            "publish": true,
+            "clicks": 9,
+            "date": "2024-09-19 14:18:31",
+            "title": "专科：数字媒体技术",
+            "id": "n_m18wi2wz",
+            "createData": 1726726711000
+          },
+          {
+            "publish": true,
+            "clicks": 9,
+            "date": "2024-09-19 14:18:27",
+            "title": "本科：影视编导",
+            "id": "n_m18whzi2",
+            "createData": 1726726707000
+          },
+          {
+            "publish": true,
+            "clicks": 24,
+            "date": "2024-09-19 14:17:48",
+            "title": "本科：网络与新媒体",
+            "id": "n_m18whv90",
+            "createData": 1726726668000
+          }
+        ],
+        "publish": true
+      },
+      {
+        "delFlag": 0,
+        "id": "l_m18se7vj",
+        "name": "软件工程学院",
+        "template": "",
+        "nodeTemplate": "baseArticle",
+        "info": "",
+        "children": [],
+        "nodes": [
+          {
+            "publish": true,
+            "clicks": 0,
+            "date": "2024-09-19 14:19:52",
+            "title": "专科：云计算技术应用",
+            "id": "n_m18wjtbt",
+            "createData": 1726726792000
+          },
+          {
+            "publish": true,
+            "clicks": 6,
+            "date": "2024-09-19 14:19:47",
+            "title": "本科：云计算技术",
+            "id": "n_m18wjp6j",
+            "createData": 1726726787000
+          },
+          {
+            "publish": true,
+            "clicks": 0,
+            "date": "2024-09-19 14:19:42",
+            "title": "专科：大数据技术",
+            "id": "n_m18wjlwo",
+            "createData": 1726726782000
+          },
+          {
+            "publish": true,
+            "clicks": 38,
+            "date": "2024-09-19 14:19:32",
+            "title": "本科：软件工程技术",
+            "id": "n_m18wjgas",
+            "createData": 1726726772000
+          },
+          {
+            "publish": true,
+            "clicks": 15,
+            "date": "2024-09-19 14:19:25",
+            "title": "本科：大数据工程技术",
+            "id": "n_m18wjbj4",
+            "createData": 1726726765000
+          }
+        ],
+        "publish": true
+      },
+      {
+        "delFlag": 0,
+        "id": "l_m18sed2p",
+        "name": "智能科技学院",
+        "template": "",
+        "nodeTemplate": "baseArticle",
+        "info": "",
+        "children": [],
+        "nodes": [
+          {
+            "publish": true,
+            "clicks": 5,
+            "date": "2024-09-19 14:21:05",
+            "title": "专科：工业机器人技术",
+            "id": "n_m18wlfmc",
+            "createData": 1726726865000
+          },
+          {
+            "publish": true,
+            "clicks": 0,
+            "date": "2024-09-19 14:20:59",
+            "title": "专科：无人机应用技术",
+            "id": "n_m18wl919",
+            "createData": 1726726859000
+          },
+          {
+            "publish": true,
+            "clicks": 7,
+            "date": "2024-09-19 14:20:53",
+            "title": "专科：人工智能技术应用",
+            "id": "n_m18wl4e1",
+            "createData": 1726726853000
+          },
+          {
+            "publish": true,
+            "clicks": 4,
+            "date": "2024-09-19 14:20:45",
+            "title": "本科：人工智能工程技术",
+            "id": "n_m18wkz2s",
+            "createData": 1726726845000
+          },
+          {
+            "publish": true,
+            "clicks": 7,
+            "date": "2024-09-19 14:20:39",
+            "title": "本科：导航工程技术",
+            "id": "n_m18wku0g",
+            "createData": 1726726839000
+          },
+          {
+            "publish": true,
+            "clicks": 17,
+            "date": "2024-09-19 14:20:26",
+            "title": "本科：智能控制技术",
+            "id": "n_m18wkncc",
+            "createData": 1726726826000
+          }
+        ],
+        "publish": true
+      },
+      {
+        "delFlag": 0,
+        "id": "l_m18selnm",
+        "name": "网络工程学院",
+        "template": "",
+        "nodeTemplate": "baseArticle",
+        "info": "",
+        "children": [],
+        "nodes": [
+          {
+            "publish": true,
+            "clicks": 3,
+            "date": "2024-09-19 14:21:50",
+            "title": "专科：计算机网络技术",
+            "id": "n_m18wmc8i",
+            "createData": 1726726910000
+          },
+          {
+            "publish": true,
+            "clicks": 4,
+            "date": "2024-09-19 14:21:43",
+            "title": "专科：信息安全技术应用",
+            "id": "n_m18wm782",
+            "createData": 1726726903000
+          },
+          {
+            "publish": true,
+            "clicks": 6,
+            "date": "2024-09-19 14:21:37",
+            "title": "本科：现代通信工程",
+            "id": "n_m18wm2zi",
+            "createData": 1726726897000
+          },
+          {
+            "publish": true,
+            "clicks": 8,
+            "date": "2024-09-19 14:21:32",
+            "title": "本科：物联网工程技术",
+            "id": "n_m18wlz1x",
+            "createData": 1726726892000
+          },
+          {
+            "publish": true,
+            "clicks": 6,
+            "date": "2024-09-19 14:21:27",
+            "title": "本科：信息安全与管理",
+            "id": "n_m18wluxr",
+            "createData": 1726726887000
+          },
+          {
+            "publish": true,
+            "clicks": 15,
+            "date": "2024-09-19 14:21:22",
+            "title": "本科：网络工程技术",
+            "id": "n_m18wlqr2",
+            "createData": 1726726882000
+          }
+        ],
+        "publish": true
+      },
+      {
+        "delFlag": 0,
+        "id": "l_m18sevoe",
+        "name": "国际学院",
+        "template": "",
+        "nodeTemplate": "baseArticle",
+        "info": "",
+        "children": [],
+        "nodes": [],
+        "publish": true
+      },
+      {
+        "delFlag": 0,
+        "id": "l_m18sf4c1",
+        "name": "信息技术学院",
+        "template": "",
+        "nodeTemplate": "baseArticle",
+        "info": "",
+        "children": [],
+        "nodes": [
+          {
+            "publish": true,
+            "clicks": 9,
+            "date": "2024-09-19 14:22:09",
+            "title": "专科：软件技术",
+            "id": "n_m18wmt27",
+            "createData": 1726726929000
+          },
+          {
+            "publish": true,
+            "clicks": 3,
+            "date": "2024-09-19 14:22:04",
+            "title": "专科：跨境电子商务",
+            "id": "n_m18wmovp",
+            "createData": 1726726924000
+          }
+        ],
+        "publish": true
+      },
+      {
+        "delFlag": 0,
+        "id": "l_m18sf980",
+        "name": "创新创业学院",
+        "template": "",
+        "nodeTemplate": "baseArticle",
+        "info": "",
+        "children": [],
+        "nodes": [],
+        "publish": true
+      },
+      {
+        "delFlag": 0,
+        "id": "l_m18sfdtp",
+        "name": "经济管理学院",
+        "template": "",
+        "nodeTemplate": "baseArticle",
+        "info": "",
+        "children": [],
+        "nodes": [
+          {
+            "publish": true,
+            "clicks": 7,
+            "date": "2024-09-19 14:28:15",
+            "title": "本科：应用英语",
+            "id": "n_m18wulo4",
+            "createData": 1726727295000
+          },
+          {
+            "publish": true,
+            "clicks": 3,
+            "date": "2024-09-19 14:28:09",
+            "title": "本科：大数据与审计",
+            "id": "n_m18wuh7b",
+            "createData": 1726727289000
+          },
+          {
+            "publish": true,
+            "clicks": 20,
+            "date": "2024-09-19 14:28:04",
+            "title": "本科：大数据与会计",
+            "id": "n_m18wucsl",
+            "createData": 1726727284000
+          },
+          {
+            "publish": true,
+            "clicks": 3,
+            "date": "2024-09-19 14:27:58",
+            "title": "本科：电子商务",
+            "id": "n_m18wu8hg",
+            "createData": 1726727278000
+          },
+          {
+            "publish": true,
+            "clicks": 0,
+            "date": "2024-09-19 14:27:50",
+            "title": "专科：学前教育",
+            "id": "n_m18wu2d8",
+            "createData": 1726727270000
+          },
+          {
+            "publish": true,
+            "clicks": 3,
+            "date": "2024-09-19 14:22:31",
+            "title": "专科：大数据与会计",
+            "id": "n_m18wn80r",
+            "createData": 1726726951000
+          },
+          {
+            "publish": true,
+            "clicks": 0,
+            "date": "2024-09-19 14:22:26",
+            "title": "专科：电子商务",
+            "id": "n_m18wn43r",
+            "createData": 1726726946000
+          }
+        ],
+        "publish": true
+      },
+      {
+        "delFlag": 0,
+        "id": "l_m18sfiat",
+        "name": "继续教育学院",
+        "template": "",
+        "nodeTemplate": "baseArticle",
+        "info": "",
+        "children": [],
+        "nodes": [],
+        "publish": true
+      },
+      {
+        "delFlag": 0,
+        "id": "l_m18sfoux",
+        "name": "VR与艺术学院",
+        "template": "",
+        "nodeTemplate": "baseArticle",
+        "info": "",
+        "children": [],
+        "nodes": [
+          {
+            "publish": true,
+            "clicks": 2,
+            "date": "2024-09-19 14:29:10",
+            "title": "专科：电子竞技运动与管理",
+            "id": "n_m18wvs1q",
+            "createData": 1726727350000
+          },
+          {
+            "publish": true,
+            "clicks": 2,
+            "date": "2024-09-19 14:29:04",
+            "title": "专科：虚拟现实技术应用",
+            "id": "n_m18wvnpj",
+            "createData": 1726727344000
+          },
+          {
+            "publish": true,
+            "clicks": 1,
+            "date": "2024-09-19 14:28:59",
+            "title": "专科：广告艺术设计",
+            "id": "n_m18wvjch",
+            "createData": 1726727339000
+          },
+          {
+            "publish": true,
+            "clicks": 2,
+            "date": "2024-09-19 14:28:53",
+            "title": "专科：动漫制作技术",
+            "id": "n_m18wverb",
+            "createData": 1726727333000
+          },
+          {
+            "publish": true,
+            "clicks": 0,
+            "date": "2024-09-19 14:28:47",
+            "title": "专科：环境艺术设计",
+            "id": "n_m18wvani",
+            "createData": 1726727327000
+          },
+          {
+            "publish": true,
+            "clicks": 2,
+            "date": "2024-09-19 14:28:42",
+            "title": "本科：环境艺术设计",
+            "id": "n_m18wv6az",
+            "createData": 1726727322000
+          },
+          {
+            "publish": true,
+            "clicks": 6,
+            "date": "2024-09-19 14:28:33",
+            "title": "本科：数字媒体艺术",
+            "id": "n_m18wv1eu",
+            "createData": 1726727313000
+          },
+          {
+            "publish": true,
+            "clicks": 16,
+            "date": "2024-09-19 14:28:26",
+            "title": "本科：虚拟现实技术",
+            "id": "n_m18wuu8w",
+            "createData": 1726727306000
+          }
+        ],
+        "publish": true
+      },
+      {
+        "delFlag": 0,
+        "id": "l_m18sftjq",
+        "name": "退役军人教育学院",
+        "template": "",
+        "nodeTemplate": "baseArticle",
+        "info": "",
+        "children": [],
+        "nodes": [],
+        "publish": true
+      }
+    ],
+    "nodes": [],
+    "publish": true
+  },
+  {
+    "delFlag": 0,
+    "id": "l_mbq9zy4j",
+    "name": "2025年专业介绍",
+    "template": "",
+    "nodeTemplate": "",
+    "info": "",
+    "children": [
+      {
+        "delFlag": 0,
+        "id": "l_mbqaosiu",
+        "name": "井冈山校区",
+        "template": "",
+        "nodeTemplate": "",
+        "info": "",
+        "children": [
+          {
+            "delFlag": 0,
+            "id": "l_mbqaptj7",
+            "name": "本科",
+            "template": "",
+            "nodeTemplate": "",
+            "info": "",
+            "children": [
+              {
+                "delFlag": 0,
+                "id": "l_mbqax0hb",
+                "name": "区块链学院",
+                "template": "",
+                "nodeTemplate": "baseArticle",
+                "info": "",
+                "children": [],
+                "nodes": [
+                  {
+                    "publish": true,
+                    "clicks": 135,
+                    "date": "2025-06-10 17:32:04",
+                    "title": "本科：金融科技应用",
+                    "id": "n_mbqbo8u9",
+                    "createData": 1749547924000
+                  },
+                  {
+                    "publish": true,
+                    "clicks": 316,
+                    "date": "2025-06-10 17:31:46",
+                    "title": "本科：区块链技术",
+                    "id": "n_mbqbnloo",
+                    "createData": 1749547906000
+                  }
+                ],
+                "publish": true
+              },
+              {
+                "delFlag": 0,
+                "id": "l_mbqaxj3d",
+                "name": "体育与人文学院",
+                "template": "",
+                "nodeTemplate": "baseArticle",
+                "info": "",
+                "children": [],
+                "nodes": [
+                  {
+                    "publish": true,
+                    "clicks": 94,
+                    "date": "2025-06-10 17:33:44",
+                    "title": "本科：环境艺术设计",
+                    "id": "n_mbqbqd87",
+                    "createData": 1749548024000
+                  },
+                  {
+                    "publish": true,
+                    "clicks": 78,
+                    "date": "2025-06-10 17:33:01",
+                    "title": "本科：应用英语",
+                    "id": "n_mbqbpgwv",
+                    "createData": 1749547981000
+                  }
+                ],
+                "publish": true
+              },
+              {
+                "delFlag": 0,
+                "id": "l_mbqaxscd",
+                "name": "人工智能学院",
+                "template": "",
+                "nodeTemplate": "baseArticle",
+                "info": "",
+                "children": [],
+                "nodes": [
+                  {
+                    "publish": true,
+                    "clicks": 89,
+                    "date": "2025-06-10 17:36:39",
+                    "title": "本科：物联网工程技术",
+                    "id": "n_mbqbu42c",
+                    "createData": 1749548199000
+                  },
+                  {
+                    "publish": true,
+                    "clicks": 152,
+                    "date": "2025-06-10 17:36:17",
+                    "title": "本科：人工智能工程技术",
+                    "id": "n_mbqbtgsd",
+                    "createData": 1749548177000
+                  },
+                  {
+                    "publish": true,
+                    "clicks": 83,
+                    "date": "2025-06-10 17:35:16",
+                    "title": "本科：导航工程技术",
+                    "id": "n_mbqbsfvx",
+                    "createData": 1749548116000
+                  },
+                  {
+                    "publish": true,
+                    "clicks": 135,
+                    "date": "2025-06-10 17:35:03",
+                    "title": "本科：大数据工程技术",
+                    "id": "n_mbqbrpkc",
+                    "createData": 1749548103000
+                  }
+                ],
+                "publish": true
+              }
+            ],
+            "nodes": [],
+            "publish": true
+          },
+          {
+            "delFlag": 0,
+            "id": "l_mbqaqf7h",
+            "name": "专科",
+            "template": "",
+            "nodeTemplate": "baseArticle",
+            "info": "",
+            "children": [],
+            "nodes": [
+              {
+                "publish": true,
+                "clicks": 19,
+                "date": "2025-06-10 17:42:58",
+                "title": "专科：移动应用开发",
+                "id": "n_mbqc1uf2",
+                "createData": 1749548578000
+              },
+              {
+                "publish": true,
+                "clicks": 11,
+                "date": "2025-06-10 17:42:40",
+                "title": "专科：网络营销与直播电商",
+                "id": "n_mbqc1lv6",
+                "createData": 1749548560000
+              },
+              {
+                "publish": true,
+                "clicks": 72,
+                "date": "2025-06-10 17:42:29",
+                "title": "专科：机电一体化技术",
+                "id": "n_mbqc18lz",
+                "createData": 1749548549000
+              },
+              {
+                "publish": true,
+                "clicks": 51,
+                "date": "2025-06-10 17:42:13",
+                "title": "专科：人工智能技术应用",
+                "id": "n_mbqc0zj6",
+                "createData": 1749548533000
+              },
+              {
+                "publish": true,
+                "clicks": 73,
+                "date": "2025-06-10 17:42:03",
+                "title": "专科：无人机应用技术",
+                "id": "n_mbqc0nup",
+                "createData": 1749548523000
+              },
+              {
+                "publish": true,
+                "clicks": 71,
+                "date": "2025-06-10 17:41:47",
+                "title": "专科：工业机器人技术",
+                "id": "n_mbqc0for",
+                "createData": 1749548507000
+              },
+              {
+                "publish": true,
+                "clicks": 65,
+                "date": "2025-06-10 17:41:31",
+                "title": "专科：数字媒体技术",
+                "id": "n_mbqc02i7",
+                "createData": 1749548491000
+              },
+              {
+                "publish": true,
+                "clicks": 31,
+                "date": "2025-06-10 17:41:17",
+                "title": "专科：区块链技术应用",
+                "id": "n_mbqbzqp9",
+                "createData": 1749548477000
+              },
+              {
+                "publish": true,
+                "clicks": 42,
+                "date": "2025-06-10 17:41:01",
+                "title": "专科：电子竞技运动与管理",
+                "id": "n_mbqbzfua",
+                "createData": 1749548461000
+              },
+              {
+                "publish": true,
+                "clicks": 28,
+                "date": "2025-06-10 17:40:50",
+                "title": "专科：环境艺术设计",
+                "id": "n_mbqbz3zz",
+                "createData": 1749548450000
+              },
+              {
+                "publish": true,
+                "clicks": 56,
+                "date": "2025-06-10 17:40:36",
+                "title": "专科：虚拟现实技术应用",
+                "id": "n_mbqbyv53",
+                "createData": 1749548436000
+              },
+              {
+                "publish": true,
+                "clicks": 50,
+                "date": "2025-06-10 17:40:21",
+                "title": "专科：跨境电子商务",
+                "id": "n_mbqbykog",
+                "createData": 1749548421000
+              },
+              {
+                "publish": true,
+                "clicks": 171,
+                "date": "2025-06-10 17:40:08",
+                "title": "专科：软件技术",
+                "id": "n_mbqby86c",
+                "createData": 1749548408000
+              },
+              {
+                "publish": true,
+                "clicks": 62,
+                "date": "2025-06-10 17:39:54",
+                "title": "专科：信息安全技术应用",
+                "id": "n_mbqbxyh4",
+                "createData": 1749548394000
+              },
+              {
+                "publish": true,
+                "clicks": 62,
+                "date": "2025-06-10 17:39:43",
+                "title": "专科：计算机网络技术",
+                "id": "n_mbqbxo8v",
+                "createData": 1749548383000
+              },
+              {
+                "publish": true,
+                "clicks": 49,
+                "date": "2025-06-10 17:39:25",
+                "title": "专科：工业软件开发技术",
+                "id": "n_mbqbxf6w",
+                "createData": 1749548365000
+              },
+              {
+                "publish": true,
+                "clicks": 48,
+                "date": "2025-06-10 17:38:58",
+                "title": "专科：云计算技术应用",
+                "id": "n_mbqbwusf",
+                "createData": 1749548338000
+              },
+              {
+                "publish": true,
+                "clicks": 85,
+                "date": "2025-06-10 17:38:10",
+                "title": "专科：大数据技术",
+                "id": "n_mbqbvyun",
+                "createData": 1749548290000
+              }
+            ],
+            "publish": true
+          }
+        ],
+        "nodes": [],
+        "publish": true
+      },
+      {
+        "delFlag": 0,
+        "id": "l_mbqaphl0",
+        "name": "南昌校区",
+        "template": "",
+        "nodeTemplate": "",
+        "info": "",
+        "children": [
+          {
+            "delFlag": 0,
+            "id": "l_mbqaqmyz",
+            "name": "本科",
+            "template": "",
+            "nodeTemplate": "",
+            "info": "",
+            "children": [
+              {
+                "delFlag": 0,
+                "id": "l_mbqb8kmq",
+                "name": "软件工程学院",
+                "template": "",
+                "nodeTemplate": "baseArticle",
+                "info": "",
+                "children": [],
+                "nodes": [
+                  {
+                    "publish": true,
+                    "clicks": 90,
+                    "date": "2025-06-10 17:58:21",
+                    "title": "本科：云计算技术",
+                    "id": "n_mbqclmnm",
+                    "createData": 1749549501000
+                  },
+                  {
+                    "publish": true,
+                    "clicks": 205,
+                    "date": "2025-06-10 17:58:01",
+                    "title": "本科：软件工程技术",
+                    "id": "n_mbqcleqb",
+                    "createData": 1749549481000
+                  }
+                ],
+                "publish": true
+              },
+              {
+                "delFlag": 0,
+                "id": "l_mbqb8ueb",
+                "name": "网络工程学院",
+                "template": "",
+                "nodeTemplate": "baseArticle",
+                "info": "",
+                "children": [],
+                "nodes": [
+                  {
+                    "publish": true,
+                    "clicks": 103,
+                    "date": "2025-06-10 17:59:22",
+                    "title": "本科：现代通信工程",
+                    "id": "n_mbqcn54k",
+                    "createData": 1749549562000
+                  },
+                  {
+                    "publish": true,
+                    "clicks": 111,
+                    "date": "2025-06-10 17:59:05",
+                    "title": "本科：信息安全与管理",
+                    "id": "n_mbqcmpe0",
+                    "createData": 1749549545000
+                  },
+                  {
+                    "publish": true,
+                    "clicks": 120,
+                    "date": "2025-06-10 17:58:48",
+                    "title": "本科：网络工程技术",
+                    "id": "n_mbqcmc3d",
+                    "createData": 1749549528000
+                  }
+                ],
+                "publish": true
+              },
+              {
+                "delFlag": 0,
+                "id": "l_mbqb91be",
+                "name": "经济管理学院",
+                "template": "",
+                "nodeTemplate": "baseArticle",
+                "info": "",
+                "children": [],
+                "nodes": [
+                  {
+                    "publish": true,
+                    "clicks": 71,
+                    "date": "2025-06-10 18:00:32",
+                    "title": "本科：电子商务",
+                    "id": "n_mbqcofad",
+                    "createData": 1749549632000
+                  },
+                  {
+                    "publish": true,
+                    "clicks": 97,
+                    "date": "2025-06-10 18:00:21",
+                    "title": "本科：大数据与审计",
+                    "id": "n_mbqco7lr",
+                    "createData": 1749549621000
+                  },
+                  {
+                    "publish": true,
+                    "clicks": 155,
+                    "date": "2025-06-10 18:00:07",
+                    "title": "本科：大数据与会计",
+                    "id": "n_mbqcnz9m",
+                    "createData": 1749549607000
+                  }
+                ],
+                "publish": true
+              },
+              {
+                "delFlag": 0,
+                "id": "l_mbqbarfz",
+                "name": "VR与艺术学院",
+                "template": "",
+                "nodeTemplate": "baseArticle",
+                "info": "",
+                "children": [],
+                "nodes": [
+                  {
+                    "publish": true,
+                    "clicks": 77,
+                    "date": "2025-06-10 18:01:15",
+                    "title": "本科：数字媒体艺术",
+                    "id": "n_mbqcpe1s",
+                    "createData": 1749549675000
+                  },
+                  {
+                    "publish": true,
+                    "clicks": 82,
+                    "date": "2025-06-10 18:00:59",
+                    "title": "本科：虚拟现实技术",
+                    "id": "n_mbqcp4ax",
+                    "createData": 1749549659000
+                  }
+                ],
+                "publish": true
+              },
+              {
+                "delFlag": 0,
+                "id": "l_mbqbawxm",
+                "name": "新媒体学院",
+                "template": "",
+                "nodeTemplate": "baseArticle",
+                "info": "",
+                "children": [],
+                "nodes": [
+                  {
+                    "publish": true,
+                    "clicks": 59,
+                    "date": "2025-06-10 18:02:07",
+                    "title": "本科：影视编导",
+                    "id": "n_mbqcqm3a",
+                    "createData": 1749549727000
+                  },
+                  {
+                    "publish": true,
+                    "clicks": 101,
+                    "date": "2025-06-10 18:01:41",
+                    "title": "本科：网络与新媒体",
+                    "id": "n_mbqcq87c",
+                    "createData": 1749549701000
+                  }
+                ],
+                "publish": true
+              },
+              {
+                "delFlag": 0,
+                "id": "l_mbqbb2rc",
+                "name": "智能科技学院",
+                "template": "",
+                "nodeTemplate": "baseArticle",
+                "info": "",
+                "children": [],
+                "nodes": [
+                  {
+                    "publish": true,
+                    "clicks": 91,
+                    "date": "2025-06-10 18:02:57",
+                    "title": "本科：智能制造工程技术",
+                    "id": "n_mbqcrles",
+                    "createData": 1749549777000
+                  },
+                  {
+                    "publish": true,
+                    "clicks": 127,
+                    "date": "2025-06-10 18:02:46",
+                    "title": "本科：智能控制技术",
+                    "id": "n_mbqcrb7n",
+                    "createData": 1749549766000
+                  }
+                ],
+                "publish": true
+              }
+            ],
+            "nodes": [],
+            "publish": true
+          }
+        ],
+        "nodes": [],
+        "publish": true
+      }
+    ],
+    "nodes": [],
     "publish": true
   }
 ]

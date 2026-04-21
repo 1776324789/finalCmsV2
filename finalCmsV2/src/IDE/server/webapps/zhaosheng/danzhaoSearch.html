@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>2026年江西省单独招生考试校考成绩查询</title>
+
+    <style>
+        .main {
+
+            width: calc(100% - 20px);
+            max-width: 500px;
+            margin: auto;
+            margin-top: 150px;
+            transition: 0.3s margin-top;
+            padding: 10px;
+            height: calc(100vh - 35px);
+            overflow: auto;
+        }
+
+        .bgi {
+
+            width: 100%;
+            height: 500px;
+            margin-bottom: -500px;
+            background: linear-gradient(to bottom, #762796, #fff);
+        }
+
+        body,
+        html {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        .line {
+            margin-bottom: 15px;
+            background-color: #762796;
+            display: flex;
+            padding: 1px;
+        }
+
+        .label {
+            text-align: right;
+            width: 110px;
+            height: 30px;
+            line-height: 32px;
+            font-size: 14px;
+            color: #ffffff;
+            font-weight: bold;
+            text-indent: 10px;
+        }
+
+        .input {
+            border-radius: 3px;
+            font-size: 16px;
+            outline: none;
+            text-indent: 10px;
+            border: 0;
+            height: 30px;
+            flex: 1;
+        }
+
+        .title {
+            color: #fff;
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .button {
+            height: 40px;
+            font-size: 16px;
+            width: 50%;
+            margin-left: 25%;
+            border: 0;
+            border-radius: 20px;
+            color: #fff;
+            margin-top: 10px;
+            background-color: #762796;
+        }
+
+        .bgb {
+            z-index: -1;
+            position: absolute;
+            bottom: 0;
+            max-width: 500px;
+        }
+
+        .infoMain {
+            display: none;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            margin-left: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            margin-top: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 5px #c9c9c9;
+            width: calc(100% - 40px);
+            border: 1px solid #c9c9c9;
+        }
+
+        .infoBlock {
+            padding-left: 20px;
+            padding-right: 20px;
+            display: flex;
+            height: 35px;
+            line-height: 35px;
+        }
+
+        .infoLabel::after {
+            content: "：";
+
+        }
+
+        .infoLabel {
+            text-align: right;
+            font-size: 15px;
+            color: #333333;
+            font-weight: bold;
+            min-width: 120px;
+        }
+
+        .info {
+            flex: 1;
+            line-height: 38px;
+            font-size: 14px;
+            color: #444444;
+        }
+
+        .warn {
+            display: none;
+            padding: 10px;
+            margin-left: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            margin-top: 15px;
+            overflow: hidden;
+            box-shadow: 0 0 5px #c9c9c9;
+            width: calc(100% - 60px);
+            border: 1px solid #c9c9c9;
+        }
+
+        p {
+            text-indent: 30px;
+            font-size: 14px;
+            line-height: 20px;
+        }
+
+        .warnTitle {
+            text-align: center;
+            font-size: 16px;
+            line-height: 30px;
+            height: 30px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .empty {
+            margin-top: 15px;
+            text-align: center;
+            color: #444444;
+            opacity: 0;
+        }
+    </style>
+    <link href="css/MoonIcon/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <cms-component data="l_lxlhqx1y">head</cms-component>
+    <div class="bgi"></div>
+    <div class="main" id="main">
+        <div class="title">2026年江西省单独招生考试校考成绩查询</div>
+        <div class="line">
+            <div class="label">准考证号：</div>
+            <input value="" type="text" class="input" placeholder="请输入准考证号" id="id">
+        </div>
+        <div class="line">
+            <div class="label">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</div>
+            <input value="" type="text" class="input" placeholder="请输入姓名" id="name">
+        </div>
+
+        <div>
+            <button class="button" onclick="search()" id="searchButton">查询</button>
+        </div>
+        <div class="infoMain" id="infoBlock">
+            <div class="infoBlock">
+                <div class="infoLabel">准考证号</div>
+                <div class="info" id="stuCode"></div>
+            </div>
+            <div class="infoBlock" style="background-color: rgba(236, 236, 236, 0.616);">
+                <div class="infoLabel">
+                    姓名
+                </div>
+                <div class="info" id="name1"></div>
+            </div>
+
+            <div class="infoBlock">
+                <div class="infoLabel">信息技术应用</div>
+                <div class="info" id="score1"></div>
+            </div>
+            <div class="infoBlock"style="background-color: rgba(236, 236, 236, 0.616);">
+                <div class="infoLabel">思想政治素质</div>
+                <div class="info" id="score2"></div>
+            </div>
+             <div class="infoBlock">
+                <div class="infoLabel">职业适应性</div>
+                <div class="info" id="score3"></div>
+            </div>
+            <div class="infoBlock"style="background-color: rgba(236, 236, 236, 0.616);">
+                <div class="infoLabel">总分</div>
+                <div class="info" id="total"></div>
+            </div>
+            <div class="infoBlock" id="attendBlock">
+                <div class="infoLabel">备注</div>
+                <div class="info" >缺考</div>
+            </div>
+          <div class="infoBlock">
+                <div class="info">如对成绩有疑义，请联系学校招生办</div>
+            </div>
+        </div>
+  		
+            <div  style="text-align:center;width:100%;font-size:14px;color:#666;margin-top:20px;">招生办电话：0791-83792888，0791-83792998 </div>
+        <div class="warn empty" style="display: block;" id="empty">未查询到结果</div>
+        <img src="./img/bgi.png" class="bgb">
+    </div>
+    <cms-component>foot</cms-component>
+</body>
+
+</html>
+<script>
+ 
+
+async function search() {
+    const id = document.getElementById("id").value;
+    const name = document.getElementById("name").value;
+
+    const fileName = await hashSHA256(id + name);
+document.getElementById("searchButton").innerText="正在查询..."
+    const res = await fetch(`https://zhaosheng.jxuspt.com/data/upload/file/danzhao/${fileName}`);
+document.getElementById("searchButton").innerText="查询"
+    if (!res.ok) {
+alert("未查询到相关信息，请确认输入内容后重新查询。")
+        console.error("请求失败");
+        return;
+    }
+
+    const text = await res.text();  // ⭐ 关键
+
+    const deText=await decrypt(text,id)
+const data=JSON.parse(deText)
+showResult(data)
+
+}
+function showResult(data){
+    
+document.getElementById("infoBlock").style.display="block"
+document.getElementById("name1").innerText=data.name
+document.getElementById("stuCode").innerText=data.id
+document.getElementById("score1").innerText=data.score_1
+document.getElementById("score2").innerText=data.score_2
+document.getElementById("score3").innerText=data.score_3
+document.getElementById("total").innerText=data.total
+if(data.total==0)
+    document.getElementById("attendBlock").style.display="flex"
+else 
+document.getElementById("attendBlock").style.display="none"
+}
+// 工具函数：把字符串转为 Uint8Array
+function strToUint8(str) {
+    return new TextEncoder().encode(str);
+}
+
+// 工具函数：转回字符串
+function uint8ToStr(buf) {
+    return new TextDecoder().decode(buf);
+}
+
+// 从密码生成 key
+async function getKey(password) {
+    const keyMaterial = await crypto.subtle.importKey(
+        "raw",
+        strToUint8(password),
+        { name: "PBKDF2" },
+        false,
+        ["deriveKey"]
+    );
+
+    return crypto.subtle.deriveKey(
+        {
+            name: "PBKDF2",
+            salt: strToUint8("salt123"), // 可以自定义
+            iterations: 100000,
+            hash: "SHA-256",
+        },
+        keyMaterial,
+        { name: "AES-GCM", length: 256 },
+        false,
+        ["encrypt", "decrypt"]
+    );
+}
+
+// 加密
+async function encrypt(text, password) {
+    const iv = crypto.getRandomValues(new Uint8Array(12)); // 随机IV
+    const key = await getKey(password);
+
+    const encrypted = await crypto.subtle.encrypt(
+        { name: "AES-GCM", iv },
+        key,
+        strToUint8(text)
+    );
+
+    // 拼接 iv + 密文
+    const result = new Uint8Array(iv.length + encrypted.byteLength);
+    result.set(iv, 0);
+    result.set(new Uint8Array(encrypted), iv.length);
+
+    return btoa(String.fromCharCode(...result)); // Base64
+}
+
+// 解密
+async function decrypt(base64, password) {
+    const data = Uint8Array.from(atob(base64), c => c.charCodeAt(0));
+
+    const iv = data.slice(0, 12);
+    const encrypted = data.slice(12);
+
+    const key = await getKey(password);
+
+    const decrypted = await crypto.subtle.decrypt(
+        { name: "AES-GCM", iv },
+        key,
+        encrypted
+    );
+
+    return uint8ToStr(decrypted);
+}
+
+
+
+async function hashSHA256(text) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(text);
+
+    const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+
+    // 转成 hex 字符串
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray
+        .map(b => b.toString(16).padStart(2, "0"))
+        .join("");
+
+    return hashHex;
+}
+
+
+</script>

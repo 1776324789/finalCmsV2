@@ -1,0 +1,159 @@
+.main {
+
+    width: calc(100% - 20px);
+    max-width: 500px;
+    margin: auto;
+    margin-top: 150px;
+    transition: 0.3s margin-top;
+    padding: 10px;
+    height: calc(100vh - 35px);
+    overflow: auto;
+}
+
+.bgi {
+
+    width: 100%;
+    height: 500px;
+    margin-bottom: -500px;
+    background: linear-gradient(to bottom, #762796, #fff);
+}
+
+body,
+html {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+.line {
+    margin-bottom: 15px;
+    background-color: #762796;
+    display: flex;
+    padding: 1px;
+}
+
+.label {
+    text-align: right;
+    width: 110px;
+    height: 30px;
+    line-height: 32px;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: bold;
+    text-indent: 10px;
+}
+
+.input {
+    border-radius: 3px;
+    font-size: 16px;
+    outline: none;
+    text-indent: 10px;
+    border: 0;
+    height: 30px;
+    flex: 1;
+}
+
+.title {
+    color: #fff;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.button {
+    height: 40px;
+    font-size: 16px;
+    width: 50%;
+    margin-left: 25%;
+    border: 0;
+    border-radius: 20px;
+    color: #fff;
+    margin-top: 10px;
+    background-color: #762796;
+}
+
+.bgb {
+    z-index: -1;
+    position: absolute;
+    bottom: 0;
+    max-width: 500px;
+}
+
+.infoMain {
+    display: none;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-left: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 5px #c9c9c9;
+    width: calc(100% - 40px);
+    border: 1px solid #c9c9c9;
+}
+
+.infoBlock {
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    height: 35px;
+    line-height: 35px;
+}
+
+.infoLabel::after {
+    content: "：";
+
+}
+
+.infoLabel {
+    text-align: right;
+    font-size: 15px;
+    color: #333333;
+    font-weight: bold;
+    min-width: 80px;
+}
+
+.info {
+    flex: 1;
+    line-height: 38px;
+    font-size: 14px;
+    color: #444444;
+}
+
+.warn {
+    display: none;
+    padding: 10px;
+    margin-left: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin-top: 15px;
+    overflow: hidden;
+    box-shadow: 0 0 5px #c9c9c9;
+    width: calc(100% - 60px);
+    border: 1px solid #c9c9c9;
+}
+
+p {
+    text-indent: 30px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.warnTitle {
+    text-align: center;
+    font-size: 16px;
+    line-height: 30px;
+    height: 30px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.empty {
+    margin-top: 15px;
+    text-align: center;
+    color: #444444;
+    opacity: 0;
+}

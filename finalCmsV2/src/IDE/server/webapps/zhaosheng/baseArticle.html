@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <cms-title></cms-title>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <cms-component data="l_lxlhqx1y">head</cms-component>
+    <cms-node class="articleBody" pagetitle>
+        <style>
+            @media screen and (min-width: 800px) {
+                .bread {
+                    margin-top: 25px;
+                    margin-bottom: 20px;
+                    display: flex;
+                    font-size: 15px;
+                    padding-bottom: 5px;
+                    color: #772f91;
+                }
+
+                .bread .content {
+                    cursor: pointer;
+                    font-weight: bold;
+                }
+
+                .bread .content:hover {
+                    opacity: 0.75;
+                }
+
+                .articleBody {
+                    width: 1000px;
+                    display: flex;
+                    flex-direction: column;
+                    margin-left: calc((100% - 1000px)/2);
+                }
+
+                .articleBody {
+                    width: 1000px;
+                    display: flex;
+                    flex-direction: column;
+                    margin-left: calc((100% - 1000px)/2);
+                }
+
+                .articleTitle {
+                    height: 50px;
+                    line-height: 50px;
+                    font-size: 25px;
+                    color: #772f91;
+                    font-weight: bold;
+                    text-align: center;
+                }
+
+                .bottomArticleSwitcher {
+                    display: flex;
+                    flex-direction: column;
+                    border-top: 1px solid #e3e3e3;
+                    padding-top: 15px;
+                }
+
+                .bottomArticleSwitcher .switchButton {
+                    display: flex;
+                    font-size: 16px;
+                    height: 30px;
+                    line-height: 30px;
+                    margin-bottom: 15px;
+                }
+
+                .bottomArticleSwitcher .switchButton .label {
+                    font-size: 14px;
+                    font-weight: bold;
+                    color: #777777;
+                    margin-right: 5px;
+                }
+
+                .bottomArticleSwitcher .switchButton .label:after {
+                    content: "：";
+                }
+
+                .bottomArticleSwitcher .switchButton .articleName {
+                    color: #772f91;
+                    cursor: pointer;
+                }
+
+                .bottomArticleSwitcher .switchButton .articleName:hover {
+                    opacity: 0.75;
+                }
+            }
+
+            @media screen and (max-width: 800px) {
+                .bread {
+                    margin-left: 20px;
+                    margin-top: 25px;
+                    margin-bottom: 20px;
+                    display: flex;
+                    font-size: 15px;
+                    padding-bottom: 5px;
+                    color: #772f91;
+                }
+
+                .bread .content {
+                    cursor: pointer;
+                    font-weight: bold;
+                }
+
+                .bread .content:hover {
+                    opacity: 0.75;
+                }
+
+                .articleBody {
+                    width: 100vw;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .articleBody {
+                    width: 100vw;
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .articleTitle {
+                    height: 50px;
+                    line-height: 50px;
+                    font-size: 25px;
+                    color: #772f91;
+                    font-weight: bold;
+                    text-align: center;
+                }
+
+                .bottomArticleSwitcher {
+                    display: flex;
+                    flex-direction: column;
+                    border-top: 1px solid #e3e3e3;
+                    padding-top: 15px;
+                    margin-left: 20px;
+                }
+
+                .bottomArticleSwitcher .switchButton {
+                    display: flex;
+                    font-size: 16px;
+                    height: 30px;
+                    line-height: 30px;
+                    margin-bottom: 15px;
+                }
+
+                .bottomArticleSwitcher .switchButton .label {
+                    font-size: 14px;
+                    font-weight: bold;
+                    color: #777777;
+                    margin-right: 5px;
+                }
+
+                .bottomArticleSwitcher .switchButton .label:after {
+                    content: "：";
+                }
+
+                .bottomArticleSwitcher .switchButton .articleName {
+                    color: #772f91;
+                    cursor: pointer;
+                }
+
+                .bottomArticleSwitcher .switchButton .articleName:hover {
+                    opacity: 0.75;
+                }
+
+                .contentBlock {
+                    width: calc(100vw - 40px);
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+
+                .contentBlock img,
+                p {
+                    width: 100% !important;
+                    height: auto !important;
+                    text-indent: 0 !important;
+
+                }
+            }
+        </style>
+        </style>
+        <cms-node class="bread">
+            <div class="content" onclick="window.location.href=BaseURL+'/index.html'"> 首页</div>
+            >&nbsp;&nbsp;<node-parent>
+                <list-template>
+                    <list-name class="content"></list-name>
+                </list-template>
+            </node-parent>
+        </cms-node>
+        <node-title class="articleTitle"></node-title>
+        <div style="text-align: center;color: #666666;">
+            <node-date class="articleDate" format="YYYY-MM-DD" style="margin-right: 15px;"></node-date>
+            阅读次数：<node-clicks class="articleDate"></node-clicks>
+        </div>
+        <node-note></node-note>
+        <node-content class="contentBlock"></node-content>
+        <div class="bottomArticleSwitcher">
+            <div class="switchButton">
+                <div class="label">上一篇</div>
+                <node-prev class="articleName"></node-prev>
+            </div>
+            <div class="switchButton">
+                <div class="label">下一篇</div>
+                <node-next class="articleName"></node-next>
+            </div>
+        </div>
+    </cms-node>
+    <cms-component>foot</cms-component>
+</body>
+
+</html>

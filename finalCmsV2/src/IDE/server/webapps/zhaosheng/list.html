@@ -8,6 +8,28 @@
 </head>
 
 <body>
-    <cms-component>head</cms-component>
+    <cms-component data="l_lxlhqx1y">head</cms-component>
+    <cms-list dev="list3">
+        {{cover}}
+        <div v-for="item in node">
+            <div @click="to(item.id)">
+
+                {{item.title}}
+            </div>
+        </div>
+    </cms-list>
+    <cms-component>foot</cms-component>
 </body>
+
+
 </html>
+<script>
+    let map = new Map()
+    map.set("a", 1)
+    map.set("b", 2)
+    map.set("c", 3)
+    //console.log(map)
+    Array.from(map).forEach(item => {
+        //console.log(item[1])
+    })
+</script>

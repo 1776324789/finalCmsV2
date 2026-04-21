@@ -99,7 +99,23 @@
     function initBaseStyle() {
         const style = document.createElement('style')
         style.textContent = `
-            cms-component, cms-list, list-list, list-node, cms-node {display: block;}
+            node-title,
+            node-prev,
+            node-next,
+            node-cover,
+            node-date,
+            node-content, 
+            cms-component, 
+            cms-list, 
+            cms-node, 
+            list-list, 
+            list-name, 
+            list-cover, 
+            list-note, 
+            list-node, 
+            list-template, 
+            cms-slider, 
+            cms-search-result, list-pagination {display: block;}
             cms-pagination .a-page-info-block{display:flex;}
             cms-pagination .a-page-info-block .cmsInput {height: 26px;text-align: center;border-radius: 3px;border: 1px solid #d0d0d0;width: 50px;margin-right: 10px;}
             cms-pagination .a-page-info-block select {height: 30px;border-radius: 3px;border: 1px solid #d0d0d0;width: 50px;margin-right: 10px;}
@@ -326,11 +342,26 @@
                 dataId = urlDataId
             }
 
+
+            let cmsComponentId = this.getCmsComponentId(this.parentNode)
+            if (cmsComponentId != null) {
+                dataId = cmsComponentId
+            }
             // 从元素属性中获取 data 属性
             if (this.getAttribute("data") != null) {
                 dataId = this.getAttribute("data")
             }
             return dataId
+        }
+
+        getCmsComponentId(parent) {
+            if (parent == null) return null
+            if (parent.tagName == "BODY" || parent.tagName == "CMS-LIST") return null
+            if (parent.tagName != "CMS-COMPONENT") {
+                return this.getCmsComponentId(parent.parentNode)
+            } else if (parent.tagName == "CMS-COMPONENT") {
+                return parent.getAttribute("data")
+            }
         }
 
         /**
@@ -349,8 +380,24 @@
         _render() {
             if (this._data == null) return
             this.render()
+            this._initBaseAttributes()
         }
 
+        _initBaseAttributes() {
+            if (this.getAttribute("pagetitle") != null) {
+                document.title = this.data.name || this.data.title
+            }
+
+
+            if (this.getAttribute("focus:class") != null) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const urlDataId = urlParams.get('dataId');
+                if (this.data.id == urlDataId) {
+                    this.classList.add(this.getAttribute("focus:class"))
+                }
+
+            }
+        }
         /**
          * 获取数据
          * @returns {Object} 数据对象
@@ -408,6 +455,7 @@
                 // 克隆元素并设置数据
                 this.data.children.forEach(item => {
                     const cloneElement = child.cloneNode(true)
+                    cloneElement.dataId = item.id
                     child.parentNode.insertBefore(cloneElement, child)
                     cloneElement.data = item
                 })
@@ -416,7 +464,7 @@
             })
 
             // 处理 LIST-NODE 元素
-            findScopedElements(this, "LIST-NODE", ["CMS-LIST", "LIST-LIST", "LIST-NODE", "LIST-PARENT"]).forEach(child => {
+            findScopedElements(this, "LIST-NODE", ["CMS-LIST", "LIST-LIST", "LIST-PARENT", "NODE-PARENT"]).forEach(child => {
                 if (this.data.nodes == null) return
                 const nodeElement = []
                 const targetParentNode = child.parentNode
@@ -443,7 +491,7 @@
                 child.parentNode.removeChild(child)
             })
             // 处理 LIST-PARENT 元素
-            findScopedElements(this, "LIST-PARENT", ["CMS-LIST", "LIST-LIST", "LIST-PARENT"]).forEach(child => {
+            findScopedElements(this, "LIST-PARENT", ["CMS-LIST", "LIST-LIST", "LIST-PARENT", "NODE-PARENT"]).forEach(child => {
                 child.data = this.data.parent
             })
         }
@@ -814,7 +862,10 @@
      * 列表列表元素类
      * CmsList 的子类
      */
-    class ListList extends CmsList { constructor() { super() } }
+    class ListList extends CmsList {
+        constructor() { super() }
+        connectedCallback() { }
+    }
 
     /**
      * 列表名称元素类
@@ -861,7 +912,6 @@
     class CmsNode extends BaseCmsElement {
         constructor() {
             super()
-            this.data = null
         }
 
         /**
@@ -883,6 +933,10 @@
             findScopedElements(this, "NODE-TITLE", ["CMS-NODE", "NODE-PARENT"]).forEach(child => {
                 child.data = this.data
             })
+            // 处理 NODE-FILE 元素
+            findScopedElements(this, "NODE-FILE", ["CMS-NODE", "NODE-PARENT"]).forEach(child => {
+                child.data = this.data
+            })
             // 处理 NODE-INFO 元素
             findScopedElements(this, "NODE-INFO", ["CMS-NODE", "NODE-PARENT"]).forEach(child => {
                 child.data = this.data
@@ -901,10 +955,19 @@
             })
             // 处理 NODE-PARENT 元素
             findScopedElements(this, "NODE-PARENT", ["CMS-NODE", "NODE-PARENT"]).forEach(child => {
+                if (this.data.parent == null) return
                 child.data = this.data.parent
             })
             // 处理 NODE-PARENT 元素
             findScopedElements(this, "NODE-CONTENT", ["CMS-NODE", "NODE-PARENT"]).forEach(child => {
+                child.data = this.data
+            })
+            // 处理 NODE-PREV 元素
+            findScopedElements(this, "NODE-PREV", ["CMS-NODE", "NODE-PARENT"]).forEach(child => {
+                child.data = this.data
+            })
+            // 处理 NODE-NEXT 元素
+            findScopedElements(this, "NODE-NEXT", ["CMS-NODE", "NODE-PARENT"]).forEach(child => {
                 child.data = this.data
             })
         }
@@ -914,7 +977,7 @@
      * 列表节点元素类
      * CmsNode 的子类
      */
-    class ListNode extends CmsNode { constructor() { super() } }
+    class ListNode extends CmsNode { constructor() { super() } connectedCallback() { } }
 
     /**
      * 节点日期元素类
@@ -953,17 +1016,22 @@
 
             // 日期格式映射
             const map = {
+                yy: d.getFullYear().toString().slice(-2),
                 YY: d.getFullYear().toString().slice(-2),
                 YYYY: d.getFullYear(),
+                yyyy: d.getFullYear(),
                 MM: pad(d.getMonth() + 1),
                 DD: pad(d.getDate()),
+                dd: pad(d.getDate()),
                 HH: pad(d.getHours()),
+                hh: pad(d.getHours()),
                 mm: pad(d.getMinutes()),
-                ss: pad(d.getSeconds())
+                SS: pad(d.getSeconds()),
+                ss: pad(d.getSeconds()),
             }
 
             // 替换格式字符串
-            return format.replace(/YYYY|YY|MM|DD|HH|mm|ss/g, k => map[k])
+            return format.replace(/YYYY|yyyy|YY|yy|MM|DD|dd|HH|hh|mm|SS|ss/g, k => map[k])
         }
     }
 
@@ -1026,10 +1094,30 @@
             }
         }
     }
-
+    /**
+     * 节点链接元素类
+     * 用于显示节点链接
+     */
+    class NodeLink extends BaseCmsElement {
+        constructor() {
+            super()
+        }
+        /**
+         * 渲染方法
+         * 显示节点信息
+         */
+        render() {
+            if (this.data.link) {
+                this.onclick = () => {
+                    window.location.href = this.data.link
+                }
+            }
+        }
+    }
     class NodeParent extends CmsList { constructor() { super() } connectedCallback() { } }
 
     class ListParent extends CmsList { constructor() { super() } connectedCallback() { } }
+
     /**
      * 查找作用域内的元素
      * @param {Element} rootEl 根元素
@@ -1131,6 +1219,101 @@
         }
     }
 
+    //node-文件下载
+    class NodeFile extends BaseCmsElement {
+        constructor() {
+            super()
+        }
+
+        render() {
+            if (this.data.file == null) return
+            if (this.getAttribute("preview") != null) {
+                return this.showPreview()
+            }
+
+            if (this.getAttribute("name") == 'title') {
+                this.innerText = this.data.title
+            } else {
+                this.innerText = this.data.file.filename
+            }
+            this.onclick = () => {
+                const a = document.createElement('a');
+                a.style.display = 'none';
+                a.download = this.data.file.filename
+                a.href = this.data.file.url.substring(0, 4) == "http" ? this.data.file.url : BaseCmsURL + this.data.file.url;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+        }
+
+        showPreview() {
+            this.style.display = "block"
+            const preiew = document.createElement("iframe")
+            preiew.style.width = "100%"
+            preiew.style.height = "100%"
+            preiew.style.border = "none"
+            preiew.style.overflow = "hidden"
+            preiew.src = `https://view.xdocin.com/view?src=${this.data.file.url.substring(0, 4) == "http" ? this.data.file.url : BaseCmsURL + this.data.file.url}`
+            this.appendChild(preiew)
+        }
+    }
+
+
+    class NodePrev extends BaseCmsElement {
+        constructor() {
+            super()
+        }
+
+        render() {
+            console.log(this.data);
+            let index = 0
+            this.data.parent.nodes.forEach((item, i) => {
+                if (item.id == this.data.id) {
+                    index = i
+                    return
+                }
+            })
+            index++
+            if (index == this.data.parent.nodes.length) {
+                this.innerText = '没有了'
+            } else {
+                this.innerText = this.data.parent.nodes[index].title
+                this.onclick = () => {
+                    window.location.href = `${BaseCmsURL}/${this.data.parent.nodeTemplate}?dataId=${this.data.parent.nodes[index].id}`
+                }
+
+            }
+        }
+    }
+    class NodeNext extends BaseCmsElement {
+        constructor() {
+            super()
+        }
+
+        render() {
+            console.log(this.data);
+            let index = 0
+            this.data.parent.nodes.forEach((item, i) => {
+                if (item.id == this.data.id) {
+                    index = i
+                    return
+                }
+            })
+            index--
+            if (index == this.data.parent.nodes.length) {
+                this.innerText = '没有了'
+            } else {
+                this.innerText = this.data.parent.nodes[index].title
+                this.onclick = () => {
+                    window.location.href = `${BaseCmsURL}/${this.data.parent.nodeTemplate}?dataId=${this.data.parent.nodes[index].id}`
+                }
+
+            }
+        }
+    }
+
+
     // 轮播图组件
     class CmsSlider extends BaseCmsElement {
         constructor() {
@@ -1187,6 +1370,7 @@
         // 加载列表节点中的所有子节点
         loadNodeList() {
             this.data = listIndexMap[this.dataId]
+            this.data.nodes = this.data.nodes.filter(item => item.cover != null)
             this.loadNode(0)
         }
 
@@ -1232,9 +1416,10 @@
             imgBlock.classList.add("sliderImgBlock")
             imgBlock.appendChild(img)
             imgBlock.appendChild(imgBg)
-            let url = item.substring(0, 4) == "http" ? item : BaseCmsURL + item
-            if (this.getAttribute("quality")) {
-                url = url.replace("imgQuality_1", "imgQuality_" + this.getAttribute("quality"))
+
+            let url = item.url
+            if (this.getAttribute("cover") != null) {
+                url = item.cover
             }
             img.src = url
             imgBg.src = url
@@ -1492,6 +1677,10 @@
         customElements.define('node-content', NodeContent)
         customElements.define('node-info', NodeInfo)
         customElements.define('node-date', NodeDate)
+        customElements.define('node-file', NodeFile)
+        customElements.define('node-link', NodeLink)
+        customElements.define("node-prev", NodePrev)
+        customElements.define("node-next", NodeNext)
         customElements.define('list-name', ListName)
         customElements.define('list-info', ListInfo)
         customElements.define('list-list', ListList)

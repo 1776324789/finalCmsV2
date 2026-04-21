@@ -1,0 +1,205 @@
+<cms-component>
+    <style>
+        .listNewsTopMenu {
+            font-size: 16px;
+            color: #fff;
+            padding: 25px 50px;
+            background-color: #8728AA;
+            position: absolute;
+            transform: translate(0, -100%);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .listNewsMenu {
+            cursor: pointer;
+            height: 46px;
+            line-height: 46px;
+            text-align: center;
+            color: #666666;
+        }
+
+        .listNewsMenu:hover {
+            background-color: #f9f9f9;
+            font-weight: bold;
+            color: #3576B5;
+        }
+
+
+        .listNewsRightBlock {
+            position: relative;
+            flex: 1;
+            margin-left: 15px;
+            display: flex;
+            flex-direction: column;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .listNewPageTitle {
+            height: 40px;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 40px;
+            color: #3576B5;
+            border-bottom: 1px solid #3576B5;
+        }
+
+
+        .listpages {
+            width: calc(100% - 40px);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .listpages .dreamer-ul {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .dreamer-ul li {
+            cursor: pointer;
+            text-align: center;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            height: 30px;
+            line-height: 30px;
+            width: 60px;
+            list-style-type: none;
+            border: 1px solid #845eff;
+            border-radius: 3px;
+        }
+
+        .dreamer-ul li:hover {
+            background-color: #f8f8f8;
+        }
+
+        .dreamer-ul li a {
+            text-decoration: none;
+            color: #845eff;
+        }
+
+        .listNewNews {
+            cursor: pointer;
+            display: flex;
+            margin-top: 5px;
+            /* padding: 6px; */
+            color: #666666;
+        }
+
+
+        .listNewNews:hover .title {
+            font-weight: bold
+        }
+
+        .listNewNews .title {
+            text-indent: 15px;
+            flex: 1;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .listNewNews .listNewsDate {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .nowPage {
+            border-left: 5px solid #8728AA;
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+
+        @media screen and (min-width: 800px) {
+            .leftRightBox {
+                background-color: #fff;
+                width: 76vw;
+                margin: auto;
+                padding: 15px;
+                min-height: 600px;
+                display: flex;
+            }
+
+            .leftRightBox .leftBlock {
+                width: 175px;
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px;
+                position: relative;
+            }
+
+            .listNewNews {
+                cursor: pointer;
+                display: flex;
+                margin-bottom: 5px;
+                border-bottom: 1px solid #e2e2e2;
+                padding: 10px;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            .leftRightBox {
+                background-color: #fff;
+                width: calc(100% - 30px);
+                padding: 15px;
+                min-height: 600px;
+                display: flex;
+                flex-direction: column;
+            }
+
+
+            .leftRightBox .leftBlock {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px;
+                position: relative;
+            }
+
+            .listNewNews {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .listNewNews .listNewsDate {
+                text-align: right;
+                margin-top: 6px;
+                border-bottom: 1px solid rgb(194, 194, 194);
+            }
+        }
+
+        .focus {
+            background-color: #f9f9f9;
+            font-weight: bold;
+            color: #3576B5;
+        }
+    </style>
+
+
+    <cms-list style="display: flex;justify-content: center;" data="l_mmoahotw">
+        <list-cover style="width: 1480px;"></list-cover>
+    </cms-list>
+    <cms-node class="leftRightBox">
+        <node-parent  >
+           <div class="leftBlock">
+            <list-parent class="listNewsTopMenu" >
+                <list-name pagetitle></list-name>
+            </list-parent>
+             
+            <list-node class="listNewsMenu" focus:class="focus">
+                   <node-template >
+                       <node-title ></node-title>
+                   </node-template>
+             </list-node>
+           </div>
+        </node-parent>
+        <div class="listNewsRightBlock">
+            <div class="listNewPageTitle"> <node-title></node-title></div>
+		    <node-file preview style="width:100%;height:1000px;"></node-file>
+        </div>
+    </cms-node>
+</cms-component>

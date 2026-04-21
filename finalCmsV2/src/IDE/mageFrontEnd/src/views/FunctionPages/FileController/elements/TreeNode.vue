@@ -6,7 +6,10 @@
                     {{ isOpen ? '📂' : '📁' }}
                 </span>
                 <span v-else style="margin-right: 3px;">📄</span>
-                {{ node.name }}
+                <div :title="node.name"
+                    style="word-break: keep-all;flex:1;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;">
+                    {{ node.name }}</div>
+
                 <span v-if="node.fullPath.split('\\').length == 2 && node.fullPath.split('\\')[1] == 'data'"
                     class="icon-error-warning-line fileWarn"></span>
             </div>
@@ -17,7 +20,8 @@
                     <div @click.stop="addChild('file')">添加文件</div>
                     <div @click.stop="addChild('directory')">添加文件夹</div>
                     <div @click.stop="deleteNode(node.fullPath)"
-                        v-if="node.fullPath.split('\\').length > 1 && !(node.fullPath.split('\\')[1] == 'CmsComponent'&&node.fullPath.split('\\').length==2)">删除
+                        v-if="node.fullPath.split('\\').length > 1 && !(node.fullPath.split('\\')[1] == 'CmsComponent' && node.fullPath.split('\\').length == 2)">
+                        删除
                     </div>
                 </div>
             </div>
@@ -147,7 +151,7 @@ function toggle() {
     if (props.node.type === 'directory') {
         isOpen.value = !isOpen.value
         localStorage.setItem(props.node.fullPath, isOpen.value)
-    } else if (editFile.includes(props.node.name.split(".")[1])) {
+    } else if (editFile.includes(props.node.name.split(".")[props.node.name.split(".").length - 1])) {
         emit("edit", props.node)
     }
 }

@@ -1,0 +1,352 @@
+<cms-component>
+    <style>
+        @media screen and (min-width: 800px) {
+            .newBlockWeb {
+                overflow: hidden;
+                width: calc(100vw - 15px);
+                margin: 0;
+                padding-top: 40px;
+                padding-bottom: 40px;
+            }
+
+            .newBlockWeb .content .collegeNotice {
+                width: 400px;
+                margin-right: 10px;
+            }
+
+            .newBlockWeb .content {
+                width: 1200px;
+            }
+
+            .newBlockWeb .content .collegeNew .newsBlock .new:first-child {
+                margin-right: 15px;
+            }
+
+            .newBlockWeb .content .collegeNew .newsBlock .new:last-child {
+                margin-left: 15px;
+            }
+        }
+
+        /* 手机端适配 */
+        @media screen and (max-width: 800px) {
+            .newBlockWeb {
+                overflow: hidden;
+                padding: 10px;
+                margin-right: 0;
+                width: calc(100vw - 20px);
+            }
+
+            .newBlockWeb .content {
+                width: 100vw;
+                flex-direction: column;
+            }
+
+            .newBlockWeb .content .collegeNew .newsBlock {
+                flex-direction: column;
+            }
+
+            .newBlockWeb .content .collegeNotice {
+                width: calc(100% - 20px);
+            }
+
+        }
+
+        .newBlockWeb {
+            margin-top: 15px;
+            background-color: #fff;
+        }
+
+        .newBlockWeb .content {
+            margin: auto;
+            display: flex;
+        }
+
+        .newBlockWeb .content .collegeNew {
+            flex: 1;
+            margin-right: 40px;
+        }
+
+        .newBlockWeb .content .collegeNew .titleBlock {
+            display: flex;
+            height: 35px;
+        }
+
+        .newBlockWeb .content .collegeNotice .titleBlock {
+            display: flex;
+            height: 35px;
+        }
+
+        .newBlockWeb .content .collegeNew .titleBlock .more {
+            text-align: right;
+            flex: 1;
+            height: 35px;
+            border-bottom: 1px solid #d4d4d4;
+        }
+
+        .newBlockWeb .content .collegeNotice .titleBlock .more {
+            text-align: right;
+            flex: 1;
+            height: 35px;
+            border-bottom: 1px solid #d4d4d4;
+        }
+
+        .newBlockWeb .content .collegeNew .titleBlock .more list-template {
+            cursor: pointer;
+            font-size: 16px;
+            height: 35px;
+            color: #666666;
+            line-height: 40px;
+        }
+
+        .newBlockWeb .content .collegeNotice .titleBlock .more list-template {
+            height: 35px;
+            cursor: pointer;
+            font-size: 16px;
+            color: #666666;
+            line-height: 40px;
+        }
+
+        .newBlockWeb .content .collegeNew .titleBlock .more list-template:hover {
+            color: #55aaff;
+        }
+
+        .newBlockWeb .content .collegeNotice .titleBlock .more list-template:hover {
+            color: #55aaff;
+        }
+
+        .newBlockWeb .content .collegeNew .titleBlock .icon {
+            width: 40px;
+        }
+
+        .newBlockWeb .content .collegeNotice .titleBlock .icon {
+            width: 40px;
+        }
+
+        .newBlockWeb .content .collegeNew .titleBlock .icon i {
+            color: #8728aa;
+            font-size: 30px;
+            line-height: 40px;
+            text-align: center;
+            border-bottom: 2px solid #8728aa;
+        }
+
+        .newBlockWeb .content .collegeNotice .titleBlock .icon i {
+            color: #8728aa;
+            font-size: 30px;
+            line-height: 40px;
+            text-align: center;
+            border-bottom: 2px solid #8728aa;
+        }
+
+        .newBlockWeb .content .collegeNew .titleBlock .text {
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-left: -10px;
+            height: 35px;
+            line-height: 40px;
+            color: #8728aa;
+            font-size: 20px;
+            border-bottom: 2px solid #8728aa;
+        }
+
+        .newBlockWeb .content .collegeNotice .titleBlock .text {
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-left: -10px;
+            height: 35px;
+            line-height: 40px;
+            color: #8728aa;
+            font-size: 20px;
+            border-bottom: 2px solid #8728aa;
+        }
+
+        .newBlockWeb .content .collegeNew .newsBlock {
+            margin-top: 20px;
+            display: flex;
+            min-height: 200px;
+        }
+
+        .newBlockWeb .content .collegeNew .newsBlock .new {
+            cursor: pointer;
+            flex: 1;
+        }
+
+
+
+        .newBlockWeb .content .collegeNew .newsBlock .new .coverBlock {
+            height: 200px;
+
+            width: 100%;
+        }
+
+        .newBlockWeb .content .collegeNew .newsBlock .new .coverBlock img {
+            border-radius: 3px;
+            max-height: 250px;
+            width: 100%;
+            object-fit: cover;
+            transition: scale 0.3s;
+        }
+
+        .newBlockWeb .content .collegeNew .newsBlock .new .title {
+            font-size: 20px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: #555555;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+        }
+
+        .newBlockWeb .content .collegeNew .newsBlock .new .date {
+            font-size: 15px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            color: #8728aa;
+        }
+
+        .newBlockWeb .content .collegeNew .newsBlock .new .introduce {
+            font-size: 14px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            color: #999999;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+        }
+
+        .newBlockWeb .content .collegeNew .newsBlock .new:hover .title {
+            color: #8728aa;
+            font-weight: bold;
+
+        }
+
+        .newBlockWeb .content .collegeNew .newsBlock .new:hover .date {
+            margin-left: 5px;
+        }
+
+        .newBlockWeb .content .collegeNew .newsBlock .new:hover .introduce {
+            color: #555555;
+        }
+
+        .newBlockWeb .content .collegeNew .newsBlock .new:hover .coverBlock img {
+            box-shadow: 0 0 10px #707070;
+            scale: 1.1;
+        }
+
+        .newBlockWeb .content .collegeNotice .newsBlock {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            min-height: 200px;
+        }
+
+        .newBlockWeb .content .collegeNotice .newsBlock .new {
+            cursor: pointer;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            border-bottom: 1px solid #e3e3e3;
+            display: flex;
+        }
+
+        .newBlockWeb .content .collegeNotice .newsBlock .new .timeBlock {
+            display: flex;
+            flex-direction: column;
+            width: 70px;
+            height: 60px;
+            background: linear-gradient(45deg, #772f91, #2196F3);
+        }
+
+        .newBlockWeb .content .collegeNotice .newsBlock .new .timeBlock .day {
+            width: 60px;
+            height: 30px;
+            text-align: center;
+            margin-left: 5px;
+            margin-top: 5px;
+            line-height: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #932cbc;
+            background-color: #fff;
+        }
+
+        .newBlockWeb .content .collegeNotice .newsBlock .new .timeBlock .yearMonth {
+            flex: 1;
+            margin-top: 3px;
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .newBlockWeb .content .collegeNotice .newsBlock .new .title {
+            color: #555555;
+            padding: 5px;
+            margin-left: 10px;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .newBlockWeb .content .collegeNotice .newsBlock .new:hover {
+            background-color: #f7f7f7;
+        }
+
+        .newBlockWeb .content .collegeNotice .newsBlock .new:hover .title {
+            color: #2c2c2c;
+
+        }
+
+        .newBlockWeb .content .collegeNotice .newsBlock .new:hover .timeBlock {
+            background: linear-gradient(90deg, #772f91, #2196F3);
+        }
+    </style>
+    <div class="newBlockWeb">
+        <div class="content">
+            <cms-list class="collegeNew" data="l_m7iiex56">
+                <div class="titleBlock">
+                    <div class="icon"><i class="icon-newspaper-fill"></i></div>
+                    <div class="text"><list-name></list-name></div>
+                    <div class="more">
+                        <list-template>更多</list-template>
+                    </div>
+                </div>
+                <div class="newsBlock">
+                    <list-node page="1" limit="2" order="desc" class="new">
+                        <node-template>
+                            <div class="coverBlock">
+                                <node-cover quality="4" style="height: 100%;width: 100%;"></node-cover>
+                            </div>
+                            <div class="title"><node-title line="1"></node-title></div>
+                            <div class="date"><node-date format="YYYY-MM-dd hh:mm:ss"></node-date></div>
+                            <div class="introduce"><node-info line="5"></node-info></div>
+                        </node-template>
+                    </list-node>
+                </div>
+            </cms-list>
+            <cms-list class="collegeNotice" data="l_m7iieybc">
+                <div class="titleBlock">
+                    <div class="icon"><i class="icon-newspaper-fill"></i></div>
+                    <div class="text"><list-name></list-name></div>
+                    <div class="more">
+                        <list-template>更多</list-template>
+                    </div>
+                </div>
+                <div class="newsBlock">
+                    <list-node page="1" limit="5" order="desc">
+                        <node-template class="new">
+                            <div class="timeBlock">
+                                <div class="day"><node-date format="dd"></node-date></div>
+                                <div class="yearMonth"><node-date format="yyyy-MM"></node-date></div>
+                            </div>
+                            <div class="title"><node-title line="2"></node-title></div>
+                        </node-template>
+                    </list-node>
+                </div>
+
+            </cms-list>
+        </div>
+    </div>
+
+</cms-component>

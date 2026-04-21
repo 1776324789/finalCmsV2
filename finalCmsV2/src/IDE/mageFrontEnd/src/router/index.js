@@ -9,6 +9,8 @@ import SystemRoleManage from '../views/Console/view/SystemRoleManage/SystemRoleM
 import SystemWebsiteMenuManage from '../views/Console/view/SystemWebsiteMenuManage/SystemWebsiteMenuManage.vue';
 import SystemWebsiteManage from '../views/Console/view/SystemWebsiteManage/SystemWebsiteManage.vue';
 import FileController from '../views/FunctionPages/FileController/FileController.vue';
+import RoleMage from '../views/FunctionPages/RoleController/RoleMage.vue';
+import UserMage from '../views/FunctionPages/UserController/UserMage.vue';
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -58,9 +60,19 @@ const router = createRouter({
       component: SystemWebsiteManage
     },
     {
+      path: '/userMage',
+      name: 'userMage',
+      component: UserMage
+    },
+    {
       path: '/fileMage',
       name: 'fileMage',
       component: FileController
+    },
+    {
+      path: '/roleMage',
+      name: 'roleMage',
+      component: RoleMage
     }
   ]
 });

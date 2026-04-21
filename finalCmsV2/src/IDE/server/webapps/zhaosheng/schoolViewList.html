@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @media screen and (min-width: 800px) {
+            .bread {
+                margin-top: 30px;
+                display: flex;
+                font-size: 15px;
+                border-bottom: 2px solid #772f91;
+                padding-bottom: 5px;
+                margin-bottom: 15px;
+                color: #772f91;
+            }
+
+            .bread .content {
+                cursor: pointer;
+                font-weight: bold;
+            }
+
+            .bread .content:hover {
+                opacity: 0.75;
+            }
+
+            .mainBlock {
+                width: 1200px;
+                margin-left: calc((100vw - 1200px)/2);
+            }
+
+            .listBlock {
+                min-height: 400px;
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .paginationBlock {
+                display: flex;
+                width: 1200px;
+                height: 50px;
+            }
+
+            .imgBlock {
+                width: 290px;
+                margin-left: 5px;
+                margin-right: 5px;
+            }
+
+            .contentBlock {
+                height: 240px;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            .bread {
+                margin-top: 30px;
+                display: flex;
+                font-size: 15px;
+                border-bottom: 2px solid #772f91;
+                padding-bottom: 5px;
+                margin-bottom: 15px;
+                color: #772f91;
+            }
+
+            .bread .content {
+                cursor: pointer;
+                font-weight: bold;
+            }
+
+            .bread .content:hover {
+                opacity: 0.75;
+            }
+
+            .mainBlock {
+                width: calc(100vw - 40px);
+                margin-left: 20px;
+            }
+
+            .listBlock {
+                min-height: 400px;
+                display: flex;
+                flex-wrap: wrap;
+            }
+
+            .paginationBlock {
+                display: flex;
+                width: 100vw;
+                height: 50px;
+            }
+
+            .imgBlock {
+                width: 100%;
+            }
+
+            .imgTitle {
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <cms-component data="l_lxlhqx1y">head</cms-component>
+    <cms-list class="mainBlock" data="l_ly8dltvj">
+        <cms-list class="bread" data="l_ly8dltvj">
+            <div class="content" onclick="window.location.href=BaseURL+'/index.html'">
+                首页
+            </div>
+            >&nbsp;&nbsp;
+            <list-parent>
+                <list-name class="content"></list-name>
+            </list-parent>
+            &nbsp;&nbsp;>&nbsp;&nbsp;
+            <list-name class="content"></list-name>
+        </cms-list>
+        <list-node class="listBlock" page="1" limit="10">
+            <node-template class="contentBlock">
+                <div class="imgBlock">
+                    <node-cover style="width: 100%;"></node-cover>
+                </div>
+                <node-title class="imgTitle"
+                    style="text-align: center;height: 30px;margin-top: 10px;line-height: 30px;color: #666666;"></node-title>
+            </node-template>
+            <div class="paginationBlock">
+                <div style="flex: 1;"></div>
+                <list-pagination></list-pagination>
+                <div style="flex: 1;"></div>
+            </div>
+        </list-node>
+    </cms-list>
+    <cms-component>foot</cms-component>
+</body>

@@ -1,0 +1,195 @@
+<style>
+    @media screen and (min-width: 800px) {
+
+        .footBlock {
+            background-image: url("/img/b2c436f885e69123eabb86ba9b8e36e2.png");
+            width: 100%;
+            height: 250px;
+            margin-top: 10px;
+            display: flex;
+            position: absolut;
+            bottom: 0px;
+        }
+
+        .footContent {
+            color: #fff;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+        }
+
+        .FootContentBlock {
+            margin-top: 25px;
+            margin-bottom: 25px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 50px;
+            padding-right: 50px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .FootContentBlockFlex {
+            margin-top: 25px;
+            margin-bottom: 25px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 50px;
+            padding-right: 50px;
+            display: flex;
+        }
+
+        .middle {
+            border-right: 1px solid #abadff;
+            border-left: 1px solid #a5a5ff;
+        }
+
+        .FootContentTitle {
+            margin-bottom: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            width: 150px;
+            text-align: right;
+        }
+
+        .FootContentA {
+            cursor: pointer;
+            margin-bottom: 25px;
+            text-align: right;
+        }
+
+        .FootContentA:hover {
+            opacity: 0.75;
+        }
+
+        .textC {
+            text-align: center !important;
+        }
+
+        .FootImgBlock {
+            width: 120px;
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+        }
+
+        .FootTitleBlock {
+            margin-top: 15px;
+            text-align: center;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+
+        .footBlock {
+            background-image: url("/img/b2c436f885e69123eabb86ba9b8e36e2.png");
+            width: 100%;
+            margin-top: 10px;
+            display: flex;
+            position: absolut;
+            bottom: 0px;
+        }
+
+        .footBlock div {
+            padding: 6px;
+        }
+
+        .footContent {
+            color: #fff;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .FootContentBlock {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .FootContentBlockFlex {
+
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .middle {
+            border-top: 1px solid #abadff;
+            border-bottom: 1px solid #a5a5ff;
+        }
+
+        .FootContentTitle {
+            margin-bottom: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            width: 150px;
+        }
+
+        .FootContentA {
+            cursor: pointer;
+            margin-bottom: 25px;
+
+        }
+
+        .FootContentA:hover {
+            opacity: 0.75;
+        }
+
+
+        .FootImgBlock {
+            width: 120px;
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+        }
+
+        .FootTitleBlock {
+            margin-top: 15px;
+            text-align: center;
+        }
+    }
+</style>
+<cms-component>
+    <div class="footBlock">
+        <div class="footContent">
+            <div class="FootContentBlock">
+                <div class="FootContentTitle">
+                    学校地址
+                </div>
+                <div class="FootContentA">
+                    <a>江西省南昌市湾里管理局罗亭大道89号</a>
+                </div>
+            </div>
+
+            <div class="FootContentBlock middle">
+                <div class="FootContentA textC">
+                    ©2020 江西软件职业技术大学版权所有
+                </div>
+                <div class="FootContentA textC">
+                    赣公网安备 36010502000014号
+                </div>
+                <div class="FootContentA textC">
+                    联系电话 ：17607912375
+                </div>
+                <div class="FootContentA textC">
+                    邮箱 ：804532064@qq.com
+                </div>
+
+            </div>
+
+            <div class="FootContentBlockFlex">
+                <div class="FootImgBlock">
+                    <img src="/img/1.png" />
+                    <div class="FootTitleBlock">学校官徽</div>
+                </div>
+                <div class="FootImgBlock">
+                    <img src="/img/image copy.png" />
+                    <div class="FootTitleBlock">校友之家公众号</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</cms-component>

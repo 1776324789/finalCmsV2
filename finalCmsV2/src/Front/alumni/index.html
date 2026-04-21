@@ -4,11 +4,1221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>校友网</title>
+    <title>江软校友之家</title>
 </head>
 
 <body>
-    <cms-component><div>校友网 - 头部组件</div></cms-component>
+    <cms-component><style>
+    html,
+    body {
+        padding: 0;
+        margin: 0;
+    }
+
+    @media screen and (min-width: 800px) {
+        .topMenu {
+            background-color: rgba(255, 255, 255, 0.15);
+            margin-top: -40px;
+            z-index: 100;
+            height: 40px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .content {
+            z-index: 100;
+            user-select: none;
+            cursor: pointer;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 0;
+            height: 40px;
+            width: 120px;
+        }
+
+        .contentName {
+            border: 0;
+            width: 120px;
+            float: left;
+            text-align: center;
+            color: #fff;
+            line-height: 40px;
+        }
+
+        .contentName:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .content:hover .plat {
+            z-index: 100;
+            display: block;
+        }
+
+        .plat {
+            display: none;
+            z-index: 100;
+        }
+
+        .menuChild {
+            z-index: 100;
+            user-select: none;
+            cursor: pointer;
+            margin-top: 0;
+            line-height: 40px;
+            font-size: 16px;
+            background-color: #fff;
+            box-shadow: 0px 3px 3px #a1a1a1;
+            color: #6d6d6d;
+            width: 120px;
+            text-align: center;
+        }
+
+        .menuChild:first-child {
+            height: 40px;
+            margin-top: 40px;
+        }
+
+        .menuChild:hover {
+            background-color: #efefef;
+            color: #5e5e5e;
+        }
+
+
+        .logoBlock {
+            background-image: url("/img/b2c436f885e69123eabb86ba9b8e36e2.png");
+            width: 100%;
+            background-color: 9522A5;
+            height: 140px;
+            display: flex;
+
+        }
+
+        .logoBlock .logo {
+            margin-left: 6%;
+            width: 500px;
+        }
+
+        .logoBlock .logo img {
+            width: 500px;
+        }
+
+        .logoBlock .title {
+            height: 115px;
+            font-size: 35px;
+            color: #fff;
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logoBlock .searchBlock {
+            flex: 1;
+            padding-right: 20px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .logoBlock .searchBlock .buttonBlock {
+            float: right;
+        }
+
+        .logoBlock .searchBlock .buttonBlock button {
+            cursor: pointer;
+            color: #fff;
+            background-color: #855cff;
+            width: 70px;
+            height: 30px;
+            border-radius: 0px 5px 5px 0px;
+            border: 0;
+            margin-top: 50px;
+        }
+
+        .logoBlock .searchBlock .buttonBlock button:hover {
+            background-color: #9e7eff;
+        }
+
+        .logoBlock .searchBlock .searchForm {
+            display: flex;
+        }
+
+        .logoBlock .searchBlock .inputBlock {
+            float: right;
+        }
+
+        .logoBlock .searchBlock .inputBlock input {
+            outline: none;
+            width: 200px;
+            height: 26px;
+            border-radius: 5px 0px 0px 5px;
+            border: 1px solid #855cff;
+            margin-top: 50px;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        .topMenu {
+            background-color: #AB62FF;
+            margin-top: -40px;
+            z-index: 1;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .content {
+            z-index: 1;
+            user-select: none;
+            cursor: pointer;
+            padding: 5px;
+            height: 40px;
+            width: 120px;
+            position: relative;
+        }
+
+        .content:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .contentName {
+            border: 0;
+            width: 120px;
+            text-align: center;
+            color: #fff;
+            line-height: 40px;
+            pointer-events: none;
+        }
+
+        .plat {
+            pointer-events: none;
+            visibility: hidden;
+            z-index: 60;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .menuChild {
+            pointer-events: auto;
+            z-index: 100;
+            user-select: none;
+            cursor: pointer;
+            margin-top: 0;
+            line-height: 40px;
+            font-size: 16px;
+            background-color: #fff;
+            box-shadow: 0px 3px 3px #a1a1a1;
+            color: #6d6d6d;
+            width: 120px;
+            text-align: center;
+        }
+
+        .menuChild:first-child {
+            height: 40px;
+            margin-top: 40px;
+        }
+
+        .menuChild:hover {
+            background-color: #efefef;
+            color: #5e5e5e;
+        }
+
+        .logoBlock {
+            background-image: url("./img/b2c436f885e69123eabb86ba9b8e36e2.png");
+            width: 100%;
+            background-color: 9522A5;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logoBlock .logo {
+            margin-left: 2px;
+            width: 280px;
+        }
+
+        .logoBlock .logo img {
+            width: 280px;
+        }
+
+        .logoBlock .title {
+            font-size: 35px;
+            color: #fff;
+            margin-left: 50px;
+        }
+
+        .logoBlock .searchBlock {
+            padding-top: 10px;
+            height: 80px;
+            padding-right: 12px;
+        }
+
+        .logoBlock .searchBlock .searchForm {
+            display: flex;
+            width: 100%;
+            justify-content: flex-end;
+        }
+
+        .logoBlock .searchBlock .searchForm .inputBlock {
+            width: 100%;
+            max-width: 200px;
+            margin-right: 12px;
+        }
+
+        .logoBlock .searchBlock .searchForm .buttonBlock {
+            width: 100%;
+            max-width: 120px;
+        }
+
+        .logoBlock .searchBlock .buttonBlock button {
+            cursor: pointer;
+            color: #fff;
+            background-color: #aa8eff;
+            width: 100%;
+            height: 30px;
+            border-radius: 0px 5px 5px 0px;
+            border: 0;
+        }
+
+        .logoBlock .searchBlock .buttonBlock button:hover {
+            background-color: #9e7eff;
+        }
+
+        .logoBlock .searchBlock .inputBlock input {
+            outline: none;
+            width: 100%;
+            height: 26px;
+            border-radius: 5px 0px 0px 5px;
+            border: 1px solid #855cff;
+
+        }
+    }
+</style>
+
+<link rel="stylesheet" href="./css/moonIcon.css">
+<cms-component data="l_lxlhqx1y">
+    <div class="logoBlock">
+        <cms-node data="n_lytthkpu" class="logo">
+            <node-cover></node-cover>
+        </cms-node>
+        <div class="title">
+            校友之家
+        </div>
+        <div class="searchBlock">
+            <form role="search" action="/searchResult.html" method="post" class="searchForm" style="display:none;">
+                <div class="inputBlock">
+                    <input placeholder="输入关键字进行搜索..." name="entity['keywords']" />
+                </div>
+                <div class="buttonBlock">
+                    <button type="submit">搜索</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+    <cms-list data="l_lys9axk6">
+        <list-list class="topMenu">
+            <div class="content">
+                <list-template class="contentName"><list-name></list-name></list-template>
+                <list-list class="plat">
+                    <list-template class="menuChild">
+                        <list-name></list-name>
+                    </list-template>
+                </list-list>
+            </div>
+        </list-list>
+    </cms-list>
+</cms-component>
+
+<script>
+    let navItem = null
+    let clickedEl = null
+    let timer = null
+
+    const topMenuTarget = document.getElementsByClassName('topMenu')[0]
+    topMenuTarget.addEventListener('click', (event) => {
+        if (clickedEl) {
+            clickedEl.style.visibility = ''
+            clickedEl.children[1].style.visibility = 'hidden'
+            clickedEl.children[1].style.pointerEvents = 'none'
+            reset('auto')
+        }
+
+        if (event.target.classList[0] == 'content') {
+            clickedEl = event.target
+            if (event.target.children[1]) {
+                event.target.children[1].style.visibility = 'visible'
+                event.target.children[1].style.pointerEvents = ''
+                reset('none')
+                clearTimeout(timer)
+                timer = setTimeout(() => {
+                    event.target.style.visibility = ''
+                    event.target.children[1].style.visibility = 'hidden'
+                    event.target.children[1].style.pointerEvents = 'none'
+                    reset('auto')
+                }, 12000)
+            }
+
+        }
+    })
+
+    document.addEventListener('click', (event) => {
+        if (event.target.classList[0] == 'content' || event.target.classList[0] == 'menuChild') return
+        if (clickedEl) {
+            clickedEl.style.visibility = ''
+            clickedEl.children[1].style.visibility = 'hidden'
+            clickedEl.children[1].style.pointerEvents = 'none'
+            reset('auto')
+        }
+    })
+
+    function reset(val) {
+        const list = document.getElementsByClassName('content')
+        for (const element of list) element.style.pointerEvents = val
+    }
+
+</script></cms-component>
+    <cms-slider data="l_lysazmr2" width="1000px" height="300px" auto="3000"
+        style="margin-left: calc((100vw - 1000px)/2);margin-top: 15px;">
+    </cms-slider>
+    <cms-component><style>
+    @media screen and (min-width: 800px) {
+
+        .newsListBlock {
+            width: 1000px;
+            margin: auto;
+            margin-top: 10px;
+            display: flex;
+            min-height: 250px;
+        }
+
+        .newsListBlock .block {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+
+        }
+
+        .newsListBlock .placeholder {
+            width: 30px;
+        }
+
+        .newsListBlock .blockTitle {
+            height: 35px;
+            display: flex;
+            width: 100%;
+            border-bottom: 2px solid #9522A5;
+        }
+
+        .newsListBlock .blockTitle .title {
+            line-height: 35px;
+            height: 35px;
+            flex: 1;
+            color: #666666;
+            font-weight: bold;
+        }
+
+        .newsListBlock .blockTitle .more {
+            cursor: pointer;
+            color: #9522A5;
+            line-height: 35px;
+            height: 35px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .newsListBlock .contentBlock {
+            height: 30px;
+            display: flex;
+        }
+
+        .newsListBlock .contentBlock:hover {
+            font-weight: bold;
+        }
+
+        .newsListBlock .contentBlock .title {
+            cursor: pointer;
+            text-indent: 10px;
+            line-height: 30px;
+            font-size: 14px;
+            color: #666666;
+            flex: 1;
+            display: -webkit-box;
+
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            /*行数*/
+            /*控制行数 超出后出现省略号*/
+            -o-text-overflow: ellipsis;
+            -webkit-text-overflow: ellipsis;
+            -moz-text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .newsListBlock .contentBlock .date {
+            cursor: pointer;
+            line-height: 30px;
+            font-size: 13px;
+            color: #666666;
+        }
+
+        .newsListBlock .contentBlock .contentIcon {
+            width: 8px;
+            margin-top: 12px;
+            height: 8px;
+            border-radius: 10px;
+            background-color: #9522A5;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+
+        .newsListBlock {
+            width: 90vw;
+            margin: auto;
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            min-height: 250px;
+
+        }
+
+        .newsListBlock .block {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .newsListBlock .blockTitle {
+            height: 35px;
+            display: flex;
+            width: 100%;
+            border-bottom: 2px solid #9522A5;
+        }
+
+        .newsListBlock .blockTitle .title {
+            line-height: 35px;
+            height: 35px;
+            flex: 1;
+            color: #666666;
+            font-weight: bold;
+        }
+
+        .newsListBlock .blockTitle .more {
+            cursor: pointer;
+            color: #9522A5;
+            line-height: 35px;
+            height: 35px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .newsListBlock .contentBlock {
+            height: 30px;
+            display: flex;
+        }
+
+        .newsListBlock .contentBlock:hover {
+            font-weight: bold;
+        }
+
+        .newsListBlock .contentBlock .title {
+            cursor: pointer;
+            text-indent: 10px;
+            line-height: 30px;
+            font-size: 14px;
+            color: #666666;
+            flex: 1;
+            display: -webkit-box;
+
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            /*行数*/
+            /*控制行数 超出后出现省略号*/
+            -o-text-overflow: ellipsis;
+            -webkit-text-overflow: ellipsis;
+            -moz-text-overflow: ellipsis;
+            overflow: hidden;
+        }
+
+        .newsListBlock .contentBlock .date {
+            cursor: pointer;
+            line-height: 30px;
+            font-size: 13px;
+            color: #666666;
+        }
+
+        .newsListBlock .contentBlock .contentIcon {
+            width: 8px;
+            margin-top: 12px;
+            height: 8px;
+            border-radius: 10px;
+            background-color: #9522A5;
+        }
+    }
+</style>
+
+
+<cms-component>
+
+    <div class="newsListBlock">
+        <cms-list class="block" data="l_lysatknz">
+            <div class="blockTitle">
+                <list-name class="title"></list-name>
+                <list-template class="more">更多>></list-template>
+            </div>
+            <list-node order="desc" page="1" limit="8">
+                <node-template class="contentBlock">
+                    <div class="contentIcon"></div>
+                    <node-title class="title"></node-title>
+                    <node-date class="date" format="YYYY-MM-DD"></node-date>
+                </node-template>
+            </list-node>
+        </cms-list>
+        <div class="placeholder"></div>
+        <cms-list class="block" data="l_lysauky7">
+            <div class="blockTitle">
+                <list-name class="title"></list-name>
+                <list-template class="more">更多>></list-template>
+            </div>
+            <list-node order="desc" page="1" limit="8">
+                <node-template class="contentBlock">
+                    <div class="contentIcon"></div>
+                    <node-title class="title"></node-title>
+                    <node-date class="date" format="YYYY-MM-DD"></node-date>
+                </node-template>
+            </list-node>
+        </cms-list>
+    </div>
+</cms-component></cms-component>
+    <cms-component><style>
+    @media screen and (min-width: 800px) {
+
+        .mainBlock {
+            width: 1000px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .activityBlock {
+            flex-wrap: wrap;
+            /* 允许换行 */
+            margin-top: 15px;
+            display: flex;
+        }
+
+        .activityBlock .block {
+            width: 470px;
+            padding: 15px;
+            display: flex;
+
+        }
+
+        .activityBlock .block .dateBlock {
+            background-image: url("./img/timer-log.png");
+            width: 72px;
+            height: 72px;
+            margin-right: 10px;
+            position: relative;
+        }
+
+        .activityBlock .block .dateBlock .month {
+            position: absolute;
+            color: #666666;
+            bottom: 12px;
+            right: 10px;
+        }
+
+        .activityBlock .block .dateBlock .day {
+            position: absolute;
+            font-weight: bold;
+            color: #fff;
+            font-size: 16px;
+            top: 12px;
+            left: 10px;
+        }
+
+        .activityBlock .block .contentBlock {
+            margin-top: -5px;
+            flex: 1;
+            display: flex;
+            margin-left: 15px;
+            flex-direction: column;
+        }
+
+        .activityBlock .block .contentBlock .title {
+            cursor: pointer;
+            height: 25px;
+            line-height: 25px;
+            font-size: 15px;
+            color: #666666;
+
+        }
+
+        .activityBlock .block .contentBlock:hover .title {
+            font-weight: bold;
+        }
+
+        .activityBlock .block .contentBlock:hover .contentDes {
+            font-weight: bold;
+        }
+
+        .activityBlock .block .contentBlock .contentDes {
+            cursor: pointer;
+            flex: 1;
+            font-size: 13px;
+            color: #999999;
+        }
+
+        .mainBlock .blockTitle {
+            height: 35px;
+            display: flex;
+            width: 100%;
+            border-bottom: 2px solid #9522A5;
+        }
+
+        .mainBlock .blockTitle .title {
+            line-height: 35px;
+            height: 35px;
+            flex: 1;
+            color: #666666;
+            font-weight: bold;
+        }
+
+        .mainBlock .blockTitle .more {
+            cursor: pointer;
+            color: #9522A5;
+            line-height: 35px;
+            height: 35px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+
+        .mainBlock {
+            width: 90vw;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .activityBlock {
+            flex-wrap: wrap;
+            /* 允许换行 */
+            margin-top: 15px;
+            display: flex;
+        }
+
+        .activityBlock .block {
+            width: 470px;
+            padding: 15px;
+            display: flex;
+
+        }
+
+        .activityBlock .block .dateBlock {
+            background-image: url("./img/timer-log.png");
+            width: 72px;
+            height: 72px;
+            margin-right: 10px;
+            position: relative;
+        }
+
+        .activityBlock .block .dateBlock .month {
+            position: absolute;
+            color: #666666;
+            bottom: 12px;
+            right: 10px;
+        }
+
+        .activityBlock .block .dateBlock .day {
+            position: absolute;
+            font-weight: bold;
+            color: #fff;
+            font-size: 16px;
+            top: 12px;
+            left: 10px;
+        }
+
+        .activityBlock .block .contentBlock {
+            margin-top: -5px;
+            flex: 1;
+            display: flex;
+            margin-left: 15px;
+            flex-direction: column;
+        }
+
+        .activityBlock .block .contentBlock .title {
+            cursor: pointer;
+            /* height: 25px;
+    line-height: 25px; */
+            padding-bottom: 6px;
+            font-size: 15px;
+            color: #666666;
+
+        }
+
+        .activityBlock .block .contentBlock:hover .title {
+            font-weight: bold;
+        }
+
+        .activityBlock .block .contentBlock:hover .contentDes {
+            font-weight: bold;
+        }
+
+        .activityBlock .block .contentBlock .contentDes {
+            cursor: pointer;
+            flex: 1;
+            font-size: 13px;
+            color: #999999;
+        }
+
+        .mainBlock .blockTitle {
+            height: 35px;
+            display: flex;
+            width: 100%;
+            border-bottom: 2px solid #9522A5;
+        }
+
+        .mainBlock .blockTitle .title {
+            line-height: 35px;
+            height: 35px;
+            flex: 1;
+            color: #666666;
+            font-weight: bold;
+        }
+
+        .mainBlock .blockTitle .more {
+            cursor: pointer;
+            color: #9522A5;
+            line-height: 35px;
+            height: 35px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+    }
+</style>
+<cms-component>
+    <div class="mainBlock">
+        <!-- 2041flby -->
+        <cms-list class="blockTitle" data="l_lysatv9r">
+
+            <list-name class="title"></list-name>
+            <list-template class="more">更多>></list-template>
+        </cms-list>
+        <cms-list data="l_lysatv9r">
+            <list-node page="1" limit="4" order="desc" class="activityBlock">
+                <node-template class="block">
+                    <div class="dateBlock">
+                        <node-date class="day" format="DD"></node-date>
+                        <node-date class="month" format="MM"></node-date>
+                    </div>
+                    <div class="contentBlock">
+                        <node-title class="title">
+                            [field:title function="substring(0,50,'')"/]
+                        </node-title>
+                        <node-note class="contentDes">
+                        </node-note>
+                    </div>
+                </node-template>
+            </list-node>
+        </cms-list>
+    </div>
+</cms-component></cms-component>
+    <cms-component><style>
+    @media screen and (min-width: 800px) {
+
+        .mainBlock {
+            padding-top: 15px;
+            width: 1000px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mainBlock .blockTitle {
+            height: 35px;
+            display: flex;
+            width: 100%;
+            border-bottom: 2px solid #9522A5;
+        }
+
+        .mainBlock .blockTitle .title {
+            line-height: 35px;
+            height: 35px;
+            flex: 1;
+            color: #666666;
+            font-weight: bold;
+        }
+
+        .mainBlock .blockTitle .more {
+            cursor: pointer;
+            color: #9522A5;
+            line-height: 35px;
+            height: 35px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .hotActivityBlock {
+            width: 1000px;
+            margin: auto;
+            margin-top: 10px;
+            height: 200px;
+            display: flex;
+        }
+
+        .hotActivityBlock .block {
+            cursor: pointer;
+            flex: 1;
+            max-width: calc(20% - 30px);
+            margin-left: 15px;
+            margin-right: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hotActivityBlock .block:hover .title {
+            font-weight: bold;
+        }
+
+        .hotActivityBlock .block:hover .desctiption {
+            font-weight: bold;
+        }
+
+        .hotActivityBlock .block img {
+            width: 100%;
+            height: 100px;
+        }
+
+        .hotActivityBlock .block .title {
+            width: 100%;
+            margin-top: 5px;
+            font-size: 15px;
+            color: #666666;
+        }
+
+        .hotActivityBlock .block .desctiption {
+            width: 100%;
+            flex: 1;
+            margin-top: 5px;
+            font-size: 13px;
+            color: #999999;
+        }
+
+        .hotActivityBlock .block .date {
+            text-align: right;
+            height: 20px;
+            font-size: 13px;
+            color: #999999;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+
+        .mainBlock {
+            padding-top: 15px;
+            width: 90vw;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mainBlock .blockTitle {
+            height: 35px;
+            display: flex;
+            width: 100%;
+            border-bottom: 2px solid #9522A5;
+        }
+
+        .mainBlock .blockTitle .title {
+            line-height: 35px;
+            height: 35px;
+            flex: 1;
+            color: #666666;
+            font-weight: bold;
+        }
+
+        .mainBlock .blockTitle .more {
+            cursor: pointer;
+            color: #9522A5;
+            line-height: 35px;
+            height: 35px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .hotActivityBlock {
+            width: 100%;
+            margin: auto;
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .hotActivityBlock .block {
+            cursor: pointer;
+            flex: 1;
+            min-width: 120px;
+            margin-left: 15px;
+            margin-right: 15px;
+            max-width: calc(20% - 30px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .hotActivityBlock .block:hover .title {
+            font-weight: bold;
+        }
+
+        .hotActivityBlock .block:hover .desctiption {
+            font-weight: bold;
+        }
+
+        .hotActivityBlock .block img {
+            width: 100%;
+            height: 100px;
+        }
+
+        .hotActivityBlock .block .title {
+            width: 100%;
+            margin-top: 5px;
+            font-size: 15px;
+            color: #666666;
+        }
+
+        .hotActivityBlock .block .desctiption {
+            width: 100%;
+            flex: 1;
+            margin-top: 5px;
+            font-size: 13px;
+            color: #999999;
+        }
+
+        .hotActivityBlock .block .date {
+            text-align: right;
+            height: 20px;
+            font-size: 13px;
+            color: #999999;
+        }
+    }
+</style>
+<cms-component>
+    <cms-list data="l_lysauc2p" class="mainBlock">
+        <div class="blockTitle">
+            <list-name class="title"></list-name>
+            <list-template class="more">更多>></list-template>
+        </div>
+        <list-node class="hotActivityBlock" page="1" limit="5" order="desc">
+            <node-template class="block">
+                <node-cover></node-cover>
+                <node-title class="title">
+                </node-title>
+                <node-note class="desctiption">
+                </node-note>
+            </node-template>
+        </list-node>
+    </cms-list>
+</cms-component></cms-component>
+    <cms-component><style>
+    @media screen and (min-width: 800px) {
+
+        .footBlock {
+            background-image: url("/img/b2c436f885e69123eabb86ba9b8e36e2.png");
+            width: 100%;
+            height: 250px;
+            margin-top: 10px;
+            display: flex;
+            position: absolut;
+            bottom: 0px;
+        }
+
+        .footContent {
+            color: #fff;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+        }
+
+        .FootContentBlock {
+            margin-top: 25px;
+            margin-bottom: 25px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 50px;
+            padding-right: 50px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .FootContentBlockFlex {
+            margin-top: 25px;
+            margin-bottom: 25px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 50px;
+            padding-right: 50px;
+            display: flex;
+        }
+
+        .middle {
+            border-right: 1px solid #abadff;
+            border-left: 1px solid #a5a5ff;
+        }
+
+        .FootContentTitle {
+            margin-bottom: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            width: 150px;
+            text-align: right;
+        }
+
+        .FootContentA {
+            cursor: pointer;
+            margin-bottom: 25px;
+            text-align: right;
+        }
+
+        .FootContentA:hover {
+            opacity: 0.75;
+        }
+
+        .textC {
+            text-align: center !important;
+        }
+
+        .FootImgBlock {
+            width: 120px;
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+        }
+
+        .FootTitleBlock {
+            margin-top: 15px;
+            text-align: center;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+
+        .footBlock {
+            background-image: url("/img/b2c436f885e69123eabb86ba9b8e36e2.png");
+            width: 100%;
+            margin-top: 10px;
+            display: flex;
+            position: absolut;
+            bottom: 0px;
+        }
+
+        .footBlock div {
+            padding: 6px;
+        }
+
+        .footContent {
+            color: #fff;
+            margin-left: auto;
+            margin-right: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .FootContentBlock {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .FootContentBlockFlex {
+
+            display: flex;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .middle {
+            border-top: 1px solid #abadff;
+            border-bottom: 1px solid #a5a5ff;
+        }
+
+        .FootContentTitle {
+            margin-bottom: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            width: 150px;
+        }
+
+        .FootContentA {
+            cursor: pointer;
+            margin-bottom: 25px;
+
+        }
+
+        .FootContentA:hover {
+            opacity: 0.75;
+        }
+
+
+        .FootImgBlock {
+            width: 120px;
+            display: flex;
+            flex-direction: column;
+            margin-right: 20px;
+        }
+
+        .FootTitleBlock {
+            margin-top: 15px;
+            text-align: center;
+        }
+    }
+</style>
+<cms-component>
+    <div class="footBlock">
+        <div class="footContent">
+            <div class="FootContentBlock">
+                <div class="FootContentTitle">
+                    学校地址
+                </div>
+                <div class="FootContentA">
+                    <a>江西省南昌市湾里管理局罗亭大道89号</a>
+                </div>
+            </div>
+
+            <div class="FootContentBlock middle">
+                <div class="FootContentA textC">
+                    ©2020 江西软件职业技术大学版权所有
+                </div>
+                <div class="FootContentA textC">
+                    赣公网安备 36010502000014号
+                </div>
+                <div class="FootContentA textC">
+                    联系电话 ：17607912375
+                </div>
+                <div class="FootContentA textC">
+                    邮箱 ：804532064@qq.com
+                </div>
+
+            </div>
+
+            <div class="FootContentBlockFlex">
+                <div class="FootImgBlock">
+                    <img src="/img/1.png" />
+                    <div class="FootTitleBlock">学校官徽</div>
+                </div>
+                <div class="FootImgBlock">
+                    <img src="/img/image copy.png" />
+                    <div class="FootTitleBlock">校友之家公众号</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</cms-component></cms-component>
+
 <script>
             const Cms=document.createElement("script")
             Cms.src=window.location.origin+"/cmsScripts/FinalCms.js?web=alumni"

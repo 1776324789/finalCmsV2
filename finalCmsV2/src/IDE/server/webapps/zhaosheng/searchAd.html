@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<title>2025年单招考试正式录取结果查询</title>
+
+	<link href="css/style.css" rel="stylesheet" />
+	<link href="css/MoonIcon/style.css" rel="stylesheet" />
+</head>
+
+<body>
+	<cms-component data="l_lxlhqx1y">head</cms-component>
+	<div class="bgi"></div>
+	<div class="main" id="main">
+		<div class="title" style="word-break:keep-all;font-size:15px;">江西软件职业技术大学2026年单独招生考试拟录取结果查询</div>
+		<div class="line">
+			<div class="label">考生号：</div>
+			<input type="text" class="input" placeholder="请输入考生号" id="id">
+		</div>
+		<div class="line">
+			<div class="label">姓&nbsp;&nbsp;&nbsp;&nbsp;名：</div>
+			<input type="text" class="input" placeholder="请输入姓名" id="name">
+		</div>
+
+		<div>
+			<button class="button" onclick="search()" id="searchButton">查询</button>
+		</div>
+		<div class="infoMain" id="infoBlock">
+			<div class="infoBlock">
+				<div class="infoLabel">考&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</div>
+				<div class="info" id="stuCode"></div>
+			</div>
+			<div class="infoBlock" style="background-color: rgba(236, 236, 236, 0.616);">
+				<div class="infoLabel">
+					姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名
+				</div>
+				<div class="info" id="name1"></div>
+			</div>
+			<div class="infoBlock">
+				<div class="infoLabel">录&nbsp;&nbsp;&nbsp;取&nbsp;&nbsp;&nbsp;专&nbsp;&nbsp;&nbsp;业</div>
+				<div class="info" id="major"></div>
+			</div>
+			<div class="infoBlock">
+				<div class="infoLabel">录&nbsp;&nbsp;&nbsp;取&nbsp;&nbsp;&nbsp;状&nbsp;&nbsp;&nbsp;态</div>
+				<div class="info" id="state"></div>
+			</div>
+
+
+
+		</div>
+		<div class="infoMain" style="display:block;">
+
+
+
+			<div class="infoBlock">
+				<div class="info">请准确填写本人姓名、考生号，信息有误将无法查询。</div>
+			</div>
+			<div class="infoBlock" style="background-color: rgba(236, 236, 236, 0.616);">
+				<div class="info">咨询电话：0791-83792888（招生办公室）</div>
+			</div>
+		</div>
+		<div class="warn empty" style="display: block;" id="empty">未查询到结果</div>
+		<img src="./img/bgi.png" class="bgb">
+	</div>
+	<cms-component>foot</cms-component>
+</body>
+
+</html>
+
+<script>
+	const data2 = [{ "code": "26360111891090", "name": "陶宇昊", "state": "未录取", "major": "" }, { "code": "26360404150054", "name": "金锐锋", "state": "未录取", "major": "" }, { "code": "26360482892733", "name": "黄程", "state": "未录取", "major": "" }, { "code": "26360702893767", "name": "王礼鸿", "state": "未录取", "major": "" }, { "code": "26360730114307", "name": "李锦辉", "state": "未录取", "major": "" }, { "code": "26360731111866", "name": "邱福林", "state": "未录取", "major": "" }, { "code": "26360731113915", "name": "曾逸安", "state": "未录取", "major": "" }, { "code": "26360732113270", "name": "肖起福", "state": "未录取", "major": "" }, { "code": "26360781114694", "name": "邹智勇", "state": "未录取", "major": "" }, { "code": "26360821153207", "name": "肖军根", "state": "未录取", "major": "" }, { "code": "26360822152148", "name": "彭林勇", "state": "未录取", "major": "" }, { "code": "26360881110745", "name": "罗俊伟", "state": "未录取", "major": "" }, { "code": "26360881890312", "name": "刘婷", "state": "未录取", "major": "" }, { "code": "26360881890315", "name": "石丽娟", "state": "未录取", "major": "" }, { "code": "26360881890388", "name": "许莉华", "state": "未录取", "major": "" }, { "code": "26360881890389", "name": "黄晶琳", "state": "未录取", "major": "" }, { "code": "26361025890263", "name": "陈福超", "state": "未录取", "major": "" }, { "code": "26361181154092", "name": "杨文杰", "state": "未录取", "major": "" }, { "code": "26360482891544", "name": "彭门财", "state": "未录取", "major": "" }, { "code": "26360482891541", "name": "洪宇翔", "state": "未录取", "major": "" }, { "code": "26360482891533", "name": "蔡良律", "state": "未录取", "major": "" }, { "code": "26360881890302", "name": "熊建国", "state": "未录取", "major": "" }, { "code": "26360881890412", "name": "刘文浩", "state": "未录取", "major": "" }, { "code": "26360881890398", "name": "简世浩", "state": "未录取", "major": "" }, { "code": "26360482891534", "name": "钟尚泽", "state": "拟录取", "major": "软件技术" }, { "code": "26361025890476", "name": "杨子民", "state": "拟录取", "major": "信息安全技术应用" }, { "code": "26360707151941", "name": "黄志翔", "state": "拟录取", "major": "软件技术" }, { "code": "26360502119236", "name": "胡震", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360111890761", "name": "毛子轩", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890317", "name": "黄亮萍", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890423", "name": "黄缘", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360730890101", "name": "吴新阳", "state": "拟录取", "major": "软件技术" }, { "code": "26360881890304", "name": "朱紫麒", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890369", "name": "邱金波", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361102890170", "name": "封令恒", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890347", "name": "彭振雄", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360902115481", "name": "刘宜坤", "state": "拟录取", "major": "软件技术" }, { "code": "26360881890384", "name": "李园静", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26360502890015", "name": "廖子俊", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26360881890416", "name": "夏侯宏强", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360203890405", "name": "黄士杰", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890429", "name": "严昭席", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360730890065", "name": "刘家语", "state": "拟录取", "major": "软件技术" }, { "code": "26360821891641", "name": "黄雨娟", "state": "拟录取", "major": "软件技术" }, { "code": "26360281116116", "name": "刘阳", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360902891519", "name": "李语欣", "state": "拟录取", "major": "软件技术" }, { "code": "26360281890239", "name": "胡景鸿", "state": "拟录取", "major": "软件技术" }, { "code": "26360828890526", "name": "林海峰", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890353", "name": "聂忠耀", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361102890169", "name": "徐昌优", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360902893561", "name": "李庚垠", "state": "拟录取", "major": "软件技术" }, { "code": "26360881890396", "name": "刘敏", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361181890071", "name": "余晓利", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361021890412", "name": "梁昕睿", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360731115932", "name": "沈青云", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360681111805", "name": "李子华", "state": "拟录取", "major": "软件技术" }, { "code": "26360983113975", "name": "徐宇航", "state": "拟录取", "major": "移动应用开发" }, { "code": "26361025890297", "name": "杨广胜", "state": "拟录取", "major": "软件技术" }, { "code": "26361103890270", "name": "郑志林", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360481111087", "name": "董子铭", "state": "拟录取", "major": "软件技术" }, { "code": "26360881890404", "name": "彭宇星", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890425", "name": "卢星志", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890370", "name": "袁浩男", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890418", "name": "杨家富", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890405", "name": "温婧", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890420", "name": "李栗峰", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890343", "name": "肖永成", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890360", "name": "陈家康", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360121114931", "name": "蓝博鑫", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26360730154598", "name": "黄豪华", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890422", "name": "曾一楠", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361129112747", "name": "洪孔俊", "state": "拟录取", "major": "软件技术" }, { "code": "26361181114110", "name": "吴鑫磊", "state": "拟录取", "major": "移动应用开发" }, { "code": "26361021890441", "name": "黄宇", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361021890422", "name": "涂俊翔", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890408", "name": "卢子琪", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360105890001", "name": "聂诗宇", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360105890023", "name": "陈金枝", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360983113976", "name": "赵旺", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360881890427", "name": "温秋运", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890395", "name": "曹俊", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890419", "name": "华鸿宇", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361128111705", "name": "叶凡", "state": "拟录取", "major": "软件技术" }, { "code": "26360881890407", "name": "张平", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360730114216", "name": "陈展伟", "state": "拟录取", "major": "软件技术" }, { "code": "26360826111951", "name": "李蒲琴", "state": "拟录取", "major": "软件技术" }, { "code": "26360602890081", "name": "黄家豪", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360732114798", "name": "孔维亮", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360121119183", "name": "肖志豪", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26360123111151", "name": "雷志刚", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360825114379", "name": "刘志平", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26360109892181", "name": "邓文金", "state": "拟录取", "major": "软件技术" }, { "code": "26360881890397", "name": "郭家祺", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890300", "name": "潘琛", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890301", "name": "杨炳春", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361103890259", "name": "夏钦", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361128113898", "name": "胡良棋", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890411", "name": "谢安", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360922153692", "name": "李祖祥", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360602111300", "name": "吴少凡", "state": "拟录取", "major": "软件技术" }, { "code": "26360602151775", "name": "彭星龙", "state": "拟录取", "major": "软件技术" }, { "code": "26360602890077", "name": "陈俊杰", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890357", "name": "温余晨", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360825114373", "name": "谢俊", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26360881890391", "name": "邹杨斌", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360502119254", "name": "廖伟鹏", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360723119059", "name": "谭景权", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360881890431", "name": "王勇贤", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361103890255", "name": "黄安概", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360104112598", "name": "秦立山", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881110897", "name": "熊研江", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360732113371", "name": "黎荣宁", "state": "拟录取", "major": "软件技术" }, { "code": "26361021890432", "name": "余奥诚", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361103890272", "name": "徐兴辉", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361021890416", "name": "刘阳", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361102112837", "name": "毛天赐", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361103159152", "name": "杨云", "state": "拟录取", "major": "软件技术" }, { "code": "26360602111319", "name": "汤超雄", "state": "拟录取", "major": "软件技术" }, { "code": "26360731113895", "name": "罗志斌", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360732114594", "name": "钟其祥", "state": "拟录取", "major": "软件技术" }, { "code": "26361103890271", "name": "何志渊", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361128112798", "name": "胡嘉乐", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360424111952", "name": "方攀妮", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26360881890426", "name": "蔡家洋", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890430", "name": "彭家乐", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361103890274", "name": "刘致运", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361123113966", "name": "占苏彤", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360113119503", "name": "谭文奇", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360730114397", "name": "曾世代", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26360881890332", "name": "肖天亮", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890381", "name": "黄慧", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361002154869", "name": "徐泽亚", "state": "拟录取", "major": "软件技术" }, { "code": "26361103890269", "name": "郑贤东", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361025890325", "name": "董昊", "state": "拟录取", "major": "软件技术" }, { "code": "26361128113141", "name": "钟志涛", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360732113264", "name": "罗嗣超", "state": "拟录取", "major": "软件技术" }, { "code": "26360881890349", "name": "曾斌斌", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360731153626", "name": "宋世烨", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360732113515", "name": "王斯明", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890406", "name": "廖哲", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360502113350", "name": "龚羽欣", "state": "拟录取", "major": "软件技术" }, { "code": "26360881890350", "name": "李嘉鑫", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360921890867", "name": "曾宏毅", "state": "拟录取", "major": "软件技术" }, { "code": "26360902117188", "name": "陈清鑫", "state": "拟录取", "major": "电子竞技运动与管理" }, { "code": "26360730890102", "name": "郭晋晖", "state": "拟录取", "major": "软件技术" }, { "code": "26360881890303", "name": "廖翔", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361128156415", "name": "王志雄", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360102156024", "name": "刘梦佳", "state": "拟录取", "major": "软件技术" }, { "code": "26360602890075", "name": "何天宇", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890382", "name": "刘羽", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361102890202", "name": "周启楠", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890410", "name": "李冬璐", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360111891299", "name": "陈佳珂", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26360881890380", "name": "李慧", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360111113796", "name": "邹宁凯", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360730114369", "name": "朱瑞奇", "state": "拟录取", "major": "软件技术" }, { "code": "26361001152672", "name": "唐佳豪", "state": "拟录取", "major": "移动应用开发" }, { "code": "26361103890273", "name": "袁国仲", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890325", "name": "涂瑞", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360924890335", "name": "罗顺涛", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890421", "name": "郭佳鑫", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361024111151", "name": "潘煜柏", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361129111880", "name": "夏文强", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360121119026", "name": "刘斯佳", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26361103159270", "name": "邱乐", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361103890276", "name": "王翔", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361127155362", "name": "吴旭俊", "state": "拟录取", "major": "软件技术" }, { "code": "26361181114100", "name": "王兆东", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26360881890361", "name": "陈建辉", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361102890168", "name": "黄鑫", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361103158517", "name": "俞浩", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361128113641", "name": "段文瑞", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360502113353", "name": "何熙晨", "state": "拟录取", "major": "软件技术" }, { "code": "26360827113273", "name": "周辉", "state": "拟录取", "major": "软件技术" }, { "code": "26361025152180", "name": "黄源", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360103119148", "name": "程开", "state": "拟录取", "major": "信息安全技术应用" }, { "code": "26360731113707", "name": "李师景", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360731153677", "name": "肖菊", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360281116014", "name": "曾静雯", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26360829890266", "name": "钟涵博", "state": "拟录取", "major": "软件技术" }, { "code": "26360881890338", "name": "许隽", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360924890343", "name": "肖宝庭", "state": "拟录取", "major": "软件技术" }, { "code": "26360113119136", "name": "旦增", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360732113240", "name": "邓军", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890318", "name": "周莉", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890390", "name": "钟文杰", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890424", "name": "吴坤", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361103890260", "name": "黄钟颢", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360731113973", "name": "刘承宇", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360821891642", "name": "尹晓韩", "state": "拟录取", "major": "软件技术" }, { "code": "26360502110660", "name": "刘辛菲", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26360732890987", "name": "钟振轩", "state": "拟录取", "major": "软件技术" }, { "code": "26360821892917", "name": "何吉", "state": "拟录取", "major": "软件技术" }, { "code": "26361103153674", "name": "俞恒威", "state": "拟录取", "major": "软件技术" }, { "code": "26360481152406", "name": "柯俊", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360730114384", "name": "杜丕跃", "state": "拟录取", "major": "软件技术" }, { "code": "26360602111307", "name": "吴卓旺", "state": "拟录取", "major": "软件技术" }, { "code": "26360730890103", "name": "赖乂阳", "state": "拟录取", "major": "软件技术" }, { "code": "26360881890374", "name": "刘慧琴", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360902893595", "name": "梁奇林", "state": "拟录取", "major": "软件技术" }, { "code": "26360404110086", "name": "饶亮", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360602111438", "name": "严子浩", "state": "拟录取", "major": "软件技术" }, { "code": "26360425891324", "name": "徐奥飞", "state": "拟录取", "major": "软件技术" }, { "code": "26360881890306", "name": "张容亮", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361021890418", "name": "欧阳心晨", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361128155266", "name": "刘增勇", "state": "拟录取", "major": "电子竞技运动与管理" }, { "code": "26360725155039", "name": "肖裕川", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360732113348", "name": "朱杨铭", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890308", "name": "陈云楷", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360105890018", "name": "欧阳胤廷", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26360502113328", "name": "张熙贤", "state": "拟录取", "major": "软件技术" }, { "code": "26360502114011", "name": "张宇帆", "state": "拟录取", "major": "软件技术" }, { "code": "26360730155242", "name": "罗文胜", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360781890178", "name": "刘剑烽", "state": "拟录取", "major": "电子竞技运动与管理" }, { "code": "26361127156878", "name": "胡瑞", "state": "拟录取", "major": "软件技术" }, { "code": "26360429111266", "name": "夏俊辉", "state": "拟录取", "major": "移动应用开发" }, { "code": "26361128112949", "name": "李仕政", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360821891838", "name": "苏宏瑞", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360828890158", "name": "彭光祥", "state": "拟录取", "major": "软件技术" }, { "code": "26360881890358", "name": "钟燕平", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360124112815", "name": "李旭", "state": "拟录取", "major": "软件技术" }, { "code": "26360602111311", "name": "艾俊威", "state": "拟录取", "major": "软件技术" }, { "code": "26360603111363", "name": "张勇华", "state": "拟录取", "major": "软件技术" }, { "code": "26360725115008", "name": "曾川", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360881890341", "name": "李俊杰", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890402", "name": "尹言信", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360424119112", "name": "卢佳盼", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26360722113496", "name": "徐文杰", "state": "拟录取", "major": "云计算技术应用" }, { "code": "26360802890596", "name": "肖楚阳", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26360322890359", "name": "邱崇彰", "state": "拟录取", "major": "软件技术" }, { "code": "26360681152781", "name": "张竞成", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361103890248", "name": "俞健", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890352", "name": "肖勋", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360102156101", "name": "李霈泽", "state": "拟录取", "major": "软件技术" }, { "code": "26360983113909", "name": "彭雨晴", "state": "拟录取", "major": "软件技术" }, { "code": "26361128113173", "name": "王云鹏", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360109151531", "name": "郭栋", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360923119041", "name": "李家驹", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360482891532", "name": "叶耀隆", "state": "拟录取", "major": "软件技术" }, { "code": "26360881890346", "name": "王子洋", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890413", "name": "刘励锋", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890376", "name": "尹楠", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360921111425", "name": "邓晶", "state": "拟录取", "major": "软件技术" }, { "code": "26361102112914", "name": "龚少熠", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360603111366", "name": "周杨杰", "state": "拟录取", "major": "软件技术" }, { "code": "26360430111082", "name": "胡璧钧", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360730890098", "name": "陶俊康", "state": "拟录取", "major": "信息安全技术应用" }, { "code": "26360828110892", "name": "卢俊", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361003111221", "name": "饶浪", "state": "拟录取", "major": "软件技术" }, { "code": "26360732113279", "name": "张开明", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360732113347", "name": "周祥禄", "state": "拟录取", "major": "软件技术" }, { "code": "26360732113441", "name": "覃康运", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890359", "name": "朱尚煌", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360602890033", "name": "董泽锋", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360681890055", "name": "李佰恩", "state": "拟录取", "major": "信息安全技术应用" }, { "code": "26360881890379", "name": "徐诗晴", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890403", "name": "陈紫君", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26361129111837", "name": "姚欣", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360731891090", "name": "王成鑫", "state": "拟录取", "major": "软件技术" }, { "code": "26360921890724", "name": "凌敏敏", "state": "拟录取", "major": "软件技术" }, { "code": "26360730113054", "name": "邓燠龙", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360731112373", "name": "谢淦荣", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890333", "name": "柳黄娇", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360921890343", "name": "廖肄铖", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361103119018", "name": "俞铭涵", "state": "拟录取", "major": "软件技术" }, { "code": "26361128111001", "name": "曹馨瑶", "state": "拟录取", "major": "信息安全技术应用" }, { "code": "26360105890026", "name": "胡家宝", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890310", "name": "李文", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360730154595", "name": "何世诚", "state": "拟录取", "major": "软件技术" }, { "code": "26360881111210", "name": "谢德凯", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890348", "name": "文富望", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360603111330", "name": "龚朝阳", "state": "拟录取", "major": "软件技术" }, { "code": "26360731153609", "name": "刘锋", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360829890085", "name": "钟颖伦", "state": "拟录取", "major": "电子竞技运动与管理" }, { "code": "26360731153634", "name": "肖辉", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360731114540", "name": "董金林", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360922112935", "name": "揭泽凡", "state": "拟录取", "major": "软件技术" }, { "code": "26360111110680", "name": "程文刚", "state": "拟录取", "major": "软件技术" }, { "code": "26360603111346", "name": "裴子安", "state": "拟录取", "major": "软件技术" }, { "code": "26360724152154", "name": "石婷婷", "state": "拟录取", "major": "软件技术" }, { "code": "26360732153990", "name": "钟盛涛", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361128113188", "name": "余杰", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361129111854", "name": "黄杰", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361103890261", "name": "阮丽烽", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360731111850", "name": "何彦锦", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360924890641", "name": "邹佳伟", "state": "拟录取", "major": "软件技术" }, { "code": "26360322890353", "name": "李云昊", "state": "拟录取", "major": "软件技术" }, { "code": "26360681110570", "name": "黄泽佳", "state": "拟录取", "major": "信息安全技术应用" }, { "code": "26360821151569", "name": "李家乐", "state": "拟录取", "major": "软件技术" }, { "code": "26360881111141", "name": "邓博", "state": "拟录取", "major": "软件技术" }, { "code": "26360922113303", "name": "张子欣", "state": "拟录取", "major": "软件技术" }, { "code": "26360425155405", "name": "杨兰", "state": "拟录取", "major": "软件技术" }, { "code": "26360828110733", "name": "林泳霖", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881111165", "name": "唐玲", "state": "拟录取", "major": "软件技术" }, { "code": "26360921890353", "name": "温轩宇", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360121892519", "name": "邓纪华", "state": "拟录取", "major": "区块链技术应用" }, { "code": "26360222890032", "name": "万宇轩", "state": "拟录取", "major": "软件技术" }, { "code": "26360704113212", "name": "钟君豪", "state": "拟录取", "major": "软件技术" }, { "code": "26360924890363", "name": "刘兴栩", "state": "拟录取", "major": "软件技术" }, { "code": "26360924890375", "name": "况政杰", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360732113244", "name": "方璐", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360732113254", "name": "李年涛", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360828110891", "name": "宋杰", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361104112776", "name": "廖景豪", "state": "拟录取", "major": "软件技术" }, { "code": "26360322890338", "name": "杨本圣", "state": "拟录取", "major": "软件技术" }, { "code": "26360602890025", "name": "周星阳", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361021111196", "name": "陈思瀚", "state": "拟录取", "major": "电子竞技运动与管理" }, { "code": "26361103119152", "name": "胡聪", "state": "拟录取", "major": "移动应用开发" }, { "code": "26361128115169", "name": "朱孟俊", "state": "拟录取", "major": "云计算技术应用" }, { "code": "26361181114077", "name": "叶铭威", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360802154340", "name": "章途", "state": "拟录取", "major": "电子竞技运动与管理" }, { "code": "26360921890344", "name": "凌贤哲", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360425891355", "name": "熊佳豪", "state": "拟录取", "major": "信息安全技术应用" }, { "code": "26360730155269", "name": "廖宁", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360881890362", "name": "刘志杰", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360921110796", "name": "章圣雷", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360322890362", "name": "游礼宾", "state": "拟录取", "major": "软件技术" }, { "code": "26360602111812", "name": "桂文浩", "state": "拟录取", "major": "移动应用开发" }, { "code": "26361103154982", "name": "刘文宇", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361103890250", "name": "纪荣敏", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361130111532", "name": "时锦霖", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360731111896", "name": "陈炜萱", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360109151131", "name": "施丹娜", "state": "拟录取", "major": "软件技术" }, { "code": "26360732113343", "name": "钟世强", "state": "拟录取", "major": "软件技术" }, { "code": "26360881890363", "name": "孙礼蓬", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360109151132", "name": "倪佳莉", "state": "拟录取", "major": "软件技术" }, { "code": "26360732113359", "name": "郭斌", "state": "拟录取", "major": "软件技术" }, { "code": "26360124153580", "name": "梁人杰", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360430111101", "name": "王世卓", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360824151455", "name": "姚政轶", "state": "拟录取", "major": "云计算技术应用" }, { "code": "26360827890009", "name": "唐基红", "state": "拟录取", "major": "软件技术" }, { "code": "26361103154989", "name": "王文焕", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360112116151", "name": "张哲宇", "state": "拟录取", "major": "软件技术" }, { "code": "26360732113252", "name": "黎彬", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360424155253", "name": "卢松航", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26361127115308", "name": "吴晓敏", "state": "拟录取", "major": "软件技术" }, { "code": "26360111111426", "name": "刘嘉欣", "state": "拟录取", "major": "软件技术" }, { "code": "26360121116126", "name": "叶逸辰", "state": "拟录取", "major": "电子竞技运动与管理" }, { "code": "26360902115486", "name": "周炜栋", "state": "拟录取", "major": "软件技术" }, { "code": "26361027151720", "name": "艾轩", "state": "拟录取", "major": "软件技术" }, { "code": "26360121113188", "name": "李嘉怡", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360111110681", "name": "勒先峰", "state": "拟录取", "major": "软件技术" }, { "code": "26360722891164", "name": "徐金平", "state": "拟录取", "major": "软件技术" }, { "code": "26360723111263", "name": "龚朝洪", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360828890155", "name": "罗欣武", "state": "拟录取", "major": "软件技术" }, { "code": "26361181154093", "name": "占智坤", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360826111719", "name": "罗浩", "state": "拟录取", "major": "软件技术" }, { "code": "26360722114376", "name": "苏睿", "state": "拟录取", "major": "软件技术" }, { "code": "26360881111214", "name": "李思怡", "state": "拟录取", "major": "跨境电子商务" }, { "code": "26361128156454", "name": "董勇", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361129152224", "name": "姚英杰", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361127115307", "name": "张若荫", "state": "拟录取", "major": "软件技术" }, { "code": "26360881890378", "name": "刘欣妍", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361128113618", "name": "孙宇庭", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360723111267", "name": "蓝应明", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361128115111", "name": "曹婧雯", "state": "拟录取", "major": "软件技术" }, { "code": "26360723111264", "name": "黄勇涛", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360881890414", "name": "谢智晨", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360902894293", "name": "施浩轩", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360823151219", "name": "罗欢", "state": "拟录取", "major": "软件技术" }, { "code": "26360881890305", "name": "徐钦翰", "state": "拟录取", "major": "软件技术" }, { "code": "26360881890331", "name": "陈俊", "state": "拟录取", "major": "软件技术" }, { "code": "26361127154943", "name": "张俊豪", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360202110864", "name": "朱嘉炜", "state": "拟录取", "major": "软件技术" }, { "code": "26360902157389", "name": "陈文博", "state": "拟录取", "major": "软件技术" }, { "code": "26360981156040", "name": "杨卿", "state": "拟录取", "major": "软件技术" }, { "code": "26360902115447", "name": "卢锦程", "state": "拟录取", "major": "软件技术" }, { "code": "26360704153862", "name": "邓津", "state": "拟录取", "major": "软件技术" }, { "code": "26360730112626", "name": "郭文强", "state": "拟录取", "major": "软件技术" }, { "code": "26361025111172", "name": "陈紫洋", "state": "拟录取", "major": "软件技术" }, { "code": "26360121113761", "name": "兰英杰", "state": "拟录取", "major": "软件技术" }, { "code": "26360121153557", "name": "杨泽昊", "state": "拟录取", "major": "信息安全技术应用" }, { "code": "26361128156641", "name": "王雨谦", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360112116149", "name": "胡向天", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360730153900", "name": "宋嘉锦", "state": "拟录取", "major": "软件技术" }, { "code": "26360732113261", "name": "刘兴龙", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360902158261", "name": "刘永兴", "state": "拟录取", "major": "软件技术" }, { "code": "26361123151827", "name": "余智鹏", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360731153601", "name": "郭慧忠", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360730890094", "name": "李耀威", "state": "拟录取", "major": "信息安全技术应用" }, { "code": "26360902894103", "name": "柳嘉林", "state": "拟录取", "major": "软件技术" }, { "code": "26360104891427", "name": "徐智文", "state": "拟录取", "major": "软件技术" }, { "code": "26360732114370", "name": "范志远", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360723111286", "name": "周宇翔", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361025152193", "name": "陈薇", "state": "拟录取", "major": "软件技术" }, { "code": "26360731154893", "name": "王成霖", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360732113548", "name": "吴盼盼", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26361130151283", "name": "汪学群", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360723111273", "name": "沈宏鑫", "state": "拟录取", "major": "工业机器人技术" }, { "code": "26360821113065", "name": "郭伟豪", "state": "拟录取", "major": "移动应用开发" }, { "code": "26360111891164", "name": "封鑫蕾", "state": "拟录取", "major": "跨境电子商务" }, { "code": "", "name": "", "state": "", "major": "" }]
+
+</script>
+
+
+
+
+
+
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script>
+	const baseUrl = "https://template.jxuspt.com"
+
+	// const baseUrl = "http://localhost:8088"
+	const main = document.getElementById("main")
+	const name = document.getElementById("name")
+	const id = document.getElementById("id")
+	const empty = document.getElementById("empty")
+	const infoBlock = dg("infoBlock")
+	let searching = false
+	const name1 = document.getElementById("name1")
+	const sex = document.getElementById("sex")
+	const school = document.getElementById("school")
+	const major = document.getElementById("major")
+	const state = document.getElementById("state")
+	async function search() {
+		if (name.value == "" || id.value == "") {
+			empty.innerText = "请输入完整内容再查询"
+			showEmpty()
+			return
+		}
+
+		if (searching) {
+			return
+		}
+		searching = true
+		document.getElementById("searchButton").innerText = "正在查询..."
+		infoBlock.style.display = "none"
+
+
+		const result = searchEnyData(name.value, id.value)
+
+
+
+		searching = false
+		document.getElementById("searchButton").innerText = "查询"
+		console.log(result)
+		if (result == null) {
+			empty.innerText = "未查询到结果"
+			showEmpty()
+		} else if (result != null) {
+			infoBlock.style.display = "block"
+			main.style.marginTop = "10px"
+			let data = result
+
+			name1.innerText = data.name
+			stuCode.innerText = data.code
+			major.innerText = data.major == "" ? "--" : data.major
+			state.innerText = data.state=="未录取"?"未录取（总分太低，不予录取）":data.state
+		} else if (result.data.code == 400) {
+			empty.innerText = "内部异常，请稍后再试"
+			showEmpty()
+		}
+
+		// main.style.marginTop = "10px"
+	}
+	function searchEnyData(name, code) {
+		// 		const enyId = encrypt((name + "_" + code), (code + "_" + name))
+		// 		const content = data.find(i => i.id = enyId)?.content
+		// 		if (content == null) return null
+		// console.log(decrypt(enyId, (code + "_" + name)))
+		return data2.find(i => i.name == name && i.code == code)
+
+
+	}
+	function showEmpty() {
+
+		for (let a = 0; a < 10; a++) {
+			setTimeout(() => {
+				document.getElementById("empty").style.display = "block"
+				document.getElementById("empty").style.marginTop = (9 - a + 2) * 10 + "px"
+				document.getElementById("empty").style.opacity = a * 0.1
+			}, 17 * a);
+		}
+		setTimeout(() => {
+			document.getElementById("empty").style.display = "none"
+		}, 2000);
+	}
+
+	function dg(id) {
+		return document.getElementById(id)
+	}
+
+
+
+
+	/**
+ * 字符串加密解密工具（基于XOR对称加密）
+ * 使用一个字符串作为密钥，对另一个字符串进行加密和解密。
+ * 加密结果以十六进制字符串形式输出，便于存储和传输。
+ */
+
+	// ---------- 辅助函数 ----------
+	/**
+	 * 将字符串转换为Uint8Array（UTF-8编码）
+	 * @param {string} str - 输入字符串
+	 * @returns {Uint8Array} UTF-8字节数组
+	 */
+	function stringToUint8Array(str) {
+		return new TextEncoder().encode(str);
+	}
+
+	/**
+	 * 将Uint8Array转换为字符串（UTF-8解码）
+	 * @param {Uint8Array} uint8Array - 字节数组
+	 * @returns {string} 解码后的字符串
+	 */
+	function uint8ArrayToString(uint8Array) {
+		return new TextDecoder().decode(uint8Array);
+	}
+
+	/**
+	 * 将字节数组转换为十六进制字符串
+	 * @param {Uint8Array} bytes - 字节数组
+	 * @returns {string} 十六进制字符串，如 "a1b2c3"
+	 */
+	function bytesToHex(bytes) {
+		return Array.from(bytes, byte => byte.toString(16).padStart(2, '0')).join('');
+	}
+
+	/**
+	 * 将十六进制字符串转换为字节数组
+	 * @param {string} hex - 十六进制字符串（必须偶数长度）
+	 * @returns {Uint8Array} 字节数组
+	 */
+	function hexToBytes(hex) {
+		const len = hex.length / 2;
+		const bytes = new Uint8Array(len);
+		for (let i = 0; i < len; i++) {
+			bytes[i] = parseInt(hex.substr(i * 2, 2), 16);
+		}
+		return bytes;
+	}
+
+	/**
+	 * 对数据字节数组与密钥字节数组进行XOR运算（对称操作，加密解密通用）
+	 * @param {Uint8Array} data - 待处理的数据字节
+	 * @param {Uint8Array} keyBytes - 密钥字节数组
+	 * @returns {Uint8Array} XOR运算后的字节数组
+	 */
+	function xorBytes(data, keyBytes) {
+		const result = new Uint8Array(data.length);
+		for (let i = 0; i < data.length; i++) {
+			// 循环使用密钥字节
+			result[i] = data[i] ^ keyBytes[i % keyBytes.length];
+		}
+		return result;
+	}
+
+	// ---------- 加密/解密主函数 ----------
+	/**
+	 * 使用密钥加密明文字符串
+	 * @param {string} plaintext - 要加密的原始字符串
+	 * @param {string} key - 密钥字符串（不能为空）
+	 * @returns {string} 加密后的十六进制字符串
+	 * @throws {Error} 如果密钥为空则抛出错误
+	 */
+	function encrypt(plaintext, key) {
+		if (!key) throw new Error("密钥不能为空");
+		const plainBytes = stringToUint8Array(plaintext);
+		const keyBytes = stringToUint8Array(key);
+		const encryptedBytes = xorBytes(plainBytes, keyBytes);
+		return bytesToHex(encryptedBytes);
+	}
+
+	/**
+	 * 使用密钥解密密文（十六进制字符串）
+	 * @param {string} ciphertextHex - 由encrypt函数生成的十六进制密文
+	 * @param {string} key - 密钥字符串（必须与加密时使用的密钥相同）
+	 * @returns {string} 解密后的原始字符串
+	 * @throws {Error} 如果密钥为空则抛出错误
+	 */
+	function decrypt(ciphertextHex, key) {
+		if (!key) throw new Error("密钥不能为空");
+		const encryptedBytes = hexToBytes(ciphertextHex);
+		const keyBytes = stringToUint8Array(key);
+		const decryptedBytes = xorBytes(encryptedBytes, keyBytes);
+		return uint8ArrayToString(decryptedBytes);
+	}
+
+</script>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <cms-component data="l_m7iiesie">head</cms-component>
+    <style>
+        .mainBlock {
+            display: flex;
+            flex-direction: column;
+            width: 1000px;
+            min-height: 750px;
+            margin-left: calc((100% - 1000px)/2);
+        }
+
+        .newLine {
+            cursor: pointer;
+            display: flex;
+            height: 30px;
+            line-height: 30px;
+            margin-bottom: 5px;
+            border-bottom: 1px solid #efefef;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+        }
+
+        .newLine:hover {
+            background-color: #efefef;
+        }
+
+        .bread {
+            display: flex;
+            font-size: 15px;
+            border-bottom: 2px solid #772f91;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+            color: #772f91;
+        }
+
+        .bread .content {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .bread .content:hover {
+            opacity: 0.75;
+        }
+
+        .lineContent {
+            color: #666666;
+            flex: 1;
+        }
+
+        .lineDate {
+            color: #999999;
+            font-size: 13px;
+        }
+    </style>
+    <div class="mainBlock">
+        <cms-list class="bread" style="margin-top: 35px;">
+            <div class="content" onclick="window.location.href=window.location.origin+'/index.html'">
+                首页
+            </div>
+            >&nbsp;&nbsp;搜索结果
+        </cms-list>
+        <cms-search-result>
+            <node-parent>
+                <node-template class="newLine">
+                    <node-title class="lineContent"></node-title>
+                    <node-date class="lineDate"></node-date>
+                </node-template>
+            </node-parent>
+            <div style="margin-top: 35px;">
+                <list-pagination></list-pagination>
+            </div>
+
+        </cms-search-result>
+    </div>
+
+    <cms-component>foot</cms-component>
+</body>
+
+</html>

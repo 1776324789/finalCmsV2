@@ -19,6 +19,16 @@
             "createBy": "刘军",
             "updateTime": "2026-04-13 16:40:50",
             "updateBy": "刘军"
+        },
+        {
+            "id": "u_53l39507",
+            "username": "胡龙欣",
+            "password": "1ffd005e1291bbee0b7d2141e9cc4ed4f9d84974e8e19edd03284746d85f160c",
+            "status": 1,
+            "createTime": "2026-04-21 09:34:41",
+            "createBy": "刘军",
+            "updateTime": "2026-04-21 14:07:20",
+            "updateBy": "刘军"
         }
     ],
     "systemRole": [
@@ -190,8 +200,8 @@
             "status": true,
             "createTime": "2026-04-08 00:00:00",
             "createBy": "system",
-            "updateTime": "2026-04-08 00:00:00",
-            "updateBy": "system"
+            "updateTime": "2026-04-21 09:28:42",
+            "updateBy": "刘军"
         },
         {
             "name": "角色管理",
@@ -202,8 +212,8 @@
             "status": true,
             "createTime": "2026-04-08 00:00:00",
             "createBy": "system",
-            "updateTime": "2026-04-08 00:00:00",
-            "updateBy": "system"
+            "updateTime": "2026-04-21 09:28:41",
+            "updateBy": "刘军"
         },
         {
             "name": "内容管理",
@@ -212,7 +222,7 @@
             "status": true,
             "createTime": "2026-04-08 00:00:00",
             "createBy": "system",
-            "updateTime": "2026-04-13 14:31:40",
+            "updateTime": "2026-04-21 09:29:31",
             "updateBy": "刘军"
         },
         {
@@ -221,11 +231,11 @@
             "target": "dataTrans",
             "id": "66qt3lge",
             "parentId": "76t7klzk",
-            "status": true,
+            "status": false,
             "createTime": "2026-04-08 00:00:00",
             "createBy": "system",
-            "updateTime": "2026-04-08 00:00:00",
-            "updateBy": "system"
+            "updateTime": "2026-04-21 09:28:53",
+            "updateBy": "刘军"
         },
         {
             "name": "文件管理",
@@ -236,14 +246,34 @@
             "status": true,
             "createTime": "2026-04-08 00:00:00",
             "createBy": "system",
-            "updateTime": "2026-04-08 00:00:00",
-            "updateBy": "system"
+            "updateTime": "2026-04-21 09:29:30",
+            "updateBy": "刘军"
         }
     ],
     "websiteUserRole": [
         {
+            "userId": "u_7pg7kdg9",
+            "roleId": "jb57kl56"
+        },
+        {
+            "userId": "u_7pg7kdg9",
+            "roleId": "r_mf8yoznx"
+        },
+        {
+            "userId": "u_53l39507",
+            "roleId": "jb57kl56"
+        },
+        {
+            "userId": "u_53l39507",
+            "roleId": "r_mf8yoznx"
+        },
+        {
             "userId": "s78d6f8s",
             "roleId": "jb57kl56"
+        },
+        {
+            "userId": "s78d6f8s",
+            "roleId": "r_mf8yoznx"
         }
     ],
     "websiteRole": [
@@ -251,15 +281,34 @@
             "id": "jb57kl56",
             "websiteId": "57rdn8ow",
             "name": "管理员",
+            "description": "网站管理员角色",
+            "status": true,
+            "menuIds": [
+                "76t7klzk",
+                "66qt3lge",
+                "b0995e84"
+            ],
+            "createTime": "2026-04-08 00:00:00",
+            "createBy": "system",
+            "updateTime": "2026-04-21 11:35:44",
+            "updateBy": "刘军"
+        },
+        {
+            "id": "r_mf8yoznx",
+            "name": "测试",
+            "websiteId": "57rdn8ow",
+            "description": "测试",
+            "status": true,
+            "createTime": "2026-04-21 11:07:08",
+            "createBy": "刘军",
+            "updateTime": "2026-04-21 11:35:35",
+            "updateBy": "刘军",
             "menuIds": [
                 "aa6f6m86",
                 "iwx9z21d",
                 "66pwl3j7",
                 "keaa0was",
-                "jiqzsicr",
-                "76t7klzk",
-                "66qt3lge",
-                "b0995e84"
+                "jiqzsicr"
             ]
         }
     ],
@@ -304,7 +353,7 @@
             "status": true,
             "createTime": "2026-04-17 16:31:03",
             "createBy": "刘军",
-            "updateTime": "2026-04-17 16:31:03",
+            "updateTime": "2026-04-21 09:20:08",
             "updateBy": "刘军",
             "defaultAdmin": "s78d6f8s"
         }

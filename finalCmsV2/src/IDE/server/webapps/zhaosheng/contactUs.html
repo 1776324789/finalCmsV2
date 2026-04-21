@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @media screen and (min-width: 800px) {
+        .contentBlock {
+            width: 800px;
+            margin-left: calc((100vw - 800px)/2);
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        .contentBlock {
+            width: calc(100vw - 40px);
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .contentBlock img,
+        p {
+            width: 100% !important;
+            height: auto !important;
+            text-indent: 0 !important;
+
+        }
+    }
+</style>
+
+<body>
+    <cms-component data="l_lxlhqx1y">
+        head
+    </cms-component>
+    <cms-node data="n_lytpcfa7">
+        <node-content class="contentBlock"></node-content>
+    </cms-node>
+    <cms-component>foot</cms-component>
+</body>
+
+</html>

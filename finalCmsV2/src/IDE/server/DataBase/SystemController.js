@@ -20,13 +20,15 @@ const SystemController = () => {
 
     async function getDB() {
         const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
-        const data = await fs.readFileSync(webListPath, "utf-8")
+        const data = fs.readFileSync(webListPath, "utf-8")
         return JSON.parse(data)
     }
 
     async function getUserByName(username) {
         const DB = await getDB()
-        return DB.user.find(user => user.username == username)
+        const user = DB.user.find(user => user.username == username)
+        delete user.password
+        return user
     }
 
     async function getUserMenuData(userId) {
@@ -60,25 +62,34 @@ const SystemController = () => {
             // 检查是否是默认管理员
             if (websiteData.defaultAdmin == userId) {
                 // 默认管理员拥有全部站点菜单权限
-                websiteData.menu = DB.websiteMenu.filter(m => m.status !== false)
+                websiteData.menu = DB.websiteMenu.filter(m => m.status)
                 websiteData.menuTemp = websiteData.menu
                 website.push(websiteData)
             } else {
-                // 检查是否有角色绑定
-                const userRoleForThisSite = userWebsiteRole.find(ur => {
+                // 查出当前网站下该用户的所有角色
+                const userRolesForThisSite = userWebsiteRole.filter(ur => {
                     const role = DB.websiteRole.find(r => r.id == ur.roleId)
                     return role && role.websiteId == websiteData.id
                 })
 
-                if (userRoleForThisSite) {
-                    // 从角色获取菜单权限
-                    const websiteRole = DB.websiteRole.find(item => userRoleForThisSite.roleId == item.id)
-                    websiteRole.menuIds.forEach(menuId => {
-                        const menu = DB.websiteMenu.find(item => item.id == menuId)
-                        if (menu != null && menu.status !== false)
-                            websiteData.menu.push(menu)
+                if (userRolesForThisSite.length > 0) {
+                    userRolesForThisSite.forEach(userRole => {
+                        const websiteRole = DB.websiteRole.find(item => item.id == userRole.roleId)
+                        if (!websiteRole) return
+
+                        websiteRole.menuIds.forEach(menuId => {
+                            const menu = DB.websiteMenu.find(item => item.id == menuId)
+                            if (menu && menu.status) {
+                                websiteData.menu.push(menu)
+                            }
+                        })
                     })
-                    websiteData.menuTemp = [...new Set(websiteData.menu)]
+
+                    // 去重（按对象引用去重可能不稳定，建议按 id）
+                    websiteData.menuTemp = Array.from(
+                        new Map(websiteData.menu.map(m => [m.id, m])).values()
+                    )
+
                     website.push(websiteData)
                 }
                 // 如果既不是 defaultAdmin 也没有角色，不添加到结果中
@@ -156,7 +167,11 @@ const SystemController = () => {
 
     async function getUserList() {
         const DB = await getDB()
-        return DB.user || []
+        const userList = DB.user || []
+        userList.forEach(user => {
+            delete user.password
+        })
+        return userList
     }
 
     async function createUser(userData, creator) {
@@ -369,6 +384,35 @@ const SystemController = () => {
         return { code: 200, message: "创建成功", data: { id: newRole.id } }
     }
 
+    async function createWebsiteRole(roleData, creator) {
+        const DB = await getDB()
+
+        const existingRole = DB.websiteRole.find(r => r.name === roleData.name && r.websiteId === roleData.websiteId)
+        if (existingRole) {
+            return { code: 400, message: "角色名称已存在" }
+        }
+
+        const newRole = {
+            id: generateRoleId(),
+            name: roleData.name,
+            websiteId: roleData.websiteId,
+            description: roleData.description || "",
+            status: roleData.status !== undefined ? roleData.status : true,
+            createTime: formatTimestamp(new Date()),
+            createBy: creator.username,
+            updateTime: formatTimestamp(new Date()),
+            updateBy: creator.username,
+            menuIds: []
+        }
+
+        DB.websiteRole.push(newRole)
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "创建成功", data: { id: newRole.id } }
+    }
+
     async function updateRole(roleData, modifier) {
         const DB = await getDB()
 
@@ -393,6 +437,32 @@ const SystemController = () => {
         return { code: 200, message: "更新成功" }
     }
 
+
+
+    async function updateWebsiteRole(roleData, modifier) {
+        const DB = await getDB()
+        const roleIndex = DB.websiteRole.findIndex(r => r.id === roleData.id)
+        if (roleIndex === -1) {
+            return { code: 404, message: "角色不存在" }
+        }
+
+        const role = DB.websiteRole[roleIndex]
+
+        role.name = roleData.name !== undefined ? roleData.name : role.name
+        role.description = roleData.description !== undefined ? roleData.description : role.description
+        role.status = roleData.status !== undefined ? roleData.status : role.status
+        role.updateTime = formatTimestamp(new Date())
+        role.updateBy = modifier.username
+
+        DB.websiteRole[roleIndex] = role
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "更新成功" }
+    }
+
+
     async function deleteRole(roleId) {
         const DB = await getDB()
 
@@ -414,6 +484,26 @@ const SystemController = () => {
 
         return { code: 200, message: "删除成功" }
     }
+    async function deleteWebsiteRole(roleId) {
+        const DB = await getDB()
+
+        const roleIndex = DB.websiteRole.findIndex(r => r.id === roleId)
+        if (roleIndex === -1) {
+            return { code: 404, message: "角色不存在" }
+        }
+
+        // 删除角色关联的用户关系
+        DB.websiteUserRole = DB.websiteUserRole.filter(item => item.roleId !== roleId)
+
+        DB.websiteRole.splice(roleIndex, 1)
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "删除成功" }
+    }
+
+
 
     async function getRoleMenu(roleId) {
         const DB = await getDB()
@@ -441,7 +531,20 @@ const SystemController = () => {
 
         return { code: 200, message: "保存成功" }
     }
+    async function saveWebsiteRoleMenu(roleId, menuIds, modifier) {
+        const DB = await getDB()
+        const role = DB.websiteRole.find(r => r.id === roleId)
+        if (!role) {
+            return { code: 404, message: "角色不存在" }
+        }
+        role.menuIds = menuIds
+        role.updateTime = formatTimestamp(new Date())
+        role.updateBy = modifier.username
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
 
+        return { code: 200, message: "保存成功" }
+    }
     async function getRoleUsers(roleId) {
         const DB = await getDB()
         const roleUsers = DB.systemUserRole.filter(item => item.roleId === roleId)
@@ -602,6 +705,42 @@ const SystemController = () => {
         return { code: 200, message: "删除成功" }
     }
 
+    async function getWebsiteRoleList(websiteId) {
+        const DB = await getDB()
+
+        const role = DB.websiteRole.filter(r => r.websiteId === websiteId && r.status === true)
+
+        return { code: 200, data: role }
+    }
+
+    async function getUserWebsiteRoles(userId, websiteId) {
+        const DB = await getDB()
+        const websiteRoleIds = DB.websiteRole.filter(r => r.websiteId === websiteId && r.status === true).map(r => r.id)
+
+        const roles = DB.websiteUserRole.filter(r => r.userId === userId && websiteRoleIds.includes(r.roleId))
+
+        return { code: 200, data: roles || [] }
+    }
+
+    async function saveUserWebsiteRoles(userId, websiteId, roleIds) {
+        const DB = await getDB()
+        const websiteRoleIds = DB.websiteRole.filter(r => r.websiteId == websiteId && r.status == true).map(r => r.id)
+        const websiteUserRole = DB.websiteUserRole.filter(item => !(item.userId == userId && websiteRoleIds.includes(item.roleId)))
+        roleIds.forEach(item => {
+            websiteUserRole.push({ userId: userId, roleId: item })
+        })
+
+        DB.websiteUserRole = websiteUserRole
+
+        const webListPath = path.join(BaseUrl, "IDE", "server", "DataBase", "systemData.json")
+        fs.writeFileSync(webListPath, JSON.stringify(DB, null, 4))
+
+        return { code: 200, message: "已保存" }
+    }
+
+
+
+
     async function getWebsiteMenuTree() {
         const DB = await getDB()
         let menus = DB.websiteMenu || []
@@ -651,7 +790,14 @@ const SystemController = () => {
         registerToken,
         verifyToken,
         getDB,
-        generateWebsiteId
+        generateWebsiteId,
+        updateWebsiteRole,
+        createWebsiteRole,
+        deleteWebsiteRole,
+        saveWebsiteRoleMenu,
+        getWebsiteRoleList,
+        getUserWebsiteRoles,
+        saveUserWebsiteRoles
     }
 }
 

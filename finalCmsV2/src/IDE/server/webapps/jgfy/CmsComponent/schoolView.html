@@ -1,0 +1,135 @@
+<cms-component>
+    <style>
+        @media screen and (min-width: 800px) {
+            .ShcoolViewMain {
+                display: block;
+
+            }
+        }
+
+        /* 手机端适配 */
+        @media screen and (max-width: 800px) {
+            .ShcoolViewMain {
+                display: none;
+            }
+        }
+
+        .schoolMain {
+            overflow: hidden;
+            padding: 30px;
+            display: flex;
+        }
+
+        .school {
+            margin: auto;
+            height: 500px;
+            display: flex;
+        }
+
+        .big img {
+            cursor: pointer;
+            width: 760px;
+            margin-right: 10px;
+        }
+
+        .small {
+            margin-top: -5px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .small .in {
+            display: flex;
+        }
+
+        .small .in img {
+            margin: 5px;
+            cursor: pointer;
+            float: left;
+            width: 360px;
+        }
+
+        .detailBlock {
+            user-select: none;
+            cursor: pointer;
+            text-align: center;
+            line-height: 40px;
+            width: 200px;
+            height: 40px;
+            border-radius: 0;
+            border: 1px solid #cfcfcf;
+            background-color: #ffffff;
+            color: #666666;
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        .detailBlock:hover {
+            background-color: #f7f7f7;
+        }
+
+        .scenery_title {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 42px;
+        }
+    </style>
+
+    <div class="ShcoolViewMain" style="margin-bottom: 30px;">
+        <div class="scenery_title">
+            校园<font style="color: #8728aa;">风景</font>
+        </div>
+        <div id="schoolView" style="display: none;">
+            <img />
+        </div>
+        <div class="schoolMain">
+            <div class="school">
+                <div class="big">
+                    <div>
+                        <cms-slider quality="4" limit="20" page="1" data="l_m7iiexse" style="width: 760px;height:510px;"
+                            transition="1.5" slider:bind="slider1" auto="5000">
+                        </cms-slider>
+                        <div style="display: none;">
+                            <slider-prev slider:bind="slider1">
+                            </slider-prev>
+                            <slider-bar slider:bind="slider1">
+                                <slider-bar-button slider:on="focus">
+                                </slider-bar-button>
+                            </slider-bar>
+                            <slider-next slider:bind="slider1">
+                            </slider-next>
+                        </div>
+                    </div>
+                </div>
+                <div class="small">
+                    <div class="in" style="margin-top: 5px;margin-left: 10px;">
+                        <div style="width: 360px;height:250px;overflow: hidden;">
+                            <cms-slider quality="4" limit="20" page="2" data="l_m7iiexse"
+                                style="width: 360px;height:250px;" slider:bind="slider1" auto="6000" transition="1">
+                            </cms-slider>
+                        </div>
+                        <div style="width: 360px;height:250px;overflow: hidden;margin-left: 10px;">
+                            <cms-slider quality="4" limit="20" page="3" data="l_m7iiexse"
+                                style="width: 360px;height:250px;" slider:bind="slider1" auto="7000" transition="1">
+                            </cms-slider>
+                        </div>
+                    </div>
+                    <div class="in" style="margin-top: 10px;margin-left: 10px;">
+                        <div style="width: 360px;height:250px;overflow: hidden;">
+                            <cms-slider quality="4" limit="20" page="4" data="l_m7iiexse"
+                                style="width: 360px;height:250px;" slider:bind="slider1" auto="8000" transition="1">
+                            </cms-slider>
+                        </div>
+                        <div style="width: 360px;height:250px;overflow: hidden;margin-left: 10px;">
+                            <cms-slider quality="4" limit="20" page="5" data="l_m7iiexse"
+                                style="width: 360px;height:250px;" slider:bind="slider1" auto="9000" transition="1">
+                            </cms-slider>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <cms-list data="l_m7iiexse" class="detailBlock"><list-template>查看详情</list-template></cms-list>
+    </div>
+</cms-component>

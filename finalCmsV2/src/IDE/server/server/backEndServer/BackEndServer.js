@@ -7,7 +7,7 @@ import FileServer from './server/FileServer.js'
 import WebsiteNodeServer from './server/WebsiteNodeServer.js'
 import UserManageServer from './server/UserManageServer.js'
 import WebsiteManageServer from './server/WebsiteManageServer.js'
-import SystemConfig from '../../DataBase/SystemConfig.js'
+import SystemConfig from '../SystemConfig.js'
 
 const BackEndServer = () => {
     const app = express()

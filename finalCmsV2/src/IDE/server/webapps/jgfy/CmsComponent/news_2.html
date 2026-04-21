@@ -1,0 +1,177 @@
+<cms-component>
+    <style>
+        @media screen and (min-width: 800px) {
+            .introduceBlock .contentBlock {
+
+                padding: 30px;
+                width: 1300px;
+            }
+        }
+
+        /* 手机端适配 */
+        @media screen and (max-width: 800px) {
+            .introduceBlock .contentBlock {
+                width: 100%;
+                flex-direction: column;
+            }
+
+        }
+
+        .introduceBlock {
+            margin-top: 15px;
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .introduceBlock .contentBlock {
+            margin: auto;
+            display: flex;
+        }
+
+        .introduceBlock .contentBlock .newBlock {
+            flex: 1;
+            background-color: #fff;
+            margin: 15px;
+            min-height: 300px;
+        }
+
+        .introduceBlock .contentBlock .newBlock .titleBlock {
+            border-bottom: 1px solid #8728aa;
+            height: 30px;
+            display: flex;
+        }
+
+        .introduceBlock .contentBlock .newBlock .titleBlock .icon {
+            line-height: 33px;
+            height: 30px;
+            padding-left: 5px;
+            padding-right: 5px;
+            background-color: #8728aa;
+        }
+
+        .introduceBlock .contentBlock .newBlock .titleBlock .icon i {
+            font-size: 23px;
+            color: #fff;
+        }
+
+        .introduceBlock .contentBlock .newBlock .titleBlock>.text {
+            padding-left: 5px;
+            padding-right: 15px;
+            height: 30px;
+            line-height: 33px;
+            color: #fff;
+            background-color: #8728aa;
+        }
+
+        .introduceBlock .contentBlock .newBlock .titleBlock .more {
+            flex: 1;
+        }
+
+        .introduceBlock .contentBlock .newBlock .titleBlock .more .text {
+            cursor: pointer;
+            user-select: none;
+            float: right;
+            margin-right: 10px;
+            line-height: 30px;
+            color: #666666;
+        }
+
+        .introduceBlock .contentBlock .newBlock .titleBlock .more .text:hover {
+
+            color: #55aaff;
+        }
+
+        .introduceBlock .contentBlock .newBlock .new {
+            cursor: pointer;
+            height: 35px;
+            display: flex;
+        }
+
+        .introduceBlock .contentBlock .newBlock .new:hover .title {
+            color: #333333;
+        }
+
+        .introduceBlock .contentBlock .newBlock .new:hover {
+            background-color: #f9f9f9;
+        }
+
+        .introduceBlock .contentBlock .newBlock .new .title {
+            padding-left: 5px;
+            color: #777777;
+            line-height: 35px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .introduceBlock .contentBlock .newBlock .new .date {
+            padding-right: 5px;
+            margin-left: 20px;
+            color: #777777;
+            line-height: 35px;
+        }
+    </style>
+    <div class="introduceBlock">
+        <div class="contentBlock">
+            <cms-list class="newBlock" data="l_m7iiexq1">
+                <div class="titleBlock">
+                    <div class="icon">
+                        <i class="icon-bookmark-line"></i>
+                    </div>
+                    <div class="text">
+                        <list-name></list-name>
+                    </div>
+                    <div class="more">
+                        <div class="text"><list-template>更多</list-template> </div>
+                    </div>
+                </div>
+                <list-node limit="7" order="desc">
+                    <node-template class="new">
+                        <div class="title"> <node-title line="1"></node-title></div>
+                        <div class="date"> <node-date format="YYYY-MM-dd"></node-date></div>
+                    </node-template>
+                </list-node>
+            </cms-list>
+            <cms-list class="newBlock" data="l_m7iiexoe">
+                <div class="titleBlock">
+                    <div class="icon">
+                        <i class="icon-bookmark-line"></i>
+                    </div>
+                    <div class="text">
+                        <list-name></list-name>
+                    </div>
+                    <div class="more">
+                        <div class="text"><list-template>更多</list-template></div>
+                    </div>
+                </div>
+                <list-node limit="7" order="desc">
+                    <node-template class="new">
+                        <div class="title"> <node-title line="1"></node-title></div>
+                        <div class="date"> <node-date format="YYYY-MM-dd"></node-date></div>
+                    </node-template>
+                </list-node>
+            </cms-list> <cms-list class="newBlock" data="l_m7iiexyx">
+                <div class="titleBlock">
+                    <div class="icon">
+                        <i class="icon-bookmark-line"></i>
+                    </div>
+                    <div class="text">
+                        <list-name></list-name>
+                    </div>
+                    <div class="more">
+                        <div class="text"><list-template>更多</list-template></div>
+                    </div>
+                </div>
+                <list-node limit="7" order="desc">
+                    <node-template class="new">
+                        <div class="title"> <node-title line="1"></node-title></div>
+                        <div class="date"> <node-date format="YYYY-MM-dd"></node-date></div>
+                    </node-template>
+                </list-node>
+            </cms-list>
+        </div>
+    </div>
+
+</cms-component>

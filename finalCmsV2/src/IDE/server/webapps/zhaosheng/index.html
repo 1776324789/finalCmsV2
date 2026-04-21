@@ -1,43 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- <style>
+    .Loading {
+        scale: 1.5;
+        z-index: 1000000;
+        width: 60px;
+        height: 100px;
+        position: fixed;
+        top: 40%;
+        border-radius: 30px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #fff;
+        box-shadow: 0 0 3px rgba(0, 0, 0, 0.25);
+        overflow: hidden;
+    }
+
+    .loadingInner {
+        width: 120px;
+        height: 120px;
+        border-radius: 45px;
+        background-color: #55aaff;
+        left: -30px;
+        position: absolute;
+        top: 40%;
+        transform: translate(-50%, -50%);
+        animation: loading 3s linear infinite;
+    }
+
+    @keyframes loading {
+        0% {
+            top: 40%;
+            transform: rotate(0deg);
+        }
+
+        50% {
+            top: 60%;
+            transform: rotate(180deg);
+        }
+
+        100% {
+            top: 40%;
+            transform: rotate(360deg);
+        }
+    }
+</style> -->
+<!-- <div class="Loading">
+    <div class="loadingInner"></div>
+</div> -->
+<style>
+    @media screen and (min-width: 800px) {
+        .slider {
+            width: 1200px;
+            height: 500px;
+            margin-left: calc((100vw - 1200px)/2);
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        .slider {
+            width: 100vw;
+            height: 150px;
+        }
+    }
+</style>
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinalCms</title>
+    <title>招生信息网</title>
+    <link rel="stylesheet" href="./css/test.css" type="text/css">
 </head>
 
 <body>
-    <cms-component data="l_37eogl7x">head</cms-component>
-    <cms-component data="l_37eogl7x">head</cms-component>
-    <cms-component data="l_37eogl7x">head</cms-component>
-    <cms-component data="l_37eogl7x">head</cms-component>
-    <cms-component data="l_37eogl7x">head</cms-component>
-  
-    <cms-list data="l_37eogl7x">
-        <list-name></list-name>
-        <list-list>
-            <list-name></list-name>
-            <list-node>
-                <div>
-                    <node-title></node-title>
-                </div>
-                <div>
-                    <node-content></node-content>
-                </div>
-            </list-node>
-        </list-list>
-        <list-node limit="10" cms-bind="listNode2">
-            <div>
-                <node-title></node-title>
-                <node-cover style="width: 100px;height: 100px;"></node-cover>
-            </div>
-            <div>
-                <node-content></node-content>
-            </div>
-        </list-node>
-    </cms-list>
-    <cms-pagination cms-bind="listNode2"></cms-pagination>
+    <cms-component data="l_lxlhqx1y">head</cms-component>
+    <cms-slider data="l_lxlhrc1o" class="slider" auto="3000"></cms-slider>
+    <cms-component>menuIconBlock</cms-component>
+    <cms-component>bottomNews</cms-component>
+    <cms-component>foot</cms-component>
 </body>
 
 </html>

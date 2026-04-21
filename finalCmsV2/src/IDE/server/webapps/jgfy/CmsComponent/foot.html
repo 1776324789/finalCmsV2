@@ -1,0 +1,215 @@
+<cms-component>
+    <style>
+        @media screen and (min-width: 800px) {
+
+            .footBlock {
+                background-color: #8728AA;
+                width: 100%;
+                height: 250px;
+                margin-top: 10px;
+                display: flex;
+                position: absolut;
+                bottom: 0px;
+            }
+
+            .footContent {
+                color: #fff;
+                margin-left: auto;
+                margin-right: auto;
+                display: flex;
+            }
+
+            .FootContentBlock {
+                margin-top: 25px;
+                margin-bottom: 25px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 50px;
+                padding-right: 50px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .FootContentBlockFlex {
+                margin-top: 25px;
+                margin-bottom: 25px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 50px;
+                padding-right: 50px;
+                display: flex;
+            }
+
+            .middle {
+                border-right: 1px solid #c6c6c6;
+                border-left: 1px solid #c6c6c6;
+            }
+
+            .FootContentTitle {
+                margin-bottom: 25px;
+                font-size: 16px;
+                font-weight: bold;
+                width: 150px;
+                text-align: right;
+            }
+
+            .FootContentA {
+                cursor: pointer;
+                margin-bottom: 25px;
+                text-align: right;
+            }
+
+            .FootContentA:hover {
+                opacity: 0.75;
+            }
+
+            .textC {
+                text-align: center !important;
+            }
+
+            .FootImgBlock {
+                width: 120px;
+                display: flex;
+                flex-direction: column;
+                margin-right: 20px;
+            }
+
+            .FootTitleBlock {
+                margin-top: 15px;
+                text-align: center;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+
+            .footBlock {
+                background-color: #8728AA;
+                width: 100%;
+                margin-top: 10px;
+                display: flex;
+                position: absolut;
+                bottom: 0px;
+            }
+
+            .footBlock div {
+                padding: 6px;
+            }
+
+            .footContent {
+                color: #fff;
+                margin-left: auto;
+                margin-right: auto;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .FootContentBlock {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .FootContentBlockFlex {
+
+                display: flex;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+            }
+
+            .middle {
+                border-top: 1px solid #c6c6c6;
+                border-bottom: 1px solid #c6c6c6;
+            }
+
+            .FootContentTitle {
+                margin-bottom: 25px;
+                font-size: 16px;
+                font-weight: bold;
+                width: 150px;
+            }
+
+            .FootContentA {
+                cursor: pointer;
+                margin-bottom: 15px;
+
+            }
+
+            .FootContentA:hover {
+                opacity: 0.75;
+            }
+
+
+            .FootImgBlock {
+                width: 120px;
+                display: flex;
+                flex-direction: column;
+                margin-right: 20px;
+            }
+
+            .FootTitleBlock {
+                margin-top: 15px;
+                text-align: center;
+            }
+        }
+.FootContentB{margin-bottom:15px;}
+    </style>
+    <div class="footBlock">
+        <div class="footContent">
+            <div class="FootContentBlock">
+            
+                <div class="FootContentB">
+                    南昌校区地址:江西省南昌市湾里管理局罗亭镇罗亭大道89号
+                </div>
+    		<div class="FootContentB">
+                   井冈山校区地址:江西省井冈山市红军大道88号
+                </div>
+
+<div class="FootContentB">
+                   电话:0791-83792365
+                </div>
+
+<div class="FootContentB">
+                   传真:0791-83792377
+                </div>
+
+<div class="FootContentB">
+                   招就处:0791-83792888
+                </div>
+
+            </div>
+
+            <div class="FootContentBlock middle">
+                <div class="FootContentA textC">
+                    ©2020 江西软件职业技术大学版权所有
+                </div>
+                <div class="FootContentA textC">
+                    赣公网安备 36010502000014号
+                </div>
+                <div class="FootContentA textC">
+                    联系电话 ：15797771888
+                </div>
+                <div class="FootContentA textC">
+                    邮箱 ：421207848@qq.com
+                </div>
+
+            </div>
+
+            <div class="FootContentBlockFlex">
+                <cms-node data="n_m7ipfsml" class="FootImgBlock">
+                    <node-cover></node-cover>
+                    <div class="FootTitleBlock">学校官徽</div>
+                </cms-node>
+                <cms-node data="n_m7ipg8n8" class="FootImgBlock">
+                    <node-cover></node-cover>
+                    <div class="FootTitleBlock">经管学院微信公众号</div>
+                </cms-node>
+   		<cms-node data="n_mmobuo0c" class="FootImgBlock">
+                    <node-cover style="width:120px;height:120px;" ></node-cover>
+                    <div class="FootTitleBlock">@江软经管分院</div>
+  			<div class="FootTitleBlock">抖音号:88888NC</div>
+
+                </cms-node>
+            </div>
+        </div>
+    </div>
+
+</cms-component>

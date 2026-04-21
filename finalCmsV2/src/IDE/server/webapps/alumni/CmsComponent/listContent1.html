@@ -1,0 +1,72 @@
+<style>
+    .imgBlock {
+        width: 100vw;
+        height: 300px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .imgBlock img {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 100vw;
+    }
+
+    .contentBlock {
+        width: 1000px;
+        margin-left: calc((100vw - 1000px)/2);
+    }
+
+    .contentBlockTitle {
+        height: 40px;
+        border-bottom: 1px solid #9522A5;
+        line-height: 40px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #9522A5;
+        margin-bottom: 10px;
+    }
+
+    .line {
+        padding-bottom: 5px;
+        padding-top: 5px;
+        border-bottom: 1px solid #eeeeee;
+        height: 30px;
+        display: flex;
+        line-height: 30px;
+        color: #666666;
+        cursor: pointer;
+    }
+
+    .line:hover {
+        background: #f1f1f1;
+    }
+
+    .dot {
+        margin-left: 15px;
+        width: 10px;
+        height: 10px;
+        border-radius: 7px;
+        background-color: #9522A5;
+        margin-top: 10px;
+        margin-right: 10px;
+        box-shadow: 0 0 3px #9522A5;
+    }
+</style>
+<cms-component>
+    <div class="imgBlock">
+        <img src="./img/image copy 2.png" alt="">
+    </div>
+    <cms-list class="contentBlock">
+        <list-name class="contentBlockTitle"></list-name>
+        <list-node page="1" limit="10" order="desc">
+            <node-template class="line">
+                <div class="dot"></div>
+                <node-title></node-title>
+            </node-template>
+            <list-pagination style="margin-top: 25px;"></list-pagination>
+        </list-node>
+    </cms-list>
+</cms-component>

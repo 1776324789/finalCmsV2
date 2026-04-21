@@ -1,14 +1,14 @@
 <template>
     <div class="BaseTopTitle" v-bind:class="{ leftIn: showWebMenu }">
         Web <span style="line-height: 50px;margin-left: -10px;margin-right: -10px;">|</span>全部站点
-        <div class="consoleBlock" @click="enterConsole">
+        <div class="consoleBlock" @click="enterConsole" v-if="systemStore?.userFunctionData?.systemMenu?.length!=0">
             <i class="icon-code-box-fill"></i>
             <div style="width: 80px;word-break: keep-all;">进入控制台</div>
             <i class="icon-arrow-right-line"></i>
         </div>
     </div>
     <div class="cardList" ref="cardListRef" @wheel.prevent="handleWheel">
-        <div style=" width: calc(50vw - 200px);height: 400px;flex-shrink: 0;" class="number">
+        <div class="number">
             共{{ systemStore.userFunctionData.website?.length }}个站点</div>
         <template v-for="web in systemStore.userFunctionData.website" :key="item">
             <WebCard @toindex="toIndex" :data="web" />
@@ -178,6 +178,7 @@ function close() {
 
 
 onMounted(() => {
+console.log(systemStore);
 
     const el = cardListRef.value
     if (!el) return
@@ -284,7 +285,11 @@ onUnmounted(() => {
     color: #fff;
     font-weight: 350;
     line-height: 500px;
-    text-indent: 30vw;
+    text-align: right;
+    margin-right: 50px;
+    width: calc(50vw - 250px);
+    height: 400px;
+    flex-shrink: 0;
 }
 
 .LogoutBlock {
@@ -313,8 +318,9 @@ onUnmounted(() => {
     left: 0;
     right: 0;
     /* 👈 关键 */
-    bottom: -200px;
-    height: 900px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 550px;
     padding: 30px 40px;
     display: flex;
     flex-wrap: nowrap;

@@ -1,0 +1,161 @@
+<cms-component>
+    <style>
+        /* 手机端适配 */
+        @media screen and (max-width: 800px) {
+            .componentBlock {
+                display: none;
+            }
+        }
+
+        .componentBlock {
+            background-color: #fff;
+            padding-bottom: 20px;
+            padding-top: 20px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            width: calc(100vw - 15px);
+            overflow: hidden;
+        }
+
+        .componentBlock .mainBlock {
+            height: 500px;
+            width: 100vw;
+            margin: auto;
+            display: flex;
+        }
+
+        .componentBlock .mainBlock .imgBlock {
+            cursor: pointer;
+            flex: 1;
+            display: flex;
+        }
+
+        .componentBlock .mainBlock .imgBlock:hover .set {
+            display: none;
+        }
+
+        .componentBlock .mainBlock .imgBlock:hover .img img {
+            height: 500px;
+
+        }
+
+        .componentBlock .mainBlock .imgBlock:hover .img {
+            height: 500px;
+        }
+
+        .componentBlock .mainBlock .imgBlock:hover .img .title {
+            margin-top: -140px;
+        }
+
+        .componentBlock .mainBlock .imgBlock .set {
+            flex: 1;
+        }
+
+        .componentBlock .mainBlock .imgBlock .img {
+            position: relative;
+            width: calc(20vw - 10px);
+            overflow: hidden;
+            position: relative;
+            transition: 0.3s height;
+            margin: auto;
+            height: 460px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .componentBlock .mainBlock .imgBlock .img .title {
+            bottom: 0;
+            width: 100%;
+            position: absolute;
+            transition: 0.3s margin-top;
+            /* padding-left: 20px; */
+            padding-right: 20px;
+            height: 100px;
+            background-color: rgba(255, 255, 255, 0.75);
+            margin-top: -40px;
+            text-align: center;
+        }
+
+        .componentBlock .mainBlock .imgBlock .img .tit {
+            color: #4c4c4c;
+            font-size: 18px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .componentBlock .mainBlock .imgBlock .img .intro {
+            color: #666666;
+            line-height: 25px;
+            word-break: break-all;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+            overflow: hidden;
+        }
+
+        .componentBlock .mainBlock .imgBlock .img img {
+            z-index: 0;
+            left: 50%;
+            translate: -50%;
+            top: 0;
+            position: absolute;
+            border-radius: 5px;
+            transition: 0.3s height;
+            margin: auto;
+            height: 460px;
+        }
+
+        .componentBlock .teacher_title {
+            text-align: center;
+            font-size: 42px;
+        }
+
+        .componentBlock .description {
+            font-size: 16px;
+            text-align: center;
+            padding-top: 36px;
+            margin-bottom: 20px;
+        }
+
+        .componentBlock .detailBlock {
+            user-select: none;
+            cursor: pointer;
+            text-align: center;
+            line-height: 40px;
+            width: 200px;
+            height: 40px;
+            border-radius: 0;
+            border: 1px solid #cfcfcf;
+            background-color: #ffffff;
+            color: #666666;
+            margin: auto;
+            margin-top: 30px;
+        }
+
+        .componentBlock .detailBlock:hover {
+            background-color: #f7f7f7;
+        }
+    </style>
+    <div class="componentBlock">
+        <div class="teacher_title">
+            教师<font style="color: #8728aa;">风采</font>
+        </div>
+        <div class="description">以技能型应用人才培养为中心，大力开展校企合作人才培养</div>
+        <cms-list data="l_m7iieyd6" class="mainBlock">
+            <list-node style="display: flex;width: 100%;">
+                <div class="set"></div>
+                <div class="imgBlock">
+                    <div class="img">
+                        <node-cover quality="4"></node-cover>
+                        <div class="title">
+                            <div class="tit"><node-title></node-title></div>
+                            <div class="intro"><node-note></node-note></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="set"></div>
+            </list-node>
+        </cms-list>
+        <cms-list data="l_m7iiex9a" class="detailBlock"><list-template>查看详情</list-template></cms-list>
+    </div>
+</cms-component>

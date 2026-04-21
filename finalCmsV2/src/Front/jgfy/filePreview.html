@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>江西软件职业技术大学经管学院</title>
+	<style>
+		html,
+		body {
+			overflow-x: hidden;
+			margin: 0;
+			padding: 0;
+		}
+	</style>
+</head>
+
+<body style="background-color: #f9f9f9;"->
+	<cms-component data="l_m7iiesie"><cms-component>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .WEBHEAD .list {
+            display: flex;
+        }
+
+        .WEBHEAD .contentName {
+            color: #fff;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            min-width: 70px;
+            padding-left: 20px;
+            padding-right: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .WEBHEAD .contentName:hover {
+            color: #55aaff;
+        }
+
+        .WEBHEAD .floatWindow {
+            z-index: 10;
+            background-color: #fff;
+            position: absolute;
+            display: none;
+            width: 100%;
+            box-shadow: 0 0 3px #b9b9b9;
+            flex-direction: column;
+        }
+
+        .WEBHEAD .row:hover .floatWindow {
+            animation: slideIn 0.25s ease forwards;
+            display: flex;
+
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .WEBHEAD .menuOption {
+            color: #666;
+            display: block;
+            height: 45px;
+            text-align: center;
+            line-height: 45px;
+            width: 100%;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .WEBHEAD .menuOption:hover {
+            background-color: #e9e9e9;
+        }
+
+        .WEBHEAD .menuBlock {
+            width: 100vw;
+            display: flex;
+            background: linear-gradient(30deg, #772f91, #772f91, #772f91, #b146d8, #2196F3, #2196F3, rgb(33, 243, 96));
+        }
+
+        .WEBHEAD .pageTopBlock {
+            width: 100vw;
+            height: 70px;
+            background-color: #fff !important;
+            display: flex;
+        }
+
+        .WEBHEAD .topBlockTitle {
+            font-size: 30px;
+            line-height: 70px;
+            margin-left: 30px;
+            color: #fff;
+        }
+
+        .WEBHEAD .searchBlock {
+            margin-right: 100px;
+        }
+
+        .WEBHEAD .inputBlock {
+            display: flex;
+            margin-top: 17px;
+            overflow: hidden;
+            width: 250px;
+            border-radius: 18px;
+            height: 36px;
+            background-color: #fff;
+            border: 1px solid #bfbfbf;
+        }
+
+        .WEBHEAD .inputBlock input {
+            height: 30px;
+            flex: 1;
+            text-indent: 15px;
+            border: 0;
+            margin-top: 2px;
+            outline: none;
+        }
+
+        .WEBHEAD .row {
+            position: relative;
+        }
+
+        .WEBHEAD .searchButton {
+            margin-top: 3px;
+            border: 0;
+            margin-right: 3px;
+            cursor: pointer;
+            border-radius: 15px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .WEBHEAD .searchButton:hover {
+            color: #55aaff;
+            background-color: #eeeeee;
+        }
+
+
+        @media screen and (min-width: 800px) {
+            .WEBHEAD {
+                display: block;
+            }
+
+            .PHONEHEAD {
+                display: none;
+            }
+
+            .setUp {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            .WEBHEAD {
+                display: none;
+            }
+
+            .PHONEHEAD {
+                display: block;
+                width: 100vw;
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 100;
+            }
+
+            #LRdiv0 {
+                display: none !important;
+            }
+
+            .setUp {
+                display: block;
+            }
+        }
+
+        .PHONEHEAD .topBlockTitle {
+            color: #fff;
+            margin-top: -1px;
+            height: 35px;
+            font-size: 16px;
+            line-height: 35px;
+            text-indent: 25px;
+        }
+
+        .PHONEHEAD .fatherBlock {
+            height: 35px;
+            text-indent: 15px;
+            color: #fff;
+            line-height: 35px;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .PHONEHEAD .childBlock {
+            height: 35px;
+            text-indent: 35px;
+            color: #fff;
+            line-height: 35px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .PhontMenuCover {
+            display: none;
+            z-index: -1;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+    <link rel="stylesheet" href="./css/MoonIcon/style.css">
+    <div class="PHONEHEAD">
+        <div style="display: flex; background: linear-gradient(45deg,  #772f91,  #772f91,   #2196F3);">
+            <div style="flex: 1;">
+                <div class="topBlockTitle" style="font-weight: bold;">江西软件职业技术大学</div>
+                <div class="topBlockTitle">经济管理学院</div>
+            </div>
+            <div style="width: 75px;color: #fff;line-height: 60px;text-align: center;" id="phoneMenuButton">
+                <i class="icon-menu-fill" style="font-size: 35px;"></i>
+            </div>
+        </div>
+        <div id="phoneMenu"
+            style="width: 175px;transition: left 0.3s; z-index: 1000; height:calc(100vh - 68px); position: fixed;left: -175px;background-color: #772f91;overflow: auto;">
+            <cms-list data="l_m7iiesie">
+                <list-list style="margin-left: 5px;">
+                    <list-template class="fatherBlock">
+                        <list-name></list-name>
+                    </list-template>
+                    <list-list style="display: flex;flex-direction: column;margin-left: 5px;text-align: left;">
+                        <list-template class="childBlock">
+                            <list-name></list-name>
+                        </list-template>
+                    </list-list>
+                </list-list>
+            </cms-list>
+        </div>
+        <div class="PhontMenuCover" id="PhontMenuCover"></div>
+    </div>
+    <div style="width: 100vw;height: 68px;" class="setUp"></div>
+    <script>
+        const phoneMenu = document.getElementById('phoneMenu')
+        const phoneMenuButton = document.getElementById("phoneMenuButton")
+        const PhontMenuCover = document.getElementById("PhontMenuCover")
+        let show = false
+        phoneMenuButton.onclick = () => {
+            if (show) {
+                phoneMenu.style.left = "-175px"
+                PhontMenuCover.style.display = "none"
+            } else {
+                phoneMenu.style.left = "0"
+                PhontMenuCover.style.display = "block"
+            }
+            show = !show
+        }
+        PhontMenuCover.onclick = () => {
+            phoneMenu.style.left = "-175px"
+            PhontMenuCover.style.display = "none"
+            show = false
+        }
+    </script>
+
+    <div class="WEBHEAD">
+        <div class="pageTopBlock" style="padding-bottom: 20px;padding-top: 20px;">
+            <cms-node data="n_m7ilout7">
+                <node-cover quality="1" style="height: 100%;margin-left: 200px;"></node-cover>
+            </cms-node>
+            <div style="flex: 1;"></div>
+            <div class="searchBlock">
+                <form action="search.html" method="get" onsubmit="return validateForm()">
+                    <div class="inputBlock">
+                        <input id="searchContent" name="search" type="text" placeholder="请输入搜索内容">
+                        <button type="submit" class="searchButton">
+                            <span class="icon-search-2-line "></span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <cms-list class="menuBlock" data="l_m7iiesie">
+            <div style="flex: 1;"></div>
+            <list-list class="list">
+                <div class="row">
+                    <list-template>
+                        <list-name class="contentName"></list-name>
+                    </list-template>
+                    <div class="floatWindow">
+                        <list-list class="menuOption">
+                            <list-template>
+                                <list-name></list-name>
+                            </list-template>
+                        </list-list>
+                    </div>
+                </div>
+            </list-list>
+            <div style="flex: 1;"></div>
+        </cms-list>
+    </div>
+</cms-component></cms-component>
+    <cms-component><cms-component>
+    <style>
+        .listNewsTopMenu {
+            font-size: 16px;
+            color: #fff;
+            padding: 25px 50px;
+            background-color: #8728AA;
+            position: absolute;
+            transform: translate(0, -100%);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .listNewsMenu {
+            cursor: pointer;
+            height: 46px;
+            line-height: 46px;
+            text-align: center;
+            color: #666666;
+        }
+
+        .listNewsMenu:hover {
+            background-color: #f9f9f9;
+            font-weight: bold;
+            color: #3576B5;
+        }
+
+
+        .listNewsRightBlock {
+            position: relative;
+            flex: 1;
+            margin-left: 15px;
+            display: flex;
+            flex-direction: column;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        .listNewPageTitle {
+            height: 40px;
+            font-size: 16px;
+            font-weight: bold;
+            line-height: 40px;
+            color: #3576B5;
+            border-bottom: 1px solid #3576B5;
+        }
+
+
+        .listpages {
+            width: calc(100% - 40px);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .listpages .dreamer-ul {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .dreamer-ul li {
+            cursor: pointer;
+            text-align: center;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            height: 30px;
+            line-height: 30px;
+            width: 60px;
+            list-style-type: none;
+            border: 1px solid #845eff;
+            border-radius: 3px;
+        }
+
+        .dreamer-ul li:hover {
+            background-color: #f8f8f8;
+        }
+
+        .dreamer-ul li a {
+            text-decoration: none;
+            color: #845eff;
+        }
+
+        .listNewNews {
+            cursor: pointer;
+            display: flex;
+            margin-top: 5px;
+            /* padding: 6px; */
+            color: #666666;
+        }
+
+
+        .listNewNews:hover .title {
+            font-weight: bold
+        }
+
+        .listNewNews .title {
+            text-indent: 15px;
+            flex: 1;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+        }
+
+        .listNewNews .listNewsDate {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        .nowPage {
+            border-left: 5px solid #8728AA;
+            background-color: #f9f9f9;
+            font-weight: bold;
+        }
+
+        @media screen and (min-width: 800px) {
+            .leftRightBox {
+                background-color: #fff;
+                width: 76vw;
+                margin: auto;
+                padding: 15px;
+                min-height: 600px;
+                display: flex;
+            }
+
+            .leftRightBox .leftBlock {
+                width: 175px;
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px;
+                position: relative;
+            }
+
+            .listNewNews {
+                cursor: pointer;
+                display: flex;
+                margin-bottom: 5px;
+                border-bottom: 1px solid #e2e2e2;
+                padding: 10px;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            .leftRightBox {
+                background-color: #fff;
+                width: calc(100% - 30px);
+                padding: 15px;
+                min-height: 600px;
+                display: flex;
+                flex-direction: column;
+            }
+
+
+            .leftRightBox .leftBlock {
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 20px;
+                position: relative;
+            }
+
+            .listNewNews {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .listNewNews .listNewsDate {
+                text-align: right;
+                margin-top: 6px;
+                border-bottom: 1px solid rgb(194, 194, 194);
+            }
+        }
+
+        .focus {
+            background-color: #f9f9f9;
+            font-weight: bold;
+            color: #3576B5;
+        }
+    </style>
+
+
+    <cms-list style="display: flex;justify-content: center;" data="l_mmoahotw">
+        <list-cover style="width: 1480px;"></list-cover>
+    </cms-list>
+    <cms-node class="leftRightBox">
+        <node-parent  >
+           <div class="leftBlock">
+            <list-parent class="listNewsTopMenu" >
+                <list-name pagetitle></list-name>
+            </list-parent>
+             
+            <list-node class="listNewsMenu" focus:class="focus">
+                   <node-template >
+                       <node-title ></node-title>
+                   </node-template>
+             </list-node>
+           </div>
+        </node-parent>
+        <div class="listNewsRightBlock">
+            <div class="listNewPageTitle"> <node-title></node-title></div>
+		    <node-file preview style="width:100%;height:1000px;"></node-file>
+        </div>
+    </cms-node>
+</cms-component></cms-component>
+	<cms-component><cms-component>
+    <style>
+        @media screen and (min-width: 800px) {
+
+            .footBlock {
+                background-color: #8728AA;
+                width: 100%;
+                height: 250px;
+                margin-top: 10px;
+                display: flex;
+                position: absolut;
+                bottom: 0px;
+            }
+
+            .footContent {
+                color: #fff;
+                margin-left: auto;
+                margin-right: auto;
+                display: flex;
+            }
+
+            .FootContentBlock {
+                margin-top: 25px;
+                margin-bottom: 25px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 50px;
+                padding-right: 50px;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .FootContentBlockFlex {
+                margin-top: 25px;
+                margin-bottom: 25px;
+                padding-top: 10px;
+                padding-bottom: 10px;
+                padding-left: 50px;
+                padding-right: 50px;
+                display: flex;
+            }
+
+            .middle {
+                border-right: 1px solid #c6c6c6;
+                border-left: 1px solid #c6c6c6;
+            }
+
+            .FootContentTitle {
+                margin-bottom: 25px;
+                font-size: 16px;
+                font-weight: bold;
+                width: 150px;
+                text-align: right;
+            }
+
+            .FootContentA {
+                cursor: pointer;
+                margin-bottom: 25px;
+                text-align: right;
+            }
+
+            .FootContentA:hover {
+                opacity: 0.75;
+            }
+
+            .textC {
+                text-align: center !important;
+            }
+
+            .FootImgBlock {
+                width: 120px;
+                display: flex;
+                flex-direction: column;
+                margin-right: 20px;
+            }
+
+            .FootTitleBlock {
+                margin-top: 15px;
+                text-align: center;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+
+            .footBlock {
+                background-color: #8728AA;
+                width: 100%;
+                margin-top: 10px;
+                display: flex;
+                position: absolut;
+                bottom: 0px;
+            }
+
+            .footBlock div {
+                padding: 6px;
+            }
+
+            .footContent {
+                color: #fff;
+                margin-left: auto;
+                margin-right: auto;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .FootContentBlock {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .FootContentBlockFlex {
+
+                display: flex;
+                justify-content: flex-start;
+                flex-wrap: wrap;
+            }
+
+            .middle {
+                border-top: 1px solid #c6c6c6;
+                border-bottom: 1px solid #c6c6c6;
+            }
+
+            .FootContentTitle {
+                margin-bottom: 25px;
+                font-size: 16px;
+                font-weight: bold;
+                width: 150px;
+            }
+
+            .FootContentA {
+                cursor: pointer;
+                margin-bottom: 15px;
+
+            }
+
+            .FootContentA:hover {
+                opacity: 0.75;
+            }
+
+
+            .FootImgBlock {
+                width: 120px;
+                display: flex;
+                flex-direction: column;
+                margin-right: 20px;
+            }
+
+            .FootTitleBlock {
+                margin-top: 15px;
+                text-align: center;
+            }
+        }
+.FootContentB{margin-bottom:15px;}
+    </style>
+    <div class="footBlock">
+        <div class="footContent">
+            <div class="FootContentBlock">
+            
+                <div class="FootContentB">
+                    南昌校区地址:江西省南昌市湾里管理局罗亭镇罗亭大道89号
+                </div>
+    		<div class="FootContentB">
+                   井冈山校区地址:江西省井冈山市红军大道88号
+                </div>
+
+<div class="FootContentB">
+                   电话:0791-83792365
+                </div>
+
+<div class="FootContentB">
+                   传真:0791-83792377
+                </div>
+
+<div class="FootContentB">
+                   招就处:0791-83792888
+                </div>
+
+            </div>
+
+            <div class="FootContentBlock middle">
+                <div class="FootContentA textC">
+                    ©2020 江西软件职业技术大学版权所有
+                </div>
+                <div class="FootContentA textC">
+                    赣公网安备 36010502000014号
+                </div>
+                <div class="FootContentA textC">
+                    联系电话 ：15797771888
+                </div>
+                <div class="FootContentA textC">
+                    邮箱 ：421207848@qq.com
+                </div>
+
+            </div>
+
+            <div class="FootContentBlockFlex">
+                <cms-node data="n_m7ipfsml" class="FootImgBlock">
+                    <node-cover></node-cover>
+                    <div class="FootTitleBlock">学校官徽</div>
+                </cms-node>
+                <cms-node data="n_m7ipg8n8" class="FootImgBlock">
+                    <node-cover></node-cover>
+                    <div class="FootTitleBlock">经管学院微信公众号</div>
+                </cms-node>
+   		<cms-node data="n_mmobuo0c" class="FootImgBlock">
+                    <node-cover style="width:120px;height:120px;" ></node-cover>
+                    <div class="FootTitleBlock">@江软经管分院</div>
+  			<div class="FootTitleBlock">抖音号:88888NC</div>
+
+                </cms-node>
+            </div>
+        </div>
+    </div>
+
+</cms-component></cms-component>
+<script>
+            const Cms=document.createElement("script")
+            Cms.src=window.location.origin+"/cmsScripts/FinalCms.js?web=jgfy"
+            document.body.appendChild(Cms)
+        </script>
+</body>
+
+</html>

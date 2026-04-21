@@ -6,7 +6,8 @@
         </button>
 
         <!-- 页码 -->
-        <button class="numberButton" v-for="p in pages" :key="p" :class="{ active: p === page }" @click="changePage(p)">
+        <button class="numberButton" v-for="(p, index) in pages" :key="index" :class="{ active: p === page }"
+            @click="changePage(p)" :disabled="p === '...'">
             {{ p }}
         </button>
 
@@ -15,7 +16,7 @@
             下一页
         </button>
 
-        <!-- 每页条数选择 -->
+        <!-- 每页条数 -->
         <select :value="count" @change="changeCount">
             <option v-for="c in pageSizes" :key="c" :value="c">
                 {{ c }} / 页
@@ -49,17 +50,61 @@ const totalPages = computed(() => {
     return Math.ceil(props.total / props.count) || 1
 })
 
-// 页码列表
+// 分页逻辑（核心）
 const pages = computed(() => {
-    const arr = []
-    for (let i = 1; i <= totalPages.value; i++) {
-        arr.push(i)
+    const total = totalPages.value
+    const current = props.page
+    const max = 7
+
+    // 少页数直接全显示
+    if (total <= max + 2) {
+        return Array.from({ length: total }, (_, i) => i + 1)
     }
-    return arr
+
+    const result = []
+
+    // 第一页
+    result.push(1)
+
+    let start = Math.max(2, current - Math.floor(max / 2))
+    let end = Math.min(total - 1, current + Math.floor(max / 2))
+
+    // 靠前
+    if (current <= Math.ceil(max / 2)) {
+        start = 2
+        end = max
+    }
+
+    // 靠后
+    if (current >= total - Math.ceil(max / 2)) {
+        start = total - max + 1
+        end = total - 1
+    }
+
+    // 左省略
+    if (start > 2) {
+        result.push("...")
+    }
+
+    // 中间页
+    for (let i = start; i <= end; i++) {
+        result.push(i)
+    }
+
+    // 右省略
+    if (end < total - 1) {
+        result.push("...")
+    }
+
+    // 最后一页
+    result.push(total)
+
+    return result
 })
 
 // 切换页
 function changePage(p) {
+    if (typeof p !== "number") return
     if (p < 1 || p > totalPages.value) return
     emit("update:page", p)
 }
@@ -68,8 +113,6 @@ function changePage(p) {
 function changeCount(e) {
     const newCount = Number(e.target.value)
     emit("update:count", newCount)
-
-    // 重置页码（避免越界）
     emit("update:page", 1)
 }
 </script>
@@ -78,6 +121,7 @@ function changeCount(e) {
 .pagination {
     display: flex;
     gap: 15px;
+    align-items: center;
 }
 
 button {

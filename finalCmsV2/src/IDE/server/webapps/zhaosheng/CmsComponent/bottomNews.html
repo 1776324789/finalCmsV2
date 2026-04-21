@@ -1,0 +1,185 @@
+<style>
+    .BlockBodyIcon {
+        padding: 5px;
+        height: 90%;
+        max-height: 60px;
+    }
+
+    .bigMenu {
+        cursor: pointer;
+    }
+
+    .bigMenu:hover {
+        opacity: 0.7;
+
+    }
+
+    .BlockBodyFont {
+        float: left;
+        height: 25px;
+        text-align: center;
+    }
+
+    .BlockBodyTitle {
+        float: left;
+        display: flex;
+        width: 100%;
+        height: 30px;
+        line-height: 30px;
+        font-size: 16px;
+        border-bottom: 2px solid #772f91;
+
+    }
+
+    .BlockBodyTitleImg {
+        height: 100%;
+    }
+
+    .BlockBodyTitleMore {
+        margin-right: 5px;
+        float: right;
+    }
+
+    .BlockBodyList {
+        font-size: 13px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #e3e3e3;
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+    }
+
+    .Block>.BlockBody>.title {
+        width: 100%;
+        height: 65px;
+        overflow: hidden;
+        margin-bottom: 10px;
+        border-bottom: 1px solid #772f91;
+    }
+
+    .newLine {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        flex: 1;
+        font-size: 15px;
+        color: #666666;
+        cursor: pointer;
+    }
+
+    .more {
+        color: #772f91;
+        float: right;
+        font-size: 14px;
+        margin-right: 15px;
+        font-weight: normal;
+        border-radius: 10px;
+        border: 1px solid #772f91;
+        margin-top: -17px;
+        cursor: pointer;
+    }
+
+    @media screen and (min-width: 800px) {
+        .Block {
+            width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .BlockBody {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            height: 100%;
+            margin-left: 10px;
+            min-height: 400px;
+            margin-right: 10px;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        .Block {
+            width: 100vw;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .BlockBody {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            height: 100%;
+            min-height: 400px;
+        }
+    }
+</style>
+<cms-component>
+    <div class="Block ">
+        <!-- 招生政策-->
+        <cms-list class="BlockBody" data="l_ly8ednay">
+            <div class="title">
+                <div style="text-indent: 20px;width: 100%;font-size: 16px;   
+							font-weight: bold;margin-top: 15px;color: #772f91;">
+                    <list-name></list-name>
+                    <list-template class="more">更多&nbsp;&nbsp;&nbsp;&nbsp;</list-template>
+                </div>
+                <list-name en style="color: #772f91; text-indent: 20px;width: 100%;font-size: 15px;margin-top: 5px;">
+                </list-name>
+            </div>
+            <list-node order="desc" page="1" limit="10">
+                <div class="BlockBodyList">
+                    <node-template style="margin-top:5px;margin-bottom:5px;display: flex;">
+                        <node-title class="newLine"></node-title>
+                        <node-date format="YY-MM-DD" style="float: right; opacity: 0.5;"></node-date>
+                    </node-template>
+                </div>
+            </list-node>
+        </cms-list>
+        <!-- 通知公告 -->
+        <cms-list class="BlockBody" data="l_ly8ed4q5">
+            <div class="title">
+                <div style="text-indent: 20px;width: 100%;font-size: 16px;   
+							font-weight: bold;margin-top: 15px;color: #772f91;">
+                    <list-name></list-name>
+                    <list-template class="more">更多&nbsp;&nbsp;&nbsp;&nbsp;</list-template>
+                </div>
+                <list-name en style="color: #772f91; text-indent: 20px;width: 100%;font-size: 15px;margin-top: 5px;">
+                </list-name>
+            </div>
+            <list-node order="desc" page="1" limit="10">
+                <div class="BlockBodyList">
+                    <node-template style="margin-top:5px;margin-bottom:5px;display: flex;">
+                        <node-title class="newLine"></node-title>
+                        <node-date format="yy-MM-dd" style="float: right; opacity: 0.5;"></node-date>
+                    </node-template>
+                </div>
+            </list-node>
+        </cms-list>
+        <!-- 新闻动态 -->
+        <cms-list class="BlockBody" data="l_ly8edbt0">
+            <div class="title">
+                <div style="text-indent: 20px;width: 100%;font-size: 16px;   
+							font-weight: bold;margin-top: 15px;color: #772f91;">
+                    <list-name></list-name>
+                    <list-template class="more">更多&nbsp;&nbsp;&nbsp;&nbsp;</list-template>
+                </div>
+                <list-name en style="color: #772f91; text-indent: 20px;width: 100%;font-size: 15px;margin-top: 5px;">
+                </list-name>
+            </div>
+            <list-node order="desc" page="1" limit="10">
+                <div class="BlockBodyList">
+                    <node-template style="margin-top:5px;margin-bottom:5px;display: flex;">
+                        <node-title class="newLine"></node-title>
+                        <node-date format="yy-MM-dd" style="float: right; opacity: 0.5;"></node-date>
+                    </node-template>
+                </div>
+            </list-node>
+        </cms-list>
+    </div>
+</cms-component>

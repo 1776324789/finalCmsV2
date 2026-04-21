@@ -1,0 +1,237 @@
+<style>
+    @media screen and (min-width: 800px) {
+
+        .mainBlock {
+            width: 1000px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .activityBlock {
+            flex-wrap: wrap;
+            /* 允许换行 */
+            margin-top: 15px;
+            display: flex;
+        }
+
+        .activityBlock .block {
+            width: 470px;
+            padding: 15px;
+            display: flex;
+
+        }
+
+        .activityBlock .block .dateBlock {
+            background-image: url("./img/timer-log.png");
+            width: 72px;
+            height: 72px;
+            margin-right: 10px;
+            position: relative;
+        }
+
+        .activityBlock .block .dateBlock .month {
+            position: absolute;
+            color: #666666;
+            bottom: 12px;
+            right: 10px;
+        }
+
+        .activityBlock .block .dateBlock .day {
+            position: absolute;
+            font-weight: bold;
+            color: #fff;
+            font-size: 16px;
+            top: 12px;
+            left: 10px;
+        }
+
+        .activityBlock .block .contentBlock {
+            margin-top: -5px;
+            flex: 1;
+            display: flex;
+            margin-left: 15px;
+            flex-direction: column;
+        }
+
+        .activityBlock .block .contentBlock .title {
+            cursor: pointer;
+            height: 25px;
+            line-height: 25px;
+            font-size: 15px;
+            color: #666666;
+
+        }
+
+        .activityBlock .block .contentBlock:hover .title {
+            font-weight: bold;
+        }
+
+        .activityBlock .block .contentBlock:hover .contentDes {
+            font-weight: bold;
+        }
+
+        .activityBlock .block .contentBlock .contentDes {
+            cursor: pointer;
+            flex: 1;
+            font-size: 13px;
+            color: #999999;
+        }
+
+        .mainBlock .blockTitle {
+            height: 35px;
+            display: flex;
+            width: 100%;
+            border-bottom: 2px solid #9522A5;
+        }
+
+        .mainBlock .blockTitle .title {
+            line-height: 35px;
+            height: 35px;
+            flex: 1;
+            color: #666666;
+            font-weight: bold;
+        }
+
+        .mainBlock .blockTitle .more {
+            cursor: pointer;
+            color: #9522A5;
+            line-height: 35px;
+            height: 35px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+
+        .mainBlock {
+            width: 90vw;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .activityBlock {
+            flex-wrap: wrap;
+            /* 允许换行 */
+            margin-top: 15px;
+            display: flex;
+        }
+
+        .activityBlock .block {
+            width: 470px;
+            padding: 15px;
+            display: flex;
+
+        }
+
+        .activityBlock .block .dateBlock {
+            background-image: url("./img/timer-log.png");
+            width: 72px;
+            height: 72px;
+            margin-right: 10px;
+            position: relative;
+        }
+
+        .activityBlock .block .dateBlock .month {
+            position: absolute;
+            color: #666666;
+            bottom: 12px;
+            right: 10px;
+        }
+
+        .activityBlock .block .dateBlock .day {
+            position: absolute;
+            font-weight: bold;
+            color: #fff;
+            font-size: 16px;
+            top: 12px;
+            left: 10px;
+        }
+
+        .activityBlock .block .contentBlock {
+            margin-top: -5px;
+            flex: 1;
+            display: flex;
+            margin-left: 15px;
+            flex-direction: column;
+        }
+
+        .activityBlock .block .contentBlock .title {
+            cursor: pointer;
+            /* height: 25px;
+    line-height: 25px; */
+            padding-bottom: 6px;
+            font-size: 15px;
+            color: #666666;
+
+        }
+
+        .activityBlock .block .contentBlock:hover .title {
+            font-weight: bold;
+        }
+
+        .activityBlock .block .contentBlock:hover .contentDes {
+            font-weight: bold;
+        }
+
+        .activityBlock .block .contentBlock .contentDes {
+            cursor: pointer;
+            flex: 1;
+            font-size: 13px;
+            color: #999999;
+        }
+
+        .mainBlock .blockTitle {
+            height: 35px;
+            display: flex;
+            width: 100%;
+            border-bottom: 2px solid #9522A5;
+        }
+
+        .mainBlock .blockTitle .title {
+            line-height: 35px;
+            height: 35px;
+            flex: 1;
+            color: #666666;
+            font-weight: bold;
+        }
+
+        .mainBlock .blockTitle .more {
+            cursor: pointer;
+            color: #9522A5;
+            line-height: 35px;
+            height: 35px;
+            font-size: 13px;
+            font-weight: bold;
+        }
+    }
+</style>
+<cms-component>
+    <div class="mainBlock">
+        <!-- 2041flby -->
+        <cms-list class="blockTitle" data="l_lysatv9r">
+
+            <list-name class="title"></list-name>
+            <list-template class="more">更多>></list-template>
+        </cms-list>
+        <cms-list data="l_lysatv9r">
+            <list-node page="1" limit="4" order="desc" class="activityBlock">
+                <node-template class="block">
+                    <div class="dateBlock">
+                        <node-date class="day" format="DD"></node-date>
+                        <node-date class="month" format="MM"></node-date>
+                    </div>
+                    <div class="contentBlock">
+                        <node-title class="title">
+                            [field:title function="substring(0,50,'')"/]
+                        </node-title>
+                        <node-note class="contentDes">
+                        </node-note>
+                    </div>
+                </node-template>
+            </list-node>
+        </cms-list>
+    </div>
+</cms-component>

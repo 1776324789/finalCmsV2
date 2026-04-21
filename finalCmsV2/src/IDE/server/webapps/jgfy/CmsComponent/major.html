@@ -1,0 +1,147 @@
+<cms-component>
+    <style>
+        .professional {
+            padding-top: 15px;
+            width: 1200px;
+            margin: auto;
+        }
+
+        @media screen and (min-width: 800px) {
+            .professionalApp {
+                display: none;
+            }
+
+            .professional {
+                display: flex;
+            }
+        }
+
+        @media screen and (max-width: 800px) {
+            .professional {
+                display: none;
+            }
+
+            .professionalApp {
+                display: flex;
+            }
+        }
+
+        .label {
+            width: 80px;
+            height: 200px;
+            font-size: 24px;
+            background-color: #AF8AFE;
+            color: white;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding-left: 20px;
+            padding-right: 20px;
+            margin: 10px;
+            margin-left: 0;
+            box-sizing: border-box;
+            position: relative;
+        }
+
+        .label .corner {
+            width: 0;
+            height: 0;
+            position: absolute;
+            z-index: 1;
+            right: 0;
+            top: 83px;
+            border: 10px solid transparent;
+            border-right-color: #ffffff;
+            border-left: 0;
+        }
+
+        .professional .item {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .professional .item:hover {
+            scale: 1.05;
+            box-shadow: 0 0 10px #b8b8b8;
+        }
+
+        .professionalApp {
+            flex-direction: column;
+        }
+
+
+        .appMajorBlock {
+            padding: 5px;
+            display: flex;
+        }
+
+        .itemApp {
+            width: 192px;
+            height: 192px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            flex: 1;
+            margin: 5px;
+        }
+    </style>
+    <cms-list class="professional" data="l_m7iiexb9">
+        <div class="label" style="border-radius: 5px;">
+            专业介绍
+            <div class="corner"></div>
+        </div>
+        <list-list style="display: flex;">
+            <list-template class="item">
+                <list-cover quality="2" style="width: 100%; height: 100%;border-radius: 5px;"></list-cover>
+            </list-template>
+        </list-list>
+    </cms-list>
+
+    <div class="professionalApp">
+        <div class="appMajorBlock">
+            <div class="itemApp" style="background-color: #aaaaff;border-radius: 5px;">
+                <div style="flex: 1;"></div>
+                专业介绍
+                <div style="flex: 1;"></div>
+            </div>
+            <div class="itemApp">
+                <cms-list data="l_m7iiexd8">
+                    <list-cover quality="2" style="width: 100%; height: 100%;border-radius: 5px;"></list-cover>
+                </cms-list>
+            </div>
+        </div>
+        <div class="appMajorBlock">
+            <div class="itemApp">
+                <cms-list data="l_m7iiexfi">
+                    <list-cover quality="2" style="width: 100%; height: 100%;border-radius: 5px;"></list-cover>
+                </cms-list>
+            </div>
+            <div class="itemApp">
+                <cms-list data="l_m7iiexg9">
+                    <list-cover quality="2" style="width: 100%; height: 100%;border-radius: 5px;"></list-cover>
+                </cms-list>
+            </div>
+        </div>
+        <div class="appMajorBlock">
+            <div class="itemApp">
+                <cms-list data="l_m7iiexgy">
+                    <list-cover quality="2" style="width: 100%; height: 100%;border-radius: 5px;"></list-cover>
+                </cms-list>
+            </div>
+            <div class="itemApp">
+                <cms-list data="l_m7iiexj3">
+                    <list-cover quality="2" style="width: 100%; height: 100%;border-radius: 5px;"></list-cover>
+                </cms-list>
+            </div>
+        </div>
+    </div>
+
+</cms-component>
