@@ -87,8 +87,8 @@ function exit() {
     height: 57px;
     left: calc((100vh - 800px) / 2 * (100vw / 100vh) + 321px);
     top: calc((100vh - 800px) / 2 + 1px);
-    background-color: #ffffffcc;
-    backdrop-filter: blur(20px);
+    background-color: #a5a5a591;
+    backdrop-filter: blur(50px);
     border-radius: 30px;
     border: 1px solid #fff;
 }

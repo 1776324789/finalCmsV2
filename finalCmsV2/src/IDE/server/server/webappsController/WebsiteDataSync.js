@@ -1,7 +1,7 @@
 import fs from 'fs'
 import chokidar from 'chokidar'
 import path from 'path'
-
+import { load } from 'cheerio'
 const WebsiteDataSync = () => {
     const webappsDir = path.join(process.cwd(), 'IDE', 'server', 'webapps')
     const targetDir = path.join(process.cwd(), 'Front')
@@ -108,10 +108,51 @@ const WebsiteDataSync = () => {
                 "updateTime": Date.now()
             }
             const siteName = getTargetSite(srcPath)
+            initSearchContentData(siteName)
+
             fs.writeFileSync(path.join(webappsDir, siteName, "data", "modifyInfo.json"), JSON.stringify(data, null, 2))
         }
     }
 
+    function initSearchContentData(siteName) {
+        const dirPath = path.join(webappsDir, siteName, "data", "content")
+        const contentDir = fs.readdirSync(dirPath)
+        const listData = JSON.parse(fs.readFileSync(path.join(webappsDir, siteName, "data", "list.json")))
+        const searchContent = []
+        const getNodeData = (nodeId, lists) => {
+            let result = null
+            lists.forEach(list => {
+                list.nodes.forEach(node => {
+                    if (node.id == nodeId) result = node
+                })
+                if (result == null) result = getNodeData(nodeId, list.children)
+            })
+            return result
+        }
+        contentDir.forEach(node => {
+            const content = fs.readFileSync(path.join(dirPath, node))
+            const nodeData = getNodeData(node.split(".")[0], listData)
+            if (nodeData.publish) {
+                searchContent.push(`${node.split(".")[0]}.${nodeData?.title + extractSearchText(content)}`)
+            }
+
+        })
+        fs.writeFileSync(path.join(webappsDir, siteName, "data", "searchContent.json"), JSON.stringify(searchContent), { flag: 'w' })
+    }
+    function extractSearchText(html) {
+        const $ = load(html);
+
+        // 移除不参与搜索的内容
+        $('script, style, noscript, iframe').remove();
+
+        // 获取纯文本
+        const text = $.text();
+
+        // 清理空白
+        return text
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
     /** 删除文件 */
     function removeFile(srcPath) {
         const targetPath = getTargetPath(srcPath)

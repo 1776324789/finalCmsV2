@@ -119,7 +119,7 @@
         margin-right: 3px;
         cursor: pointer;
         border-radius: 15px;
-        width: 30px;
+        width: 60px;
         height: 30px;
     }
 
@@ -197,11 +197,7 @@
         font-size: 16px;
     }
 </style>
-
-<script id="eda_bar_script" src="./js/school1407.js"></script>
-<script language="javascript" src="https://pct.zoosnet.net/JS/LsJS.aspx?siteid=PCT18224980&float=1&lng=cn"></script>
 </cms-component>
-<link rel="stylesheet" href="./css/moonIcon.css">
 <cms-component data="l_lxlhqx1y">
     <div class="PHONEHEAD">
         <div style="display: flex;background-color: #772f91;">
@@ -238,14 +234,12 @@
             </cms-node>
             <div style="flex: 1;"></div>
             <div class="searchBlock">
-                <form action="searchResult.html" method="get" onsubmit="return validateForm()">
-                    <div class="inputBlock">
-                        <input id="searchContent" name="search" type="text" minlength="5" placeholder="请输入搜索内容">
-                        <button type="submit" class="searchButton">
-                            <span class="icon-search-2-line "></span>
-                        </button>
-                    </div>
-                </form>
+                <div class="inputBlock">
+                    <input cms-search="search" target="searchResult" placeholder="请输入搜索内容">
+                    <button cms-search="search" class="searchButton">
+                        搜索
+                    </button>
+                </div>
             </div>
         </div>
         <cms-list class="menuBlock">

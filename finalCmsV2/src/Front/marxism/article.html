@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Microsoft YaHei", sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <cms-component>
+      <style>
+        .top-vrj9ee {
+          background: #990000;
+          color: #fff;
+          padding: 10px 0;
+          text-align: center;
+          font-size: 14px;
+        }
+
+        .header-8gtg4h {
+          padding-left: calc((100vw - 1200px) / 2);
+          padding-right: calc((100vw - 1200px) / 2);
+          display: flex;
+          padding-top: 15px;
+          padding-bottom: 15px;
+          background: #fff;
+          border-bottom: 1px solid #eee;
+        }
+
+        .logo-xa84io {
+          height: 70px;
+        }
+
+        .title-p8gal7 {
+          line-height: 70px;
+          flex: 1;
+          margin-left: 15px;
+          font-size: 28px;
+          /* 放大标题 */
+          font-weight: bold;
+          color: #c70f0f;
+        }
+
+        .nav-stnkvu {
+          background: #a82020;
+        }
+
+        .nav-stnkvu .list-i91utv {
+          list-style: none;
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .nav-stnkvu .child-lgxe6d {
+          cursor: pointer;
+          position: relative;
+          padding: 14px 22px;
+        }
+
+        .nav-stnkvu .name-6mr98n {
+          color: #fff;
+          text-decoration: none;
+          font-size: 15px;
+          font-weight: 500;
+        }
+
+        .nav-stnkvu .name-6mr98n:hover {
+          color: #ffd700;
+        }
+
+        .floatMenu-xpqmtr {
+          z-index: 100;
+          background-color: #a82020;
+          pointer-events: none;
+          transition: all 0.3s;
+          position: absolute;
+          top: 100%;
+          color: #fff;
+          display: flex;
+          flex-direction: column;
+          width: auto;
+          text-align: center;
+          word-break: keep-all;
+          padding-left: 15px;
+          padding-right: 15px;
+          left: 50%;
+          white-space: nowrap;
+          transform: translate(-50%, 40px);
+          opacity: 0;
+        }
+
+        .nav-stnkvu .child-lgxe6d:hover .floatMenu-xpqmtr {
+          pointer-events: all;
+          transform: translate(-50%, 0);
+          opacity: 1;
+        }
+
+        .childMenu-iirihb {
+          font-size: 14px;
+          line-height: 35px;
+          height: 35px;
+        }
+
+        .childMenu-iirihb:hover {
+          color: #cfb000;
+        }
+      </style>
+
+      <div class="top-vrj9ee">学好软件 报效祖国</div>
+      <div class="header-8gtg4h">
+        <cms-node data="n_3moc7b9z">
+          <node-cover class="logo-xa84io"></node-cover>
+        </cms-node>
+        <div class="title-p8gal7">马克思主义学院</div>
+        <div style="color: #666; font-size: 16px; line-height: 70px">江西软件职业技术大学</div>
+      </div>
+      <!-- 导航栏（最新一级栏目） -->
+      <div class="nav-stnkvu">
+        <cms-list data="l_jseif9ys" class="list-i91utv">
+          <list-list class="child-lgxe6d">
+            <list-template class="name-6mr98n">
+              <list-name></list-name>
+            </list-template>
+            <div class="floatMenu-xpqmtr">
+              <list-list class="childMenu-iirihb">
+                <list-template>
+                  <list-name></list-name>
+                </list-template>
+              </list-list>
+            </div>
+          </list-list>
+        </cms-list>
+      </div>
+    </cms-component>
+    <cms-component>
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: "Microsoft YaHei", "SimHei", sans-serif;
+          background: linear-gradient(180deg, #faf8f8 0%, #f0e8e8 100%);
+          min-height: 100vh;
+        }
+
+        .contentBlock-c7x335 {
+          max-width: 1100px;
+          margin: 0 auto;
+          background: #fff;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+          border-radius: 4px;
+          overflow: hidden;
+          margin-top: 15px;
+          margin-bottom: 15px;
+          padding: 40px;
+        }
+
+        .article-header-i3icli {
+          padding-bottom: 25px;
+          border-bottom: 3px solid #8b0000;
+          position: relative;
+          margin-bottom: 30px;
+        }
+
+        .article-header-i3icli::after {
+          content: "";
+          position: absolute;
+          bottom: -3px;
+          left: 0;
+          width: 120px;
+          height: 3px;
+          background: #ffd700;
+        }
+
+        .article-title-d0k0er {
+          font-size: 26px;
+          color: #333;
+          font-weight: 600;
+          line-height: 1.4;
+          margin-bottom: 15px;
+          letter-spacing: 1px;
+        }
+
+        .article-meta-r7vrqt {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          color: #999;
+          font-size: 14px;
+          flex-wrap: wrap;
+        }
+
+        .meta-item-p2tlpu {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .meta-item-p2tlpu::before {
+          content: "";
+          display: inline-block;
+          width: 14px;
+          height: 14px;
+          background: #a52a2a;
+          mask-size: contain;
+          mask-repeat: no-repeat;
+          mask-position: center;
+        }
+
+        .meta-date-d9j295::before {
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'/%3E%3Cline x1='16' y1='2' x2='16' y2='6'/%3E%3Cline x1='8' y1='2' x2='8' y2='6'/%3E%3Cline x1='3' y1='10' x2='21' y2='10'/%3E%3C/svg%3E");
+        }
+
+        .meta-source::before {
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z'/%3E%3Cpolyline points='22,6 12,13 2,6'/%3E%3C/svg%3E");
+        }
+
+        .article-content-hddl90 {
+          line-height: 1.8;
+          font-size: 16px;
+          color: #333;
+          min-height: 300px;
+        }
+
+        .article-content-hddl90 p {
+          margin-bottom: 20px;
+          text-align: justify;
+          text-indent: 2em;
+        }
+
+        .article-content-hddl90 h2 {
+          color: #8b0000;
+          font-size: 20px;
+          margin: 30px 0 15px;
+          padding-left: 15px;
+          border-left: 4px solid #a52a2a;
+        }
+
+        .article-content-hddl90 h3 {
+          color: #a52a2a;
+          font-size: 18px;
+          margin: 25px 0 12px;
+        }
+
+        .article-content-hddl90 img {
+          max-width: 100%;
+          height: auto;
+          display: block;
+          margin: 20px auto;
+          border-radius: 4px;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-content-hddl90 a {
+          color: #8b0000;
+          text-decoration: none;
+          border-bottom: 1px solid #8b0000;
+        }
+
+        .article-content-hddl90 a:hover {
+          color: #a52a2a;
+          border-bottom-color: #a52a2a;
+        }
+
+        .article-content-hddl90 blockquote {
+          margin: 20px 0;
+          padding: 15px 20px;
+          background: #faf5f5;
+          border-left: 4px solid #a52a2a;
+          color: #666;
+          font-style: italic;
+        }
+
+        .article-content-hddl90 ul,
+        .article-content-hddl90 ol {
+          margin: 15px 0;
+          padding-left: 40px;
+        }
+
+        .article-content-hddl90 li {
+          margin-bottom: 8px;
+        }
+
+        .article-content-hddl90 table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 20px 0;
+        }
+
+        .article-content-hddl90 table th,
+        .article-content-hddl90 table td {
+          border: 1px solid #ddd;
+          padding: 12px;
+          text-align: left;
+        }
+
+        .article-content-hddl90 table th {
+          background: #8b0000;
+          color: #fff;
+          font-weight: 600;
+        }
+
+        .article-content-hddl90 table tr:nth-child(even) {
+          background: #faf5f5;
+        }
+
+        .article-nav-2kz9yd {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 40px;
+          padding-top: 30px;
+          border-top: 2px solid #e8e0e0;
+        }
+
+        .nav-item-uy5n4w {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: #666;
+          text-decoration: none;
+          font-size: 14px;
+          transition: color 0.25s ease;
+          max-width: 45%;
+        }
+
+        .nav-item-uy5n4w:hover {
+          color: #8b0000;
+        }
+
+        .nav-item-uy5n4w::before {
+          content: "";
+          display: inline-block;
+          width: 16px;
+          height: 16px;
+          background: #a52a2a;
+          mask-size: contain;
+          mask-repeat: no-repeat;
+          mask-position: center;
+          flex-shrink: 0;
+        }
+
+        .nav-prev-nj90xk::before {
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpolyline points='15 18 9 12 15 6'/%3E%3C/svg%3E");
+        }
+
+        .nav-next-mpfeau::before {
+          mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpolyline points='9 18 15 12 9 6'/%3E%3C/svg%3E");
+        }
+
+        .nav-label-kjh5an {
+          color: #999;
+          font-size: 12px;
+          display: block;
+          margin-bottom: 4px;
+        }
+
+        .nav-title-how07r {
+          color: #333;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+
+        .nav-item-uy5n4w:hover .nav-title-how07r {
+          color: #8b0000;
+        }
+
+        .back-btn-w31eyo {
+          cursor: pointer;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 10px 20px;
+          background: #fff;
+          color: #8b0000;
+          border: 2px solid #8b0000;
+          border-radius: 4px;
+          text-decoration: none;
+          font-size: 14px;
+          transition: all 0.25s ease;
+        }
+
+        .back-btn-w31eyo:hover {
+          background: #8b0000;
+          color: #fff;
+        }
+
+        @media (max-width: 768px) {
+          .contentBlock-c7x335 {
+            margin: 10px;
+            padding: 25px;
+          }
+
+          .article-title-d0k0er {
+            font-size: 22px;
+          }
+
+          .article-meta-r7vrqt {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+          }
+
+          .article-nav-2kz9yd {
+            flex-direction: column;
+            gap: 20px;
+          }
+
+          .nav-item-uy5n4w {
+            max-width: 100%;
+          }
+        }
+      </style>
+
+      <cms-node class="contentBlock-c7x335">
+        <div class="article-header-i3icli">
+          <h1 class="article-title-d0k0er">
+            <node-title></node-title>
+          </h1>
+          <div class="article-meta-r7vrqt">
+            <span class="meta-item-p2tlpu meta-date-d9j295">
+              <node-date format="YYYY-MM-DD HH:mm"></node-date>
+            </span>
+          </div>
+        </div>
+
+        <div class="article-content-hddl90">
+          <node-content></node-content>
+        </div>
+
+        <div class="article-nav-2kz9yd">
+          <a href="#" class="nav-item-uy5n4w nav-prev-nj90xk" cms-previous="">
+            <div>
+              <span class="nav-label-kjh5an">上一篇</span>
+              <span class="nav-title-how07r"><node-prev></node-prev></span>
+            </div>
+          </a>
+          <node-parent href="#" class="back-btn-w31eyo">
+            <list-template>返回列表</list-template>
+          </node-parent>
+          <a href="#" class="nav-item-uy5n4w nav-next-mpfeau" cms-next="">
+            <div>
+              <span class="nav-label-kjh5an">下一篇</span>
+              <span class="nav-title-how07r">
+                <node-next></node-next>
+              </span>
+            </div>
+          </a>
+        </div>
+      </cms-node>
+    </cms-component>
+    <cms-component>
+      <style>
+        /* 底部友情链接（理论学习平台） */
+        .links-1bpu0c {
+          background: #2c2c2c;
+          color: #fff;
+          padding: 20px 0;
+          text-align: center;
+        }
+
+        .links-1bpu0c h4 {
+          margin-bottom: 10px;
+          font-size: 16px;
+        }
+
+        .links-1bpu0c a {
+          color: #ffd700;
+          margin: 0 12px;
+          text-decoration: none;
+          font-size: 14px;
+        }
+
+        .links-1bpu0c a:hover {
+          text-decoration: underline;
+        }
+
+        .footer-i1820q {
+          background: #333;
+          color: #fff;
+          text-align: center;
+          padding: 25px 0;
+          margin-top: 0;
+          font-size: 14px;
+        }
+      </style>
+
+      <div class="links-1bpu0c">
+        <h4>理论学习平台</h4>
+        <a href="https://www.people.com.cn/" target="_blank">人民网</a>
+        <a href="https://www.qstheory.cn/" target="_blank">求是网</a>
+        <a href="http://jhsjk.people.cn/" target="_blank">习近平系列重要讲话数据库</a>
+        <a href="https://www.xuexi.cn/" target="_blank">学习强国</a>
+        <a href="https://www.cpcnews.cn/" target="_blank">中国共产党新闻网</a>
+        <a href="https://www.dswxyjy.org.cn/" target="_blank">中央党史和文献研究院官网</a>
+      </div>
+
+      <div class="footer-i1820q">
+        <p>江西软件职业技术大学 · 马克思主义学院 版权所有 © 2026</p>
+      </div>
+    </cms-component>
+    <script>
+      const Cms = document.createElement("script");
+      Cms.src = window.location.origin + "/cmsScripts/FinalCms.js?web=marxism";
+      document.body.appendChild(Cms);
+    </script>
+  </body>
+</html>

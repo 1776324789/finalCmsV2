@@ -1,11 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>马克思主义学院 - 江西软件职业技术大学</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Microsoft YaHei", sans-serif
+    }
+
+    body {
+      background: #f5f5f5;
+      color: #333
+    }
+
+    .banner {
+      margin-top: 1px;
+      height: 400px;
+      width: 1200px;
+      margin: 0 auto;
+      margin-top: 15px;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 36px;
+      font-weight: bold;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .container {
+      margin: 0 auto;
+      width: 1200px;
+    }
+  </style>
 </head>
+
 <body>
   <cms-component>head</cms-component>
+  <cms-slider class="banner" data="l_drqwt5b4" auto="3000"></cms-slider>
+
+  <!-- 内容区（按新栏目结构） -->
+  <div class="container">
+    <cms-component>menuBlock_1</cms-component>
+    <cms-component>menuBlock_2</cms-component>
+  </div>
+
+  <cms-component>foot</cms-component>
 </body>
+
 </html>

@@ -1,0 +1,25 @@
+{
+    "frontProt": 20829,
+    "websiteData": [
+        {
+            "name": "招生网",
+            "target": "zhaosheng"
+        },
+        {
+            "name": "马克思主义学院官网",
+            "target": "marxism"
+        },
+        {
+            "name": "校友网",
+            "target": "alumni"
+        },
+        {
+            "name": "经济管理学院",
+            "target": "jgfy"
+        },
+        {
+            "name": "教务处",
+            "target": "jwc"
+        }
+    ]
+}

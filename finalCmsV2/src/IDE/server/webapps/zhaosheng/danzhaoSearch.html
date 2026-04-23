@@ -235,16 +235,16 @@
 <script>
  
 
-async function search() {
+  async function search() {
     const id = document.getElementById("id").value;
     const name = document.getElementById("name").value;
 
     const fileName = await hashSHA256(id + name);
-document.getElementById("searchButton").innerText="正在查询..."
+    document.getElementById("searchButton").innerText="正在查询..."
     const res = await fetch(`https://zhaosheng.jxuspt.com/data/upload/file/danzhao/${fileName}`);
-document.getElementById("searchButton").innerText="查询"
+    document.getElementById("searchButton").innerText="查询"
     if (!res.ok) {
-alert("未查询到相关信息，请确认输入内容后重新查询。")
+        alert("未查询到相关信息，请确认输入内容后重新查询。")
         console.error("请求失败");
         return;
     }
@@ -252,43 +252,42 @@ alert("未查询到相关信息，请确认输入内容后重新查询。")
     const text = await res.text();  // ⭐ 关键
 
     const deText=await decrypt(text,id)
-const data=JSON.parse(deText)
-showResult(data)
+    const data=JSON.parse(deText)
+    showResult(data)
 
-}
-function showResult(data){
+  }
+  function showResult(data){
     
-document.getElementById("infoBlock").style.display="block"
-document.getElementById("name1").innerText=data.name
-document.getElementById("stuCode").innerText=data.id
-document.getElementById("score1").innerText=data.score_1
-document.getElementById("score2").innerText=data.score_2
-document.getElementById("score3").innerText=data.score_3
-document.getElementById("total").innerText=data.total
-if(data.total==0)
+    document.getElementById("infoBlock").style.display="block"
+    document.getElementById("name1").innerText=data.name
+    document.getElementById("stuCode").innerText=data.id
+    document.getElementById("score1").innerText=data.score_1
+    document.getElementById("score2").innerText=data.score_2
+    document.getElementById("score3").innerText=data.score_3
+    document.getElementById("total").innerText=data.total
+  if(data.total==0)
     document.getElementById("attendBlock").style.display="flex"
-else 
-document.getElementById("attendBlock").style.display="none"
-}
-// 工具函数：把字符串转为 Uint8Array
-function strToUint8(str) {
+  else 
+    document.getElementById("attendBlock").style.display="none"
+  }
+  // 工具函数：把字符串转为 Uint8Array
+  function strToUint8(str) {
     return new TextEncoder().encode(str);
-}
+  }
 
-// 工具函数：转回字符串
-function uint8ToStr(buf) {
+  // 工具函数：转回字符串
+  function uint8ToStr(buf) {
     return new TextDecoder().decode(buf);
-}
+  }
 
-// 从密码生成 key
-async function getKey(password) {
+  // 从密码生成 key
+  async function getKey(password) {
     const keyMaterial = await crypto.subtle.importKey(
         "raw",
         strToUint8(password),
         { name: "PBKDF2" },
         false,
-        ["deriveKey"]
-    );
+        ["deriveKey"]);
 
     return crypto.subtle.deriveKey(
         {
@@ -302,10 +301,10 @@ async function getKey(password) {
         false,
         ["encrypt", "decrypt"]
     );
-}
+  }
 
-// 加密
-async function encrypt(text, password) {
+  // 加密
+  async function encrypt(text, password) {
     const iv = crypto.getRandomValues(new Uint8Array(12)); // 随机IV
     const key = await getKey(password);
 
@@ -321,10 +320,10 @@ async function encrypt(text, password) {
     result.set(new Uint8Array(encrypted), iv.length);
 
     return btoa(String.fromCharCode(...result)); // Base64
-}
+  }
 
-// 解密
-async function decrypt(base64, password) {
+  // 解密
+  async function decrypt(base64, password) {
     const data = Uint8Array.from(atob(base64), c => c.charCodeAt(0));
 
     const iv = data.slice(0, 12);
@@ -339,11 +338,11 @@ async function decrypt(base64, password) {
     );
 
     return uint8ToStr(decrypted);
-}
+  }
 
 
 
-async function hashSHA256(text) {
+  async function hashSHA256(text) {
     const encoder = new TextEncoder();
     const data = encoder.encode(text);
 
@@ -356,7 +355,7 @@ async function hashSHA256(text) {
         .join("");
 
     return hashHex;
-}
+  }
 
 
 </script>

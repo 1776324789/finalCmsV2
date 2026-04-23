@@ -3,14 +3,13 @@
         ref="cardRef" :style="cardStyle">
         <div class="title">{{ data.name }}</div>
         <div class="titleEn">website</div>
-        <div class="link">zhaosheng.jxuspt.com</div>
+        <div class="link">www.jxuspt.com/{{ data.target }}</div>
         <div class="dot" :style="dotStyle"></div>
     </div>
 </template>
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
-import { useSystemStore } from '@/store/systemStore'
 const cardRef = ref(null)
 
 const emit = defineEmits(['toindex'])

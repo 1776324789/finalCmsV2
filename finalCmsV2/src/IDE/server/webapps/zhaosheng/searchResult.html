@@ -15,6 +15,8 @@
         }
 
         .newLine {
+            padding-left: 10px;
+            padding-right: 10px;
             cursor: pointer;
             display: flex;
             height: 30px;
@@ -61,26 +63,28 @@
 </head>
 
 <body>
-   <cms-component data="l_lxlhqx1y">head</cms-component>
+    <cms-component data="l_lxlhqx1y">head</cms-component>
     <div class="mainBlock">
-        <cms-list class="bread" style="margin-top: 35px;">
+        <div class="bread" style="margin-top: 35px;">
             <div class="content" onclick="window.location.href=BaseURL+'/index.html'">
                 首页
             </div>
             >&nbsp;&nbsp;搜索结果
-        </cms-list>
+        </div>
         <cms-search-result>
-            <node-parent>
-                <node-template class="newLine">
-                    <node-title class="lineContent"></node-title>
-                    <node-date class="lineDate"></node-date>
-                </node-template>
-            </node-parent>
-            <div style="margin-top: 35px;">
-                <list-pagination></list-pagination>
-            </div>
-
+            <list-node>
+                <div>
+                    <node-template class="newLine">
+                        <node-title class="lineContent"></node-title>
+                        <node-date class="lineDate"></node-date>
+                    </node-template>
+                </div>
+            </list-node>
+            <result-empty>
+                暂无搜索结果
+            </result-empty>
         </cms-search-result>
+
     </div>
-    <cms-component >foot</cms-component>
+    <cms-component>foot</cms-component>
 </body>

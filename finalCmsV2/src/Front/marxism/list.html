@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Microsoft YaHei", sans-serif;
+      }
+    </style>
+  </head>
+
+  <body>
+    <cms-component>
+      <style>
+        .top-4z0e5t {
+          background: #990000;
+          color: #fff;
+          padding: 10px 0;
+          text-align: center;
+          font-size: 14px;
+        }
+
+        .header-9ctb50 {
+          padding-left: calc((100vw - 1200px) / 2);
+          padding-right: calc((100vw - 1200px) / 2);
+          display: flex;
+          padding-top: 15px;
+          padding-bottom: 15px;
+          background: #fff;
+          border-bottom: 1px solid #eee;
+        }
+
+        .logo-u7y40y {
+          height: 70px;
+        }
+
+        .title-cb12xx {
+          line-height: 70px;
+          flex: 1;
+          margin-left: 15px;
+          font-size: 28px;
+          /* 放大标题 */
+          font-weight: bold;
+          color: #c70f0f;
+        }
+
+        .nav-7u8zpq {
+          background: #a82020;
+        }
+
+        .nav-7u8zpq .list-adcjyt {
+          list-style: none;
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .nav-7u8zpq .child-o1f7s1 {
+          cursor: pointer;
+          position: relative;
+          padding: 14px 22px;
+        }
+
+        .nav-7u8zpq .name-5i0nsv {
+          color: #fff;
+          text-decoration: none;
+          font-size: 15px;
+          font-weight: 500;
+        }
+
+        .nav-7u8zpq .name-5i0nsv:hover {
+          color: #ffd700;
+        }
+
+        .floatMenu-t49iqa {
+          z-index: 100;
+          background-color: #a82020;
+          pointer-events: none;
+          transition: all 0.3s;
+          position: absolute;
+          top: 100%;
+          color: #fff;
+          display: flex;
+          flex-direction: column;
+          width: auto;
+          text-align: center;
+          word-break: keep-all;
+          padding-left: 15px;
+          padding-right: 15px;
+          left: 50%;
+          white-space: nowrap;
+          transform: translate(-50%, 40px);
+          opacity: 0;
+        }
+
+        .nav-7u8zpq .child-o1f7s1:hover .floatMenu-t49iqa {
+          pointer-events: all;
+          transform: translate(-50%, 0);
+          opacity: 1;
+        }
+
+        .childMenu-5hnqaa {
+          font-size: 14px;
+          line-height: 35px;
+          height: 35px;
+        }
+
+        .childMenu-5hnqaa:hover {
+          color: #cfb000;
+        }
+      </style>
+
+      <div class="top-4z0e5t">学好软件 报效祖国</div>
+      <div class="header-9ctb50">
+        <cms-node data="n_3moc7b9z">
+          <node-cover class="logo-u7y40y"></node-cover>
+        </cms-node>
+        <div class="title-cb12xx">马克思主义学院</div>
+        <div style="color: #666; font-size: 16px; line-height: 70px">江西软件职业技术大学</div>
+      </div>
+      <!-- 导航栏（最新一级栏目） -->
+      <div class="nav-7u8zpq">
+        <cms-list data="l_jseif9ys" class="list-adcjyt">
+          <list-list class="child-o1f7s1">
+            <list-template class="name-5i0nsv">
+              <list-name></list-name>
+            </list-template>
+            <div class="floatMenu-t49iqa">
+              <list-list class="childMenu-5hnqaa">
+                <list-template>
+                  <list-name></list-name>
+                </list-template>
+              </list-list>
+            </div>
+          </list-list>
+        </cms-list>
+      </div>
+    </cms-component>
+    <cms-component>
+      <style>
+        * {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
+        }
+
+        body {
+          font-family: "Microsoft YaHei", "SimHei", sans-serif;
+          background: linear-gradient(180deg, #faf8f8 0%, #f0e8e8 100%);
+          min-height: 100vh;
+        }
+
+        .contentBlock-q9cubh {
+          display: flex;
+          max-width: 1100px;
+          margin: 0 auto;
+          background: #fff;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+          border-radius: 4px;
+          overflow: hidden;
+          margin-top: 15px;
+          margin-bottom: 15px;
+        }
+
+        .sidebar-hzl8dk {
+          width: 260px;
+          flex-shrink: 0;
+          background: #fff;
+          border-right: 1px solid #e8e0e0;
+        }
+
+        .main-category-bp52wt {
+          background: linear-gradient(180deg, #8b0000 0%, #a52a2a 100%);
+          color: #ffd700;
+          padding: 24px 20px;
+          text-align: center;
+          position: relative;
+        }
+
+        .main-category-bp52wt::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 60px;
+          height: 2px;
+          background: #ffd700;
+        }
+
+        .main-category-bp52wt h2 {
+          font-size: 20px;
+          font-weight: 600;
+          letter-spacing: 4px;
+        }
+
+        .sub-categories-oljmxf {
+          padding: 20px 0;
+        }
+
+        .sub-category-b08lxb {
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          padding: 12px 24px;
+          color: #333;
+          text-decoration: none;
+          font-size: 14px;
+          transition: all 0.25s ease;
+          border-left: 4px solid transparent;
+        }
+
+        .sub-category-b08lxb::before {
+          content: "▸";
+          margin-right: 8px;
+          color: #ccc;
+          font-size: 12px;
+          transition: color 0.25s ease;
+        }
+
+        .sub-category-b08lxb:hover {
+          background: linear-gradient(90deg, #fff5f5 0%, #fff 100%);
+          border-left-color: #a52a2a;
+          color: #8b0000;
+        }
+
+        .sub-category-b08lxb:hover::before {
+          color: #a52a2a;
+        }
+
+        .active-a8jqux {
+          background: linear-gradient(90deg, #fff0f0 0%, #fff 100%);
+          border-left-color: #8b0000;
+          color: #8b0000;
+          font-weight: 500;
+        }
+
+        .active-a8jqux::before {
+          color: #8b0000;
+        }
+
+        .article-list-ga9yva {
+          flex: 1;
+          padding: 30px;
+        }
+
+        .list-header-jlk6oi {
+          padding-bottom: 15px;
+          margin-bottom: 25px;
+          border-bottom: 3px solid #8b0000;
+          position: relative;
+        }
+
+        .list-header-jlk6oi::after {
+          content: "";
+          position: absolute;
+          bottom: -3px;
+          left: 0;
+          width: 120px;
+          height: 3px;
+          background: #ffd700;
+        }
+
+        .list-header-jlk6oi h1 {
+          font-size: 22px;
+          color: #8b0000;
+          font-weight: 600;
+          letter-spacing: 2px;
+        }
+
+        .articles-vwacpd {
+          height: 700px;
+          list-style: none;
+        }
+
+        .article-item-b1wdun {
+          cursor: pointer;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 18px 15px;
+          margin-bottom: 8px;
+          background: #fafafa;
+          border-radius: 3px;
+          transition: all 0.25s ease;
+          position: relative;
+        }
+
+        .article-item-b1wdun:hover {
+          background: #fff;
+          box-shadow: 0 2px 12px rgba(139, 0, 0, 0.08);
+          transform: translateX(4px);
+        }
+
+        .article-item-b1wdun::before {
+          content: "";
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          width: 3px;
+          background: #a52a2a;
+          opacity: 0;
+          transition: opacity 0.25s ease;
+        }
+
+        .article-item-b1wdun:hover::before {
+          opacity: 1;
+        }
+
+        .article-title-86r0d1 {
+          color: #333;
+          text-decoration: none;
+          font-size: 15px;
+          line-height: 1.6;
+          flex: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          transition: color 0.25s ease;
+          padding-left: 5px;
+        }
+
+        .article-title-86r0d1:hover {
+          color: #8b0000;
+        }
+
+        .article-time-c563um {
+          color: #999;
+          font-size: 13px;
+          white-space: nowrap;
+          margin-left: 15px;
+          padding: 4px 12px;
+          background: #fff;
+          border-radius: 2px;
+          border: 1px solid #eee;
+        }
+
+        .pagination-g9ajkb {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 8px;
+          padding-top: 30px;
+          margin-top: 20px;
+          border-top: 1px solid #eee;
+        }
+
+        .page-btn-978buk {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          min-width: 32px;
+          height: 30px;
+          margin-right: 10px;
+          padding: 0 12px;
+          color: #666;
+          text-decoration: none;
+          font-size: 14px;
+          background: #fff;
+          border: 1px solid #ddd;
+          border-radius: 3px;
+          transition: all 0.2s ease;
+        }
+
+        .page-btn-978buk:hover {
+          color: #fff;
+          background: #a52a2a;
+          border-color: #a52a2a;
+        }
+
+        .buttonActive-hesanb {
+          color: #fff;
+          background: #8b0000;
+          border-color: #8b0000;
+        }
+
+        @media (max-width: 768px) {
+          .contentBlock-q9cubh {
+            flex-direction: column;
+          }
+
+          .sidebar-hzl8dk {
+            width: 100%;
+            border-right: none;
+            border-bottom: 1px solid #e8e0e0;
+          }
+
+          .article-title-86r0d1 {
+            max-width: 60%;
+          }
+        }
+      </style>
+
+      <div class="contentBlock-q9cubh">
+        <cms-list class="sidebar-hzl8dk">
+          <list-parent>
+            <div class="main-category-bp52wt">
+              <h2><list-name></list-name></h2>
+            </div>
+            <div class="sub-categories-oljmxf">
+              <list-list focus:class="active-a8jqux">
+                <list-template class="sub-category-b08lxb">
+                  <list-name></list-name>
+                </list-template>
+              </list-list>
+            </div>
+          </list-parent>
+        </cms-list>
+        <cms-list class="article-list-ga9yva">
+          <div class="list-header-jlk6oi">
+            <h1>
+              <list-name pagetitle=""></list-name>
+            </h1>
+          </div>
+          <ul class="articles-vwacpd">
+            <list-node class="article-item-b1wdun" cms-bind="listPagination" page="1" limit="10">
+              <node-template class="article-title-86r0d1"><node-title></node-title></node-template>
+              <node-date format="YYYY-MM-DD" class="article-time-c563um"></node-date>
+            </list-node>
+          </ul>
+          <div class="pagination-g9ajkb">
+            <cms-pagination cms-bind="listPagination">
+              <button class="page-btn-978buk" type="page" focus="buttonActive-hesanb"></button>
+            </cms-pagination>
+          </div>
+        </cms-list>
+      </div>
+    </cms-component>
+    <cms-component>
+      <style>
+        /* 底部友情链接（理论学习平台） */
+        .links-jwxz4b {
+          background: #2c2c2c;
+          color: #fff;
+          padding: 20px 0;
+          text-align: center;
+        }
+
+        .links-jwxz4b h4 {
+          margin-bottom: 10px;
+          font-size: 16px;
+        }
+
+        .links-jwxz4b a {
+          color: #ffd700;
+          margin: 0 12px;
+          text-decoration: none;
+          font-size: 14px;
+        }
+
+        .links-jwxz4b a:hover {
+          text-decoration: underline;
+        }
+
+        .footer-q95kti {
+          background: #333;
+          color: #fff;
+          text-align: center;
+          padding: 25px 0;
+          margin-top: 0;
+          font-size: 14px;
+        }
+      </style>
+
+      <div class="links-jwxz4b">
+        <h4>理论学习平台</h4>
+        <a href="https://www.people.com.cn/" target="_blank">人民网</a>
+        <a href="https://www.qstheory.cn/" target="_blank">求是网</a>
+        <a href="http://jhsjk.people.cn/" target="_blank">习近平系列重要讲话数据库</a>
+        <a href="https://www.xuexi.cn/" target="_blank">学习强国</a>
+        <a href="https://www.cpcnews.cn/" target="_blank">中国共产党新闻网</a>
+        <a href="https://www.dswxyjy.org.cn/" target="_blank">中央党史和文献研究院官网</a>
+      </div>
+
+      <div class="footer-q95kti">
+        <p>江西软件职业技术大学 · 马克思主义学院 版权所有 © 2026</p>
+      </div>
+    </cms-component>
+    <script>
+      const Cms = document.createElement("script");
+      Cms.src = window.location.origin + "/cmsScripts/FinalCms.js?web=marxism";
+      document.body.appendChild(Cms);
+    </script>
+  </body>
+</html>

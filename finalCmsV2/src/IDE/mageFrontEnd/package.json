@@ -23,6 +23,7 @@
     "ogl": "^1.0.11",
     "pinia": "^3.0.4",
     "postprocessing": "^6.38.2",
+    "prettier": "^3.8.3",
     "prismjs": "^1.30.0",
     "three": "^0.182.0",
     "tinymce": "^8.4.0",

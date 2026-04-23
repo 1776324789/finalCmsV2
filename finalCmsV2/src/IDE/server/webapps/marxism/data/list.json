@@ -6,38 +6,402 @@
     "children": [
       {
         "parentId": "l_jseif9ys",
-        "name": "通知公告",
+        "name": "学校官网",
         "publish": true,
-        "id": "l_bvwf8721",
+        "id": "l_5cs7b7ey",
         "children": [],
-        "nodes": [
+        "nodes": [],
+        "template": "https://www.jxuspt.com"
+      },
+      {
+        "parentId": "l_jseif9ys",
+        "name": "首页",
+        "id": "l_2v2y47a",
+        "children": [],
+        "nodes": [],
+        "publish": true,
+        "template": "/"
+      },
+      {
+        "parentId": "l_jseif9ys",
+        "name": "学院概况",
+        "id": "l_48uhwisj",
+        "children": [
           {
+            "parentId": "l_48uhwisj",
+            "name": "学院简介",
+            "id": "l_a9u7sk9g",
+            "children": [],
+            "nodes": [],
             "publish": true,
-            "clicks": 0,
-            "date": "2026-04-17 14:31",
-            "title": "cs",
-            "id": "n_cqxqb71l",
-            "createData": 1776407508189
+            "nodeTemplate": "article",
+            "template": "list"
+          },
+          {
+            "parentId": "l_48uhwisj",
+            "name": "机构设置",
+            "id": "l_bwmc2sl2",
+            "children": [],
+            "nodes": [],
+            "publish": true,
+            "nodeTemplate": "article",
+            "template": "list"
           }
-        ]
+        ],
+        "nodes": [],
+        "publish": true
       },
       {
         "parentId": "l_jseif9ys",
-        "name": "政策文件",
-        "publish": true,
-        "id": "l_g3hjnu1o",
-        "children": [],
-        "nodes": []
+        "name": "师资队伍",
+        "id": "l_3jmgbtyb",
+        "children": [
+          {
+            "parentId": "l_3jmgbtyb",
+            "name": "师资队伍",
+            "publish": true,
+            "id": "l_97rujt5n",
+            "children": [],
+            "nodes": [
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2026-04-23 09:17",
+                "title": "示例教师",
+                "cover": {
+                  "url": "http://localhost:20829/upload/2026-04-23/1776907076296-4zcysuo9wjd.jpg",
+                  "filename": "download.jpg",
+                  "cover": "http://localhost:20829/upload/2026-04-23/1776907076297-iyr2k41qe3f.jpg"
+                },
+                "id": "n_gxi4xbfw",
+                "createData": 1776907086042,
+                "info": "教师描述"
+              }
+            ],
+            "index": "1",
+            "template": "list",
+            "nodeTemplate": "article"
+          },
+          {
+            "parentId": "l_3jmgbtyb",
+            "name": "师德师风",
+            "id": "l_20uj2ijm",
+            "children": [],
+            "nodes": [],
+            "publish": true,
+            "index": "2",
+            "template": "list",
+            "nodeTemplate": "article"
+          },
+          {
+            "parentId": "l_3jmgbtyb",
+            "name": "学习培训",
+            "id": "l_bopbssom",
+            "children": [],
+            "nodes": [],
+            "publish": true,
+            "index": "3",
+            "nodeTemplate": "article",
+            "template": "list"
+          },
+          {
+            "parentId": "l_3jmgbtyb",
+            "name": "教育家精神",
+            "id": "l_fdlfhc2w",
+            "children": [],
+            "nodes": [],
+            "publish": true,
+            "index": "4",
+            "nodeTemplate": "article",
+            "template": "list"
+          }
+        ],
+        "nodes": [],
+        "publish": true
       },
       {
         "parentId": "l_jseif9ys",
-        "name": "工作动态",
-        "publish": true,
-        "id": "l_h0fyfx6p",
-        "children": [],
-        "nodes": []
+        "name": "学院动态",
+        "id": "l_4p56bc4q",
+        "children": [
+          {
+            "parentId": "l_4p56bc4q",
+            "name": "通知公告",
+            "id": "l_1rvbhfnl",
+            "children": [],
+            "nodes": [],
+            "publish": true,
+            "nodeTemplate": "article",
+            "template": "list"
+          },
+          {
+            "parentId": "l_4p56bc4q",
+            "name": "新闻动态",
+            "id": "l_a3jbrc9f",
+            "children": [],
+            "nodes": [
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2026-04-23 09:09",
+                "title": "测试标题11",
+                "id": "n_i05c02z5",
+                "createData": 1776906594951
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2026-04-23 09:09",
+                "title": "测试标题10",
+                "id": "n_3htydg7l",
+                "createData": 1776906590269
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2026-04-23 09:09",
+                "title": "测试标题9",
+                "id": "n_1l20r4hy",
+                "createData": 1776906585831
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2026-04-23 09:09",
+                "title": "测试标题8",
+                "id": "n_bitn4dy6",
+                "createData": 1776906581494
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2026-04-23 09:09",
+                "title": "测试标题7",
+                "id": "n_7fbx5wps",
+                "createData": 1776906576143
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2026-04-22 15:21",
+                "title": "测试文章的标题1",
+                "id": "n_do6toyyv",
+                "createData": 1776842492814
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2026-04-22 15:21",
+                "title": "测试文章的标题2",
+                "id": "n_elay5itf",
+                "createData": 1776842485314
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2026-04-22 15:21",
+                "title": "测试文章的标题3",
+                "id": "n_8urz6wju",
+                "createData": 1776842478466
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2026-04-22 15:21",
+                "title": "测试文章的标题4",
+                "id": "n_6cpd3j65",
+                "createData": 1776842469701
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2026-04-22 15:20",
+                "title": "测试文章的标题5",
+                "id": "n_evbyly6g",
+                "createData": 1776842461330
+              },
+              {
+                "publish": true,
+                "clicks": 0,
+                "date": "2026-04-22 15:19",
+                "title": "测试文章的标题6",
+                "id": "n_cwz749er",
+                "createData": 1776842393580
+              }
+            ],
+            "publish": true,
+            "template": "list",
+            "nodeTemplate": "article"
+          }
+        ],
+        "nodes": [],
+        "publish": true
+      },
+      {
+        "parentId": "l_jseif9ys",
+        "name": "党建动态",
+        "id": "l_hp4io2rd",
+        "children": [
+          {
+            "parentId": "l_hp4io2rd",
+            "name": "理论学习",
+            "id": "l_g1cjoom2",
+            "children": [],
+            "nodes": [],
+            "publish": true,
+            "nodeTemplate": "article",
+            "template": "list"
+          },
+          {
+            "parentId": "l_hp4io2rd",
+            "name": "党建活动",
+            "id": "l_7qg0nicx",
+            "children": [],
+            "nodes": [],
+            "publish": true,
+            "nodeTemplate": "article",
+            "template": "list"
+          },
+          {
+            "parentId": "l_hp4io2rd",
+            "name": "学习教育",
+            "id": "l_lmgs9oxu",
+            "children": [],
+            "nodes": [],
+            "publish": true,
+            "nodeTemplate": "article",
+            "template": "list"
+          }
+        ],
+        "nodes": [],
+        "publish": true
+      },
+      {
+        "parentId": "l_jseif9ys",
+        "name": "教学科研",
+        "id": "l_la8ttulg",
+        "children": [
+          {
+            "parentId": "l_la8ttulg",
+            "name": "教学科研",
+            "id": "l_ykaupss",
+            "children": [],
+            "nodes": [],
+            "publish": true,
+            "nodeTemplate": "article",
+            "template": "list"
+          }
+        ],
+        "nodes": [],
+        "publish": true
+      },
+      {
+        "parentId": "l_jseif9ys",
+        "name": "招聘工作",
+        "id": "l_elz5xjgr",
+        "children": [
+          {
+            "parentId": "l_elz5xjgr",
+            "name": "高层次人才引进",
+            "id": "l_lq39lzfr",
+            "children": [],
+            "nodes": [],
+            "publish": true,
+            "nodeTemplate": "article",
+            "template": "list"
+          },
+          {
+            "parentId": "l_elz5xjgr",
+            "name": "教师招聘",
+            "id": "l_61jytrsm",
+            "children": [],
+            "nodes": [],
+            "publish": true,
+            "nodeTemplate": "article",
+            "template": "list"
+          }
+        ],
+        "nodes": [],
+        "publish": true
+      },
+      {
+        "parentId": "l_jseif9ys",
+        "name": "学习专栏",
+        "id": "l_kq166rpr",
+        "children": [
+          {
+            "parentId": "l_kq166rpr",
+            "name": "读原著、学原文、悟原理",
+            "publish": true,
+            "id": "l_ghppd9ei",
+            "children": [],
+            "nodes": [],
+            "nodeTemplate": "article",
+            "template": "list"
+          }
+        ],
+        "nodes": [],
+        "publish": true
       }
     ],
     "nodes": []
+  },
+  {
+    "name": "首页",
+    "publish": true,
+    "id": "l_k65t1qo9",
+    "children": [],
+    "nodes": [],
+    "delFlag": 1
+  },
+  {
+    "name": "页面元素",
+    "publish": true,
+    "id": "l_3iy4g2nx",
+    "children": [],
+    "nodes": [
+      {
+        "publish": true,
+        "clicks": 0,
+        "date": "2026-04-22 15:10",
+        "title": "马克思主义学院简介",
+        "id": "n_corany7r",
+        "createData": 1776841851988
+      },
+      {
+        "publish": true,
+        "clicks": 0,
+        "date": "2026-04-22 14:46",
+        "title": "头部logo",
+        "cover": {
+          "url": "http://localhost:20829/upload/2026-04-22/1776840696549-fqbm0jo66o7.jpg",
+          "filename": "e7770c7539558095c9aa77178015b57a.jpg",
+          "cover": "http://localhost:20829/upload/2026-04-22/1776840696549-171qscfbgy8i.jpg"
+        },
+        "id": "n_3moc7b9z",
+        "createData": 1776840475331
+      }
+    ]
+  },
+  {
+    "name": "首页轮播图",
+    "publish": true,
+    "id": "l_drqwt5b4",
+    "children": [],
+    "nodes": [
+      {
+        "publish": true,
+        "clicks": 0,
+        "date": "2026-04-22 14:56",
+        "title": "1",
+        "cover": {
+          "url": "http://localhost:20829/upload/2026-04-22/1776841012143-s8p8t8rc2up.jpg",
+          "filename": "1774235372227.jpg",
+          "cover": "http://localhost:20829/upload/2026-04-22/1776841012147-5pnu49gwmh6.jpg"
+        },
+        "id": "n_9s0g9stp",
+        "createData": 1776841013609
+      }
+    ]
   }
 ]

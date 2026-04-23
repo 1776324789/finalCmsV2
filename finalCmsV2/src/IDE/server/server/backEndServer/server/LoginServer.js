@@ -58,6 +58,7 @@ const LoginServer = (app) => {
 
     app.post('/login', async (req, res) => {
         const { connectId, username, password, verifyCode } = req.body
+        console.log(username, password);
 
         const user = await SystemController.getUserByName(username)
 

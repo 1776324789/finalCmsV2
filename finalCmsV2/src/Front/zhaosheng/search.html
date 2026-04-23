@@ -1,565 +1,577 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>2025年单招职能校考成绩查询</title>
 
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<title>2025年单招职能校考成绩查询</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <link href="./css/moonIcon.css" rel="stylesheet" />
+  </head>
 
-	<link href="css/style.css" rel="stylesheet" />
-	<link href="./css/moonIcon.css" rel="stylesheet" />
-</head>
+  <body>
+    <cms-component data="l_lxlhqx1y">
+      <style>
+        html,
+        body {
+          padding: 0;
+          margin: 0;
+        }
 
-<body>
-	<cms-component data="l_lxlhqx1y"><style>
-    html,
-    body {
-        padding: 0;
-        margin: 0;
-    }
+        .WEBHEAD-wue5r8 .list-2te455 {
+          display: flex;
+        }
 
-    .WEBHEAD .list {
-        display: flex;
-    }
+        .WEBHEAD-wue5r8 .contentName-kn2usf {
+          color: #fff;
+          height: 40px;
+          text-align: center;
+          line-height: 40px;
+          min-width: 70px;
+          padding-left: 20px;
+          padding-right: 20px;
+          cursor: pointer;
+          font-size: 16px;
+        }
 
-    .WEBHEAD .contentName {
-        color: #fff;
-        height: 40px;
-        text-align: center;
-        line-height: 40px;
-        min-width: 70px;
-        padding-left: 20px;
-        padding-right: 20px;
-        cursor: pointer;
-        font-size: 16px;
-    }
+        .WEBHEAD-wue5r8 .contentName-kn2usf:hover {
+          color: #55aaff;
+        }
 
-    .WEBHEAD .contentName:hover {
-        color: #55aaff;
-    }
+        .WEBHEAD-wue5r8 .floatWindow-hqwrsk {
+          z-index: 10;
+          background-color: #fff;
+          position: absolute;
+          display: none;
+          box-shadow: 0 0 3px #b9b9b9;
+          flex-direction: column;
+        }
 
-    .WEBHEAD .floatWindow {
-        z-index: 10;
-        background-color: #fff;
-        position: absolute;
-        display: none;
-        box-shadow: 0 0 3px #b9b9b9;
-        flex-direction: column;
-    }
+        .WEBHEAD-wue5r8 .row-jhc599:hover .floatWindow-hqwrsk {
+          animation: slideIn 0.25s ease forwards;
+          display: flex;
+        }
 
-    .WEBHEAD .row:hover .floatWindow {
-        animation: slideIn 0.25s ease forwards;
-        display: flex;
-
-    }
-
-    @keyframes slideIn {
-        0% {
+        @keyframes slideIn {
+          0% {
             transform: translateY(50px);
             opacity: 0;
-        }
+          }
 
-        100% {
+          100% {
             transform: translateY(0);
             opacity: 1;
+          }
         }
-    }
 
-    .WEBHEAD .menuOption {
-        height: 45px;
-        text-align: center;
-        line-height: 45px;
-        width: 100px;
-        cursor: pointer;
-        font-size: 14px;
-    }
+        .WEBHEAD-wue5r8 .menuOption-4pgf9c {
+          height: 45px;
+          text-align: center;
+          line-height: 45px;
+          width: 100px;
+          cursor: pointer;
+          font-size: 14px;
+        }
 
-    .WEBHEAD .menuOption:hover {
-        background-color: #e9e9e9;
-    }
+        .WEBHEAD-wue5r8 .menuOption-4pgf9c:hover {
+          background-color: #e9e9e9;
+        }
 
-    .WEBHEAD .menuBlock {
-        width: 100vw;
-        display: flex;
-        background-color: #393c41;
-    }
+        .WEBHEAD-wue5r8 .menuBlock-wq8l2n {
+          width: 100vw;
+          display: flex;
+          background-color: #393c41;
+        }
 
-    .WEBHEAD .pageTopBlock {
-        width: 100vw;
-        height: 70px;
-        background-color: #772f91 !important;
-        display: flex;
-    }
+        .WEBHEAD-wue5r8 .pageTopBlock-vil35v {
+          width: 100vw;
+          height: 70px;
+          background-color: #772f91 !important;
+          display: flex;
+        }
 
-    .WEBHEAD .topBlockTitle {
-        font-size: 30px;
-        line-height: 70px;
-        margin-left: 30px;
-        color: #fff;
-    }
+        .WEBHEAD-wue5r8 .topBlockTitle-6adav6 {
+          font-size: 30px;
+          line-height: 70px;
+          margin-left: 30px;
+          color: #fff;
+        }
 
-    .WEBHEAD .searchBlock {
-        margin-right: 100px;
-    }
+        .WEBHEAD-wue5r8 .searchBlock-g4kgku {
+          margin-right: 100px;
+        }
 
-    .WEBHEAD .inputBlock {
-        display: flex;
-        margin-top: 17px;
-        overflow: hidden;
-        width: 250px;
-        border-radius: 18px;
-        height: 36px;
-        background-color: #fff;
-        border: 1px solid #bfbfbf;
-    }
+        .WEBHEAD-wue5r8 .inputBlock-p3ut3z {
+          display: flex;
+          margin-top: 17px;
+          overflow: hidden;
+          width: 250px;
+          border-radius: 18px;
+          height: 36px;
+          background-color: #fff;
+          border: 1px solid #bfbfbf;
+        }
 
-    .WEBHEAD .inputBlock input {
-        height: 30px;
-        flex: 1;
-        text-indent: 15px;
-        border: 0;
-        margin-top: 2px;
-        outline: none;
-    }
+        .WEBHEAD-wue5r8 .inputBlock-p3ut3z input {
+          height: 30px;
+          flex: 1;
+          text-indent: 15px;
+          border: 0;
+          margin-top: 2px;
+          outline: none;
+        }
 
-    .WEBHEAD .row {
-        position: relative;
-    }
+        .WEBHEAD-wue5r8 .row-jhc599 {
+          position: relative;
+        }
 
-    .WEBHEAD .searchButton {
-        margin-top: 3px;
-        border: 0;
-        margin-right: 3px;
-        cursor: pointer;
-        border-radius: 15px;
-        width: 30px;
-        height: 30px;
-    }
+        .WEBHEAD-wue5r8 .searchButton-bg84ob {
+          margin-top: 3px;
+          border: 0;
+          margin-right: 3px;
+          cursor: pointer;
+          border-radius: 15px;
+          width: 60px;
+          height: 30px;
+        }
 
-    .WEBHEAD .searchButton:hover {
-        color: #55aaff;
-        background-color: #eeeeee;
-    }
+        .WEBHEAD-wue5r8 .searchButton-bg84ob:hover {
+          color: #55aaff;
+          background-color: #eeeeee;
+        }
 
-
-    @media screen and (min-width: 800px) {
-        .WEBHEAD {
+        @media screen and (min-width: 800px) {
+          .WEBHEAD-wue5r8 {
             display: block;
-        }
+          }
 
-        .PHONEHEAD {
+          .PHONEHEAD-a11p1x {
             display: none;
-        }
+          }
 
-        .setUp {
+          .setUp-i3lohp {
             display: none;
+          }
         }
-    }
 
-    @media screen and (max-width: 800px) {
-        .WEBHEAD {
+        @media screen and (max-width: 800px) {
+          .WEBHEAD-wue5r8 {
             display: none;
-        }
+          }
 
-        .PHONEHEAD {
+          .PHONEHEAD-a11p1x {
             z-index: 10000000;
             display: block;
             position: fixed;
             width: 100vw;
-        }
+          }
 
-        .setUp {
+          .setUp-i3lohp {
             display: block;
+          }
         }
-    }
 
-    .PHONEHEAD .topBlockTitle {
-        color: #fff;
-        margin-top: -1px;
-        height: 35px;
-        font-size: 20px;
-        line-height: 35px;
-        text-indent: 25px;
-    }
+        .PHONEHEAD-a11p1x .topBlockTitle-6adav6 {
+          color: #fff;
+          margin-top: -1px;
+          height: 35px;
+          font-size: 20px;
+          line-height: 35px;
+          text-indent: 25px;
+        }
 
-    .PHONEHEAD .fatherBlock {
-        height: 35px;
-        text-indent: 15px;
-        color: #fff;
-        line-height: 35px;
-        font-weight: bold;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
+        .PHONEHEAD-a11p1x .fatherBlock-vhoey4 {
+          height: 35px;
+          text-indent: 15px;
+          color: #fff;
+          line-height: 35px;
+          font-weight: bold;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-    .PHONEHEAD .childBlock {
-        height: 35px;
-        text-indent: 35px;
-        color: #fff;
-        line-height: 35px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-</style>
+        .PHONEHEAD-a11p1x .childBlock-ht45sg {
+          height: 35px;
+          text-indent: 35px;
+          color: #fff;
+          line-height: 35px;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+      </style>
 
-<style>
-    body,
-    html {
-        width: 100vw;
-        height: 100vh;
-        overflow-y: auto;
-        overflow-x: hidden;
-        font-size: 16px;
-    }
-</style>
+      <style>
+        body,
+        html {
+          width: 100vw;
+          height: 100vh;
+          overflow-y: auto;
+          overflow-x: hidden;
+          font-size: 16px;
+        }
+      </style>
 
-<script id="eda_bar_script" src="./js/school1407.js"></script>
-<script language="javascript" src="https://pct.zoosnet.net/JS/LsJS.aspx?siteid=PCT18224980&float=1&lng=cn"></script>
-</cms-component>
-<link rel="stylesheet" href="./css/moonIcon.css">
-<cms-component data="l_lxlhqx1y">
-    <div class="PHONEHEAD">
-        <div style="display: flex;background-color: #772f91;">
-            <div style="flex: 1;">
-                <div class="topBlockTitle" style="font-weight: bold;">江西软件职业技术大学</div>
-                <div class="topBlockTitle">招生信息网</div>
+      <cms-component data="l_lxlhqx1y">
+        <div class="PHONEHEAD-a11p1x">
+          <div style="display: flex; background-color: #772f91">
+            <div style="flex: 1">
+              <div class="topBlockTitle-6adav6" style="font-weight: bold">江西软件职业技术大学</div>
+              <div class="topBlockTitle-6adav6">招生信息网</div>
             </div>
-            <div style="width: 75px;color: #fff;line-height: 60px;text-align: center;" id="phoneMenuButton">
-                <i class="icon-menu-fill" style="font-size: 35px;"></i>
+            <div
+              style="width: 75px; color: #fff; line-height: 60px; text-align: center"
+              id="phoneMenuButton"
+            >
+              <i class="icon-menu-fill-w44luv" style="font-size: 35px"></i>
             </div>
-        </div>
-        <div id="phoneMenu"
-            style="width: 175px;transition: left 0.3s; z-index: 1000; height:100vh; position: fixed;left: -175px;background-color: #772f91;overflow: auto;">
+          </div>
+          <div
+            id="phoneMenu"
+            style="
+              width: 175px;
+              transition: left 0.3s;
+              z-index: 1000;
+              height: 100vh;
+              position: fixed;
+              left: -175px;
+              background-color: #772f91;
+              overflow: auto;
+            "
+          >
             <cms-list>
+              <list-list>
+                <list-template class="fatherBlock-vhoey4">
+                  <list-name></list-name>
+                </list-template>
                 <list-list>
-                    <list-template class="fatherBlock">
-                        <list-name></list-name>
-                    </list-template>
-                    <list-list>
-                        <list-template class="childBlock">
-                            <list-name></list-name>
-                        </list-template>
-                    </list-list>
+                  <list-template class="childBlock-ht45sg">
+                    <list-name></list-name>
+                  </list-template>
                 </list-list>
+              </list-list>
             </cms-list>
+          </div>
         </div>
-    </div>
-    <div style="width: 100vw;height: 80px;" class="setUp"></div>
-    <div class="WEBHEAD">
-        <div class="pageTopBlock">
-            <cms-node data="n_lz6pzgj5" style="display: flex;">
-                <node-cover class="hello hello2" style="height: 70px;margin-left: 100px;"></node-cover>
-                <div class="topBlockTitle">招生信息网</div>
+        <div style="width: 100vw; height: 80px" class="setUp-i3lohp"></div>
+        <div class="WEBHEAD-wue5r8">
+          <div class="pageTopBlock-vil35v">
+            <cms-node data="n_lz6pzgj5" style="display: flex">
+              <node-cover
+                class="hello-k9v4dt hello2-ch6zmq"
+                style="height: 70px; margin-left: 100px"
+              ></node-cover>
+              <div class="topBlockTitle-6adav6">招生信息网</div>
             </cms-node>
-            <div style="flex: 1;"></div>
-            <div class="searchBlock">
-                <form action="searchResult.html" method="get" onsubmit="return validateForm()">
-                    <div class="inputBlock">
-                        <input id="searchContent" name="search" type="text" minlength="5" placeholder="请输入搜索内容">
-                        <button type="submit" class="searchButton">
-                            <span class="icon-search-2-line "></span>
-                        </button>
-                    </div>
-                </form>
+            <div style="flex: 1"></div>
+            <div class="searchBlock-g4kgku">
+              <div class="inputBlock-p3ut3z">
+                <input cms-search="search" target="searchResult" placeholder="请输入搜索内容" />
+                <button cms-search="search" class="searchButton-bg84ob">搜索</button>
+              </div>
             </div>
-        </div>
-        <cms-list class="menuBlock">
-            <div style="flex: 1;"></div>
-            <list-list class="list">
-                <div class="row">
+          </div>
+          <cms-list class="menuBlock-wq8l2n">
+            <div style="flex: 1"></div>
+            <list-list class="list-2te455">
+              <div class="row-jhc599">
+                <list-template>
+                  <list-name class="contentName-kn2usf"></list-name>
+                </list-template>
+                <div class="floatWindow-hqwrsk">
+                  <list-list>
                     <list-template>
-                        <list-name class="contentName"></list-name>
+                      <list-name class="menuOption-4pgf9c"></list-name>
                     </list-template>
-                    <div class="floatWindow">
-                        <list-list>
-                            <list-template>
-                                <list-name class="menuOption"></list-name>
-                            </list-template>
-                        </list-list>
-                    </div>
+                  </list-list>
                 </div>
+              </div>
             </list-list>
-            <div style="flex: 1;"></div>
-        </cms-list>
+            <div style="flex: 1"></div>
+          </cms-list>
+        </div>
+      </cms-component>
+      <script>
+        const phoneMenu = document.getElementById("phoneMenu");
+        const phoneMenuButton = document.getElementById("phoneMenuButton");
+        let show = false;
+        phoneMenuButton.onclick = () => {
+          if (show) {
+            phoneMenu.style.left = "-175px";
+          } else {
+            phoneMenu.style.left = "0";
+          }
+          show = !show;
+        };
+      </script>
+    </cms-component>
+    <div class="bgi"></div>
+    <div class="main" id="main">
+      <div class="title">2025年单招职能校考成绩查询</div>
+      <div class="line">
+        <div class="label">请输入姓名：</div>
+        <input type="text" class="input" placeholder="请输入姓名" id="name" />
+      </div>
+      <div class="line">
+        <div class="label">考生号：</div>
+        <input type="text" class="input" placeholder="请输入考生号" id="id" />
+      </div>
+      <div>
+        <button class="button" onclick="search()" id="searchButton">查询</button>
+      </div>
+      <div class="infoMain" id="infoBlock">
+        <div class="infoBlock">
+          <div class="infoLabel">
+            考&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号
+          </div>
+          <div class="info" id="stuCode"></div>
+        </div>
+        <div class="infoBlock" style="background-color: rgba(236, 236, 236, 0.616)">
+          <div class="infoLabel">
+            姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名
+          </div>
+          <div class="info" id="name1"></div>
+        </div>
+        <div class="infoBlock">
+          <div class="infoLabel">职能校考成绩</div>
+          <div class="info" id="score"></div>
+        </div>
+        <div class="infoBlock" style="margin-top: 30px">
+          <div class="info">考生如对成绩有异议，</div>
+        </div>
+        <div class="infoBlock">
+          <div class="info">请您在3月18-19日提供准确个人信息提交成绩复核申请书，</div>
+        </div>
+        <div class="infoBlock">
+          <div class="info">申请书接收邮箱363175498@qq.com.</div>
+        </div>
+      </div>
+      <div class="warn empty" style="display: block" id="empty">未查询到结果</div>
+      <img src="./img/bgi.png" class="bgb" />
     </div>
-</cms-component>
-<script>
-    const phoneMenu = document.getElementById('phoneMenu')
-    const phoneMenuButton = document.getElementById("phoneMenuButton")
-    let show = false
-    phoneMenuButton.onclick = () => {
-        if (show) {
-            phoneMenu.style.left = "-175px"
-        } else {
-            phoneMenu.style.left = "0"
+    <cms-component>
+      <style>
+        .min_wrapper-76zqnt {
+          padding-top: 20px;
+          padding-bottom: 30px;
+          background-color: #555555;
         }
-        show = !show
-    }
-</script></cms-component>
-	<div class="bgi"></div>
-	<div class="main" id="main">
-		<div class="title">2025年单招职能校考成绩查询</div>
-		<div class="line">
-			<div class="label">请输入姓名：</div>
-			<input type="text" class="input" placeholder="请输入姓名" id="name">
-		</div>
-		<div class="line">
-			<div class="label">考生号：</div>
-			<input type="text" class="input" placeholder="请输入考生号" id="id">
-		</div>
-		<div>
-			<button class="button" onclick="search()" id="searchButton">查询</button>
-		</div>
-		<div class="infoMain" id="infoBlock">
 
-			<div class="infoBlock">
-				<div class="infoLabel">考&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</div>
-				<div class="info" id="stuCode"></div>
-			</div>
-			<div class="infoBlock" style="background-color: rgba(236, 236, 236, 0.616);">
-				<div class="infoLabel">姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</div>
-				<div class="info" id="name1"></div>
-			</div>
-			<div class="infoBlock">
-				<div class="infoLabel">职能校考成绩</div>
-				<div class="info" id="score"></div>
-			</div>
-			<div class="infoBlock" style="margin-top: 30px;">
-				<div class="info">考生如对成绩有异议，</div>
-			</div>
-			<div class="infoBlock">
-				<div class="info">请您在3月18-19日提供准确个人信息提交成绩复核申请书，</div>
-			</div>
-			<div class="infoBlock">
-				<div class="info">申请书接收邮箱363175498@qq.com.</div>
-			</div>
-		</div>
-		<div class="warn empty" style="display: block;" id="empty">未查询到结果</div>
-		<img src="./img/bgi.png" class="bgb">
-	</div>
-	<cms-component><style>
-    .min_wrapper {
-        padding-top: 20px;
-        padding-bottom: 30px;
-        background-color: #555555;
-    }
-
-    @media screen and (min-width: 800px) {
-
-        #footer {
+        @media screen and (min-width: 800px) {
+          #footer {
             width: 100%;
             display: flex;
             justify-content: center;
             min-width: 1200px;
-        }
+          }
 
-        #footer .wrapper_1200 {
+          #footer .wrapper_1200-tgc7vp {
             width: 100%;
             display: flex;
             padding-top: 20px;
             padding-bottom: 20px;
-        }
+          }
 
-        .wrapper_1200>.link {
+          .wrapper_1200-tgc7vp > .link-zmticw {
             display: flex;
             flex-direction: column;
             align-items: end;
             width: 38%;
             border-right: 1px solid #6b717a;
             padding-right: 50px;
-        }
+          }
 
-        .wrapper_1200>.info {
+          .wrapper_1200-tgc7vp > .info-mw8a41 {
             display: flex;
             flex-direction: column;
             width: 24%;
             border-right: 1px solid #6b717a;
             text-align: center;
-        }
+          }
 
-        .wrapper_1200>.QRcode {
+          .wrapper_1200-tgc7vp > .QRcode-ujf0cq {
             padding-left: 50px;
             display: flex;
             flex-wrap: wrap;
             width: 38%;
             color: #fff;
-        }
+          }
 
-        .wrapper_1200>.QRcode>div {
+          .wrapper_1200-tgc7vp > .QRcode-ujf0cq > div {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             padding-right: 20px;
+          }
         }
-    }
 
-    @media screen and (max-width: 800px) {
-        #footer {
+        @media screen and (max-width: 800px) {
+          #footer {
             max-width: 100px !important;
-        }
+          }
 
-        .min_wrapper {
+          .min_wrapper-76zqnt {
             width: 100vw !important;
             min-width: 100vw;
-        }
+          }
 
-        .wrapper_1200 {
+          .wrapper_1200-tgc7vp {
             width: 80%;
             display: flex;
             flex-direction: column;
             padding-top: 20px;
             padding-bottom: 20px;
             text-indent: 25px;
-        }
+          }
 
-        .wrapper_1200>.link {
+          .wrapper_1200-tgc7vp > .link-zmticw {
             display: flex;
             align-items: center;
             flex-wrap: wrap;
             border-bottom: 1px solid #6b717a;
-        }
+          }
 
-        .wrapper_1200>.info {
+          .wrapper_1200-tgc7vp > .info-mw8a41 {
             display: flex;
             flex-direction: column;
             justify-content: center;
             border-bottom: 1px solid #6b717a;
-        }
+          }
 
-        .wrapper_1200>.QRcode {
+          .wrapper_1200-tgc7vp > .QRcode-ujf0cq {
             display: flex;
             flex-wrap: wrap;
             padding-top: 20px;
-        }
+          }
 
-        .wrapper_1200>.QRcode>div {
+          .wrapper_1200-tgc7vp > .QRcode-ujf0cq > div {
             display: flex;
             justify-content: center;
             flex-direction: column;
             align-items: center;
             margin-right: 20px;
             color: #fff;
+          }
         }
-    }
 
-    .name {
-        text-align: center;
-        margin-top: 15px;
-        color: #fff;
-    }
+        .name-z8rxz0 {
+          text-align: center;
+          margin-top: 15px;
+          color: #fff;
+        }
 
-    .official {
-        margin-right: 20px;
-    }
-</style>
-<cms-component>
-    <div id="footer" class="min_wrapper ">
-        <div class="wrapper_1200">
-            <div class="link">
-                <a style="color: #fff !important;margin: 10px;float: left;font-size: 16px;">
-                    友情链接
-                </a>
+        .official-yobb7g {
+          margin-right: 20px;
+        }
+      </style>
+      <cms-component>
+        <div id="footer" class="min_wrapper-76zqnt">
+          <div class="wrapper_1200-tgc7vp">
+            <div class="link-zmticw">
+              <a style="color: #fff !important; margin: 10px; float: left; font-size: 16px">
+                友情链接
+              </a>
             </div>
-            <div class="info">
-                <div style="margin: 10px;color: #fff;">
-                    <cms-node data="n_lz7qf5vu">
-                        <node-title></node-title>
-                    </cms-node>
-                </div>
-                <div style="margin: 10px;">
-                    <cms-node data="n_lz7qffmy">
-                        <node-link newpage><node-title
-                                style="color: #fff !important;font-size: 14px;"></node-title></node-link>
-                    </cms-node>
-                </div>
-                <cms-node data="n_lz7qfly5" style="margin: 10px;color: #fff;">
-                    <node-title></node-title>
+            <div class="info-mw8a41">
+              <div style="margin: 10px; color: #fff">
+                <cms-node data="n_lz7qf5vu">
+                  <node-title></node-title>
                 </cms-node>
+              </div>
+              <div style="margin: 10px">
+                <cms-node data="n_lz7qffmy">
+                  <node-link newpage="">
+                    <node-title style="color: #fff !important; font-size: 14px"></node-title>
+                  </node-link>
+                </cms-node>
+              </div>
+              <cms-node data="n_lz7qfly5" style="margin: 10px; color: #fff">
+                <node-title></node-title>
+              </cms-node>
             </div>
-            <div class="QRcode">
-                <cms-node data="n_lz7qh2q4" class="official">
-                    <node-cover style="width: 100px;"></node-cover>
-                    <node-title class="name"></node-title>
-                </cms-node>
-                <cms-node class="official" data="n_lz7qhkug">
-                    <node-cover style="width: 100px;"></node-cover>
-                    <node-title class="name"></node-title>
-                </cms-node>
+            <div class="QRcode-ujf0cq">
+              <cms-node data="n_lz7qh2q4" class="official-yobb7g">
+                <node-cover style="width: 100px"></node-cover>
+                <node-title class="name-z8rxz0"></node-title>
+              </cms-node>
+              <cms-node class="official-yobb7g" data="n_lz7qhkug">
+                <node-cover style="width: 100px"></node-cover>
+                <node-title class="name-z8rxz0"></node-title>
+              </cms-node>
             </div>
+          </div>
         </div>
-    </div></cms-component>
-<script>
-            const Cms=document.createElement("script")
-            Cms.src=window.location.origin+"/cmsScripts/FinalCms.js?web=zhaosheng"
-            document.body.appendChild(Cms)
-        </script>
-</body>
-
+      </cms-component>
+    </cms-component>
+    <script>
+      const Cms = document.createElement("script");
+      Cms.src = window.location.origin + "/cmsScripts/FinalCms.js?web=zhaosheng";
+      document.body.appendChild(Cms);
+    </script>
+  </body>
 </html>
 <script src="js/axios.min.js"></script>
 <script>
-	const baseUrl = "https://template.jxuspt.com"
-	const main = document.getElementById("main")
-	const name = document.getElementById("name")
-	const id = document.getElementById("id")
-	const empty = document.getElementById("empty")
-	const infoBlock = dg("infoBlock")
-	let searching = false
-	const name1 = document.getElementById("name1")
-	const sex = document.getElementById("sex")
-	const school = document.getElementById("school")
-	const major = document.getElementById("major")
-	async function search() {
-		if (name.value == "" || id.value == "") {
-			empty.innerText = "请输入完整内容再查询"
-			showEmpty()
-			return
-		}
+  const baseUrl = "https://template.jxuspt.com";
+  const main = document.getElementById("main");
+  const name = document.getElementById("name");
+  const id = document.getElementById("id");
+  const empty = document.getElementById("empty");
+  const infoBlock = dg("infoBlock");
+  let searching = false;
+  const name1 = document.getElementById("name1");
+  const sex = document.getElementById("sex");
+  const school = document.getElementById("school");
+  const major = document.getElementById("major");
+  async function search() {
+    if (name.value == "" || id.value == "") {
+      empty.innerText = "请输入完整内容再查询";
+      showEmpty();
+      return;
+    }
 
-		if (searching) {
-			return
-		}
-		searching = true
-		document.getElementById("searchButton").innerText = "正在查询..."
-		infoBlock.style.display = "none"
-		const result = await axios.post(baseUrl + "/search", {
-			name: name.value,
-			code: id.value
-		});
-		searching = false
-		document.getElementById("searchButton").innerText = "查询"
-		if (result.data.data == null) {
-			empty.innerText = "未查询到结果"
-			showEmpty()
-		} else if (result.data.data != null) {
-			infoBlock.style.display = "block"
-			main.style.marginTop = "10px"
-			let data = result.data.data
-			name1.innerText = data.name
-			stuCode.innerText = data.code
-			document.getElementById("score").innerText=data.score
-		} else if (result.data.code == 400) {
-			empty.innerText = "内部异常，请稍后再试"
-			showEmpty()
-		}
+    if (searching) {
+      return;
+    }
+    searching = true;
+    document.getElementById("searchButton").innerText = "正在查询...";
+    infoBlock.style.display = "none";
+    const result = await axios.post(baseUrl + "/search", {
+      name: name.value,
+      code: id.value,
+    });
+    searching = false;
+    document.getElementById("searchButton").innerText = "查询";
+    if (result.data.data == null) {
+      empty.innerText = "未查询到结果";
+      showEmpty();
+    } else if (result.data.data != null) {
+      infoBlock.style.display = "block";
+      main.style.marginTop = "10px";
+      let data = result.data.data;
+      name1.innerText = data.name;
+      stuCode.innerText = data.code;
+      document.getElementById("score").innerText = data.score;
+    } else if (result.data.code == 400) {
+      empty.innerText = "内部异常，请稍后再试";
+      showEmpty();
+    }
 
-		// main.style.marginTop = "10px"
-	}
+    // main.style.marginTop = "10px"
+  }
 
-	function showEmpty() {
+  function showEmpty() {
+    for (let a = 0; a < 10; a++) {
+      setTimeout(() => {
+        document.getElementById("empty").style.display = "block";
+        document.getElementById("empty").style.marginTop = (9 - a + 2) * 10 + "px";
+        document.getElementById("empty").style.opacity = a * 0.1;
+      }, 17 * a);
+    }
+    setTimeout(() => {
+      document.getElementById("empty").style.display = "none";
+    }, 2000);
+  }
 
-		for (let a = 0; a < 10; a++) {
-			setTimeout(() => {
-				document.getElementById("empty").style.display = "block"
-				document.getElementById("empty").style.marginTop = (9 - a + 2) * 10 + "px"
-				document.getElementById("empty").style.opacity = a * 0.1
-			}, 17 * a);
-		}
-		setTimeout(() => {
-			document.getElementById("empty").style.display = "none"
-		}, 2000);
-	}
-
-	function dg(id) {
-		return document.getElementById(id)
-	}
+  function dg(id) {
+    return document.getElementById(id);
+  }
 </script>

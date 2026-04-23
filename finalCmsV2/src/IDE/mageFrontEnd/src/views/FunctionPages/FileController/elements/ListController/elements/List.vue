@@ -63,6 +63,7 @@ function deleteHandel(id) {
     emit("delete", id)
     showDelBlock.value = false
 }
+
 // ✅ 复制方法（带兼容）
 async function copyId() {
     const text = props.data?.id

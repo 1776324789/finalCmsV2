@@ -8,7 +8,8 @@
                 <span v-else style="margin-right: 3px;">📄</span>
                 <div :title="node.name"
                     style="word-break: keep-all;flex:1;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 1;overflow: hidden;">
-                    {{ node.name }}</div>
+                    {{ node.name == "CmsComponent" ? "组件库" : node.name }}
+                </div>
 
                 <span v-if="node.fullPath.split('\\').length == 2 && node.fullPath.split('\\')[1] == 'data'"
                     class="icon-error-warning-line fileWarn"></span>

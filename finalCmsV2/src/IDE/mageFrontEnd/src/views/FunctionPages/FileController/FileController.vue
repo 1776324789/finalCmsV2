@@ -31,10 +31,10 @@ import { useSystemStore } from '@/store/systemStore'
 // ✅ CodeMirror
 import { EditorView, keymap } from "@codemirror/view"
 import { EditorState } from "@codemirror/state"
-import { defaultKeymap } from "@codemirror/commands"
+import { defaultKeymap, indentMore, indentLess } from "@codemirror/commands"
 import { oneDark } from "@codemirror/theme-one-dark"
 
-// ✅ 自动提示（核心）
+// ✅ 自动提示
 import { autocompletion, startCompletion } from "@codemirror/autocomplete"
 
 // 语言
@@ -56,9 +56,9 @@ let editor = null
 const targetFile = ref(null)
 let isSettingValue = false
 
-// ✅ 语言映射（增强JS）
+// ✅ 语言映射
 const langMap = {
-    '.js': () => javascript({ typescript: true }), // 🔥 提升智能提示
+    '.js': () => javascript({ typescript: true }),
     '.json': json,
     '.html': html,
     '.css': css,
@@ -69,7 +69,7 @@ function listChangeHandel() {
     fileTree.value.initFileList()
 }
 
-// ✅ 获取语言扩展
+// ✅ 获取语言
 function getLanguageExt(filename) {
     const index = filename.lastIndexOf('.')
     if (index === -1) return []
@@ -77,19 +77,30 @@ function getLanguageExt(filename) {
     return langMap[ext] ? [langMap[ext]()] : []
 }
 
-// ✅ 公共扩展（不会被覆盖）
+// ✅ 公共扩展（修复Tab问题）
 function getBaseExtensions() {
     return [
         keymap.of([
             ...defaultKeymap,
+
+            // 🔥 关键修复：Tab缩进
+            {
+                key: "Tab",
+                run: indentMore
+            },
+            {
+                key: "Shift-Tab",
+                run: indentLess
+            },
+
             {
                 key: "Ctrl-Space",
-                run: startCompletion // 🔥 手动触发提示
+                run: startCompletion
             }
         ]),
         oneDark,
         autocompletion({
-            activateOnTyping: true // 🔥 输入自动触发
+            activateOnTyping: true
         })
     ]
 }
@@ -114,7 +125,6 @@ function initEditor() {
         parent: editorRef.value
     })
 
-    // 监听变化
     const originalDispatch = editor.dispatch
     editor.dispatch = (tr) => {
         originalDispatch.call(editor, tr)
@@ -196,14 +206,14 @@ async function edit(node) {
     }
 }
 
-// ✅ 设置内容（关键修复点）
+// ✅ 设置内容
 function setEditorContent(content, filename) {
     isSettingValue = true
 
     editor.setState(EditorState.create({
         doc: content,
         extensions: [
-            ...getBaseExtensions(), // ✅ 不再丢失自动提示
+            ...getBaseExtensions(),
             ...getLanguageExt(filename)
         ]
     }))
@@ -211,7 +221,7 @@ function setEditorContent(content, filename) {
     isSettingValue = false
 }
 
-// ✅ UI控制
+// ✅ UI
 function fullScreenHandel() {
     if (!document.fullscreenElement) {
         main.value.requestFullscreen()

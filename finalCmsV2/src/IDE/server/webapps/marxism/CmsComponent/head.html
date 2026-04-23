@@ -1,5 +1,127 @@
-<cms-list data="l_jseif9ys">
-      <list-list>
-        <list-name
-      </list-list>
-    </cms-list>
+<style>
+  .top {
+    background: #990000;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px
+  }
+
+  .header {
+    padding-left: calc((100vw - 1200px)/2);
+    padding-right: calc((100vw - 1200px)/2);
+    display: flex;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    background: #fff;
+    border-bottom: 1px solid #eee;
+  }
+
+  .logo {
+    height: 70px
+  }
+
+  .title {
+    line-height: 70px;
+    flex: 1;
+    margin-left: 15px;
+    font-size: 28px;
+    /* 放大标题 */
+    font-weight: bold;
+    color: #c70f0f;
+  }
+
+  .nav {
+    background: #a82020
+  }
+
+  .nav .list {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap
+  }
+
+  .nav .child {
+    cursor: pointer;
+    position: relative;
+    padding: 14px 22px
+  }
+
+  .nav .name {
+
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500
+  }
+
+  .nav .name:hover {
+    color: #ffd700
+  }
+
+  .floatMenu {
+    z-index: 100;
+    background-color: #a82020;
+    pointer-events: none;
+    transition: all 0.3s;
+    position: absolute;
+    top: 100%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    text-align: center;
+    word-break: keep-all;
+    padding-left: 15px;
+    padding-right: 15px;
+    left: 50%;
+    white-space: nowrap;
+    transform: translate(-50%, 40px);
+    opacity: 0;
+  }
+
+  .nav .child:hover .floatMenu {
+    pointer-events: all;
+    transform: translate(-50%, 0);
+    opacity: 1;
+  }
+
+  .childMenu {
+    font-size: 14px;
+    line-height: 35px;
+    height: 35px;
+  }
+
+  .childMenu:hover {
+    color: #cfb000;
+  }
+</style>
+
+<div class="top">
+  学好软件 报效祖国
+</div>
+<div class="header">
+  <cms-node data="n_3moc7b9z">
+    <node-cover class="logo"></node-cover>
+  </cms-node>
+  <div class="title">马克思主义学院</div>
+  <div style="color:#666;font-size:16px;line-height: 70px;">江西软件职业技术大学</div>
+</div>
+<!-- 导航栏（最新一级栏目） -->
+<div class="nav">
+  <cms-list data="l_jseif9ys" class="list">
+    <list-list class="child">
+      <list-template class="name">
+        <list-name></list-name>
+      </list-template>
+      <div class="floatMenu">
+        <list-list class="childMenu">
+          <list-template>
+            <list-name></list-name>
+          </list-template>
+        </list-list>
+      </div>
+    </list-list>
+  </cms-list>
+</div>

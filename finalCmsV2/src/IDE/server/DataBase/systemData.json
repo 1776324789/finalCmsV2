@@ -17,7 +17,7 @@
             "status": true,
             "createTime": "2026-04-13 16:22:53",
             "createBy": "刘军",
-            "updateTime": "2026-04-13 16:40:50",
+            "updateTime": "2026-04-22 09:22:45",
             "updateBy": "刘军"
         },
         {
@@ -76,6 +76,10 @@
     "systemUserRole": [
         {
             "userId": "s78d6f8s",
+            "roleId": "7ds98f7g9"
+        },
+        {
+            "userId": "u_7pg7kdg9",
             "roleId": "7ds98f7g9"
         }
     ],
@@ -354,6 +358,17 @@
             "createTime": "2026-04-17 16:31:03",
             "createBy": "刘军",
             "updateTime": "2026-04-21 09:20:08",
+            "updateBy": "刘军",
+            "defaultAdmin": "s78d6f8s"
+        },
+        {
+            "id": "w_zwyica1",
+            "name": "教务处",
+            "target": "jwc",
+            "status": true,
+            "createTime": "2026-04-21 15:42:36",
+            "createBy": "刘军",
+            "updateTime": "2026-04-21 15:42:36",
             "updateBy": "刘军",
             "defaultAdmin": "s78d6f8s"
         }

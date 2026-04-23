@@ -89,9 +89,40 @@
                         formatData()
                     }
                 }
+
             })
+
     }
 
+    function initSearch() {
+        const searchGroup = {}
+        const inputs = document.body.getElementsByTagName("INPUT")
+        const buttons = document.body.getElementsByTagName("BUTTON")
+
+        Array.from(inputs).forEach(item => {
+            if (item.getAttribute("cms-search") != null) {
+                searchGroup[item.getAttribute("cms-search")] = { input: item }
+            }
+        })
+
+        Array.from(buttons).forEach(item => {
+            if (item.getAttribute("cms-search") != null && searchGroup[item.getAttribute("cms-search")] != null) {
+                searchGroup[item.getAttribute("cms-search")].button = item
+            }
+        })
+
+        for (let key in searchGroup) {
+            const input = searchGroup[key].input
+            const button = searchGroup[key].button
+            if (input && button) {
+                if (input.getAttribute("target") != null && (input.getAttribute("target") + "").trim() != "") {
+                    button.onclick = () => {
+                        window.location.href = `${BaseCmsURL}/${input.getAttribute("target")}?searchContent=${input.value}`
+                    }
+                }
+            }
+        }
+    }
     /**
      * 初始化基础样式
      * 创建并添加全局样式，定义 CMS 相关元素的默认样式
@@ -117,7 +148,7 @@
             cms-slider, 
             cms-search-result, list-pagination {display: block;}
             cms-pagination .a-page-info-block{display:flex;}
-            cms-pagination .a-page-info-block .cmsInput {height: 26px;text-align: center;border-radius: 3px;border: 1px solid #d0d0d0;width: 50px;margin-right: 10px;}
+            cms-pagination .a-page-info-block .cmsInput {height: 30px;text-align: center;border-radius: 3px;border: 1px solid #d0d0d0;width: 50px;margin-right: 10px;}
             cms-pagination .a-page-info-block select {height: 30px;border-radius: 3px;border: 1px solid #d0d0d0;width: 50px;margin-right: 10px;}
             cms-pagination .a-page-info-block .cmsButton {color: #555555;cursor: pointer;height: 30px;border-radius: 3px;background-color: #fff;border: 1px solid #d0d0d0;padding-left: 10px;padding-right: 10px;margin-right: 10px;}
             cms-pagination .a-page-info-block .cmsButton:hover {color: #555555;background-color: #f4f4f4;}
@@ -200,8 +231,10 @@
         }
         // 处理所有列表数据
         listIndex.forEach(list => format(list))
+        initSearch()
         // 初始化组件
         initComponents()
+
     }
 
     /**
@@ -695,7 +728,7 @@
             // 添加到当前元素
             this.appendChild(element.element)
             this.refs = element.children
-            this.refs.jumpInput.value = this.pageTem
+            this.refs.jumpInput.value = this.pageTem || 0
 
             // 如果是 mini 类型，隐藏设置部分
             if (this.getAttribute("type") == "mini") {
@@ -744,12 +777,12 @@
                 // 添加点击事件
                 button.onclick = () => {
                     this.page = page
-                    this.refs.jumpInput.value = page
+                    this.refs.jumpInput.value = page || 0
                 }
             })
 
             // 更新跳转输入框的值
-            this.refs.jumpInput.value = this.pageTem
+            this.refs.jumpInput.value = this.pageTem || 0
         }
 
         /**
@@ -768,7 +801,7 @@
                 let tempPage = this.pageTem + 1
                 var temp = Math.ceil(this.totalTem / this.limitTem)
                 this.page = tempPage > temp ? temp : tempPage
-                this.refs.jumpInput.value = this.pageTem
+                this.refs.jumpInput.value = this.pageTem || 0
             }
 
             // 跳转按钮点击事件
@@ -776,7 +809,7 @@
                 let tempPage = this.refs.jumpInput.value * 1 < 1 ? 1 : this.refs.jumpInput.value * 1
                 var temp = Math.ceil(this.totalTem / this.limitTem)
                 this.page = tempPage > temp ? temp : tempPage
-                this.refs.jumpInput.value = this.pageTem
+                this.refs.jumpInput.value = this.pageTem || 0
             }
         }
 
@@ -811,7 +844,7 @@
 
             // 初始化页码元素数据
             this.initPageElementData()
-            this.refs.jumpInput.value = this.pageTem
+            this.refs.jumpInput.value = this.pageTem || 0
         }
 
         /**
@@ -1204,7 +1237,13 @@
             this.addEventListener("click", this.click.bind(this))
         }
         click(e) {
-            window.location.href = `${BaseCmsURL}/${this.data.template}?dataId=${this.data.id}`
+            if (this.data.template) {
+                if (this.data.template.startsWith("http"))
+                    window.location.href = this.data.template
+                else
+                    window.location.href = `${BaseCmsURL}/${this.data.template}?dataId=${this.data.id}`
+            }
+
         }
     }
 
@@ -1215,7 +1254,13 @@
         }
 
         click(e) {
-            window.location.href = `${BaseCmsURL}/${this.data.parent.nodeTemplate}?dataId=${this.data.id}`
+            if (this.data.parent.nodeTemplate != null) {
+                if (this.data.parent.nodeTemplate.startsWith("http"))
+                    window.location.href = this.data.parent.nodeTemplate
+                else
+                    window.location.href = `${BaseCmsURL}/${this.data.parent.nodeTemplate}?dataId=${this.data.id}`
+            }
+
         }
     }
 
@@ -1278,7 +1323,7 @@
             if (index == this.data.parent.nodes.length) {
                 this.innerText = '没有了'
             } else {
-                this.innerText = this.data.parent.nodes[index].title
+                this.innerText = this.data.parent.nodes[index]?.title || "无"
                 this.onclick = () => {
                     window.location.href = `${BaseCmsURL}/${this.data.parent.nodeTemplate}?dataId=${this.data.parent.nodes[index].id}`
                 }
@@ -1286,6 +1331,7 @@
             }
         }
     }
+
     class NodeNext extends BaseCmsElement {
         constructor() {
             super()
@@ -1304,7 +1350,7 @@
             if (index == this.data.parent.nodes.length) {
                 this.innerText = '没有了'
             } else {
-                this.innerText = this.data.parent.nodes[index].title
+                this.innerText = this.data.parent.nodes[index]?.title || "无"
                 this.onclick = () => {
                     window.location.href = `${BaseCmsURL}/${this.data.parent.nodeTemplate}?dataId=${this.data.parent.nodes[index].id}`
                 }
@@ -1313,6 +1359,43 @@
         }
     }
 
+    class CmsSearchResult extends CmsList {
+
+        connectedCallback() {
+            const url = new URL(window.location.href);
+            this.emptyElement = Array.from(this.getElementsByTagName("RESULT-EMPTY"))
+            this.emptyElement.forEach(item => {
+                item.parentNode.removeChild(item)
+            })
+            this.searchText = Object.fromEntries(url.searchParams.entries()).searchContent;
+            this.loadSearchContent()
+        }
+
+        async loadSearchContent() {
+            let response = await fetch(BaseCmsURL + '/data/searchContent.json?id=' + Math.random())
+            this.searchContent = await response.json();
+            this.initData()
+        }
+
+        initData() {
+            let nodes = []
+            this.searchContent.forEach(item => {
+                if (item.includes(this.searchText)) nodes.push(NodeIndexMap[item.split(".")[0]])
+            })
+            nodes = nodes.filter(n => n != null)
+            if (nodes.length == 0) {
+                this.childNodes.forEach(item => item.parentNode.removeChild(item))
+                this.emptyElement.forEach(item => {
+                    this.appendChild(item)
+                })
+            }
+            const targetData = {
+                name: "搜索结果",
+                nodes: nodes
+            }
+            this.data = targetData
+        }
+    }
 
     // 轮播图组件
     class CmsSlider extends BaseCmsElement {
@@ -1685,6 +1768,7 @@
         customElements.define('list-info', ListInfo)
         customElements.define('list-list', ListList)
         customElements.define('list-node', ListNode)
+        customElements.define("cms-search-result", CmsSearchResult)
 
         customElements.define('node-parent', NodeParent)
         customElements.define('list-parent', ListParent)

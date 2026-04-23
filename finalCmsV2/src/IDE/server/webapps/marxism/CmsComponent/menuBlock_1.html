@@ -1,0 +1,84 @@
+<style>
+    .menuBlock_1_card {
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        padding: 22px;
+        flex: 1;
+    }
+
+    .menuBlock_1_card .title {
+        height: 35px;
+        text-indent: 15px;
+        line-height: 35px;
+        font-size: 18px;
+        color: #a82020;
+        display: flex;
+        border-left: 5px solid #a82020;
+        margin-bottom: 15px;
+        margin-left: 0px;
+    }
+
+    .menuBlock_1_card ul {
+        list-style: none
+    }
+
+    .menuBlock_1_card li {
+        display: flex;
+        cursor: pointer;
+        padding: 8px 0;
+        border-bottom: 1px dashed #eee
+    }
+
+    .menuBlock_1_card li:hover {
+        color: #a82020;
+        text-decoration: none
+    }
+
+    .menuBlock_1_card li a:hover {
+        color: #a82020
+    }
+
+    .mainBlock {
+        margin-bottom: 15px;
+        margin-top: 15px;
+        gap: 15px;
+        display: flex;
+    }
+
+    .contentBlock img {
+        max-width: 400px;
+    }
+
+    .more {
+        font-weight: normal;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .more:hover {
+        opacity: 0.85;
+    }
+</style>
+<div class="mainBlock">
+    <cms-node data="n_corany7r" class="menuBlock_1_card" style="flex:1.25">
+        <div class="title"><node-title></node-title></div>
+        <node-content class="contentBlock"></node-content>
+    </cms-node>
+    <cms-list data="l_a3jbrc9f" class="menuBlock_1_card">
+        <div class="title">
+            <list-name style="flex:1;"></list-name>
+            <list-template class="more">更多</list-template>
+        </div>
+        <ul>
+            <list-node page="1" limit="6">
+                <node-template>
+                    <li>
+                        <node-title style="flex:1;"></node-title>
+                        <node-date format="yy-mm-dd"></node-date>
+                    </li>
+                </node-template>
+            </list-node>
+        </ul>
+    </cms-list>
+</div>

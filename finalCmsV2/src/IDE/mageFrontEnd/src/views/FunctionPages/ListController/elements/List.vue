@@ -13,7 +13,12 @@
         <div class="index blockLine">{{ data.index || 0 }}</div>
         <div class="index blockLine">{{ data.children.length || 0 }}</div>
         <div class="index blockLine">{{ data.nodes?.length || 0 }}</div>
-        <div class="index blockLine" style="width: 125px;">{{ data.id }}</div>
+        <div class="index blockLine" style="width: 125px;display: flex;text-indent: 20px;">
+            {{ data.id }}
+            <div class="copyIcon" @click="copyId">
+                <span class="icon-file-copy-line"></span>
+            </div>
+        </div>
 
         <div class="index blockLine" style="flex:1;text-align:left;text-indent:25px;">
             {{ data.template || "--" }}
@@ -84,6 +89,28 @@ function changeHandel() {
 function editNodeHandel(id) {
     emit("editNode", id)
 }
+// ✅ 复制方法（带兼容）
+async function copyId() {
+    const text = props.data?.id
+    if (!text) return
+
+    try {
+        // ✅ 现代浏览器
+        await navigator.clipboard.writeText(text)
+        toast?.success?.("已复制 ID")
+    } catch (err) {
+        // ❗降级方案（兼容旧浏览器）
+        const textarea = document.createElement("textarea")
+        textarea.value = text
+        document.body.appendChild(textarea)
+        textarea.select()
+        document.execCommand("copy")
+        document.body.removeChild(textarea)
+
+        toast?.success?.("已复制 ID")
+    }
+}
+
 
 function deleteHandel(id) {
     emit("delete", id)
@@ -138,6 +165,22 @@ function editHandel(e) {
 
 
 <style scoped>
+.copyIcon {
+    position: absolute;
+    right: 15px;
+    top: 0px;
+    color: #666;
+    cursor: pointer;
+}
+
+.copyIcon:hover span {
+    color: #999;
+}
+
+.copyIcon span {
+    font-size: 17px;
+}
+
 .confirmBlock {
     position: absolute;
     right: -175px;

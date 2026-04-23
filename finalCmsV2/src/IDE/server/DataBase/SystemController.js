@@ -15,7 +15,7 @@ const SystemController = () => {
     const tokenPool = {}
     const BaseUrl = process.cwd()
     const TOKEN_EXPIRE_TIME = 2 * 60 * 60 * 1000
-    const TOKEN_IDLE_TIME = 15 * 60 * 1000
+    const TOKEN_IDLE_TIME = 120 * 60 * 1000
     const INSPECT_INTERVAL = 30 * 1000
 
     async function getDB() {
@@ -27,7 +27,6 @@ const SystemController = () => {
     async function getUserByName(username) {
         const DB = await getDB()
         const user = DB.user.find(user => user.username == username)
-        delete user.password
         return user
     }
 

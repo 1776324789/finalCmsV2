@@ -1,14 +1,14 @@
 <template>
     <div class="line">
         <div class="index " style="width: 25px;text-align: left;font-weight: 300;color: #666;margin-left: 5px;">{{ index
-        }}</div>
+            }}</div>
         <div class="blockLine" style="font-weight: 350;display: flex;text-indent: 5px;flex: 1;">
             <div class="topMark" v-if="data.top">置顶</div>
             {{ data.title }}
         </div>
         <div class="index blockLine" style="width: 130px;position: relative;text-align: left;text-indent: 15px;">
             {{ data.id }}
-            <div class="copyIcon">
+            <div class="copyIcon" @click="copyId">
                 <span class="icon-file-copy-line"></span>
             </div>
         </div>
@@ -58,7 +58,27 @@ const props = defineProps({
 const showDelBlock = ref(false)
 const emit = defineEmits(["edit", "change"]);
 
+// ✅ 复制方法（带兼容）
+async function copyId() {
+    const text = props.data?.id
+    if (!text) return
 
+    try {
+        // ✅ 现代浏览器
+        await navigator.clipboard.writeText(text)
+        toast?.success?.("已复制 ID")
+    } catch (err) {
+        // ❗降级方案（兼容旧浏览器）
+        const textarea = document.createElement("textarea")
+        textarea.value = text
+        document.body.appendChild(textarea)
+        textarea.select()
+        document.execCommand("copy")
+        document.body.removeChild(textarea)
+
+        toast?.success?.("已复制 ID")
+    }
+}
 
 function deleteHandel(id) {
     emit("delete", id)

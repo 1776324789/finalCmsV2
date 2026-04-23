@@ -1,0 +1,290 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Microsoft YaHei', 'SimHei', sans-serif;
+        background: linear-gradient(180deg, #faf8f8 0%, #f0e8e8 100%);
+        min-height: 100vh;
+    }
+
+    .contentBlock {
+        display: flex;
+        max-width: 1100px;
+        margin: 0 auto;
+        background: #fff;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        overflow: hidden;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
+    .sidebar {
+        width: 260px;
+        flex-shrink: 0;
+        background: #fff;
+        border-right: 1px solid #e8e0e0;
+    }
+
+    .main-category {
+        background: linear-gradient(180deg, #8B0000 0%, #A52A2A 100%);
+        color: #FFD700;
+        padding: 24px 20px;
+        text-align: center;
+        position: relative;
+    }
+
+    .main-category::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 60px;
+        height: 2px;
+        background: #FFD700;
+    }
+
+    .main-category h2 {
+        font-size: 20px;
+        font-weight: 600;
+        letter-spacing: 4px;
+    }
+
+    .sub-categories {
+        padding: 20px 0;
+    }
+
+    .sub-category {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        padding: 12px 24px;
+        color: #333;
+        text-decoration: none;
+        font-size: 14px;
+        transition: all 0.25s ease;
+        border-left: 4px solid transparent;
+    }
+
+    .sub-category::before {
+        content: '▸';
+        margin-right: 8px;
+        color: #ccc;
+        font-size: 12px;
+        transition: color 0.25s ease;
+    }
+
+    .sub-category:hover {
+        background: linear-gradient(90deg, #fff5f5 0%, #fff 100%);
+        border-left-color: #A52A2A;
+        color: #8B0000;
+    }
+
+    .sub-category:hover::before {
+        color: #A52A2A;
+    }
+
+    .active {
+        background: linear-gradient(90deg, #fff0f0 0%, #fff 100%);
+        border-left-color: #8B0000;
+        color: #8B0000;
+        font-weight: 500;
+    }
+
+    .active::before {
+        color: #8B0000;
+    }
+
+    .article-list {
+        flex: 1;
+        padding: 30px;
+    }
+
+    .list-header {
+        padding-bottom: 15px;
+        margin-bottom: 25px;
+        border-bottom: 3px solid #8B0000;
+        position: relative;
+    }
+
+    .list-header::after {
+        content: '';
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        width: 120px;
+        height: 3px;
+        background: #FFD700;
+    }
+
+    .list-header h1 {
+        font-size: 22px;
+        color: #8B0000;
+        font-weight: 600;
+        letter-spacing: 2px;
+    }
+
+    .articles {
+        height: 700px;
+        list-style: none;
+    }
+
+    .article-item {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 15px;
+        margin-bottom: 8px;
+        background: #fafafa;
+        border-radius: 3px;
+        transition: all 0.25s ease;
+        position: relative;
+    }
+
+    .article-item:hover {
+        background: #fff;
+        box-shadow: 0 2px 12px rgba(139, 0, 0, 0.08);
+        transform: translateX(4px);
+    }
+
+    .article-item::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        width: 3px;
+        background: #A52A2A;
+        opacity: 0;
+        transition: opacity 0.25s ease;
+    }
+
+    .article-item:hover::before {
+        opacity: 1;
+    }
+
+    .article-title {
+        color: #333;
+        text-decoration: none;
+        font-size: 15px;
+        line-height: 1.6;
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        transition: color 0.25s ease;
+        padding-left: 5px;
+    }
+
+    .article-title:hover {
+        color: #8B0000;
+    }
+
+    .article-time {
+        color: #999;
+        font-size: 13px;
+        white-space: nowrap;
+        margin-left: 15px;
+        padding: 4px 12px;
+        background: #fff;
+        border-radius: 2px;
+        border: 1px solid #eee;
+    }
+
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+        padding-top: 30px;
+        margin-top: 20px;
+        border-top: 1px solid #eee;
+    }
+
+    .page-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 32px;
+        height: 30px;
+        margin-right: 10px;
+        padding: 0 12px;
+        color: #666;
+        text-decoration: none;
+        font-size: 14px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        transition: all 0.2s ease;
+    }
+
+    .page-btn:hover {
+        color: #fff;
+        background: #A52A2A;
+        border-color: #A52A2A;
+    }
+
+    .buttonActive {
+        color: #fff;
+        background: #8B0000;
+        border-color: #8B0000;
+    }
+
+    @media (max-width: 768px) {
+
+        .contentBlock {
+            flex-direction: column;
+        }
+
+        .sidebar {
+            width: 100%;
+            border-right: none;
+            border-bottom: 1px solid #e8e0e0;
+        }
+
+        .article-title {
+            max-width: 60%;
+        }
+    }
+</style>
+
+<div class="contentBlock">
+    <cms-list class="sidebar">
+        <list-parent>
+            <div class="main-category">
+                <h2> <list-name></list-name></h2>
+            </div>
+            <div class="sub-categories">
+                <list-list focus:class="active">
+                    <list-template class="sub-category">
+                        <list-name></list-name>
+                    </list-template>
+                </list-list>
+            </div>
+        </list-parent>
+    </cms-list>
+    <cms-list class="article-list">
+        <div class="list-header">
+            <h1>
+                <list-name pagetitle></list-name>
+            </h1>
+        </div>
+        <ul class="articles">
+            <list-node class="article-item" cms-bind="listPagination" page="1" limit="10">
+                <node-template class="article-title"><node-title></node-title></node-template>
+                <node-date format="YYYY-MM-DD" class="article-time"></node-date>
+            </list-node>
+        </ul>
+        <div class="pagination">
+            <cms-pagination cms-bind="listPagination">
+                <button class="page-btn" type="page" focus="buttonActive"></button>
+            </cms-pagination>
+        </div>
+    </cms-list>
+</div>

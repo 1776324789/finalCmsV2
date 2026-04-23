@@ -1,20 +1,530 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-  <cms-component><cms-list data="l_jseif9ys">
-      <list-list>
-        <list-name
-      </list-list>
-    </cms-list></cms-component>
-<script>
-            const Cms=document.createElement("script")
-            Cms.src=window.location.origin+"/cmsScripts/FinalCms.js?web=marxism"
-            document.body.appendChild(Cms)
-        </script>
-</body>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>马克思主义学院 - 江西软件职业技术大学</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Microsoft YaHei", sans-serif;
+      }
+
+      body {
+        background: #f5f5f5;
+        color: #333;
+      }
+
+      .banner {
+        margin-top: 1px;
+        height: 400px;
+        width: 1200px;
+        margin: 0 auto;
+        margin-top: 15px;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-size: 36px;
+        font-weight: bold;
+        text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .container {
+        margin: 0 auto;
+        width: 1200px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <cms-component>
+      <style>
+        .top-z93hd5 {
+          background: #990000;
+          color: #fff;
+          padding: 10px 0;
+          text-align: center;
+          font-size: 14px;
+        }
+
+        .header-h7017m {
+          padding-left: calc((100vw - 1200px) / 2);
+          padding-right: calc((100vw - 1200px) / 2);
+          display: flex;
+          padding-top: 15px;
+          padding-bottom: 15px;
+          background: #fff;
+          border-bottom: 1px solid #eee;
+        }
+
+        .logo-j883g8 {
+          height: 70px;
+        }
+
+        .title-rop4cd {
+          line-height: 70px;
+          flex: 1;
+          margin-left: 15px;
+          font-size: 28px;
+          /* 放大标题 */
+          font-weight: bold;
+          color: #c70f0f;
+        }
+
+        .nav-egdvli {
+          background: #a82020;
+        }
+
+        .nav-egdvli .list-iwb221 {
+          list-style: none;
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .nav-egdvli .child-sxmf06 {
+          cursor: pointer;
+          position: relative;
+          padding: 14px 22px;
+        }
+
+        .nav-egdvli .name-lzn3qf {
+          color: #fff;
+          text-decoration: none;
+          font-size: 15px;
+          font-weight: 500;
+        }
+
+        .nav-egdvli .name-lzn3qf:hover {
+          color: #ffd700;
+        }
+
+        .floatMenu-90zjnn {
+          z-index: 100;
+          background-color: #a82020;
+          pointer-events: none;
+          transition: all 0.3s;
+          position: absolute;
+          top: 100%;
+          color: #fff;
+          display: flex;
+          flex-direction: column;
+          width: auto;
+          text-align: center;
+          word-break: keep-all;
+          padding-left: 15px;
+          padding-right: 15px;
+          left: 50%;
+          white-space: nowrap;
+          transform: translate(-50%, 40px);
+          opacity: 0;
+        }
+
+        .nav-egdvli .child-sxmf06:hover .floatMenu-90zjnn {
+          pointer-events: all;
+          transform: translate(-50%, 0);
+          opacity: 1;
+        }
+
+        .childMenu-4pe0lk {
+          font-size: 14px;
+          line-height: 35px;
+          height: 35px;
+        }
+
+        .childMenu-4pe0lk:hover {
+          color: #cfb000;
+        }
+      </style>
+
+      <div class="top-z93hd5">学好软件 报效祖国</div>
+      <div class="header-h7017m">
+        <cms-node data="n_3moc7b9z">
+          <node-cover class="logo-j883g8"></node-cover>
+        </cms-node>
+        <div class="title-rop4cd">马克思主义学院</div>
+        <div style="color: #666; font-size: 16px; line-height: 70px">江西软件职业技术大学</div>
+      </div>
+      <!-- 导航栏（最新一级栏目） -->
+      <div class="nav-egdvli">
+        <cms-list data="l_jseif9ys" class="list-iwb221">
+          <list-list class="child-sxmf06">
+            <list-template class="name-lzn3qf">
+              <list-name></list-name>
+            </list-template>
+            <div class="floatMenu-90zjnn">
+              <list-list class="childMenu-4pe0lk">
+                <list-template>
+                  <list-name></list-name>
+                </list-template>
+              </list-list>
+            </div>
+          </list-list>
+        </cms-list>
+      </div>
+    </cms-component>
+    <cms-slider class="banner" data="l_drqwt5b4" auto="3000"></cms-slider>
+
+    <!-- 内容区（按新栏目结构） -->
+    <div class="container">
+      <cms-component>
+        <style>
+          .menuBlock_1_card-z8z9yn {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            padding: 22px;
+            flex: 1;
+          }
+
+          .menuBlock_1_card-z8z9yn .title-tss2gf {
+            height: 35px;
+            text-indent: 15px;
+            line-height: 35px;
+            font-size: 18px;
+            color: #a82020;
+            display: flex;
+            border-left: 5px solid #a82020;
+            margin-bottom: 15px;
+            margin-left: 0px;
+          }
+
+          .menuBlock_1_card-z8z9yn ul {
+            list-style: none;
+          }
+
+          .menuBlock_1_card-z8z9yn li {
+            display: flex;
+            cursor: pointer;
+            padding: 8px 0;
+            border-bottom: 1px dashed #eee;
+          }
+
+          .menuBlock_1_card-z8z9yn li:hover {
+            color: #a82020;
+            text-decoration: none;
+          }
+
+          .menuBlock_1_card-z8z9yn li a:hover {
+            color: #a82020;
+          }
+
+          .mainBlock-kfsg42 {
+            margin-bottom: 15px;
+            margin-top: 15px;
+            gap: 15px;
+            display: flex;
+          }
+
+          .contentBlock-h4euag img {
+            max-width: 400px;
+          }
+
+          .more-93un0g {
+            font-weight: normal;
+            font-size: 14px;
+            cursor: pointer;
+          }
+
+          .more-93un0g:hover {
+            opacity: 0.85;
+          }
+        </style>
+        <div class="mainBlock-kfsg42">
+          <cms-node data="n_corany7r" class="menuBlock_1_card-z8z9yn" style="flex: 1.25">
+            <div class="title-tss2gf"><node-title></node-title></div>
+            <node-content class="contentBlock-h4euag"></node-content>
+          </cms-node>
+          <cms-list data="l_a3jbrc9f" class="menuBlock_1_card-z8z9yn">
+            <div class="title-tss2gf">
+              <list-name style="flex: 1"></list-name>
+              <list-template class="more-93un0g">更多</list-template>
+            </div>
+            <ul>
+              <list-node page="1" limit="6">
+                <node-template>
+                  <li>
+                    <node-title style="flex: 1"></node-title>
+                    <node-date format="yy-mm-dd"></node-date>
+                  </li>
+                </node-template>
+              </list-node>
+            </ul>
+          </cms-list>
+        </div>
+      </cms-component>
+      <cms-component>
+        <style>
+          * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+
+          body {
+            font-family: "Microsoft YaHei", "SimHei", sans-serif;
+            background: linear-gradient(180deg, #faf8f8 0%, #f0e8e8 100%);
+            min-height: 100vh;
+          }
+
+          .contentBlock-wb7aux {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            padding: 30px;
+          }
+
+          .section-header-8j0fhk {
+            padding-bottom: 20px;
+            border-bottom: 3px solid #8b0000;
+            position: relative;
+            margin-bottom: 30px;
+            text-align: center;
+          }
+
+          .section-header-8j0fhk::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 3px;
+            background: #ffd700;
+          }
+
+          .section-header-8j0fhk h1 {
+            font-size: 24px;
+            color: #8b0000;
+            font-weight: 600;
+            letter-spacing: 2px;
+          }
+
+          .teacher-list-kli7je {
+            display: flex;
+            gap: 25px;
+            overflow-x: auto;
+            padding: 10px 5px 20px;
+            scroll-behavior: smooth;
+          }
+
+          .teacher-list-kli7je::-webkit-scrollbar {
+            height: 8px;
+          }
+
+          .teacher-list-kli7je::-webkit-scrollbar-track {
+            background: #f0e8e8;
+            border-radius: 4px;
+          }
+
+          .teacher-list-kli7je::-webkit-scrollbar-thumb {
+            background: #a52a2a;
+            border-radius: 4px;
+          }
+
+          .teacher-list-kli7je::-webkit-scrollbar-thumb:hover {
+            background: #8b0000;
+          }
+
+          .teacher-item-rbo2qo {
+            flex-shrink: 0;
+            width: 160px;
+            cursor: pointer;
+            transition: transform 0.25s ease;
+          }
+
+          .teacher-item-rbo2qo:hover {
+            transform: translateY(-5px);
+          }
+
+          .teacher-avatar-ospgo5 {
+            width: 160px;
+            height: 220px;
+            border-radius: 4px;
+            overflow: hidden;
+            background: #f5f5f5;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            position: relative;
+          }
+
+          .teacher-avatar-ospgo5 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transition: transform 0.3s ease;
+          }
+
+          .teacher-item-rbo2qo:hover .teacher-avatar-ospgo5 img {
+            transform: scale(1.05);
+          }
+
+          .teacher-avatar-ospgo5::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #8b0000, #a52a2a);
+            opacity: 0;
+            transition: opacity 0.25s ease;
+          }
+
+          .teacher-item-rbo2qo:hover .teacher-avatar-ospgo5::after {
+            opacity: 1;
+          }
+
+          .teacher-info-rbupgo {
+            padding: 12px 0;
+            text-align: center;
+          }
+
+          .teacher-name-ut3qxv {
+            font-size: 16px;
+            color: #333;
+            font-weight: 500;
+            margin-bottom: 6px;
+          }
+
+          .teacher-title-8annl0 {
+            font-size: 12px;
+            color: #999;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          @media (max-width: 768px) {
+            .contentBlock-wb7aux {
+              margin: 10px;
+              padding: 20px;
+            }
+
+            .teacher-item-rbo2qo {
+              width: 130px;
+            }
+
+            .teacher-avatar-ospgo5 {
+              width: 130px;
+              height: 180px;
+            }
+          }
+
+          .back-btn-oh5sha {
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #fff;
+            color: #8b0000;
+            border: 2px solid #8b0000;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.25s ease;
+          }
+
+          .back-btn-oh5sha:hover {
+            background: #8b0000;
+            color: #fff;
+          }
+        </style>
+
+        <cms-list data="l_97rujt5n" class="contentBlock-wb7aux">
+          <div class="section-header-8j0fhk">
+            <h1>师资队伍</h1>
+          </div>
+          <div class="teacher-list-kli7je">
+            <list-node>
+              <node-template class="teacher-item-rbo2qo">
+                <div class="teacher-avatar-ospgo5">
+                  <node-cover></node-cover>
+                </div>
+                <div class="teacher-info-rbupgo">
+                  <div class="teacher-name-ut3qxv">
+                    <node-title></node-title>
+                  </div>
+                  <div class="teacher-title-8annl0">
+                    <node-info></node-info>
+                  </div>
+                </div>
+              </node-template>
+            </list-node>
+          </div>
+          <div style="display: flex">
+            <div style="flex: 1"></div>
+            <list-template class="back-btn-oh5sha">查看全部</list-template>
+            <div style="flex: 1"></div>
+          </div>
+        </cms-list>
+      </cms-component>
+    </div>
+
+    <cms-component>
+      <style>
+        /* 底部友情链接（理论学习平台） */
+        .links-7atwpu {
+          background: #2c2c2c;
+          color: #fff;
+          padding: 20px 0;
+          text-align: center;
+        }
+
+        .links-7atwpu h4 {
+          margin-bottom: 10px;
+          font-size: 16px;
+        }
+
+        .links-7atwpu a {
+          color: #ffd700;
+          margin: 0 12px;
+          text-decoration: none;
+          font-size: 14px;
+        }
+
+        .links-7atwpu a:hover {
+          text-decoration: underline;
+        }
+
+        .footer-f2dbl9 {
+          background: #333;
+          color: #fff;
+          text-align: center;
+          padding: 25px 0;
+          margin-top: 0;
+          font-size: 14px;
+        }
+      </style>
+
+      <div class="links-7atwpu">
+        <h4>理论学习平台</h4>
+        <a href="https://www.people.com.cn/" target="_blank">人民网</a>
+        <a href="https://www.qstheory.cn/" target="_blank">求是网</a>
+        <a href="http://jhsjk.people.cn/" target="_blank">习近平系列重要讲话数据库</a>
+        <a href="https://www.xuexi.cn/" target="_blank">学习强国</a>
+        <a href="https://www.cpcnews.cn/" target="_blank">中国共产党新闻网</a>
+        <a href="https://www.dswxyjy.org.cn/" target="_blank">中央党史和文献研究院官网</a>
+      </div>
+
+      <div class="footer-f2dbl9">
+        <p>江西软件职业技术大学 · 马克思主义学院 版权所有 © 2026</p>
+      </div>
+    </cms-component>
+    <script>
+      const Cms = document.createElement("script");
+      Cms.src = window.location.origin + "/cmsScripts/FinalCms.js?web=marxism";
+      document.body.appendChild(Cms);
+    </script>
+  </body>
 </html>
